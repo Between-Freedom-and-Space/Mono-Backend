@@ -7,10 +7,10 @@ plugins {
     kotlin("jvm") version "1.6.10"
 }
 
-group = "com.example"
-version = "0.0.1"
+group = "com.between_freedom_and_space.mono_backend"
+version = "1.0.0"
 application {
-    mainClass.set("com.example.ApplicationKt")
+    mainClass.set("com.between_freedom_and_space.mono_backend.ApplicationKt")
 }
 
 repositories {
