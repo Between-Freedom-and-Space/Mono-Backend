@@ -1,0 +1,63 @@
+Index: src/main/kotlin/com/between_freedom_and_space/mono_backend/Application.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.between_freedom_and_space.mono_backend\n\nimport com.between_freedom_and_space.mono_backend.plugins.configureRouting\nimport io.ktor.server.engine.*\nimport io.ktor.server.netty.*\n\nfun main() {\n    embeddedServer(Netty, port = 8080, host = \"0.0.0.0\") {\n        configureRouting()\n    }.start(wait = true)\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/kotlin/com/between_freedom_and_space/mono_backend/Application.kt b/src/main/kotlin/com/between_freedom_and_space/mono_backend/Application.kt
+--- a/src/main/kotlin/com/between_freedom_and_space/mono_backend/Application.kt	(revision d4d0724edbf5e3ef21e2b9114b3538d1b795dd94)
++++ b/src/main/kotlin/com/between_freedom_and_space/mono_backend/Application.kt	(date 1647205689640)
+@@ -1,5 +1,6 @@
+ package com.between_freedom_and_space.mono_backend
+ 
++import com.between_freedom_and_space.mono_backend.auth.authRouting
+ import com.between_freedom_and_space.mono_backend.plugins.configureRouting
+ import io.ktor.server.engine.*
+ import io.ktor.server.netty.*
+@@ -7,5 +8,6 @@
+ fun main() {
+     embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
+         configureRouting()
++        authRouting()
+     }.start(wait = true)
+ }
+Index: .idea/kotlinScripting.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/kotlinScripting.xml b/.idea/kotlinScripting.xml
+new file mode 100644
+--- /dev/null	(date 1647205582044)
++++ b/.idea/kotlinScripting.xml	(date 1647205582044)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="KotlinScriptingSettings">
++    <option name="suppressDefinitionsCheck" value="true" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/AuthRouting.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/AuthRouting.kt b/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/AuthRouting.kt
+new file mode 100644
+--- /dev/null	(date 1647205642022)
++++ b/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/AuthRouting.kt	(date 1647205642022)
+@@ -0,0 +1,11 @@
++package com.between_freedom_and_space.mono_backend.auth
++
++import io.ktor.server.application.*
++import io.ktor.server.routing.*
++
++fun Application.authRouting() {
++
++    routing {
++
++    }
++}
+\ No newline at end of file
