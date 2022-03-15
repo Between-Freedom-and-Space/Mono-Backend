@@ -1,27 +1,36 @@
-val ktor_version: String by project
-val kotlin_version: String by project
-val logback_version: String by project
+import dependencies.*
+import extensions.testImplementation
+import extensions.implementation
 
 plugins {
     application
     kotlin("jvm") version "1.6.10"
 }
 
-group = "com.between_freedom_and_space.mono_backend"
-version = "1.0.0"
+group = Config.GROUP
+version = Config.VERSION
 application {
-    mainClass.set("com.between_freedom_and_space.mono_backend.ApplicationKt")
+    mainClass.set(Config.APPLICATION_MAIN_CLASS)
 }
 
 repositories {
     mavenCentral()
+    google()
     maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
-    implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    implementation(KtorServerCore)
+    implementation(KtorServerJetty)
+    implementation(KtorServerAuth)
+    implementation(KtorMetrics)
+    implementation(KtorMetricsMicrometer)
+    implementation(KtorCallLogging)
+    implementation(KtorCORS)
+
+    implementation(LogbackClassic)
+    implementation(MicrometerPrometheus)
+
+    testImplementation(KtorServerTests)
+    testImplementation(KotlinJUnit)
 }

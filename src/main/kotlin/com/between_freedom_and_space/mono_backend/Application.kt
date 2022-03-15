@@ -1,6 +1,7 @@
 package com.between_freedom_and_space.mono_backend
 
 import com.between_freedom_and_space.mono_backend.plugins.configureRouting
+import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
