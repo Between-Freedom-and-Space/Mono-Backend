@@ -65,3 +65,45 @@ object MicrometerPrometheus: ProjectDependency {
     override val artifact = "micrometer-registry-prometheus"
     override val version = Versions.PROMETHEUS
 }
+
+object ExposedCore: ProjectDependency {
+    override val group = "org.jetbrains.exposed"
+    override val artifact = "exposed-core"
+    override val version = Versions.EXPOSED
+}
+
+object ExposedDao: ProjectDependency {
+    override val group = "org.jetbrains.exposed"
+    override val artifact = "exposed-dao"
+    override val version = Versions.EXPOSED
+}
+
+object ExposedJDBC: ProjectDependency {
+    override val group = "org.jetbrains.exposed"
+    override val artifact = "exposed-jdbc"
+    override val version = Versions.EXPOSED
+}
+
+object ExposedKotlinDateTime: ProjectDependency {
+    override val group = "org.jetbrains.exposed"
+    override val artifact = "exposed-kotlin-datetime"
+    override val version = Versions.EXPOSED
+}
+
+object H2Database: ProjectDependency {
+    override val group = "com.h2database"
+    override val artifact = "h2"
+    override val version = Versions.H2
+}
+
+object PostgresDatabase: ProjectDependency {
+    override val group = "org.postgresql"
+    override val artifact = "postgresql"
+    override val version = Versions.POSTGRES
+}
+
+object HikariCP: ProjectDependency {
+    override val group = "com.zaxxer"
+    override val artifact = "HikariCP"
+    override val version = Versions.HIKARI
+}

@@ -20,6 +20,8 @@ repositories {
 }
 
 dependencies {
+
+    // Ktor plugins and modules
     implementation(KtorServerCore)
     implementation(KtorServerJetty)
     implementation(KtorServerAuth)
@@ -28,9 +30,22 @@ dependencies {
     implementation(KtorCallLogging)
     implementation(KtorCORS)
 
+    // Logging and monitoring
     implementation(LogbackClassic)
     implementation(MicrometerPrometheus)
 
+    // Exposed ORM
+    implementation(ExposedCore)
+    implementation(ExposedDao)
+    implementation(ExposedJDBC)
+    implementation(ExposedKotlinDateTime)
+
+    // Databases
+    implementation(H2Database)
+    implementation(PostgresDatabase)
+    implementation(HikariCP)
+
+    // Tests
     testImplementation(KtorServerTests)
     testImplementation(KotlinJUnit)
 }
