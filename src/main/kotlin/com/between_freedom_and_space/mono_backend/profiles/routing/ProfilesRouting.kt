@@ -38,7 +38,7 @@ internal fun Application.profilesRouting() {
 
     routing {
 
-        put {
+        put("$basePath/update/{id}/text") {
 
         }
 

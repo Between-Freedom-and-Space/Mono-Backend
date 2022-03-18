@@ -1,25 +1,22 @@
 package com.between_freedom_and_space.mono_backend.profiles.entities
 
-import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.kotlin.datetime.datetime
+data class UserProfile(
 
-object UserProfile: Table("user_profiles") {
+    val id: Long,
 
-    val id = long("id").autoIncrement().entityId()
+    val mail: String,
 
-    val mail = text("mail")
+    val passwordEncrypted: String,
 
-    val passwordEncrypted = text("password_encrypted")
+    val nickName: String,
 
-    val nickName = text("nick_name")
+    val nameAlias: String,
 
-    val nameAlias = text("name_alias")
+    val description: String,
 
-    val description = text("description")
+    val location: String,
 
-    val location = text("location")
+    val createdDate: String,
 
-    val createdDate = datetime("created_date")
-
-    val modifiedDate = datetime("modified_date")
-}
+    val modifiedDate: String
+)

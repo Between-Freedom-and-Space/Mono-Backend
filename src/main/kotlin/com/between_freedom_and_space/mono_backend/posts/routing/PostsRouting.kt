@@ -11,7 +11,7 @@ internal fun Application.postsRouting() {
     }
 
     routing {
-
+        
     }
 
     routing {
