@@ -1,11 +1,9 @@
 package com.between_freedom_and_space.mono_backend.profiles.entities
 
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
-object UserProfilesTable: Table("user_profiles") {
-
-    val id = long("id").autoIncrement().entityId()
+object UserProfilesTable: LongIdTable("user_profiles") {
 
     val mail = text("mail")
 
