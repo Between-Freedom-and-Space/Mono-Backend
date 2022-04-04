@@ -30,6 +30,10 @@ dependencies {
     implementation(KtorCallLogging)
     implementation(KtorCORS)
 
+    // DI Koin
+    implementation(KtorKoin)
+    implementation(KoinLoggerSlf4j)
+
     // Logging and monitoring
     implementation(LogbackClassic)
     implementation(MicrometerPrometheus)

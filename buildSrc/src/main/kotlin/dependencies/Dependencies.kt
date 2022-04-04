@@ -48,6 +48,18 @@ object KtorServerTests: ProjectDependency {
     override val version = Versions.KTOR
 }
 
+object KtorKoin: ProjectDependency {
+    override val group = "io.insert-koin"
+    override val artifact = "koin-ktor"
+    override val version = Versions.KOIN
+}
+
+object KoinLoggerSlf4j: ProjectDependency {
+    override val group = "io.insert-koin"
+    override val artifact = "koin-logger-slf4j"
+    override val version = Versions.KOIN
+}
+
 object KotlinJUnit: ProjectDependency {
     override val group = "org.jetbrains.kotlin"
     override val artifact = "kotlin-test-junit"
