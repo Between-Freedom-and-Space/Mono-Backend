@@ -29,27 +29,27 @@ internal fun Application.authRouting() {
 
         }
 
-        patch("$userPath/delete") {
+        delete("$userPath/delete") {
 
         }
     }
 
     routing {
-        val settingPath = "$basePath/settings"
+        val settingsPath = "$basePath/settings"
 
-        get("$settingPath/{id}") {
-
-        }
-
-        get("$settingPath/all") {
+        get("$settingsPath/{id}") {
 
         }
 
-        patch("$settingPath/update/accessTokenLifetime") {
+        get("$settingsPath/all") {
 
         }
 
-        patch("$settingPath/update/refreshTokenLifetime") {
+        patch("$settingsPath/{id}/update/accessTokenLifetime") {
+
+        }
+
+        patch("$settingsPath/{id}/update/refreshTokenLifetime") {
 
         }
     }
