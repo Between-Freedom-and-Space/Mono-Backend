@@ -5,6 +5,7 @@ import extensions.implementation
 plugins {
     application
     kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
 group = Config.GROUP
@@ -23,6 +24,7 @@ dependencies {
 
     // Ktor plugins and modules
     implementation(KtorServerCore)
+    implementation(KtorSerialization)
     implementation(KtorServerJetty)
     implementation(KtorServerAuth)
     implementation(KtorMetrics)

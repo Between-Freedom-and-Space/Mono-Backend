@@ -6,6 +6,12 @@ object KtorServerCore: ProjectDependency {
     override val version = Versions.KTOR
 }
 
+object KtorSerialization: ProjectDependency {
+    override val group = "io.ktor"
+    override val artifact = "ktor-serialization"
+    override val version = Versions.KTOR
+}
+
 object KtorServerJetty: ProjectDependency {
     override val group = "io.ktor"
     override val artifact = "ktor-server-netty-jvm"
