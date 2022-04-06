@@ -8,6 +8,7 @@ class Posts(id: EntityID<Long>): LongEntity(id) {
     companion object: LongEntityClass<Posts>(PostsTable)
 
     var text by PostsTable.text
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

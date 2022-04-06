@@ -7,5 +7,9 @@ import org.jetbrains.exposed.dao.id.EntityID
 class ProfileSettings(id: EntityID<Long>): LongEntity(id) {
     companion object: LongEntityClass<ProfileSettings>(ProfileSettingsTable)
 
-    var isClosedProfile by ProfileSettingsTable.isClosedProfile
+    var isClosed by ProfileSettingsTable.isClosed
+
+    var isVisible by ProfileSettingsTable.isVisible
+
+    var isDeleted by ProfileSettingsTable.isDeleted
 }

@@ -2,28 +2,55 @@ package com.between_freedom_and_space.mono_backend.auth.api.routing
 
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import kotlin.time.Duration
 
 internal fun Application.authRouting() {
     val basePath = "/auth"
 
     routing {
+        val tokenPath = "$basePath/token"
 
-        post("$basePath/token/validateRefresh") {
+        post("$tokenPath/verifyAccess") {
 
         }
 
-        post("$basePath/token/validateAccess") {
+        post("$tokenPath/verifyRefresh") {
+
+        }
+
+        post("$tokenPath/refreshAccess") {
 
         }
     }
 
     routing {
+        val userPath = "$basePath/user"
 
-        patch("$basePath/user/register") {
+        patch("$userPath/register") {
 
         }
 
-        patch("$basePath/user/delete") {
+        patch("$userPath/delete") {
+
+        }
+    }
+
+    routing {
+        val settingPath = "$basePath/settings"
+
+        get("$settingPath/{id}") {
+
+        }
+
+        get("$settingPath/all") {
+
+        }
+
+        patch("$settingPath/update/accessTokenLifetime") {
+
+        }
+
+        patch("$settingPath/update/refreshTokenLifetime") {
 
         }
     }

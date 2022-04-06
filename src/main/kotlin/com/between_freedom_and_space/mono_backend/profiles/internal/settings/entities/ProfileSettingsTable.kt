@@ -5,7 +5,11 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object ProfileSettingsTable: LongIdTable("profiles_settings") {
 
-    val isClosedProfile = bool("closed_profile")
+    val isClosed = bool("is_closed_profile").default(false)
+
+    val isVisible = bool("is_visible_profile").default(true)
+
+    val isDeleted = bool("is_deleted_profile").default(false)
 
     val createdDate = datetime("created_date")
 

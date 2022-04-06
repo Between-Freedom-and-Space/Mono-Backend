@@ -19,5 +19,5 @@ object UserProfilesTable: LongIdTable("user_profiles") {
 
     val createdDate = datetime("created_date")
 
-    val modifiedDate = datetime("modified_date")
+    val updatedDate = datetime("updated_date")
 }

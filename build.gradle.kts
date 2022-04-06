@@ -32,6 +32,9 @@ dependencies {
     implementation(KtorCallLogging)
     implementation(KtorCORS)
 
+    // Serialization
+    implementation(KotlinXSerializationJson)
+
     // DI Koin
     implementation(KtorKoin)
     implementation(KoinLoggerSlf4j)
