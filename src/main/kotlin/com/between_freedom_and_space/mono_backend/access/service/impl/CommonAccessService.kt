@@ -1,7 +1,7 @@
 package com.between_freedom_and_space.mono_backend.access.service.impl
 
-import com.between_freedom_and_space.mono_backend.access.service.models.AccessResult
 import com.between_freedom_and_space.mono_backend.access.service.AccessService
+import com.between_freedom_and_space.mono_backend.access.service.models.AccessResult
 
 class CommonAccessService: AccessService {
 

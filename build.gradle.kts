@@ -1,6 +1,6 @@
 import dependencies.*
-import extensions.testImplementation
 import extensions.implementation
+import extensions.testImplementation
 
 plugins {
     application
