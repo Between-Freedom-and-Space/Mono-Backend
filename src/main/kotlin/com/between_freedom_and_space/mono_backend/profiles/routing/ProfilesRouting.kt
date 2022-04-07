@@ -16,7 +16,7 @@ internal fun Application.profilesRouting() {
 
         }
 
-        get("$basePath/{id}/subscriptions") {
+        get("$basePath/{id}/s") {
 
         }
 

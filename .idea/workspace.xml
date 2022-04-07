@@ -4,17 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added model mapper">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="removed reactions">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/api/models/PopularMetaInfo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/api/routing/PopularRouting.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/base/BasePopularEntity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/base/BasePopularTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/comments/PopularComment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/comments/PopularCommentsTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/posts/PopularPost.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/posts/PopularPostsTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/profiles/PopularProfile.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/profiles/PopularProfilesTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/tags/PopularTag.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/entity/tags/PopularTagsTable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/modules/PopularModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/plugin/PopularPlugin.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/service/PopularService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/repository/CommonPostRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/api/routing/AuthRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/api/routing/AuthRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/routing/PostsRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/routing/PostsRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/entities/PostReaction.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/entities/PostReactionsTable.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/modules/ReactionModule.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/plugins/ReactionsPlugin.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/routing/ReactionsRouting.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/services/CommonReactionService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/plugins/PostsPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/plugins/PostsPlugin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/routing/ProfilesRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/routing/ProfilesRouting.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,12 +66,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin File" />
-        <option value="Kotlin Object" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Enum" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin File" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Object" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -109,9 +117,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.between_freedom_and_space.mono_backend.popular.entity.tags" />
+      <recent name="com.between_freedom_and_space.mono_backend.popular.entity.posts" />
+      <recent name="com.between_freedom_and_space.mono_backend.popular.entity.profiles" />
+      <recent name="com.between_freedom_and_space.mono_backend.popular.entity.comments" />
       <recent name="com.between_freedom_and_space.mono_backend.auth.components.models" />
-      <recent name="com.between_freedom_and_space.mono_backend.auth.components" />
-      <recent name="com.between_freedom_and_space.mono_backend.access.service.models" />
     </key>
   </component>
   <component name="RunManager" selected="Kotlin.ApplicationKt (1)">
@@ -294,7 +304,8 @@
       <option name="presentableId" value="Default" />
       <updated>1647203660522</updated>
       <workItem from="1647203662966" duration="6031000" />
-      <workItem from="1649253724400" duration="1950000" />
+      <workItem from="1649253724400" duration="2019000" />
+      <workItem from="1649339364038" duration="3287000" />
     </task>
     <task id="LOCAL-00001" summary="added Dockerfile">
       <created>1647205271588</created>
@@ -338,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649250264635</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="removed reactions">
+      <created>1649256099535</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649256099535</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +380,7 @@
     <MESSAGE value="added ktor serialization" />
     <MESSAGE value="added auth routing endpoints and services api" />
     <MESSAGE value="added model mapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="added model mapper" />
+    <MESSAGE value="removed reactions" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed reactions" />
   </component>
 </project>
