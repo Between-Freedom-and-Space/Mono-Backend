@@ -27,6 +27,7 @@ dependencies {
     implementation(KtorSerialization)
     implementation(KtorServerJetty)
     implementation(KtorServerAuth)
+    implementation(KtorServerJWT)
     implementation(KtorMetrics)
     implementation(KtorMetricsMicrometer)
     implementation(KtorCallLogging)

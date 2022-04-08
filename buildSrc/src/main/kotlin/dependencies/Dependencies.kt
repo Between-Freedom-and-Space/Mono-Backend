@@ -24,6 +24,12 @@ object KtorServerAuth: ProjectDependency {
     override val version = Versions.KTOR
 }
 
+object KtorServerJWT: ProjectDependency {
+    override val group = "io.ktor"
+    override val artifact = "ktor-server-auth-jwt-jvm"
+    override val version = Versions.KTOR
+}
+
 object KtorMetrics: ProjectDependency {
     override val group = "io.ktor"
     override val artifact = "ktor-server-metrics-jvm"
