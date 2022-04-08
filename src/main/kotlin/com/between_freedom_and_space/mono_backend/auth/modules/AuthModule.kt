@@ -22,6 +22,6 @@ private val componentsModule = module {
 }
 
 val authModule = module {
-    plus(securityModule)
-    plus(componentsModule)
+    includes(securityModule)
+    includes(componentsModule)
 }

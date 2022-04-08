@@ -6,7 +6,7 @@ import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
-class PopularComment(id: EntityID<Long>): LongEntity(id), BasePopularEntity {
+class PopularComment(id: EntityID<Long>): BasePopularEntity(id) {
     companion object: LongEntityClass<PopularComment>(PopularCommentsTable)
 
     override var popularInstantFrom: LocalDateTime by PopularCommentsTable.popularInstantFrom

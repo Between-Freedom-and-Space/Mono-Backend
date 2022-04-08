@@ -25,9 +25,9 @@ class JWTTokenProducer(
     override fun produceAccessToken(refreshToken: DecodedJWT): String {
         val claims = refreshToken.claims
         val userId = claims[UserAuthority.USER_ID_ALIAS]?.asLong()
-            ?: throw InvalidTokenException("Claim: ${UserAuthority.USER_ID_ALIAS} not presented.")
+            ?: throw InvalidTokenException("Claim: ${UserAuthority.USER_ID_ALIAS} not presented")
         val nickName = claims[UserAuthority.USER_NAME_ALIAS]?.asString()
-            ?: throw InvalidTokenException("Claim: ${UserAuthority.USER_NAME_ALIAS} not presented.")
+            ?: throw InvalidTokenException("Claim: ${UserAuthority.USER_NAME_ALIAS} not presented")
 
         val authority = UserAuthority(userId, nickName)
         val params = JWTParams(
