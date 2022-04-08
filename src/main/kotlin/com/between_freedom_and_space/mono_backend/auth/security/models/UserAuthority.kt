@@ -1,7 +1,7 @@
 package com.between_freedom_and_space.mono_backend.auth.security.models
 
 data class UserAuthority(
-    val userId: String,
+    val userId: Long,
     val userName: String,
 ) {
 

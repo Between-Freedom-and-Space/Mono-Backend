@@ -9,4 +9,5 @@ data class JWTParams(
     val audience: String,
     val issuer: String,
     val expiresAt: LocalDateTime = localDateTimeNow(),
+    val subject: String? = null
 )

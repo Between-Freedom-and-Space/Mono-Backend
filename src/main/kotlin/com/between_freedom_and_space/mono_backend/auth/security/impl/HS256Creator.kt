@@ -7,6 +7,7 @@ import com.between_freedom_and_space.mono_backend.auth.security.models.JWTParams
 import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
 import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority.Companion.USER_ID_ALIAS
 import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority.Companion.USER_NAME_ALIAS
+import com.between_freedom_and_space.mono_backend.util.extensions.ifNotNull
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toJavaInstant
@@ -16,12 +17,16 @@ class HS256Creator: JWTCreator {
 
     override fun createToken(authority: UserAuthority, params: JWTParams): String {
         val expiresAtDate = Date.from(params.expiresAt.toInstant(TimeZone.UTC).toJavaInstant())
-        return JWT.create()
-            .withAudience(params.audience)
-            .withIssuer(params.issuer)
-            .withClaim(USER_ID_ALIAS, authority.userId)
-            .withClaim(USER_NAME_ALIAS, authority.userName)
-            .withExpiresAt(expiresAtDate)
-            .sign(Algorithm.HMAC256(params.secret))
+        return JWT.create().apply {
+            withAudience(params.audience)
+            withIssuer(params.issuer)
+            withClaim(USER_ID_ALIAS, authority.userId)
+            withClaim(USER_NAME_ALIAS, authority.userName)
+            withExpiresAt(expiresAtDate)
+
+            params.subject.ifNotNull { subject ->
+                withSubject(subject)
+            }
+        }.sign(Algorithm.HMAC256(params.secret))
     }
 }
