@@ -66,6 +66,12 @@ object KtorKoin: ProjectDependency {
     override val version = Versions.KOIN
 }
 
+object KoinCore: ProjectDependency {
+    override val group = "io.insert-koin"
+    override val artifact = "koin-core"
+    override val version = Versions.KOIN
+}
+
 object KoinLoggerSlf4j: ProjectDependency {
     override val group = "io.insert-koin"
     override val artifact = "koin-logger-slf4j"
