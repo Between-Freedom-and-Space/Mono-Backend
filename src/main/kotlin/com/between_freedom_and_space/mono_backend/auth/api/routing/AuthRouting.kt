@@ -25,7 +25,7 @@ internal fun Application.authRouting() {
     routing {
         val tokenPath = "$basePath/token"
 
-        val authService by inject<TokenAuthService>(TokenAuthService::class.java)
+        val authService by inject<TokenAuthService>()
 
         val tokenMapper by inject<ModelMapper<TokenVerifyResult, TokenVerifyResultResponse>>(TokenVerifyResultToVerifyResponseMapper::class.java)
 

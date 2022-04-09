@@ -37,6 +37,7 @@ dependencies {
     implementation(KotlinXSerializationJson)
 
     // DI Koin
+    implementation(KoinCore)
     implementation(KtorKoin)
     implementation(KoinLoggerSlf4j)
 
