@@ -4,7 +4,7 @@ import io.ktor.server.application.*
 import io.ktor.server.routing.*
 
 internal fun Application.profilesRouting() {
-    val basePath = "/profiles"
+    val basePath = "/profile"
 
     routing {
 
@@ -16,7 +16,7 @@ internal fun Application.profilesRouting() {
 
         }
 
-        get("$basePath/{id}/subscriptions") {
+        get("$basePath/{id}/s") {
 
         }
 

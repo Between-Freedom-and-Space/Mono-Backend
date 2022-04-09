@@ -13,11 +13,11 @@ object UserProfilesTable: LongIdTable("user_profiles") {
 
     val nameAlias = text("name_alias")
 
-    val description = text("description")
+    val description = text("description").nullable()
 
     val location = text("location")
 
     val createdDate = datetime("created_date")
 
-    val modifiedDate = datetime("modified_date")
+    val updatedDate = datetime("updated_date")
 }

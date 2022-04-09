@@ -6,6 +6,12 @@ object KtorServerCore: ProjectDependency {
     override val version = Versions.KTOR
 }
 
+object KtorSerialization: ProjectDependency {
+    override val group = "io.ktor"
+    override val artifact = "ktor-serialization"
+    override val version = Versions.KTOR
+}
+
 object KtorServerJetty: ProjectDependency {
     override val group = "io.ktor"
     override val artifact = "ktor-server-netty-jvm"
@@ -15,6 +21,12 @@ object KtorServerJetty: ProjectDependency {
 object KtorServerAuth: ProjectDependency {
     override val group = "io.ktor"
     override val artifact = "ktor-server-auth-jvm"
+    override val version = Versions.KTOR
+}
+
+object KtorServerJWT: ProjectDependency {
+    override val group = "io.ktor"
+    override val artifact = "ktor-server-auth-jwt-jvm"
     override val version = Versions.KTOR
 }
 
@@ -64,6 +76,12 @@ object KotlinJUnit: ProjectDependency {
     override val group = "org.jetbrains.kotlin"
     override val artifact = "kotlin-test-junit"
     override val version = Versions.KOTLIN
+}
+
+object KotlinXSerializationJson: ProjectDependency {
+    override val group = "org.jetbrains.kotlinx"
+    override val artifact = "kotlinx-serialization-json"
+    override val version = Versions.KOTLINX_SERIALIZATION
 }
 
 object LogbackClassic: ProjectDependency {
