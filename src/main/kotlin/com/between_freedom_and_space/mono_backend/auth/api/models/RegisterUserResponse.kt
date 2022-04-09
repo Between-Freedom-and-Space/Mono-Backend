@@ -4,20 +4,17 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserRegisterRequest(
+data class RegisterUserResponse(
 
     @SerialName("nickname")
     val nickName: String,
-
-    @SerialName("name")
-    val mail: String,
-
-    @SerialName("password")
-    val passwordHash: String,
 
     @SerialName("name_alias")
     val nameAlias: String,
 
     @SerialName("description")
-    val description: String?,
+    val description: String,
+
+    @SerialName("location")
+    val location: String,
 )

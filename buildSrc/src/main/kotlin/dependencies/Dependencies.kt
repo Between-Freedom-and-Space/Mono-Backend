@@ -149,3 +149,16 @@ object ApacheCommonsCodec: ProjectDependency {
     override val artifact = "commons-codec"
     override val version = Versions.APACHE_COMMONS
 }
+
+object JavaXValidation: ProjectDependency {
+    override val group = "javax.validation"
+    override val artifact = "validation-api"
+    override val version = Versions.JAVAX_VALIDATION
+
+}
+
+object HibernateValidator: ProjectDependency {
+    override val group = "org.hibernate.validator"
+    override val artifact = "hibernate-validator"
+    override val version = Versions.HIBERNATE_VALIDATOR
+}

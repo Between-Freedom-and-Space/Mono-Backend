@@ -59,6 +59,10 @@ dependencies {
     // Hashing
     implementation(ApacheCommonsCodec)
 
+    // Validation
+    implementation(JavaXValidation)
+    implementation(HibernateValidator)
+
     // Tests
     testImplementation(KtorServerTests)
     testImplementation(KotlinJUnit)

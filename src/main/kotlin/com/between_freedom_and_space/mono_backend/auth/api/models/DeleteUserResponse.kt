@@ -4,11 +4,8 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserAuthenticateRequest(
+data class DeleteUserResponse(
 
-    @SerialName("nickname")
-    val nickname: String,
-
-    @SerialName("password_encoded")
-    val passwordEncoded: String,
+    @SerialName("delete_result")
+    val result: String
 )

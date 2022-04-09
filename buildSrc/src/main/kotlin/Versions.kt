@@ -21,4 +21,8 @@ internal object Versions {
     const val HIKARI = "2.7.8"
 
     const val APACHE_COMMONS = "1.9"
+
+    const val JAVAX_VALIDATION = "2.0.1.Final"
+
+    const val HIBERNATE_VALIDATOR = "6.0.13.Final"
 }

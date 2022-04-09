@@ -13,6 +13,8 @@ import com.between_freedom_and_space.mono_backend.auth.security.impl.HS256Creato
 import com.between_freedom_and_space.mono_backend.auth.security.impl.HS256Verifier
 import com.between_freedom_and_space.mono_backend.auth.security.impl.PBKDF2PasswordCipher
 import com.between_freedom_and_space.mono_backend.auth.service.TokenAuthService
+import com.between_freedom_and_space.mono_backend.auth.service.UserAuthService
+import com.between_freedom_and_space.mono_backend.auth.service.impl.CommonUserAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.impl.JWTTokenAuthService
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -34,4 +36,5 @@ val authModule = module {
     includes(componentsModule)
 
     single { JWTTokenAuthService(get(), get(), get(), get()) } bind TokenAuthService::class
+    single { CommonUserAuthService() } bind UserAuthService::class
 }
