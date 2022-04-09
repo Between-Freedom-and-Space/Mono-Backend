@@ -19,4 +19,6 @@ internal object Versions {
     const val POSTGRES = "42.2.2"
 
     const val HIKARI = "2.7.8"
+
+    const val APACHE_COMMONS = "1.9"
 }

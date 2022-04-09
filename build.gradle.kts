@@ -56,6 +56,9 @@ dependencies {
     implementation(PostgresDatabase)
     implementation(HikariCP)
 
+    // Hashing
+    implementation(ApacheCommonsCodec)
+
     // Tests
     testImplementation(KtorServerTests)
     testImplementation(KotlinJUnit)

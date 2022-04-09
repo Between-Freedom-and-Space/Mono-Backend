@@ -143,3 +143,9 @@ object HikariCP: ProjectDependency {
     override val artifact = "HikariCP"
     override val version = Versions.HIKARI
 }
+
+object ApacheCommonsCodec: ProjectDependency {
+    override val group = "commons-codec"
+    override val artifact = "commons-codec"
+    override val version = Versions.APACHE_COMMONS
+}
