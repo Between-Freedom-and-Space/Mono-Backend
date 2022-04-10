@@ -1,0 +1,14 @@
+package com.between_freedom_and_space.mono_backend.auth.api.models
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class AuthenticateUserResponse(
+
+    @SerialName("access_token")
+    val accessToken: String,
+
+    @SerialName("refresh_token")
+    val refreshToken: String,
+)

@@ -7,9 +7,9 @@ import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileMod
 
 interface UserAuthService {
 
-    fun authenticateUser(nickname: String, password: String): ProducerResult
+    fun authenticateUser(nickname: String, passwordEncoded: String): ProducerResult
 
     fun registerNewUser(user: RegisterUserRequest): UserProfileModel
 
-    fun deleteUser(accessToken: String)
+    fun deleteUser(accessToken: String): UserProfileModel
 }

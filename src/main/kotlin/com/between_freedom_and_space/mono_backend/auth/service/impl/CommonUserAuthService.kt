@@ -9,7 +9,7 @@ class CommonUserAuthService(
 
 ): UserAuthService {
 
-    override fun authenticateUser(nickname: String, password: String): TokenProducer.ProducerResult {
+    override fun authenticateUser(nickname: String, passwordEncoded: String): TokenProducer.ProducerResult {
         TODO("Not yet implemented")
     }
 
@@ -17,7 +17,7 @@ class CommonUserAuthService(
         TODO("Not yet implemented")
     }
 
-    override fun deleteUser(accessToken: String) {
+    override fun deleteUser(accessToken: String): UserProfileModel {
         TODO("Not yet implemented")
     }
 }

@@ -36,6 +36,15 @@ data class Response <T: Any>(
             return ok(content.invoke())
         }
 
+        fun accepted(): Response<Nothing> {
+            return Response(
+                statusCode = HttpStatusCode.Accepted.value,
+                statusMessage = HttpStatusCode.Accepted.description,
+                content = null,
+                error = null,
+            )
+        }
+
         fun badRequest(id: Long, message: String? = null): Response<Nothing> {
             val error = Error(
                 id = id,

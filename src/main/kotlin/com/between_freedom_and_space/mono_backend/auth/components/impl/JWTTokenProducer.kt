@@ -64,6 +64,6 @@ class JWTTokenProducer(
             )
         )
 
-        return ProducerResult(accessToken, refreshToken)
+        return ProducerResult(refreshToken)
     }
 }
