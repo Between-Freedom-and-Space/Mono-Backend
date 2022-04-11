@@ -7,6 +7,10 @@ object PostsTable: LongIdTable("posts") {
 
     val text = text("text")
 
+    val isVisible = bool("is_visible").default(true)
+
+    val isDeleted = bool("is_deleted").default(false)
+
     val createdDate = datetime("created_date")
 
     val updatedDate = datetime("updated_date")

@@ -1,4 +1,4 @@
-package com.between_freedom_and_space.mono_backend.profiles.routing
+package com.between_freedom_and_space.mono_backend.profiles.api.routing
 
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
@@ -28,6 +28,11 @@ internal fun Application.profilesRouting() {
     routing {
 
         post("$basePath/create") {
+
+        }
+
+
+        post("$basePath/exists") {
 
         }
 

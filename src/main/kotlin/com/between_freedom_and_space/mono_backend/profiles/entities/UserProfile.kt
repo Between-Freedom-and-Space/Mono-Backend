@@ -19,6 +19,10 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
 
     var locataion by UserProfilesTable.location
 
+    var isVisible by UserProfilesTable.isVisible
+
+    var isDeleted by UserProfilesTable.isDeleted
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

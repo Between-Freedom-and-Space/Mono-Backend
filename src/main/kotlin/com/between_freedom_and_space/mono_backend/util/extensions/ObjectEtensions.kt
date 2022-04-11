@@ -13,3 +13,7 @@ inline fun <reified T> T?.ifNotNull(action: (T) -> Unit): T? {
     }
     return this
 }
+
+inline fun <reified T, reified R> T.transform(action: (T) -> R): R {
+    return action.invoke(this)
+}

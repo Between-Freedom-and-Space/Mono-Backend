@@ -21,7 +21,7 @@ internal fun Application.authTokenRouting() {
 
         post("$basePath/verifyAccess") {
             val accessToken = getRequestHeader(AuthConstants.TOKEN_HEADER_NAME)
-                ?: throw InvalidTokenException("Access token not presented")
+                ?: throw InvalidTokenException("Access token not presented", "Empty token")
 
             val verifyResult = authService.verifyAccessToken(accessToken)
 
@@ -33,7 +33,7 @@ internal fun Application.authTokenRouting() {
 
         post("$basePath/verifyRefresh") {
             val refreshToken = getRequestHeader(AuthConstants.TOKEN_HEADER_NAME)
-                ?: throw InvalidTokenException("Refresh token not presented")
+                ?: throw InvalidTokenException("Refresh token not presented", "Empty token")
 
             val verifyResult = authService.verifyRefreshToken(refreshToken)
 
@@ -45,7 +45,7 @@ internal fun Application.authTokenRouting() {
 
         post("$basePath/refreshAccess") {
             val refreshToken = getRequestHeader(AuthConstants.TOKEN_HEADER_NAME)
-                ?: throw InvalidTokenException("Refresh token not presented")
+                ?: throw InvalidTokenException("Refresh token not presented", "Empty token")
 
             val newAccessToken = authService.refreshAccessToken(refreshToken)
 

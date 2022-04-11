@@ -15,8 +15,6 @@ import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.P
 class JWTTokenAuthService(
     private val tokenProducer: TokenProducer,
     private val tokenVerifier: TokenVerifier,
-    private val userPasswordEncryptor: UserPasswordEncryptor,
-    private val profileRepository: CommonProfilesRepository,
 ): TokenAuthService {
 
     override fun refreshAccessToken(refreshToken: String): String {
@@ -25,9 +23,9 @@ class JWTTokenAuthService(
             is TokenVerifyResult.Valid ->
                 tokenProducer.produceAccessToken(verifyResult.decodedToken)
             is TokenVerifyResult.Invalid ->
-                throw InvalidTokenException("Refresh token is invalid")
+                throw InvalidTokenException("Refresh token is invalid", refreshToken)
             is TokenVerifyResult.Expired ->
-                throw InvalidTokenException("Refresh token is expired")
+                throw InvalidTokenException("Refresh token is expired", refreshToken)
         }
     }
 
@@ -37,19 +35,5 @@ class JWTTokenAuthService(
 
     override fun verifyRefreshToken(token: String): TokenVerifyResult {
         return tokenVerifier.verifyRefreshToken(token)
-    }
-
-    override fun authenticateUser(nickname: String, passwordEncoded: String): ProducerResult {
-        val user = profileRepository.getProfileByNickname(nickname)
-            ?: throw AuthenticateException("User with nickname: $nickname not found")
-        val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
-            user.id.value, user.nickName, passwordEncoded
-        )
-
-        if (user.passwordEncrypted != encryptedPassword) {
-            throw AuthenticateException("Invalid user password")
-        }
-
-        return tokenProducer.produceTokens(user.id.value, nickname)
     }
 }

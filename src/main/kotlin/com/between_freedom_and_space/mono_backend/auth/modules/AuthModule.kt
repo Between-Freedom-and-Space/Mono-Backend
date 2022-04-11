@@ -4,6 +4,7 @@ import com.between_freedom_and_space.mono_backend.auth.api.mappers.AuthenticateR
 import com.between_freedom_and_space.mono_backend.auth.api.mappers.TokenVerifyResultToVerifyResponseMapper
 import com.between_freedom_and_space.mono_backend.auth.api.mappers.UserModelToRegisterResponseMapper
 import com.between_freedom_and_space.mono_backend.auth.api.models.AuthenticateUserResponse
+import com.between_freedom_and_space.mono_backend.auth.api.models.RegisterUserRequest
 import com.between_freedom_and_space.mono_backend.auth.api.models.RegisterUserResponse
 import com.between_freedom_and_space.mono_backend.auth.api.models.TokenVerifyResultResponse
 import com.between_freedom_and_space.mono_backend.auth.components.TokenProducer
@@ -24,8 +25,10 @@ import com.between_freedom_and_space.mono_backend.auth.service.TokenAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.UserAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.impl.CommonUserAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.impl.JWTTokenAuthService
+import com.between_freedom_and_space.mono_backend.auth.service.mappers.RegisterUserRequestToCreatModelMapper
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileModel
+import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -33,6 +36,7 @@ private val mappersModule = module {
     single<ModelMapper<TokenVerifyResult, TokenVerifyResultResponse>> { TokenVerifyResultToVerifyResponseMapper() }
     single<ModelMapper<UserProfileModel, RegisterUserResponse>> { UserModelToRegisterResponseMapper() }
     single<ModelMapper<ProducerResult, AuthenticateUserResponse>> { AuthenticateResultToAuthenticateResponseMapper() }
+    single<ModelMapper<RegisterUserRequest, CreateProfileModel>> { RegisterUserRequestToCreatModelMapper() }
 }
 
 private val securityModule = module {
@@ -52,6 +56,6 @@ val authModule = module {
     includes(securityModule)
     includes(componentsModule)
 
-    single { JWTTokenAuthService(get(), get(), get(), get()) } bind TokenAuthService::class
-    single { CommonUserAuthService() } bind UserAuthService::class
+    single { JWTTokenAuthService(get(), get()) } bind TokenAuthService::class
+    single { CommonUserAuthService(get(), get(), get(), get(), get()) } bind UserAuthService::class
 }

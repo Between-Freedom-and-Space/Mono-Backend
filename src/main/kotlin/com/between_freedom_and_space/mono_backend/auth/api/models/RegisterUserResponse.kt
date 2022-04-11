@@ -13,8 +13,8 @@ data class RegisterUserResponse(
     val nameAlias: String,
 
     @SerialName("description")
-    val description: String,
+    val description: String?,
 
     @SerialName("location")
-    val location: String,
+    val location: String?,
 )

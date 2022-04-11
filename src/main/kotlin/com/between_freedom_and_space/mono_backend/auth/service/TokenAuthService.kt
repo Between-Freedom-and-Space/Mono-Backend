@@ -11,6 +11,4 @@ interface TokenAuthService {
     fun verifyAccessToken(token: String): TokenVerifyResult
 
     fun verifyRefreshToken(token: String): TokenVerifyResult
-
-    fun authenticateUser(nickname: String, passwordEncoded: String): ProducerResult
 }

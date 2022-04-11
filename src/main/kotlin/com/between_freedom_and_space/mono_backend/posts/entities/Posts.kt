@@ -9,6 +9,10 @@ class Posts(id: EntityID<Long>): LongEntity(id) {
 
     var text by PostsTable.text
 
+    var isVisible by PostsTable.isVisible
+
+    var isDeleted by PostsTable.isDeleted
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

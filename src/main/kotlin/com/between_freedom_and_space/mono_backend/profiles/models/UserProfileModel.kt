@@ -12,7 +12,11 @@ data class UserProfileModel(
 
     val nameAlias: String,
 
-    val description: String,
+    val description: String?,
 
-    val location: String,
+    val location: String?,
+
+    val isVisible: Boolean,
+
+    val isDeleted: Boolean,
 )

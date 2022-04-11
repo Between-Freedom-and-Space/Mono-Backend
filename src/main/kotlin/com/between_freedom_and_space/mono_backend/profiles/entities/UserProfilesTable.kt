@@ -15,7 +15,11 @@ object UserProfilesTable: LongIdTable("user_profiles") {
 
     val description = text("description").nullable()
 
-    val location = text("location")
+    val location = text("location").nullable()
+
+    val isDeleted = bool("is_deleted").default(false)
+
+    val isVisible = bool("is_visible").default(true)
 
     val createdDate = datetime("created_date")
 

@@ -50,7 +50,7 @@ internal fun Application.authUserRouting() {
 
         delete("$basePath/delete") {
             val accessToken = getRequestHeader(AuthConstants.TOKEN_HEADER_NAME)
-                ?: throw InvalidTokenException("Access token not presented")
+                ?: throw InvalidTokenException("Access token not presented", "Empty token")
 
             userService.deleteUser(accessToken)
 
