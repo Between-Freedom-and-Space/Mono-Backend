@@ -1,9 +1,7 @@
 package com.between_freedom_and_space.mono_backend.popular.entity.posts
 
 import com.between_freedom_and_space.mono_backend.popular.entity.base.BasePopularEntity
-import com.between_freedom_and_space.mono_backend.popular.entity.comments.PopularCommentsTable
 import kotlinx.datetime.LocalDateTime
-import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 

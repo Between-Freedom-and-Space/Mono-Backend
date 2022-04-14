@@ -50,7 +50,7 @@ private val securityModule = module {
 }
 
 private val pluginModule = module {
-    single { TokenAuthenticateProcessor(get()) } bind AuthenticateProcessor::class
+    single { TokenAuthenticateProcessor(get(), get()) } bind AuthenticateProcessor::class
 }
 
 private val componentsModule = module {
@@ -67,5 +67,5 @@ val authModule = module {
     includes(componentsModule)
 
     single { JWTTokenAuthService(get(), get()) } bind TokenAuthService::class
-    single { CommonUserAuthService(get(), get(), get(), get(), get()) } bind UserAuthService::class
+    single { CommonUserAuthService(get(), get(), get(), get(), get(), get()) } bind UserAuthService::class
 }

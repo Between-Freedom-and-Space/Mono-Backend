@@ -8,8 +8,6 @@ import com.between_freedom_and_space.mono_backend.profiles.services.CommonProfil
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.CreationProfileException
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
-import com.between_freedom_and_space.mono_backend.util.extensions.ifNotNull
-import com.between_freedom_and_space.mono_backend.util.extensions.transform
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class CommonProfileServiceImpl(

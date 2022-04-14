@@ -1,16 +1,10 @@
 package com.between_freedom_and_space.mono_backend.auth.service.impl
 
 import com.between_freedom_and_space.mono_backend.auth.components.TokenProducer
-import com.between_freedom_and_space.mono_backend.auth.components.TokenProducer.ProducerResult
 import com.between_freedom_and_space.mono_backend.auth.components.TokenVerifier
-import com.between_freedom_and_space.mono_backend.auth.components.UserPasswordEncryptor
-import com.between_freedom_and_space.mono_backend.auth.components.exceptions.AuthenticateException
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.InvalidTokenException
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
-import com.between_freedom_and_space.mono_backend.auth.security.PasswordCipher
 import com.between_freedom_and_space.mono_backend.auth.service.TokenAuthService
-import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
-import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
 
 class JWTTokenAuthService(
     private val tokenProducer: TokenProducer,

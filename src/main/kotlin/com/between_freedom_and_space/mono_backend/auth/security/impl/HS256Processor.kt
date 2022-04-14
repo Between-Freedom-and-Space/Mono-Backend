@@ -13,7 +13,7 @@ import com.between_freedom_and_space.mono_backend.util.extensions.ifNotNull
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toJavaInstant
-import java.util.Date
+import java.util.*
 
 class HS256Processor: JWTProcessor {
 
