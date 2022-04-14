@@ -90,6 +90,12 @@ object KotlinXSerializationJson: ProjectDependency {
     override val version = Versions.KOTLINX_SERIALIZATION
 }
 
+object KotlinLogger: ProjectDependency {
+    override val group = "io.github.microutils"
+    override val artifact = "kotlin-logging-jvm"
+    override val version = Versions.KOTLIN_LOGGING
+}
+
 object LogbackClassic: ProjectDependency {
     override val group = "ch.qos.logback"
     override val artifact = "logback-classic"

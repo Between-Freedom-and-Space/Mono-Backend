@@ -42,6 +42,7 @@ dependencies {
     implementation(KoinLoggerSlf4j)
 
     // Logging and monitoring
+    implementation(KotlinLogger)
     implementation(LogbackClassic)
     implementation(MicrometerPrometheus)
 

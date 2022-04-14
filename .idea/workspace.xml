@@ -4,32 +4,93 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added user auth routing implementation">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/mappers/RegisterUserRequestToCreatModelMapper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/exceptions/CreationProfileException.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/mappers/UserProfileToUserProfileModelMapper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/models/CreateProfileModel.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added auth user service impl">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/TokenParser.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/impl/JWTTokenParser.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticateContext.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticatePlugin.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticateProcessor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/UserAuthorityContextElement.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/impl/TokenAuthenticateProcessor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/plugins/ExceptionHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022,_19_41_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_03_2022__19_41__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/api/routing/AuthUserRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/api/routing/AuthUserRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/exceptions/InvalidTokenException.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/exceptions/InvalidTokenException.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/Versions.class" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/Versions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/dependencies/LogbackClassic.class" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/dependencies/LogbackClassic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/dependencies/MicrometerPrometheus.class" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/dependencies/MicrometerPrometheus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/buildSrcjar-classes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/buildSrcjar-classes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/inputs/source-to-output.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-attributes.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/class-fq-name-to-source.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/constants.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/constants.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/constants.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/constants.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/proto.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/subtypes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/jvm/kotlin/supertypes.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/counters.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/counters.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/file-to-id.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/id-to-file.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/kotlin/Versions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/kotlin/Versions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/kotlin/dependencies/Dependencies.kt" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/kotlin/dependencies/Dependencies.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/plugin/AccessPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/plugin/AccessPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/exceptions/AuthenticateException.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/exceptions/AuthenticateException.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/impl/JWTTokenProducer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/impl/JWTTokenProducer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/modules/AuthModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/modules/AuthModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/TokenAuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/TokenAuthService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/security/JWTCreator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/security/JWTProcessor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/security/impl/HS256Creator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/security/impl/HS256Processor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonUserAuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonUserAuthService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/JWTTokenAuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/JWTTokenAuthService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/entities/Posts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/entities/Posts.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/entities/PostsTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/entities/PostsTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/services/CommonPostsService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/services/CommonPostsService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/entities/UserProfile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/entities/UserProfile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/entities/UserProfilesTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/entities/UserProfilesTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/models/UserProfileModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/models/UserProfileModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/modules/ProfilesModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/modules/ProfilesModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/plugins/Routing.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/plugin/PopularPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/plugin/PopularPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/plugins/PostsPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/plugins/PostsPlugin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/plugins/ProfilePlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/plugins/ProfilePlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/repository/CommonProfilesRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/repository/CommonProfilesRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/routing/ProfilesRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/routing/ProfilesRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/CommonProfilesService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/CommonProfilesService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/impl/CommonProfileServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/impl/CommonProfileServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/extensions/ObjectEtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/extensions/ObjectEtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/recommendations/plugin/RecommendationsPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/recommendations/plugin/RecommendationsPlugin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +134,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Enum" />
+        <option value="Kotlin Data Class" />
         <option value="Kotlin Object" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin File" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -332,7 +393,8 @@
       <workItem from="1649539331621" duration="4802000" />
       <workItem from="1649592657912" duration="3307000" />
       <workItem from="1649602909123" duration="98000" />
-      <workItem from="1649701842418" duration="4709000" />
+      <workItem from="1649701842418" duration="4879000" />
+      <workItem from="1649962255856" duration="5383000" />
     </task>
     <task id="LOCAL-00001" summary="added Dockerfile">
       <created>1647205271588</created>
@@ -467,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649600067601</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added auth user service impl">
+      <created>1649706726464</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1649706726464</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,6 +574,7 @@
     <MESSAGE value="refactored auth routing, fixed inject" />
     <MESSAGE value="added pipeline context extensions and user auth service" />
     <MESSAGE value="added user auth routing implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="added user auth routing implementation" />
+    <MESSAGE value="added auth user service impl" />
+    <option name="LAST_COMMIT_MESSAGE" value="added auth user service impl" />
   </component>
 </project>

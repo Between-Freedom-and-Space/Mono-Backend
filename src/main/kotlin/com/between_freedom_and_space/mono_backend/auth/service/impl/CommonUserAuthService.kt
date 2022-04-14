@@ -1,13 +1,13 @@
 package com.between_freedom_and_space.mono_backend.auth.service.impl
 
 import com.between_freedom_and_space.mono_backend.auth.api.models.RegisterUserRequest
+import com.between_freedom_and_space.mono_backend.auth.components.TokenParser
 import com.between_freedom_and_space.mono_backend.auth.components.TokenProducer
 import com.between_freedom_and_space.mono_backend.auth.components.TokenVerifier
 import com.between_freedom_and_space.mono_backend.auth.components.UserPasswordEncryptor
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.AuthenticateException
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.InvalidTokenException
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
-import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
 import com.between_freedom_and_space.mono_backend.auth.service.UserAuthService
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileModel
@@ -17,6 +17,7 @@ import com.between_freedom_and_space.mono_backend.profiles.services.models.Creat
 class CommonUserAuthService(
     private val tokenVerifier: TokenVerifier,
     private val tokenProducer: TokenProducer,
+    private val tokenParser: TokenParser,
     private val profileService: CommonProfilesService,
     private val userPasswordEncryptor: UserPasswordEncryptor,
     private val registerUserMapper: ModelMapper<RegisterUserRequest, CreateProfileModel>
@@ -48,9 +49,8 @@ class CommonUserAuthService(
         }
 
         val decodedToken = verifyResult.decodedToken
-        val userId = decodedToken.getClaim(UserAuthority.USER_ID_ALIAS)?.asLong()
-            ?: throw InvalidTokenException("Claim: ${UserAuthority.USER_ID_ALIAS} not presented", accessToken)
+        val userAuthority = tokenParser.parseToken(decodedToken)
 
-        return profileService.markAsDeleted(userId)
+        return profileService.markAsDeleted(userAuthority.userId)
     }
 }

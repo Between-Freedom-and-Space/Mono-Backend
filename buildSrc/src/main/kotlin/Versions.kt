@@ -8,6 +8,8 @@ internal object Versions {
 
     const val KOTLINX_SERIALIZATION = "1.3.2"
 
+    const val KOTLIN_LOGGING = "2.1.20"
+
     const val LOG_BACK = "1.2.3"
 
     const val PROMETHEUS = "1.7.1"

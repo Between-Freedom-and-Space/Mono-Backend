@@ -6,13 +6,13 @@ import com.between_freedom_and_space.mono_backend.auth.components.TokenProducer.
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.InvalidTokenException
 import com.between_freedom_and_space.mono_backend.auth.components.util.TokenConstants
 import com.between_freedom_and_space.mono_backend.auth.models.AuthProperties
-import com.between_freedom_and_space.mono_backend.auth.security.JWTCreator
+import com.between_freedom_and_space.mono_backend.auth.security.JWTProcessor
 import com.between_freedom_and_space.mono_backend.auth.security.models.JWTParams
 import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
 import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNowPlus
 
 class JWTTokenProducer(
-    private val jwtCreator: JWTCreator,
+    private val jwtProcessor: JWTProcessor,
     private val properties: AuthProperties,
 ): TokenProducer {
 
@@ -38,7 +38,7 @@ class JWTTokenProducer(
             subject = TokenConstants.ACCESS_TOKEN_SUBJECT
         )
 
-        return jwtCreator.createToken(authority, params)
+        return jwtProcessor.createToken(authority, params)
     }
 
     override fun produceTokens(userId: Long, nickName: String): ProducerResult {
@@ -49,14 +49,14 @@ class JWTTokenProducer(
             issuer = properties.tokenIssuer
         )
 
-        val accessToken = jwtCreator.createToken(
+        val accessToken = jwtProcessor.createToken(
             authority = authority,
             params = params.copy(
                 expiresAt = localDateTimeNowPlus(ACCESS_DURATION_MILLIS),
                 subject = TokenConstants.ACCESS_TOKEN_SUBJECT
             )
         )
-        val refreshToken = jwtCreator.createToken(
+        val refreshToken = jwtProcessor.createToken(
             authority = authority,
             params = params.copy(
                 expiresAt = localDateTimeNowPlus(REFRESH_DURATION_MILLIS),

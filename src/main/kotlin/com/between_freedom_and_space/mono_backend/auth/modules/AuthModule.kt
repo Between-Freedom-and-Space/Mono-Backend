@@ -7,18 +7,22 @@ import com.between_freedom_and_space.mono_backend.auth.api.models.AuthenticateUs
 import com.between_freedom_and_space.mono_backend.auth.api.models.RegisterUserRequest
 import com.between_freedom_and_space.mono_backend.auth.api.models.RegisterUserResponse
 import com.between_freedom_and_space.mono_backend.auth.api.models.TokenVerifyResultResponse
+import com.between_freedom_and_space.mono_backend.auth.components.TokenParser
 import com.between_freedom_and_space.mono_backend.auth.components.TokenProducer
 import com.between_freedom_and_space.mono_backend.auth.components.TokenProducer.ProducerResult
 import com.between_freedom_and_space.mono_backend.auth.components.TokenVerifier
 import com.between_freedom_and_space.mono_backend.auth.components.UserPasswordEncryptor
+import com.between_freedom_and_space.mono_backend.auth.components.impl.JWTTokenParser
 import com.between_freedom_and_space.mono_backend.auth.components.impl.JWTTokenProducer
 import com.between_freedom_and_space.mono_backend.auth.components.impl.JWTTokenVerifier
 import com.between_freedom_and_space.mono_backend.auth.components.impl.PBKDF2UserPasswordEncryptor
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
-import com.between_freedom_and_space.mono_backend.auth.security.JWTCreator
+import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
+import com.between_freedom_and_space.mono_backend.auth.components.plugin.impl.TokenAuthenticateProcessor
+import com.between_freedom_and_space.mono_backend.auth.security.JWTProcessor
 import com.between_freedom_and_space.mono_backend.auth.security.JWTVerifier
 import com.between_freedom_and_space.mono_backend.auth.security.PasswordCipher
-import com.between_freedom_and_space.mono_backend.auth.security.impl.HS256Creator
+import com.between_freedom_and_space.mono_backend.auth.security.impl.HS256Processor
 import com.between_freedom_and_space.mono_backend.auth.security.impl.HS256Verifier
 import com.between_freedom_and_space.mono_backend.auth.security.impl.PBKDF2PasswordCipher
 import com.between_freedom_and_space.mono_backend.auth.service.TokenAuthService
@@ -40,12 +44,17 @@ private val mappersModule = module {
 }
 
 private val securityModule = module {
-    single { HS256Creator() } bind JWTCreator::class
+    single { HS256Processor() } bind JWTProcessor::class
     single { HS256Verifier() } bind JWTVerifier::class
     single { PBKDF2PasswordCipher() } bind PasswordCipher::class
 }
 
+private val pluginModule = module {
+    single { TokenAuthenticateProcessor(get()) } bind AuthenticateProcessor::class
+}
+
 private val componentsModule = module {
+    single { JWTTokenParser(get()) } bind TokenParser::class
     single { JWTTokenVerifier(get(), get()) } bind TokenVerifier::class
     single { JWTTokenProducer(get(), get()) } bind TokenProducer::class
     single { PBKDF2UserPasswordEncryptor(get()) } bind UserPasswordEncryptor::class
@@ -54,6 +63,7 @@ private val componentsModule = module {
 val authModule = module {
     includes(mappersModule)
     includes(securityModule)
+    includes(pluginModule)
     includes(componentsModule)
 
     single { JWTTokenAuthService(get(), get()) } bind TokenAuthService::class
