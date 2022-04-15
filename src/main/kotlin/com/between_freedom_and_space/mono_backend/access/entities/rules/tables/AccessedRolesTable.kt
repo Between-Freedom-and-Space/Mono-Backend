@@ -1,8 +1,7 @@
 package com.between_freedom_and_space.mono_backend.access.entities.rules.tables
 
-import com.between_freedom_and_space.mono_backend.access.entities.role.UserRolesTable
+import com.between_freedom_and_space.mono_backend.access.entities.role.tables.UserRolesTable
 import org.jetbrains.exposed.dao.id.LongIdTable
-import org.jetbrains.exposed.sql.ReferenceOption
 import org.jetbrains.exposed.sql.ReferenceOption.NO_ACTION
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 

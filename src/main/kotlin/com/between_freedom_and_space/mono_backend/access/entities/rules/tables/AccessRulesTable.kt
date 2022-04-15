@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object AccessRulesTable: LongIdTable("access_settings") {
 
-    val pathPattern = text("path_pattern", eagerLoading = true)
+    val pathPattern = text("path_pattern", eagerLoading = true).uniqueIndex()
 
     val lastModifiedBy = reference(
         name = "last_modified_by_user_id", foreign = UserProfilesTable,
