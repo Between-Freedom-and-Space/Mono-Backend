@@ -7,15 +7,15 @@ object UserProfilesTable: LongIdTable("user_profiles") {
 
     val mail = text("mail")
 
-    val passwordEncrypted = text("password_encrypted")
+    val passwordEncrypted = text("password_encrypted", eagerLoading = true)
 
-    val nickName = text("nick_name")
+    val nickName = text("nick_name", eagerLoading = true)
 
-    val nameAlias = text("name_alias")
+    val nameAlias = text("name_alias", eagerLoading = true)
 
-    val description = text("description").nullable()
+    val description = text("description", eagerLoading = true).nullable()
 
-    val location = text("location").nullable()
+    val location = text("location", eagerLoading = true).nullable()
 
     val isDeleted = bool("is_deleted").default(false)
 

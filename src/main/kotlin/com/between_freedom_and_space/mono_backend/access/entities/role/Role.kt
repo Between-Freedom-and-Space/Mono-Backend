@@ -1,4 +1,4 @@
-package com.between_freedom_and_space.mono_backend.access.entities
+package com.between_freedom_and_space.mono_backend.access.entities.role
 
 enum class Role {
     NOT_AUTHORIZED,

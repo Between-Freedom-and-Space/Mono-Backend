@@ -1,5 +1,6 @@
-package com.between_freedom_and_space.mono_backend.access.entities
+package com.between_freedom_and_space.mono_backend.access.entities.role
 
+import com.between_freedom_and_space.mono_backend.access.entities.role.Role
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 

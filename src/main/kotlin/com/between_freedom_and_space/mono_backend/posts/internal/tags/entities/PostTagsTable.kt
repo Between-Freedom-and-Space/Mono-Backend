@@ -5,9 +5,9 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object PostTagsTable: LongIdTable("post_tags") {
 
-    val tagAlias = text("tag_alias")
+    val tagAlias = text("tag_alias", eagerLoading = true)
 
-    val tagDescription = text("tag_description").nullable()
+    val tagDescription = text("tag_description", eagerLoading = true).nullable()
 
     val createdDate = datetime("created_date")
 

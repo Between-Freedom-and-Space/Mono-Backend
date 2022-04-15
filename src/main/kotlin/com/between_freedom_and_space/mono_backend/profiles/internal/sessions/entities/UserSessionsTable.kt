@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object UserSessionsTable: LongIdTable("user_sessions") {
 
-    val location = text("location")
+    val location = text("location", eagerLoading = true)
 
     val createdDate = datetime("created_date")
 

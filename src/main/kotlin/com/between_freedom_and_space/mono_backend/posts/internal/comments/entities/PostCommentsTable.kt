@@ -5,7 +5,7 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object PostCommentsTable: LongIdTable("post_comments") {
 
-    val text = text("text")
+    val text = text("text", eagerLoading = true)
 
     val createdDate = datetime("created_date")
 

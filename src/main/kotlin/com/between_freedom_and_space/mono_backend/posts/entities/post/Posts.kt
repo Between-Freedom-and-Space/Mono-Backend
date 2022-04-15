@@ -1,4 +1,4 @@
-package com.between_freedom_and_space.mono_backend.posts.entities
+package com.between_freedom_and_space.mono_backend.posts.entities.post
 
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
