@@ -14,6 +14,6 @@ data class PageParams(
 
     @SerialName("page_size")
     @Min(value = 1, message = "Page size can't be less than 1")
-    @Max(value = 50, message = "Page size can't be grater than 50")
+    @Max(value = 200, message = "Page size can't be grater than 200")
     val pageSize: Int,
 )
