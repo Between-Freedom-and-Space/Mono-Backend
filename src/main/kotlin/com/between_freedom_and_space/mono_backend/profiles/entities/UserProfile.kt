@@ -1,5 +1,9 @@
 package com.between_freedom_and_space.mono_backend.profiles.entities
 
+import com.between_freedom_and_space.mono_backend.posts.entities.post.Posts
+import com.between_freedom_and_space.mono_backend.posts.entities.post.PostsTable
+import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostComment
+import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostCommentsTable
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
@@ -8,6 +12,8 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
     companion object: LongEntityClass<UserProfile>(UserProfilesTable)
 
     var mail by UserProfilesTable.mail
+
+    var phoneNumber by UserProfilesTable.phoneNumber
 
     var passwordEncrypted by UserProfilesTable.passwordEncrypted
 
@@ -22,6 +28,14 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
     var isVisible by UserProfilesTable.isVisible
 
     var isDeleted by UserProfilesTable.isDeleted
+
+    val posts by Posts referrersOn PostsTable.author
+
+    val comments by PostComment referrersOn PostCommentsTable.author
+
+    var createdDate by UserProfilesTable.createdDate
+
+    var updatedDate by UserProfilesTable.updatedDate
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

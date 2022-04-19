@@ -7,7 +7,17 @@ import org.jetbrains.exposed.dao.id.EntityID
 class PostComment(id: EntityID<Long>): LongEntity(id) {
     companion object: LongEntityClass<PostComment>(PostCommentsTable)
 
+    var post by PostCommentsTable.post
+
     var text by PostCommentsTable.text
+
+    var isDeleted by PostCommentsTable.isDeleted
+
+    var author by PostCommentsTable.author
+
+    var createdDate by PostCommentsTable.createdDate
+
+    var updatedDate by PostCommentsTable.updatedDate
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -3,14 +3,17 @@ package com.between_freedom_and_space.mono_backend.auth.api.models
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.hibernate.validator.constraints.Length
+import javax.validation.Valid
 import javax.validation.constraints.NotBlank
 
 @Serializable
 data class RegisterUserRequest(
 
     @SerialName("email")
-    @NotBlank(message = "Mail can't be empty")
-    val mail: String,
+    val mail: String? = null,
+
+    @SerialName("phone_number")
+    val phoneNumber: String? = null,
 
     @SerialName("nickname")
     @NotBlank(message = "Nickname can't be empty")

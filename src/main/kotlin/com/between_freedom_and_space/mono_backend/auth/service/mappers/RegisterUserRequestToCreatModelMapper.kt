@@ -9,6 +9,7 @@ class RegisterUserRequestToCreatModelMapper: ModelMapper<RegisterUserRequest, Cr
     override fun map(original: RegisterUserRequest): CreateProfileModel {
         return CreateProfileModel(
             mail = original.mail,
+            phoneNumber = original.phoneNumber,
             passwordEncrypted = original.passwordEncrypted,
             nickName = original.nickName,
             nameAlias = original.nameAlias,

@@ -39,6 +39,10 @@ internal fun Application.profilesRouting() {
         post("$basePath/subscribe/{id}") {
 
         }
+
+        post("$basePath/unsubscribe/{id}") {
+
+        }
     }
 
     routing {

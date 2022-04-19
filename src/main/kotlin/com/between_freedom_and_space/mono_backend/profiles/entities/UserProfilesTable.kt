@@ -5,7 +5,9 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object UserProfilesTable: LongIdTable("user_profiles") {
 
-    val mail = text("mail")
+    val mail = text("mail", eagerLoading = true).nullable()
+
+    val phoneNumber = text("phone_number", eagerLoading = true).nullable()
 
     val passwordEncrypted = text("password_encrypted", eagerLoading = true)
 
