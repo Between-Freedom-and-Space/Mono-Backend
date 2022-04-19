@@ -23,7 +23,7 @@ class AuthenticatePlugin(
             val config = Configuration().apply(configure)
             val plugin = AuthenticatePlugin(config, processor)
 
-            pipeline.intercept(ApplicationCallPipeline.Call) {
+            pipeline.intercept(ApplicationCallPipeline.Plugins) {
                 plugin.intercept(this)
             }
 
