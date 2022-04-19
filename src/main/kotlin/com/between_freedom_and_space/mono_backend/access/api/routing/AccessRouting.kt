@@ -6,8 +6,6 @@ import io.ktor.server.routing.*
 internal fun Application.accessRouting() {
     routing {
 
-
-
         get {
 
         }

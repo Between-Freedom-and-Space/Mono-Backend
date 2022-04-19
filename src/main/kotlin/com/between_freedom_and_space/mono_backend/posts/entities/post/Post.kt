@@ -10,8 +10,8 @@ import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
-class Posts(id: EntityID<Long>): LongEntity(id) {
-    companion object: LongEntityClass<Posts>(PostsTable)
+class Post(id: EntityID<Long>): LongEntity(id) {
+    companion object: LongEntityClass<Post>(PostsTable)
 
     var text by PostsTable.text
 
@@ -37,7 +37,7 @@ class Posts(id: EntityID<Long>): LongEntity(id) {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as Posts
+        other as Post
 
         if (id.value != other.id.value) return false
         if (text != other.text) return false

@@ -1,6 +1,6 @@
 package com.between_freedom_and_space.mono_backend.profiles.entities
 
-import com.between_freedom_and_space.mono_backend.posts.entities.post.Posts
+import com.between_freedom_and_space.mono_backend.posts.entities.post.Post
 import com.between_freedom_and_space.mono_backend.posts.entities.post.PostsTable
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostComment
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostCommentsTable
@@ -29,7 +29,7 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
 
     var isDeleted by UserProfilesTable.isDeleted
 
-    val posts by Posts referrersOn PostsTable.author
+    val post by Post referrersOn PostsTable.author
 
     val comments by PostComment referrersOn PostCommentsTable.author
 

@@ -11,7 +11,7 @@ object PostTagsTable: LongIdTable("post_tags") {
     val author = reference(
         name = "author_user_id", foreign = UserProfilesTable,
         onDelete = NO_ACTION, onUpdate = NO_ACTION
-    )
+    ).nullable()
 
     val tagAlias = text("tag_alias", eagerLoading = true)
 

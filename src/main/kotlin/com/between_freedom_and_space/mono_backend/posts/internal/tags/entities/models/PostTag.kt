@@ -8,9 +8,17 @@ import org.jetbrains.exposed.dao.id.EntityID
 class PostTag(id: EntityID<Long>): LongEntity(id) {
     companion object: LongEntityClass<PostTag>(PostTagsTable)
 
+    var author by PostTagsTable.author
+
     var tagAlias by PostTagsTable.tagAlias
 
     var tagDescription by PostTagsTable.tagDescription
+
+    var isDeleted by PostTagsTable.isDeleted
+
+    var createdDate by PostTagsTable.createdDate
+
+    var updatedDate by PostTagsTable.updatedDate
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
