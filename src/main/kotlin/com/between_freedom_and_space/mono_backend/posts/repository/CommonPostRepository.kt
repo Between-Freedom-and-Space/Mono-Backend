@@ -7,4 +7,6 @@ interface CommonPostRepository {
     fun getAllPosts(pageNumber: Int, pageSize: Int): List<Post>
 
     fun getPostById(id: Long): Post
+
+    fun save(post: Post): Post
 }
