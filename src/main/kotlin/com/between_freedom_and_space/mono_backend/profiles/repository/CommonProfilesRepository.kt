@@ -1,6 +1,6 @@
 package com.between_freedom_and_space.mono_backend.profiles.repository
 
-import com.between_freedom_and_space.mono_backend.profiles.entities.UserProfile
+import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 
 interface CommonProfilesRepository {

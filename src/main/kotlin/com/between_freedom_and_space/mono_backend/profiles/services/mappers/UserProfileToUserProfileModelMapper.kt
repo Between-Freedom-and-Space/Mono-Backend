@@ -1,7 +1,7 @@
 package com.between_freedom_and_space.mono_backend.profiles.services.mappers
 
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
-import com.between_freedom_and_space.mono_backend.profiles.entities.UserProfile
+import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileModel
 
 class UserProfileToUserProfileModelMapper: ModelMapper<UserProfile, UserProfileModel> {
