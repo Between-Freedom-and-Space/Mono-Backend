@@ -11,14 +11,14 @@ import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVe
 import com.between_freedom_and_space.mono_backend.auth.service.UserAuthService
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileModel
-import com.between_freedom_and_space.mono_backend.profiles.services.CommonProfilesService
+import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 
 class CommonUserAuthService(
     private val tokenVerifier: TokenVerifier,
     private val tokenProducer: TokenProducer,
     private val tokenParser: TokenParser,
-    private val profileService: CommonProfilesService,
+    private val profileService: InformationProfilesService,
     private val userPasswordEncryptor: UserPasswordEncryptor,
     private val registerUserMapper: ModelMapper<RegisterUserRequest, CreateProfileModel>
 ): UserAuthService {

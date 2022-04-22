@@ -4,6 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.hibernate.validator.constraints.Length
 import javax.validation.constraints.NotBlank
+import javax.validation.constraints.Size
 
 @Serializable
 data class CreatePostRequest(
@@ -17,5 +18,6 @@ data class CreatePostRequest(
     val isVisible: Boolean,
 
     @SerialName("tags_aliases")
+    @Size(max = 25, message = "Invalid tags length. Max length is 25")
     val tags: List<String>,
 )

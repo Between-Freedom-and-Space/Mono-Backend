@@ -3,7 +3,7 @@ package com.between_freedom_and_space.mono_backend.profiles.services
 import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 
-interface CommonProfilesService {
+interface InformationProfilesService {
 
     fun getProfile(userId: Long): UserProfileModel
 
