@@ -7,7 +7,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.models.UpdatePo
 
 class InteractionPostServiceImpl: InteractionPostsService {
 
-    override fun createPost(createPostModel: CreatePostModel): BasePostModel {
+    override fun createPost(authorId: Long, createPostModel: CreatePostModel): BasePostModel {
         TODO("Not yet implemented")
     }
 

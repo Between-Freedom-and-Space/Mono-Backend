@@ -6,7 +6,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.models.UpdatePo
 
 interface InteractionPostsService {
 
-    fun createPost(createPostModel: CreatePostModel): BasePostModel
+    fun createPost(authorId: Long, createPostModel: CreatePostModel): BasePostModel
 
     fun updatePost(postId: Long, updateModel: UpdatePostModel): BasePostModel
 

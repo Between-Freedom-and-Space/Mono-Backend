@@ -7,7 +7,9 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.util.pipeline.*
 
-suspend inline fun <reified T: Any> PipelineContext<Unit, ApplicationCall>.validateAndReceiveRequest(): T {
+private typealias CallPipeline = PipelineContext<Unit, ApplicationCall>
+
+suspend inline fun <reified T: Any> CallPipeline.validateAndReceiveRequest(): T {
     val requestValidator by inject<RequestValidator>()
     val request = call.receive<T>()
 
@@ -21,26 +23,30 @@ suspend inline fun <reified T: Any> PipelineContext<Unit, ApplicationCall>.valid
     return request
 }
 
-suspend inline fun <reified T: Any> PipelineContext<Unit, ApplicationCall>.sendResponse(response: T) {
+suspend inline fun <reified T: Any> CallPipeline.sendResponse(response: T) {
     call.respond(response)
 }
 
-suspend fun PipelineContext<Unit, ApplicationCall>.sendEmptyResponse() {
+suspend fun CallPipeline.sendEmptyResponse() {
     call.respond(Unit)
 }
 
-fun PipelineContext<Unit, ApplicationCall>.getRequestHeader(name: String): String? {
+fun CallPipeline.getRequestHeader(name: String): String? {
     return call.request.header(name)
 }
 
-fun PipelineContext<Unit, ApplicationCall>.appendResponseHeader(name: String, value: String) {
+fun CallPipeline.appendResponseHeader(name: String, value: String) {
     call.response.header(name, value)
 }
 
-fun PipelineContext<Unit, ApplicationCall>.appendResponseHeader(name: String, value: Int) {
+fun CallPipeline.appendResponseHeader(name: String, value: Int) {
     call.response.header(name, value)
 }
 
-fun PipelineContext<Unit, ApplicationCall>.appendResponseHeader(name: String, value: Long) {
+fun CallPipeline.appendResponseHeader(name: String, value: Long) {
     call.response.header(name, value)
+}
+
+fun CallPipeline.getPathParameter(name: String): String? {
+    return call.parameters[name]
 }

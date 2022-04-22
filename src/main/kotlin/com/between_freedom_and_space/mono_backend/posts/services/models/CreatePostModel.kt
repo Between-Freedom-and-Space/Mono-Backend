@@ -4,7 +4,7 @@ data class CreatePostModel(
 
     val text: String,
 
-    val isVisible: String,
+    val isVisible: Boolean,
 
     val tagsAliases: List<String>,
 )
