@@ -6,6 +6,8 @@ internal object Versions {
 
     const val KOTLIN = "1.6.10"
 
+    const val KOTLIN_MOCKITO = "4.0.0"
+
     const val KOTLINX_SERIALIZATION = "1.3.2"
 
     const val KOTLIN_LOGGING = "2.1.20"

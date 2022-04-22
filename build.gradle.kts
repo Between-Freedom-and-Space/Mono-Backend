@@ -67,4 +67,5 @@ dependencies {
     // Tests
     testImplementation(KtorServerTests)
     testImplementation(KotlinJUnit)
+    testImplementation(KotlinMockito)
 }

@@ -84,6 +84,12 @@ object KotlinJUnit: ProjectDependency {
     override val version = Versions.KOTLIN
 }
 
+object KotlinMockito: ProjectDependency {
+    override val group = "org.mockito.kotlin"
+    override val artifact = "mockito-kotlin"
+    override val version = Versions.KOTLIN_MOCKITO
+}
+
 object KotlinXSerializationJson: ProjectDependency {
     override val group = "org.jetbrains.kotlinx"
     override val artifact = "kotlinx-serialization-json"
