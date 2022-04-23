@@ -1,7 +1,9 @@
 package com.between_freedom_and_space.mono_backend.profiles.api.routing
 
+import com.between_freedom_and_space.mono_backend.common.api.PageParams
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
+import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 
@@ -13,6 +15,10 @@ internal fun Application.profilesInformationRouting() {
     routing {
 
         get("$basePath/all") {
+            val pageParams = validateAndReceiveRequest<PageParams>()
+            val pageSize = pageParams.pageSize
+            val pageNumber = pageParams.pageNumber
+
 
         }
 
