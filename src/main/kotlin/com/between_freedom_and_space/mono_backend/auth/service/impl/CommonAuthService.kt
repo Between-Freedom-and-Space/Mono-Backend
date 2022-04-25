@@ -8,23 +8,25 @@ import com.between_freedom_and_space.mono_backend.auth.components.UserPasswordEn
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.AuthenticateException
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.InvalidTokenException
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
-import com.between_freedom_and_space.mono_backend.auth.service.UserAuthService
+import com.between_freedom_and_space.mono_backend.auth.service.AuthService
+import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
+import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 
-class CommonUserAuthService(
+class CommonAuthService(
     private val tokenVerifier: TokenVerifier,
     private val tokenProducer: TokenProducer,
     private val tokenParser: TokenParser,
-    private val profileService: InformationProfilesService,
+    private val userService: UserProfileAuthService,
     private val userPasswordEncryptor: UserPasswordEncryptor,
     private val registerUserMapper: ModelMapper<RegisterUserRequest, CreateProfileModel>
-): UserAuthService {
+): AuthService {
 
     override fun authenticateUser(nickname: String, passwordEncoded: String): TokenProducer.ProducerResult {
-        val user = profileService.getProfileOrNull(nickname)
+        val user = userService.getProfileOrNull(nickname)
             ?: throw AuthenticateException("User with nickname: $nickname not found")
         val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
             user.id, user.nickName, passwordEncoded

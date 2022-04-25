@@ -6,11 +6,11 @@ import com.between_freedom_and_space.mono_backend.auth.api.models.RegisterUserRe
 import com.between_freedom_and_space.mono_backend.auth.api.models.RegisterUserResponse
 import com.between_freedom_and_space.mono_backend.auth.components.TokenProducer.ProducerResult
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.InvalidTokenException
-import com.between_freedom_and_space.mono_backend.auth.service.UserAuthService
+import com.between_freedom_and_space.mono_backend.auth.service.AuthService
 import com.between_freedom_and_space.mono_backend.auth.util.AuthConstants
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
-import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileModel
+import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.util.extensions.getRequestHeader
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
 import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
@@ -21,9 +21,9 @@ import io.ktor.server.routing.*
 internal fun Application.authUserRouting() {
     val basePath = "/auth/user"
 
-    val userService by inject<UserAuthService>()
+    val userService by inject<AuthService>()
 
-    val registerMapper by inject<ModelMapper<UserProfileModel, RegisterUserResponse>>()
+    val registerMapper by inject<ModelMapper<BaseProfileModel, RegisterUserResponse>>()
     val authenticateMapper by inject<ModelMapper<ProducerResult, AuthenticateUserResponse>>()
 
     routing {

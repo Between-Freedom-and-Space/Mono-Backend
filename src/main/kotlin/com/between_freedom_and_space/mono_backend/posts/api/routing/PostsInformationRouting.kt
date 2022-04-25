@@ -15,6 +15,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.InformationPost
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.InvalidPostException
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
+import com.between_freedom_and_space.mono_backend.util.extensions.getPathParameter
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
 import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
@@ -43,7 +44,7 @@ internal fun Application.postsInformationRouting() {
         }
 
         get("$basePath/{id}") {
-            val postId = call.parameters["id"]?.toLong()
+            val postId = getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
 
             val post = informationService.getPostById(postId)
@@ -60,7 +61,7 @@ internal fun Application.postsInformationRouting() {
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageNumber = pageParams.pageNumber
             val pageSize = pageParams.pageSize
-            val postId = call.parameters["id"]?.toLong()
+            val postId = getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
 
             val comments = informationService.getPostComments(postId, pageNumber, pageSize)
@@ -77,7 +78,7 @@ internal fun Application.postsInformationRouting() {
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageNumber = pageParams.pageNumber
             val pageSize = pageParams.pageSize
-            val postId = call.parameters["id"]?.toLong()
+            val postId = getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
 
             val reactions = informationService.getPostReactions(postId, pageNumber, pageSize)
@@ -91,7 +92,7 @@ internal fun Application.postsInformationRouting() {
         get("$basePath/{id}/reactions/count") {
             val countMapper by inject<ModelMapper<PostReactionsCountModel, PostReactionsCountResponse>>()
 
-            val postId = call.parameters["id"]?.toLong()
+            val postId = getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
 
             val countModel = informationService.getPostReactionsCount(postId)
@@ -108,7 +109,7 @@ internal fun Application.postsInformationRouting() {
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageNumber = pageParams.pageNumber
             val pageSize = pageParams.pageSize
-            val postId = call.parameters["id"]?.toLong()
+            val postId = getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
 
             val tags = informationService.getPostTags(postId, pageNumber, pageSize)
