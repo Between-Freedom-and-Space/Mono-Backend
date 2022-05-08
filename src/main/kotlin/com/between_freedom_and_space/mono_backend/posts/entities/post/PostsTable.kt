@@ -8,6 +8,8 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object PostsTable: LongIdTable("posts") {
 
+    val name = text("name", eagerLoading = true)
+
     val text = text("text", eagerLoading = true)
 
     val isVisible = bool("is_visible").default(true)

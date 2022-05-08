@@ -8,6 +8,7 @@ class UpdatePostRequestToUpdateModelMapper: ModelMapper<UpdatePostRequest, Updat
 
     override fun map(original: UpdatePostRequest): UpdatePostModel {
         return UpdatePostModel(
+            newName = original.newName,
             newText = original.newText,
             newVisibility = original.isVisible,
             newTagsAliases = original.newTags,

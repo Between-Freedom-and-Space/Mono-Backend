@@ -10,6 +10,7 @@ class BasePostModelToPostModelMapper: ModelMapper<BasePostModel, PostModel> {
         return PostModel(
             id = original.id,
             authorId = original.authorId,
+            name = original.name,
             text = original.text,
             createdDate = original.createdDate,
             updatedDate = original.updatedDate,

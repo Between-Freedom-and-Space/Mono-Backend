@@ -6,6 +6,8 @@ data class BasePostModel(
 
     val id: Long,
 
+    val name: String,
+
     val text: String,
 
     val authorId: Long,

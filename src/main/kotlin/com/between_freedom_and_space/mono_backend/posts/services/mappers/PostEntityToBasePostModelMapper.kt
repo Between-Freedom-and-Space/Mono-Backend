@@ -9,6 +9,7 @@ class PostEntityToBasePostModelMapper: ModelMapper<Post, BasePostModel> {
     override fun map(original: Post): BasePostModel {
         return BasePostModel(
             id = original.id.value,
+            name = original.name,
             text = original.text,
             authorId = original.author.value,
             commentsIds = original.comments.copy().map { it.id.value },

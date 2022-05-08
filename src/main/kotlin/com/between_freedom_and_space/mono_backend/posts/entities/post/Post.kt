@@ -13,6 +13,8 @@ import org.jetbrains.exposed.dao.id.EntityID
 class Post(id: EntityID<Long>): LongEntity(id) {
     companion object: LongEntityClass<Post>(PostsTable)
 
+    var name by PostsTable.name
+
     var text by PostsTable.text
 
     var author by PostsTable.author

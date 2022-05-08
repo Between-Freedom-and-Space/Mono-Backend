@@ -13,6 +13,9 @@ data class PostModel(
     @SerialName("author_id")
     val authorId: Long,
 
+    @SerialName("name")
+    val name: String,
+
     @SerialName("text")
     val text: String,
 

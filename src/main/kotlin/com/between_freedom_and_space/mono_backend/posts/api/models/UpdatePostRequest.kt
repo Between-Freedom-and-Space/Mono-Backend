@@ -7,6 +7,9 @@ import javax.validation.constraints.Size
 @Serializable
 data class UpdatePostRequest(
 
+    @SerialName("new_name")
+    val newName: String?,
+
     @SerialName("new_text")
     val newText: String?,
 

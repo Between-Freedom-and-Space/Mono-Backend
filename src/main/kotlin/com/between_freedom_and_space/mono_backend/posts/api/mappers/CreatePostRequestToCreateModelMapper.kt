@@ -8,6 +8,7 @@ class CreatePostRequestToCreateModelMapper: ModelMapper<CreatePostRequest, Creat
 
     override fun map(original: CreatePostRequest): CreatePostModel {
         return CreatePostModel(
+            name = original.postName,
             text = original.postText,
             isVisible = original.isVisible,
             tagsAliases = original.tags
