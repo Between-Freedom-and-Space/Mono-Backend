@@ -32,7 +32,7 @@ class AuthenticatePlugin(
     }
 
     data class Configuration(
-        val enableLogging: Boolean = true
+        var enableLogging: Boolean = true
     )
 
     private val logger = KotlinLogging.logger { }

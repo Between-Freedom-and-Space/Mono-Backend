@@ -10,6 +10,7 @@ import com.between_freedom_and_space.mono_backend.auth.service.AuthService
 import com.between_freedom_and_space.mono_backend.auth.util.AuthConstants
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.common.plugins.extensions.exceptionHandler
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.util.extensions.getRequestHeader
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
@@ -58,5 +59,9 @@ internal fun Application.authUserRouting() {
 
             sendResponse(Response.accepted())
         }
+    }
+
+    exceptionHandler<InvalidTokenException> { call ->
+
     }
 }

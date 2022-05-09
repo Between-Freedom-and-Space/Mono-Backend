@@ -27,10 +27,15 @@ import com.between_freedom_and_space.mono_backend.auth.security.impl.HS256Verifi
 import com.between_freedom_and_space.mono_backend.auth.security.impl.PBKDF2PasswordCipher
 import com.between_freedom_and_space.mono_backend.auth.service.TokenAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.AuthService
+import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.impl.CommonAuthService
+import com.between_freedom_and_space.mono_backend.auth.service.impl.CommonUserProfileAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.impl.JWTTokenAuthService
+import com.between_freedom_and_space.mono_backend.auth.service.mappers.ProfileToUserAuthModelMapper
 import com.between_freedom_and_space.mono_backend.auth.service.mappers.RegisterUserRequestToCreatModelMapper
+import com.between_freedom_and_space.mono_backend.auth.service.model.UserAuthModel
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import org.koin.dsl.bind
@@ -41,6 +46,7 @@ private val mappersModule = module {
     single<ModelMapper<BaseProfileModel, RegisterUserResponse>> { UserModelToRegisterResponseMapper() }
     single<ModelMapper<ProducerResult, AuthenticateUserResponse>> { AuthenticateResultToAuthenticateResponseMapper() }
     single<ModelMapper<RegisterUserRequest, CreateProfileModel>> { RegisterUserRequestToCreatModelMapper() }
+    single<ModelMapper<UserProfile, UserAuthModel>> { ProfileToUserAuthModelMapper() }
 }
 
 private val securityModule = module {
@@ -68,4 +74,5 @@ val authModule = module {
 
     single { JWTTokenAuthService(get(), get()) } bind TokenAuthService::class
     single { CommonAuthService(get(), get(), get(), get(), get(), get(), get()) } bind AuthService::class
+    single { CommonUserProfileAuthService(get(), get()) } bind UserProfileAuthService::class
 }
