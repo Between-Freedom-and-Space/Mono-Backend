@@ -67,5 +67,5 @@ val authModule = module {
     includes(componentsModule)
 
     single { JWTTokenAuthService(get(), get()) } bind TokenAuthService::class
-    single { CommonAuthService(get(), get(), get(), get(), get(), get()) } bind AuthService::class
+    single { CommonAuthService(get(), get(), get(), get(), get(), get(), get()) } bind AuthService::class
 }

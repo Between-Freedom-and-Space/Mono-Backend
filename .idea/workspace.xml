@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added name to post model" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added query parameter extension">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/modules/AuthModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/modules/AuthModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -346,6 +350,7 @@
       <workItem from="1651947326251" duration="1648000" />
       <workItem from="1652008823904" duration="1484000" />
       <workItem from="1652014731291" duration="271000" />
+      <workItem from="1652109140346" duration="1579000" />
     </task>
     <task id="LOCAL-00001" summary="added Dockerfile">
       <created>1647205271588</created>
@@ -599,7 +604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652014995132</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="added query parameter extension">
+      <created>1652109397482</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1652109397482</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +630,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added auth components module" />
     <MESSAGE value="added auth configuration file" />
     <MESSAGE value="added first auth routing implementation" />
     <MESSAGE value="added auth service impl" />
@@ -643,6 +654,7 @@
     <MESSAGE value="added unique constraints" />
     <MESSAGE value="fixed bugs and added user to user auth settings" />
     <MESSAGE value="added name to post model" />
-    <option name="LAST_COMMIT_MESSAGE" value="added name to post model" />
+    <MESSAGE value="added query parameter extension" />
+    <option name="LAST_COMMIT_MESSAGE" value="added query parameter extension" />
   </component>
 </project>
