@@ -50,3 +50,7 @@ fun CallPipeline.appendResponseHeader(name: String, value: Long) {
 fun CallPipeline.getPathParameter(name: String): String? {
     return call.parameters[name]
 }
+
+fun CallPipeline.getQueryParameter(name: String): String? {
+    return call.request.queryParameters[name]
+}

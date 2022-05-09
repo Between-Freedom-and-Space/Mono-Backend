@@ -11,9 +11,6 @@ import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVe
 import com.between_freedom_and_space.mono_backend.auth.service.AuthService
 import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
-import com.between_freedom_and_space.mono_backend.profiles.models.UserProfileModel
-import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
-import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 
 class CommonAuthService(

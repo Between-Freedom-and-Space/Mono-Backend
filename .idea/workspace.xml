@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed bugs and added user to user auth settings">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added name to post model" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -347,6 +345,7 @@
       <workItem from="1650916889593" duration="188000" />
       <workItem from="1651947326251" duration="1648000" />
       <workItem from="1652008823904" duration="1484000" />
+      <workItem from="1652014731291" duration="271000" />
     </task>
     <task id="LOCAL-00001" summary="added Dockerfile">
       <created>1647205271588</created>
@@ -593,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651948658326</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="added name to post model">
+      <created>1652014995132</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1652014995132</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,7 +618,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added token producer and verifier implementation" />
     <MESSAGE value="added auth components module" />
     <MESSAGE value="added auth configuration file" />
     <MESSAGE value="added first auth routing implementation" />
@@ -637,6 +642,7 @@
     <MESSAGE value="refactored code" />
     <MESSAGE value="added unique constraints" />
     <MESSAGE value="fixed bugs and added user to user auth settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs and added user to user auth settings" />
+    <MESSAGE value="added name to post model" />
+    <option name="LAST_COMMIT_MESSAGE" value="added name to post model" />
   </component>
 </project>
