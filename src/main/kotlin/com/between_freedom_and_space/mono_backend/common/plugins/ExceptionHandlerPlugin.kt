@@ -9,7 +9,7 @@ import io.ktor.util.pipeline.*
 import mu.KotlinLogging
 import kotlin.reflect.KClass
 
-typealias ExceptionHandler = (ApplicationCall) -> Unit
+typealias ExceptionHandler = suspend (ApplicationCall, Exception) -> Unit
 
 class ExceptionHandlerPlugin(
     config: Configuration,

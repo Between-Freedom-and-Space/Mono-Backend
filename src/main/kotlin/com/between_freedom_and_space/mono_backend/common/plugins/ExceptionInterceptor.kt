@@ -5,7 +5,7 @@ import kotlin.reflect.KClass
 
 interface ExceptionInterceptor {
 
-    fun handle(
+    suspend fun handle(
         exception: Exception, call: ApplicationCall,
         handlers: Map<KClass<*>, ExceptionHandler>,
         defaultHandler: ExceptionHandler?

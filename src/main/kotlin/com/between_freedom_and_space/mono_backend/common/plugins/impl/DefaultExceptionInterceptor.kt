@@ -7,17 +7,17 @@ import kotlin.reflect.KClass
 
 class DefaultExceptionInterceptor: ExceptionInterceptor {
 
-    override fun handle(
+    override suspend fun handle(
         exception: Exception, call: ApplicationCall,
         handlers: Map<KClass<*>, ExceptionHandler>,
         defaultHandler: ExceptionHandler?
     ) {
         val exceptionClass = exception::class
         val targetHandler = handlers[exceptionClass]
-        targetHandler?.invoke(call)
+        targetHandler?.invoke(call, exception)
 
         if (targetHandler == null) {
-            defaultHandler?.invoke(call) ?: throw exception
+            defaultHandler?.invoke(call, exception) ?: throw exception
         }
     }
 }

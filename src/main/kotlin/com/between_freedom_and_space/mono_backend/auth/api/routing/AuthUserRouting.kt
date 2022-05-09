@@ -60,8 +60,4 @@ internal fun Application.authUserRouting() {
             sendResponse(Response.accepted())
         }
     }
-
-    exceptionHandler<InvalidTokenException> { call ->
-
-    }
 }

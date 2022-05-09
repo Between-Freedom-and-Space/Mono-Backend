@@ -1,6 +1,7 @@
 package com.between_freedom_and_space.mono_backend.common.api
 
 import com.between_freedom_and_space.mono_backend.common.api.Error.Companion.DEFAULT_MESSAGE
+import com.between_freedom_and_space.mono_backend.common.api.Error.Companion.NOT_PRESENTED_ERROR_ID
 import io.ktor.http.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -45,33 +46,33 @@ data class Response <T: Any>(
             )
         }
 
-        fun badRequest(id: Long, message: String? = null): Response<Nothing> {
+        fun badRequest(errorId: Long? = null, message: String? = null): Response<Nothing> {
             val error = Error(
-                id = id,
+                errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
             )
             return with(error, HttpStatusCode.BadRequest)
         }
 
-        fun unauthorized(id: Long, message: String? = null): Response<Nothing> {
+        fun unauthorized(errorId: Long? = null, message: String? = null): Response<Nothing> {
             val error = Error(
-                id = id,
+                errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
             )
             return with(error, HttpStatusCode.Unauthorized)
         }
 
-        fun forbidden(id: Long, message: String? = null): Response<Nothing> {
+        fun forbidden(errorId: Long? = null, message: String? = null): Response<Nothing> {
             val error = Error(
-                id = id,
+                errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
             )
             return with(error, HttpStatusCode.Forbidden)
         }
 
-        fun notFound(id: Long, message: String? = null): Response<Nothing> {
+        fun notFound(errorId: Long? = null, message: String? = null): Response<Nothing> {
             val error = Error(
-                id = id,
+                errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
             )
             return with(error, HttpStatusCode.NotFound)

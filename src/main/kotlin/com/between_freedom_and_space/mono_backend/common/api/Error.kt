@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Error(
 
-    @SerialName("id")
-    val id: Long,
+    @SerialName("error_id")
+    val errorId: Long,
 
     @SerialName("message")
     val message: String
@@ -16,5 +16,7 @@ data class Error(
     companion object {
 
         const val DEFAULT_MESSAGE = "Something went wrong."
+
+        const val NOT_PRESENTED_ERROR_ID = -1L
     }
 }
