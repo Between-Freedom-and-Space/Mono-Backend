@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added base exception handlers">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed extension">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/plugins/extensions/ExceptionHandlerPluginExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/plugins/extensions/ExceptionHandlerPluginExtensions.kt" afterDir="false" />
     </list>
@@ -351,7 +351,7 @@
       <workItem from="1652008823904" duration="1484000" />
       <workItem from="1652014731291" duration="271000" />
       <workItem from="1652109140346" duration="9436000" />
-      <workItem from="1652292966385" duration="307000" />
+      <workItem from="1652292966385" duration="1899000" />
     </task>
     <task id="LOCAL-00001" summary="added Dockerfile">
       <created>1647205271588</created>
@@ -633,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652125429280</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="fixed extension">
+      <created>1652293458740</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1652293458740</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +659,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added secure password encoding" />
     <MESSAGE value="refactored auth routing, fixed inject" />
     <MESSAGE value="added pipeline context extensions and user auth service" />
     <MESSAGE value="added user auth routing implementation" />
@@ -677,6 +683,7 @@
     <MESSAGE value="fixed auth service" />
     <MESSAGE value="added exception interceptor plugin" />
     <MESSAGE value="added base exception handlers" />
-    <option name="LAST_COMMIT_MESSAGE" value="added base exception handlers" />
+    <MESSAGE value="fixed extension" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed extension" />
   </component>
 </project>

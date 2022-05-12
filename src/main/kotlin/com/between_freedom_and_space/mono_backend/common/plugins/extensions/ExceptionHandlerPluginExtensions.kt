@@ -1,6 +1,5 @@
 package com.between_freedom_and_space.mono_backend.common.plugins.extensions
 
-import com.between_freedom_and_space.mono_backend.common.plugins.ExceptionHandler
 import com.between_freedom_and_space.mono_backend.common.plugins.ExceptionHandlerPlugin
 import io.ktor.server.application.*
 
