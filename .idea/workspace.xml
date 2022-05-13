@@ -4,28 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="changed token name">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/mappers/CreateTagRequestToCreateModelMapper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/mappers/UpdateTagRequestToUpdateModelMapper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/models/UpdateTagRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsInteractionRouting.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/InteractionTagsService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/exception/InvalidTagException.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/exception/TagNotFoundException.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/model/CreateTagModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/model/UpdateTagModel.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added tags base routing">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/mappers/CreateCommentRequestToCreateModelMapper.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/mappers/UpdateCommentRequestToUpdateModelMapper.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/models/CreateCommentRequest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/models/UpdateCommentRequest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/routing/CommentsInteractionRouting.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/services/InteractionCommentsService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/services/exceptions/CommentNotFoundException.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/services/exceptions/InvalidCommentException.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/services/impl/InteractionCommentsServiceImpl.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/services/models/CreateCommentModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/services/models/UpdateCommentModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/mappers/BaseTagModelToTagModelMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/mappers/BaseTagModelToTagModelMapper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/models/CreateTagRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/models/CreateTagRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/models/TagModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/models/TagModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsExceptionHandling.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsExceptionHandling.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsInformationRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/entities/tables/PostTagsTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/entities/tables/PostTagsTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/modules/TagsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/modules/TagsModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/plugins/PostTagsPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/plugins/PostTagsPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/InformationTagsService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/InformationTagsService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InformationTagsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InformationTagsServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/extensions/PipelineContextExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/extensions/PipelineContextExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/routing/CommentsRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/routing/CommentsInformationRouting.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/modules/CommentsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/modules/CommentsModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/plugins/CommentsPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/plugins/CommentsPlugin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -372,7 +366,7 @@
       <workItem from="1652109140346" duration="9436000" />
       <workItem from="1652292966385" duration="1920000" />
       <workItem from="1652451078668" duration="2303000" />
-      <workItem from="1652465680522" duration="2720000" />
+      <workItem from="1652465680522" duration="4387000" />
     </task>
     <task id="LOCAL-00001" summary="added Dockerfile">
       <created>1647205271588</created>
@@ -675,7 +669,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652455621185</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="added tags base routing">
+      <created>1652468545043</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1652468545043</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,7 +695,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added user auth routing implementation" />
     <MESSAGE value="added auth user service impl" />
     <MESSAGE value="added auth plugin" />
     <MESSAGE value="added putting authorities to context attributes" />
@@ -719,6 +719,7 @@
     <MESSAGE value="fixed extension" />
     <MESSAGE value="fixed dependencies" />
     <MESSAGE value="changed token name" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed token name" />
+    <MESSAGE value="added tags base routing" />
+    <option name="LAST_COMMIT_MESSAGE" value="added tags base routing" />
   </component>
 </project>
