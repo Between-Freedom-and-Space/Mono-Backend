@@ -11,6 +11,7 @@ class BaseTagModelToTagModelMapper: ModelMapper<BaseTagModel, TagModel> {
             id = original.id,
             alias = original.alias,
             description = original.description,
+            authorId = original.authorId,
             createdDate = original.createdDate,
             updatedDate = original.updatedDate,
         )

@@ -16,6 +16,9 @@ data class TagModel(
     @SerialName("description")
     val description: String?,
 
+    @SerialName("author_id")
+    val authorId: Long?,
+
     @SerialName("created_date")
     val createdDate: LocalDateTime,
 

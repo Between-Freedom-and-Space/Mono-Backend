@@ -9,6 +9,8 @@ interface InformationTagsService {
 
     fun getTagById(tagId: Long): BaseTagModel
 
+    fun getTagByAlias(tagAlias: String): BaseTagModel
+
     fun getTags(ids: Collection<TagId>): List<BaseTagModel>
 
     fun getTagsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<BaseTagModel>

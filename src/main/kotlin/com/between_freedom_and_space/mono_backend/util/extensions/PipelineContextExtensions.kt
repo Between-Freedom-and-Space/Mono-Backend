@@ -2,6 +2,7 @@ package com.between_freedom_and_space.mono_backend.util.extensions
 
 import com.between_freedom_and_space.mono_backend.util.components.RequestValidator
 import com.between_freedom_and_space.mono_backend.util.components.exception.ValidationException
+import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
@@ -25,6 +26,10 @@ suspend inline fun <reified T: Any> CallPipeline.validateAndReceiveRequest(): T 
 
 suspend inline fun <reified T: Any> CallPipeline.sendResponse(response: T) {
     call.respond(response)
+}
+
+suspend inline fun <reified T: Any> CallPipeline.sendResponse(code: HttpStatusCode, response: T) {
+    call.respond(code, response)
 }
 
 suspend fun CallPipeline.sendEmptyResponse() {

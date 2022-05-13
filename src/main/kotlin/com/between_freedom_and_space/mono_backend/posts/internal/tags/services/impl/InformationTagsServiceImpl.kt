@@ -14,6 +14,10 @@ class InformationTagsServiceImpl: InformationTagsService {
         TODO("Not yet implemented")
     }
 
+    override fun getTagByAlias(tagAlias: String): BaseTagModel {
+        TODO("Not yet implemented")
+    }
+
     override fun getTags(ids: Collection<TagId>): List<BaseTagModel> {
         TODO("Not yet implemented")
     }

@@ -12,7 +12,7 @@ object PostTagsTable: LongIdTable("post_tags") {
         onDelete = NO_ACTION, onUpdate = NO_ACTION
     ).nullable()
 
-    val tagAlias = text("tag_alias", eagerLoading = true)
+    val tagAlias = text("tag_alias", eagerLoading = true).uniqueIndex()
 
     val tagDescription = text("tag_description", eagerLoading = true).nullable()
 
