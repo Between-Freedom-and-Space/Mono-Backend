@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed extension">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed dependencies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/plugins/extensions/ExceptionHandlerPluginExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/plugins/extensions/ExceptionHandlerPluginExtensions.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,7 +350,8 @@
       <workItem from="1652008823904" duration="1484000" />
       <workItem from="1652014731291" duration="271000" />
       <workItem from="1652109140346" duration="9436000" />
-      <workItem from="1652292966385" duration="1899000" />
+      <workItem from="1652292966385" duration="1920000" />
+      <workItem from="1652451078668" duration="1357000" />
     </task>
     <task id="LOCAL-00001" summary="added Dockerfile">
       <created>1647205271588</created>
@@ -640,7 +640,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652293458740</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="fixed dependencies">
+      <created>1652388153695</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1652388153695</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -659,7 +666,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored auth routing, fixed inject" />
     <MESSAGE value="added pipeline context extensions and user auth service" />
     <MESSAGE value="added user auth routing implementation" />
     <MESSAGE value="added auth user service impl" />
@@ -684,6 +690,7 @@
     <MESSAGE value="added exception interceptor plugin" />
     <MESSAGE value="added base exception handlers" />
     <MESSAGE value="fixed extension" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed extension" />
+    <MESSAGE value="fixed dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed dependencies" />
   </component>
 </project>
