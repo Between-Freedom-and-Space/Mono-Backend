@@ -30,6 +30,6 @@ private val mappersModule = module {
 val commentsModule = module {
     includes(mappersModule)
 
-    single { InformationCommentsServiceImpl() } bind InformationCommentsService::class
-    single { InteractionCommentsServiceImpl() } bind InteractionCommentsService::class
+    single { InformationCommentsServiceImpl(get(), get()) } bind InformationCommentsService::class
+    single { InteractionCommentsServiceImpl(get(), get()) } bind InteractionCommentsService::class
 }
