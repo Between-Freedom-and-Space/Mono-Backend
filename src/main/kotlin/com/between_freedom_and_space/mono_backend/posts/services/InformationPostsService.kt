@@ -19,4 +19,6 @@ interface InformationPostsService {
     fun getPostReactions(postId: Long, pageNumber: Int, pageSize: Int): List<BasePostReactionModel>
 
     fun getPostReactionsCount(postId: Long): PostReactionsCountModel
+
+    fun getPostsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<BasePostModel>
 }

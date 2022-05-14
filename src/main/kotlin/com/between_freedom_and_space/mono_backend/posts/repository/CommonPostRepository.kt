@@ -8,5 +8,7 @@ interface CommonPostRepository {
 
     fun getPostById(id: Long): Post
 
+    fun getPostsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<Post>
+
     fun save(post: Post): Post
 }

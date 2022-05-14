@@ -26,12 +26,16 @@ class InformationPostsServiceImpl(
 ): InformationPostsService {
 
     override fun getAllPosts(pageNumber: Int, pageSize: Int): List<BasePostModel> {
-        val posts = repository.getAllPosts(pageNumber, pageSize)
+        val posts = transaction {
+            repository.getAllPosts(pageNumber, pageSize)
+        }
         return posts.map { mapper.map(it) }
     }
 
     override fun getPostById(postId: Long): BasePostModel {
-        val post = repository.getPostById(postId)
+        val post = transaction {
+            repository.getPostById(postId)
+        }
         return mapper.map(post)
     }
 
@@ -68,5 +72,12 @@ class InformationPostsServiceImpl(
                 ReactionToCount(entry.key, entry.value)
             }
         )
+    }
+
+    override fun getPostsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<BasePostModel> {
+        val posts = transaction {
+            repository.getPostsWithAuthorId(authorId, pageNumber, pageSize)
+        }
+        return posts.map { mapper.map(it) }
     }
 }
