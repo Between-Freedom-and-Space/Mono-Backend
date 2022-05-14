@@ -14,9 +14,13 @@ interface CommonProfilesRepository {
 
     fun getProfilesByIds(ids: Collection<EntityID<Long>>): List<UserProfile>
 
-    fun saveProfile(profile: CreateProfileModel): UserProfile
+    fun createProfile(profile: CreateProfileModel): UserProfile
 
-    fun updateProfile(profile: UserProfile): UserProfile
+    fun saveProfile(profile: UserProfile): UserProfile
+
+    fun deleteProfileById(id: Long): UserProfile?
+
+    fun deleteProfileByNickname(nickName: String): UserProfile?
 
     fun profileExistsWith(id: Long): Boolean
 
