@@ -17,10 +17,10 @@ data class ProfileModel(
     val nameAlias: String,
 
     @SerialName("description")
-    val description: String,
+    val description: String?,
 
     @SerialName("location")
-    val location: String,
+    val location: String?,
 
     @SerialName("created_date")
     val createdDate: LocalDateTime,

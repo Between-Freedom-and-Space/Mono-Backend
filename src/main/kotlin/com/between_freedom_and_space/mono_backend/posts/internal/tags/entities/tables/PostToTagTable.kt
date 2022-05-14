@@ -18,6 +18,8 @@ object PostToTagTable: LongIdTable("post_to_tag") {
         onDelete = NO_ACTION, onUpdate = NO_ACTION
     )
 
+    var isDeleted = bool("is_deleted").default(false)
+
     var createdDate = datetime("created_date")
 
     var updatedDate = datetime("updated_date")

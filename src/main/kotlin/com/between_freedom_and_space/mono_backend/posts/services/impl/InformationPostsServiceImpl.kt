@@ -12,6 +12,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.I
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
+import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel.ReactionToCount
@@ -33,9 +34,7 @@ class InformationPostsServiceImpl(
     }
 
     override fun getPostById(postId: Long): BasePostModel {
-        val post = transaction {
-            repository.getPostById(postId)
-        }
+        val post = transaction { getPostOrThrow(postId) }
         return mapper.map(post)
     }
 
@@ -53,7 +52,7 @@ class InformationPostsServiceImpl(
 
     override fun getPostReactionsCount(postId: Long): PostReactionsCountModel {
         val reactions = transaction {
-            val postEntity = repository.getPostById(postId)
+            val postEntity = getPostOrThrow(postId)
             val reactionsIds = postEntity.reactions
                 .map { it.id.value }
                 .map { ReactionId(it) }
@@ -79,5 +78,10 @@ class InformationPostsServiceImpl(
             repository.getPostsWithAuthorId(authorId, pageNumber, pageSize)
         }
         return posts.map { mapper.map(it) }
+    }
+
+    private fun getPostOrThrow(postId: Long): Post {
+        return repository.getPostById(postId)
+            ?: throw PostNotFoundException("Post with id: $postId not found")
     }
 }
