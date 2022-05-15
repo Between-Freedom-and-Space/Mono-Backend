@@ -30,11 +30,14 @@ private val mappersModule = module {
     single<ModelMapper<UpdateTagRequest, UpdateTagModel>> { UpdateTagRequestToUpdateModelMapper() }
 }
 
+private val serviceModule = module {
+    single { InformationTagsServiceImpl(get(), get()) } bind InformationTagsService::class
+    single { InteractionTagsServiceImpl(get(), get()) } bind InteractionTagsService::class
+    single { ActionTagsServiceImpl(get(), get()) } bind ActionTagsService::class
+    single { InteractionPostToTagServiceImpl(get(), get(), get(), get()) } bind InteractionPostToTagService::class
+}
+
 val tagsModule = module {
     includes(mappersModule)
-
-    single { InformationTagsServiceImpl() } bind InformationTagsService::class
-    single { InteractionTagsServiceImpl() } bind InteractionTagsService::class
-    single { ActionTagsServiceImpl() } bind ActionTagsService::class
-    single { InteractionPostToTagServiceImpl() } bind InteractionPostToTagService::class
+    includes(serviceModule)
 }
