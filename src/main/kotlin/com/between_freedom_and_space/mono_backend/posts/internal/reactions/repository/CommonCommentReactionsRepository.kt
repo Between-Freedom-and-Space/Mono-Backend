@@ -1,10 +1,23 @@
 package com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository
 
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.entities.comment.CommentReaction
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.CreateCommentReactionModel
 
 interface CommonCommentReactionsRepository {
 
-    fun getAllCommentReactions(pageNumber: Int, pageSize: Int): List<CommentReaction>
+    fun getAllReactions(pageNumber: Int, pageSize: Int): List<CommentReaction>
 
-    fun getCommentReactionById(reactionId: Long): CommentReaction
+    fun getReactionById(reactionId: Long): CommentReaction?
+
+    fun getReactionsByIds(ids: Collection<Long>): List<CommentReaction>
+
+    fun getReactionsWithCommentId(commentId: Long, pageNumber: Int, pageSize: Int): List<CommentReaction>
+
+    fun getReactionsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<CommentReaction>
+
+    fun create(model: CreateCommentReactionModel): CommentReaction
+
+    fun save(reaction: CommentReaction): CommentReaction
+
+    fun delete(reactionId: Long): CommentReaction?
 }

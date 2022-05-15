@@ -35,11 +35,14 @@ private val mappersModule = module {
     single<ModelMapper<UpdatePostReactionRequest, UpdatePostReactionModel>> { UpdatePostRequestToUpdateModelMapper() }
 }
 
+private val serviceModule = module {
+    single { InformationCommentReactionsServiceImpl(get(), get()) } bind InformationCommentReactionsService::class
+    single { InformationPostReactionsServiceImpl(get(), get()) } bind InformationPostReactionsService::class
+    single { InteractionCommentReactionsServiceImpl(get(), get()) } bind InteractionCommentReactionsService::class
+    single { InteractionPostReactionsServiceImpl(get(), get()) } bind InteractionPostReactionsService::class
+}
+
 val reactionsModule = module {
     includes(mappersModule)
-
-    single { InformationCommentReactionsServiceImpl() } bind InformationCommentReactionsService::class
-    single { InformationPostReactionsServiceImpl() } bind InformationPostReactionsService::class
-    single { InteractionCommentReactionsServiceImpl() } bind InteractionCommentReactionsService::class
-    single { InteractionPostReactionsServiceImpl() } bind InteractionPostReactionsService::class
+    includes(serviceModule)
 }
