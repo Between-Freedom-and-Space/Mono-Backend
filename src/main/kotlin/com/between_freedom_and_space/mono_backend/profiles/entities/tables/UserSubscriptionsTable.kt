@@ -17,8 +17,6 @@ object UserSubscriptionsTable: LongIdTable("user_subscriptions") {
         onDelete = NO_ACTION, onUpdate = NO_ACTION
     )
 
-    val isDeleted = bool("is_deleted").default(false)
-
     val createdDate = datetime("created_date")
 
     val updatedDate = datetime("updated_date")

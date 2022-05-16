@@ -12,8 +12,6 @@ class UserSubscription(id: EntityID<Long>): LongEntity(id) {
 
     var subscribeOn by UserSubscriptionsTable.subscribeOn
 
-    var isDeleted by UserSubscriptionsTable.isDeleted
-
     var createdDate by UserSubscriptionsTable.createdDate
 
     var updatedDate by UserSubscriptionsTable.updatedDate
