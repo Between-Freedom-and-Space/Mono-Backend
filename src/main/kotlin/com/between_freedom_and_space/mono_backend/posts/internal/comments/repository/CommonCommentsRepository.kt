@@ -2,6 +2,7 @@ package com.between_freedom_and_space.mono_backend.posts.internal.comments.repos
 
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostComment
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.CreateCommentModel
+import org.jetbrains.exposed.dao.id.EntityID
 
 interface CommonCommentsRepository {
 
@@ -11,7 +12,7 @@ interface CommonCommentsRepository {
 
     fun getCommentById(commentId: Long): PostComment?
 
-    fun createComment(authorId: Long, postId: Long, model: CreateCommentModel): PostComment
+    fun createComment(authorId: EntityID<Long>, postId: EntityID<Long>, model: CreateCommentModel): PostComment
 
     fun saveComment(comment: PostComment): PostComment
 

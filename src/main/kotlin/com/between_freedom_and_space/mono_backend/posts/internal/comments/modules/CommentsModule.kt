@@ -8,6 +8,8 @@ import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.mo
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.CreateCommentRequest
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.UpdateCommentRequest
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostComment
+import com.between_freedom_and_space.mono_backend.posts.internal.comments.repository.CommonCommentsRepository
+import com.between_freedom_and_space.mono_backend.posts.internal.comments.repository.impl.CommonCommentsRepositoryImpl
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.InformationCommentsService
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.InteractionCommentsService
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.impl.InformationCommentsServiceImpl
@@ -27,9 +29,17 @@ private val mappersModule = module {
     single<ModelMapper<UpdateCommentRequest, UpdateCommentModel>> { UpdateCommentRequestToUpdateModelMapper() }
 }
 
-val commentsModule = module {
-    includes(mappersModule)
-
+private val serviceModule = module {
     single { InformationCommentsServiceImpl(get(), get()) } bind InformationCommentsService::class
     single { InteractionCommentsServiceImpl(get(), get()) } bind InteractionCommentsService::class
+}
+
+private val repositoryModule = module {
+    single { CommonCommentsRepositoryImpl() } bind CommonCommentsRepository::class
+}
+
+val commentsModule = module {
+    includes(mappersModule)
+    includes(serviceModule)
+    includes(repositoryModule)
 }
