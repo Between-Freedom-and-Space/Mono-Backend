@@ -11,6 +11,10 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.m
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.models.UpdatePostReactionRequest
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.entities.comment.CommentReaction
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.entities.post.PostReaction
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.CommonCommentReactionsRepository
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.CommonPostReactionsRepository
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.impl.CommonCommentReactionsRepositoryImpl
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.impl.CommonPostReactionsRepositoryImpl
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.InformationCommentReactionsService
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.InformationPostReactionsService
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.InteractionCommentReactionsService
@@ -42,7 +46,13 @@ private val serviceModule = module {
     single { InteractionPostReactionsServiceImpl(get(), get()) } bind InteractionPostReactionsService::class
 }
 
+private val repositoryModule = module {
+    single { CommonCommentReactionsRepositoryImpl() } bind CommonCommentReactionsRepository::class
+    single { CommonPostReactionsRepositoryImpl() } bind CommonPostReactionsRepository::class
+}
+
 val reactionsModule = module {
     includes(mappersModule)
     includes(serviceModule)
+    includes(repositoryModule)
 }
