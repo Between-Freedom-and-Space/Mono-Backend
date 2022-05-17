@@ -23,7 +23,7 @@ class Post(id: EntityID<Long>): LongEntity(id) {
 
     val reactions by PostReaction referrersOn PostReactionsTable.post
 
-    val tags by PostTag referrersOn PostToTagTable.post
+    var tags by PostTag via PostToTagTable
 
     var isVisible by PostsTable.isVisible
 

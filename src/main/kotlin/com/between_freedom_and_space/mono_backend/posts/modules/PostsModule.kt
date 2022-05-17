@@ -11,6 +11,8 @@ import com.between_freedom_and_space.mono_backend.posts.entities.post.Post
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.modules.commentsModule
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.modules.reactionsModule
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.modules.tagsModule
+import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
+import com.between_freedom_and_space.mono_backend.posts.repository.impl.CommonPostRepositoryImpl
 import com.between_freedom_and_space.mono_backend.posts.services.ActionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.InteractionPostsService
@@ -22,6 +24,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.models.BasePost
 import com.between_freedom_and_space.mono_backend.posts.services.models.CreatePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.UpdatePostModel
+import com.between_freedom_and_space.mono_backend.profiles.repository.impl.CommonProfilesRepositoryImpl
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -38,6 +41,10 @@ private val serviceModule = module {
     single { InteractionPostServiceImpl(get(), get(), get(), get()) } bind InteractionPostsService::class
 }
 
+private val repositoryModule = module {
+    single { CommonPostRepositoryImpl() } bind CommonPostRepository::class
+}
+
 val postsModule = module {
     includes(commentsModule)
     includes(tagsModule)
@@ -45,4 +52,5 @@ val postsModule = module {
 
     includes(mappersModule)
     includes(serviceModule)
+    includes(repositoryModule)
 }
