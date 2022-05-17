@@ -2,6 +2,7 @@ package com.between_freedom_and_space.mono_backend.posts.internal.tags.repositor
 
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.models.PostTag
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.CreateTagModel
+import org.jetbrains.exposed.dao.id.EntityID
 
 interface CommonTagsRepository {
 
@@ -17,7 +18,7 @@ interface CommonTagsRepository {
 
     fun getTagsWithPostId(postId: Long, pageNumber: Int, pageSize: Int): List<PostTag>
 
-    fun createTag(authorId: Long, createModel: CreateTagModel): PostTag
+    fun createTag(authorId: EntityID<Long>, createModel: CreateTagModel): PostTag
 
     fun createTag(createModel: CreateTagModel): PostTag
 

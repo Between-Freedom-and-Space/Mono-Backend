@@ -12,8 +12,6 @@ class PostToTag(id: EntityID<Long>): LongEntity(id) {
 
     var tag by PostToTagTable.tag
 
-    var isDeleted by PostToTagTable.isDeleted
-
     var createdDate by PostToTagTable.createdDate
 
     var updatedDate by PostToTagTable.updatedDate

@@ -8,6 +8,8 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.TagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.UpdateTagRequest
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.models.PostTag
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.CommonPostToTagRepository
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.impl.CommonPostToTagRepositoryImpl
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.ActionTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InformationTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InteractionPostToTagService
@@ -20,6 +22,8 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.CreateTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.UpdateTagModel
+import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
+import com.between_freedom_and_space.mono_backend.posts.repository.impl.CommonPostRepositoryImpl
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -37,7 +41,13 @@ private val serviceModule = module {
     single { InteractionPostToTagServiceImpl(get(), get(), get(), get()) } bind InteractionPostToTagService::class
 }
 
+private val repositoryModule = module {
+    single { CommonPostRepositoryImpl() } bind CommonPostRepository::class
+    single { CommonPostToTagRepositoryImpl() } bind CommonPostToTagRepository::class
+}
+
 val tagsModule = module {
     includes(mappersModule)
     includes(serviceModule)
+    includes(repositoryModule)
 }
