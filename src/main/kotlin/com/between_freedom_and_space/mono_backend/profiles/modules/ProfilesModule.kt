@@ -29,11 +29,11 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val mappersModule = module {
-    single<ModelMapper<BaseProfileModel, ProfileModel>> { BaseProfileModelToProfileModelMapper() }
-    single<ModelMapper<CreateProfileRequest, CreateProfileModel>> { CreateProfileRequestToCreateModelMapper() }
-    single<ModelMapper<SubscribeActionResult, SubscribeActionResponse>> { SubscribeActionResultToSubscribeResponseMapper() }
-    single<ModelMapper<UpdateProfileRequest, UpdateProfileModel>> { UpdateProfileRequestToUpdateModelMapper() }
-    single<ModelMapper<UserProfile, BaseProfileModel>> { UserProfileToBaseProfileModelMapper() }
+    single { BaseProfileModelToProfileModelMapper() }
+    single { CreateProfileRequestToCreateModelMapper() }
+    single { SubscribeActionResultToSubscribeResponseMapper() }
+    single { UpdateProfileRequestToUpdateModelMapper() }
+    single { UserProfileToBaseProfileModelMapper() }
 }
 
 private val repositoryModule = module {

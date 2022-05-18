@@ -23,10 +23,10 @@ object PostsTable: LongIdTable("posts") {
         onDelete = NO_ACTION, onUpdate = NO_ACTION
     )
 
-    val settings = reference(
-        name = "post_settings_id", foreign = PostsSettingsTable,
-        onDelete = NO_ACTION, onUpdate = NO_ACTION
-    )
+//    val settings = reference(
+//        name = "post_settings_id", foreign = PostsSettingsTable,
+//        onDelete = NO_ACTION, onUpdate = NO_ACTION
+//    )
 
     val createdDate = datetime("created_date")
 

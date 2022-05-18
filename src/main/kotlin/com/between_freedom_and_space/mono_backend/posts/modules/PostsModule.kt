@@ -1,6 +1,7 @@
 package com.between_freedom_and_space.mono_backend.posts.modules
 
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.posts.api.mappers.BasePostModelToPostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.api.mappers.CreatePostRequestToCreateModelMapper
 import com.between_freedom_and_space.mono_backend.posts.api.mappers.PostReactionsCountToReactionsCountResponseMapper
 import com.between_freedom_and_space.mono_backend.posts.api.mappers.UpdatePostRequestToUpdateModelMapper
@@ -29,10 +30,11 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val mappersModule = module {
-    single<ModelMapper<Post, BasePostModel>> { PostEntityToBasePostModelMapper() }
-    single<ModelMapper<CreatePostRequest, CreatePostModel>> { CreatePostRequestToCreateModelMapper() }
-    single<ModelMapper<PostReactionsCountModel, PostReactionsCountResponse>> { PostReactionsCountToReactionsCountResponseMapper() }
-    single<ModelMapper<UpdatePostRequest, UpdatePostModel>> { UpdatePostRequestToUpdateModelMapper() }
+    single { PostEntityToBasePostModelMapper() }
+    single { CreatePostRequestToCreateModelMapper() }
+    single { PostReactionsCountToReactionsCountResponseMapper() }
+    single { UpdatePostRequestToUpdateModelMapper() }
+    single { BasePostModelToPostModelMapper() }
 }
 
 private val serviceModule = module {

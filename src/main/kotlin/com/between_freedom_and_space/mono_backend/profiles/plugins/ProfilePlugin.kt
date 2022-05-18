@@ -8,9 +8,6 @@ import com.between_freedom_and_space.mono_backend.profiles.api.routing.profilesI
 import io.ktor.server.application.*
 
 fun Application.addProfilePlugin() {
-    install(AuthenticatePlugin)
-
-    // Components
     profilesInformationRouting()
     profilesActionRouting()
     profilesInteractionRouting()

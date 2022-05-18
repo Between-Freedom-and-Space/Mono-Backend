@@ -5,13 +5,14 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.entit
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.CommonPostReactionsRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.InformationPostReactionsService
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.exceptions.ReactionNotFoundException
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.mappers.PostReactionEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BasePostReactionModel
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.ReactionId
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationPostReactionsServiceImpl(
     private val reactionRepository: CommonPostReactionsRepository,
-    private val entityMapper: ModelMapper<PostReaction, BasePostReactionModel>
+    private val entityMapper: PostReactionEntityToBaseModelMapper
 ): InformationPostReactionsService {
 
     override fun getAllReactions(pageNumber: Int, pageSize: Int): List<BasePostReactionModel> {

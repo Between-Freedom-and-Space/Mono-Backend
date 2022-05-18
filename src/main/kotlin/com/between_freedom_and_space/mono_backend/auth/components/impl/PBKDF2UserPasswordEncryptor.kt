@@ -2,6 +2,7 @@ package com.between_freedom_and_space.mono_backend.auth.components.impl
 
 import com.between_freedom_and_space.mono_backend.auth.components.UserPasswordEncryptor
 import com.between_freedom_and_space.mono_backend.auth.security.PasswordCipher
+import kotlin.math.abs
 
 class PBKDF2UserPasswordEncryptor(
     private val passwordCipher: PasswordCipher,
@@ -31,6 +32,6 @@ class PBKDF2UserPasswordEncryptor(
     }
 
     private fun getIterationsCount(userId: Long): Int {
-        return ((userId + ITERATIONS_OFFSET) % ITERATIONS_OFFSET + ITERATIONS_MIN_COUNT).toInt()
+        return abs((userId + ITERATIONS_OFFSET) % ITERATIONS_OFFSET + ITERATIONS_MIN_COUNT).toInt()
     }
 }

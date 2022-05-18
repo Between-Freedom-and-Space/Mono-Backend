@@ -7,11 +7,13 @@ import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRep
 import com.between_freedom_and_space.mono_backend.posts.repository.exceptions.PostAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.posts.repository.models.CreatePostEntityModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.CreatePostModel
+import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.SizedCollection
 import org.jetbrains.exposed.sql.SizedIterable
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
+import kotlin.random.Random
 
 class CommonPostRepositoryImpl: CommonPostRepository {
 
@@ -40,12 +42,14 @@ class CommonPostRepositoryImpl: CommonPostRepository {
     }
 
     override fun createPost(authorId: EntityID<Long>, tags: Collection<PostTag>, model: CreatePostEntityModel): Post {
-        return Post.new {
+        return Post.new(Random(localDateTimeNow().second).nextLong()) {
             name = model.name
             text = model.text
             isVisible = model.isVisible
             author = authorId
             this.tags = SizedCollection(tags)
+            createdDate = localDateTimeNow()
+            updatedDate = localDateTimeNow()
         }
     }
 

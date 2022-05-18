@@ -9,7 +9,9 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.UpdateTagRequest
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.models.PostTag
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.CommonPostToTagRepository
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.CommonTagsRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.impl.CommonPostToTagRepositoryImpl
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.impl.CommonTagsRepositoryImpl
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.ActionTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InformationTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InteractionPostToTagService
@@ -28,10 +30,10 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val mappersModule = module {
-    single<ModelMapper<PostTag, BaseTagModel>> { TagEntityToBaseModelMapper() }
-    single<ModelMapper<BaseTagModel, TagModel>> { BaseTagModelToTagModelMapper() }
-    single<ModelMapper<CreateTagRequest, CreateTagModel>> { CreateTagRequestToCreateModelMapper() }
-    single<ModelMapper<UpdateTagRequest, UpdateTagModel>> { UpdateTagRequestToUpdateModelMapper() }
+    single { TagEntityToBaseModelMapper() }
+    single { BaseTagModelToTagModelMapper() }
+    single { CreateTagRequestToCreateModelMapper() }
+    single { UpdateTagRequestToUpdateModelMapper() }
 }
 
 private val serviceModule = module {
@@ -42,7 +44,7 @@ private val serviceModule = module {
 }
 
 private val repositoryModule = module {
-    single { CommonPostRepositoryImpl() } bind CommonPostRepository::class
+    single { CommonTagsRepositoryImpl() } bind CommonTagsRepository::class
     single { CommonPostToTagRepositoryImpl() } bind CommonPostToTagRepository::class
 }
 

@@ -11,6 +11,7 @@ import com.between_freedom_and_space.mono_backend.auth.components.exceptions.Inv
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.service.AuthService
 import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
+import com.between_freedom_and_space.mono_backend.auth.service.mappers.RegisterUserRequestToCreatModelMapper
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.services.InteractionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
@@ -23,17 +24,17 @@ class CommonAuthService(
     private val userAuthService: UserProfileAuthService,
     private val profileService: InteractionProfilesService,
     private val userPasswordEncryptor: UserPasswordEncryptor,
-    private val registerUserMapper: ModelMapper<RegisterUserRequest, CreateProfileModel>
+    private val registerUserMapper: RegisterUserRequestToCreatModelMapper
 ): AuthService {
 
     override fun authenticateUser(nickname: String, passwordEncoded: String): ProducerResult {
         val user = userAuthService.getProfileOrNull(nickname)
             ?: throw AuthenticateException("User with nickname: $nickname not found")
-        val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
-            user.id, user.nickName, passwordEncoded
-        )
+//        val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
+//            user.id, user.nickName, passwordEncoded
+//        )
 
-        if (user.passwordEncrypted != encryptedPassword) {
+        if (user.passwordEncrypted != passwordEncoded) {
             throw AuthenticateException("Invalid user password")
         }
 

@@ -1,5 +1,6 @@
 package com.between_freedom_and_space.mono_backend.auth.api.routing
 
+import com.between_freedom_and_space.mono_backend.auth.api.mappers.AuthenticateResultToAuthenticateResponseMapper
 import com.between_freedom_and_space.mono_backend.auth.api.models.AuthenticateUserRequest
 import com.between_freedom_and_space.mono_backend.auth.api.models.AuthenticateUserResponse
 import com.between_freedom_and_space.mono_backend.auth.api.models.RegisterUserRequest
@@ -11,6 +12,7 @@ import com.between_freedom_and_space.mono_backend.auth.util.AuthConstants
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.common.plugins.extensions.exceptionHandler
+import com.between_freedom_and_space.mono_backend.profiles.api.mappers.BaseProfileModelToProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.util.extensions.getRequestHeader
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
@@ -24,8 +26,8 @@ internal fun Application.authUserRouting() {
 
     val userService by inject<AuthService>()
 
-    val registerMapper by inject<ModelMapper<BaseProfileModel, RegisterUserResponse>>()
-    val authenticateMapper by inject<ModelMapper<ProducerResult, AuthenticateUserResponse>>()
+    val registerMapper by inject<BaseProfileModelToProfileModelMapper>()
+    val authenticateMapper by inject<AuthenticateResultToAuthenticateResponseMapper>()
 
     routing {
 

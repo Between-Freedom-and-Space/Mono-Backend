@@ -37,9 +37,14 @@ class AuthenticatePlugin(
 
     private val logger = KotlinLogging.logger { }
 
-    private fun intercept(context: PipelineContext<Unit, ApplicationCall>) {
+    private suspend fun intercept(context: PipelineContext<Unit, ApplicationCall>) {
         val request = context.call.request
         val attributes = context.call.attributes
+
+        // TODO(remove)
+        if (request.path().startsWith("/auth")) {
+            return
+        }
         try {
             processor.intercept(request, attributes)
         } catch (exception: Exception) {

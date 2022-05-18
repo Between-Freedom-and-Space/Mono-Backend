@@ -5,13 +5,14 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.m
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.CommonTagsRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.ActionTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.exception.TagNotFoundException
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.mappers.TagEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.CreateTagModel
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class ActionTagsServiceImpl(
     private val tagsRepository: CommonTagsRepository,
-    private val entityMapper: ModelMapper<PostTag, BaseTagModel>
+    private val entityMapper: TagEntityToBaseModelMapper
 ): ActionTagsService {
 
     override fun getOrCreateTagsWithAliases(aliases: Collection<String>): List<BaseTagModel> {

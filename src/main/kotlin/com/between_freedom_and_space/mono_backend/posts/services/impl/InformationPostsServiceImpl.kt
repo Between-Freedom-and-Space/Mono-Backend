@@ -13,6 +13,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
+import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel.ReactionToCount
@@ -20,7 +21,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationPostsServiceImpl(
     private val repository: CommonPostRepository,
-    private val mapper: ModelMapper<Post, BasePostModel>,
+    private val mapper: PostEntityToBasePostModelMapper,
     private val commentsService: InformationCommentsService,
     private val tagsService: InformationTagsService,
     private val reactionsService: InformationPostReactionsService,

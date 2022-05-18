@@ -3,6 +3,7 @@ package com.between_freedom_and_space.mono_backend.profiles.api.routing
 import com.between_freedom_and_space.mono_backend.common.api.PageParams
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.posts.api.mappers.BasePostModelToPostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.CommentModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.BaseCommentModel
@@ -12,6 +13,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.servi
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.TagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
+import com.between_freedom_and_space.mono_backend.profiles.api.mappers.BaseProfileModelToProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.InvalidProfileException
@@ -27,7 +29,7 @@ internal fun Application.profilesInformationRouting() {
     val basePath = "/profile"
 
     val informationService by inject<InformationProfilesService>()
-    val profileMapper by inject<ModelMapper<BaseProfileModel, ProfileModel>>()
+    val profileMapper by inject<BaseProfileModelToProfileModelMapper>()
 
     routing {
 
@@ -110,11 +112,11 @@ internal fun Application.profilesInformationRouting() {
 
 
         get("$basePath/{nickname}/posts") {
-            val postsMapper by inject<ModelMapper<BasePostModel, PostModel>>()
+            val postsMapper by inject<BasePostModelToPostModelMapper>()
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageSize = pageParams.pageSize
-            val pageNumber = pageParams.pageSize
+            val pageNumber = pageParams.pageNumber
             val nickName = getPathParameter("nickname")
                 ?: throw InvalidProfileException("Nickname value is not presented")
 

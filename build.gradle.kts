@@ -68,4 +68,7 @@ dependencies {
     testImplementation(KtorServerTests)
     testImplementation(KotlinJUnit)
     testImplementation(KotlinMockito)
+
+    implementation("io.ktor:ktor-server-content-negotiation:2.0.0-beta-1")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.0-beta-1")
 }

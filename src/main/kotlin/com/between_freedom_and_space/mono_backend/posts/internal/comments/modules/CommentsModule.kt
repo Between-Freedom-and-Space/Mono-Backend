@@ -23,10 +23,10 @@ import org.koin.dsl.module
 import kotlin.math.sin
 
 private val mappersModule = module {
-    single<ModelMapper<PostComment, BaseCommentModel>> { CommentEntityToBaseModelMapper() }
-    single<ModelMapper<BaseCommentModel, CommentModel>> { BaseCommentModelToCommentModelMapper() }
-    single<ModelMapper<CreateCommentRequest, CreateCommentModel>> { CreateCommentRequestToCreateModelMapper() }
-    single<ModelMapper<UpdateCommentRequest, UpdateCommentModel>> { UpdateCommentRequestToUpdateModelMapper() }
+    single { CommentEntityToBaseModelMapper() }
+    single { BaseCommentModelToCommentModelMapper() }
+    single { CreateCommentRequestToCreateModelMapper() }
+    single { UpdateCommentRequestToUpdateModelMapper() }
 }
 
 private val serviceModule = module {

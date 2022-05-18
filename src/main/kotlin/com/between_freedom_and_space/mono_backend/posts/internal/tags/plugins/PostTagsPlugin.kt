@@ -6,7 +6,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.routin
 import io.ktor.server.application.*
 
 internal fun Application.addPostTagsPlugin() {
-
     postTagsExceptionHandling()
     postTagsInformationRouting()
     postTagsInteractionRouting()

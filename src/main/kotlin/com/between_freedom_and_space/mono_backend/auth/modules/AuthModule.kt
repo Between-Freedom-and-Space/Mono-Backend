@@ -19,6 +19,7 @@ import com.between_freedom_and_space.mono_backend.auth.components.impl.PBKDF2Use
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.impl.TokenAuthenticateProcessor
+import com.between_freedom_and_space.mono_backend.auth.models.AuthProperties
 import com.between_freedom_and_space.mono_backend.auth.security.JWTProcessor
 import com.between_freedom_and_space.mono_backend.auth.security.JWTVerifier
 import com.between_freedom_and_space.mono_backend.auth.security.PasswordCipher
@@ -42,11 +43,11 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val mappersModule = module {
-    single<ModelMapper<TokenVerifyResult, TokenVerifyResultResponse>> { TokenVerifyResultToVerifyResponseMapper() }
-    single<ModelMapper<BaseProfileModel, RegisterUserResponse>> { UserModelToRegisterResponseMapper() }
-    single<ModelMapper<ProducerResult, AuthenticateUserResponse>> { AuthenticateResultToAuthenticateResponseMapper() }
-    single<ModelMapper<RegisterUserRequest, CreateProfileModel>> { RegisterUserRequestToCreatModelMapper() }
-    single<ModelMapper<UserProfile, UserAuthModel>> { ProfileToUserAuthModelMapper() }
+    single { TokenVerifyResultToVerifyResponseMapper() }
+    single { UserModelToRegisterResponseMapper() }
+    single { AuthenticateResultToAuthenticateResponseMapper() }
+    single { RegisterUserRequestToCreatModelMapper() }
+    single { ProfileToUserAuthModelMapper() }
 }
 
 private val securityModule = module {
@@ -60,6 +61,12 @@ private val pluginModule = module {
 }
 
 private val componentsModule = module {
+    single { AuthProperties().apply {
+        tokenSecret = "1234"
+        tokenAudience = "1234"
+        tokenIssuer = "asdasd"
+    } }
+
     single { JWTTokenParser(get()) } bind TokenParser::class
     single { JWTTokenVerifier(get(), get()) } bind TokenVerifier::class
     single { JWTTokenProducer(get(), get()) } bind TokenProducer::class

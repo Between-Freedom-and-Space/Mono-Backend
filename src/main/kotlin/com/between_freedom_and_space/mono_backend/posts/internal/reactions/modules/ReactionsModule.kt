@@ -31,12 +31,12 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val mappersModule = module {
-    single<ModelMapper<CommentReaction, BaseCommentReactionModel>> { CommentReactionEntityToBaseModelMapper() }
-    single<ModelMapper<PostReaction, BasePostReactionModel>> { PostReactionEntityToBaseModelMapper() }
-    single<ModelMapper<CreateCommentReactionRequest, CreateCommentReactionModel>> { CreateCommentRequestToCreateModelMapper() }
-    single<ModelMapper<CreatePostReactionRequest, CreatePostReactionModel>> { CreatePostRequestToCreateModelMapper() }
-    single<ModelMapper<UpdateCommentReactionRequest, UpdateCommentReactionModel>> { UpdateCommentRequestToUpdateModelMapper() }
-    single<ModelMapper<UpdatePostReactionRequest, UpdatePostReactionModel>> { UpdatePostRequestToUpdateModelMapper() }
+    single { CommentReactionEntityToBaseModelMapper() }
+    single { PostReactionEntityToBaseModelMapper() }
+    single { CreateCommentRequestToCreateModelMapper() }
+    single { CreatePostRequestToCreateModelMapper() }
+    single { UpdateCommentRequestToUpdateModelMapper() }
+    single { UpdatePostRequestToUpdateModelMapper() }
 }
 
 private val serviceModule = module {

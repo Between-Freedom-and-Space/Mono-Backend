@@ -6,6 +6,7 @@ import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserP
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
 import com.between_freedom_and_space.mono_backend.profiles.services.InteractionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
+import com.between_freedom_and_space.mono_backend.profiles.services.mappers.UserProfileToBaseProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.UpdateProfileModel
@@ -13,7 +14,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class InteractionProfileServiceImpl(
     private val profileRepository: CommonProfilesRepository,
-    private val entityMapper: ModelMapper<UserProfile, BaseProfileModel>,
+    private val entityMapper: UserProfileToBaseProfileModelMapper,
     private val passwordEncryptor: UserPasswordEncryptor,
 ): InteractionProfilesService {
 

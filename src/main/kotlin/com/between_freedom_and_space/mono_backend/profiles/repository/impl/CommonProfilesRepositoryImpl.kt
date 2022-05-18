@@ -7,8 +7,11 @@ import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProf
 import com.between_freedom_and_space.mono_backend.profiles.repository.exceptions.ProfileAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import com.between_freedom_and_space.mono_backend.util.extensions.ifNull
+import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
+import kotlinx.datetime.LocalDateTime
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.*
+import kotlin.random.Random
 
 class CommonProfilesRepositoryImpl: CommonProfilesRepository {
 
@@ -44,7 +47,7 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
     }
 
     override fun createProfile(profile: CreateProfileModel): UserProfile {
-        return UserProfile.new {
+        return UserProfile.new(Random(localDateTimeNow().second).nextLong()) {
             mail = profile.mail
             phoneNumber = profile.phoneNumber
             passwordEncrypted = profile.passwordEncrypted
@@ -52,6 +55,8 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
             nameAlias = profile.nameAlias
             description = profile.description
             locataion = profile.description
+            createdDate = localDateTimeNow()
+            updatedDate = localDateTimeNow()
         }
     }
 
