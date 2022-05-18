@@ -8,16 +8,22 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.e
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.CreateTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.UpdateTagModel
+import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
+import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class InteractionTagsServiceImpl(
     private val tagRepository: CommonTagsRepository,
+    private val profilesRepository: CommonProfilesRepository,
     private val entityMapper: ModelMapper<PostTag, BaseTagModel>,
 ): InteractionTagsService {
 
     override fun createTag(authorId: Long, model: CreateTagModel): BaseTagModel {
         val entity = transaction {
-            tagRepository.createTag(authorId, model)
+            val author = profilesRepository.getProfileById(authorId)
+                ?: throw ProfileNotFoundException("Profile with id: $authorId not found")
+
+            tagRepository.createTag(author.id, model)
         }
         return entityMapper.map(entity)
     }

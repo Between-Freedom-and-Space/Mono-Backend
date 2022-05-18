@@ -22,7 +22,7 @@ class InteractionPostToTagServiceImpl(
         val entities = transaction {
             val post = postRepository.getPostById(postId)
                 ?: throw PostNotFoundException("Post with id: $postId not found")
-            val deletedTags = postToTagRepository.deleteTagsFromPost(post)
+            val deletedTags = postToTagRepository.deleteTagsFromPost(post.id)
             val deletedTagsIds = deletedTags.map { it.tag.value }
             tagsRepository.getAllTagsWithIds(deletedTagsIds)
         }
@@ -34,8 +34,10 @@ class InteractionPostToTagServiceImpl(
         val entities = transaction {
             val post = postRepository.getPostById(postId)
                 ?: throw PostNotFoundException("Post with id: $postId not found")
-            val tagsEntities = tagsRepository.getAllTagsWithIds(tags.map { it.value })
-            val addedTags = postToTagRepository.addTagsToPost(post, tagsEntities)
+            val tagsEntities = tagsRepository
+                .getAllTagsWithIds(tags.map { it.value })
+                .map { it.id }
+            val addedTags = postToTagRepository.addTagsToPost(post.id, tagsEntities)
             val addedTagsIds = addedTags.map { it.tag.value }
             tagsRepository.getAllTagsWithIds(addedTagsIds)
         }

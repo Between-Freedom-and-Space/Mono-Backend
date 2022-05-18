@@ -8,16 +8,26 @@ import com.between_freedom_and_space.mono_backend.posts.internal.comments.servic
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.BaseCommentModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.CreateCommentModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.UpdateCommentModel
+import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
+import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
+import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
+import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class InteractionCommentsServiceImpl(
     private val commentRepository: CommonCommentsRepository,
+    private val postsRepository: CommonPostRepository,
+    private val profilesRepository: CommonProfilesRepository,
     private val entityMapper: ModelMapper<PostComment, BaseCommentModel>,
 ): InteractionCommentsService {
 
     override fun createComment(authorId: Long, postId: Long, model: CreateCommentModel): BaseCommentModel {
         val entity = transaction {
-            commentRepository.createComment(authorId, postId, model)
+            val author = profilesRepository.getProfileById(authorId)
+                ?: throw ProfileNotFoundException("Profile with id: $authorId not found")
+            val post = postsRepository.getPostById(postId)
+                ?: throw PostNotFoundException("Post with id: $postId not found")
+            commentRepository.createComment(author.id, post.id, model)
         }
         return entityMapper.map(entity)
     }

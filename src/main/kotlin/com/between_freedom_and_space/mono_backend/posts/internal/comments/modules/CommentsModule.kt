@@ -31,7 +31,7 @@ private val mappersModule = module {
 
 private val serviceModule = module {
     single { InformationCommentsServiceImpl(get(), get()) } bind InformationCommentsService::class
-    single { InteractionCommentsServiceImpl(get(), get()) } bind InteractionCommentsService::class
+    single { InteractionCommentsServiceImpl(get(), get(), get(), get()) } bind InteractionCommentsService::class
 }
 
 private val repositoryModule = module {

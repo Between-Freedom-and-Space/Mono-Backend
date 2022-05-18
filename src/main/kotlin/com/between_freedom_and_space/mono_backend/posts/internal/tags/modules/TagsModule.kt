@@ -36,7 +36,7 @@ private val mappersModule = module {
 
 private val serviceModule = module {
     single { InformationTagsServiceImpl(get(), get()) } bind InformationTagsService::class
-    single { InteractionTagsServiceImpl(get(), get()) } bind InteractionTagsService::class
+    single { InteractionTagsServiceImpl(get(), get(), get()) } bind InteractionTagsService::class
     single { ActionTagsServiceImpl(get(), get()) } bind ActionTagsService::class
     single { InteractionPostToTagServiceImpl(get(), get(), get(), get()) } bind InteractionPostToTagService::class
 }

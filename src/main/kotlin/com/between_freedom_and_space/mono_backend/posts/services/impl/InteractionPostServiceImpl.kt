@@ -2,27 +2,44 @@ package com.between_freedom_and_space.mono_backend.posts.services.impl
 
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.posts.entities.post.Post
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.CommonTagsRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.ActionTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InteractionPostToTagService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.TagId
 import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
+import com.between_freedom_and_space.mono_backend.posts.repository.models.CreatePostEntityModel
 import com.between_freedom_and_space.mono_backend.posts.services.InteractionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.CreatePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.UpdatePostModel
+import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
+import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class InteractionPostServiceImpl(
     private val postRepository: CommonPostRepository,
     private val interactionPostToTagService: InteractionPostToTagService,
     private val actionTagsService: ActionTagsService,
+    private val profilesRepository: CommonProfilesRepository,
+    private val tagsRepository: CommonTagsRepository,
     private val entityMapper: ModelMapper<Post, BasePostModel>
 ): InteractionPostsService {
 
     override fun createPost(authorId: Long, createPostModel: CreatePostModel): BasePostModel {
         val entity = transaction {
-            postRepository.createPost(authorId, createPostModel)
+            val profile = profilesRepository.getProfileById(authorId)
+                ?: throw ProfileNotFoundException("Profile with id: $authorId not found")
+            val tagModels = actionTagsService.getOrCreateTagsWithAliases(createPostModel.tagsAliases)
+            val tagsEntities = tagsRepository.getAllTagsWithIds(tagModels.map { it.id })
+
+            // TODO(Add model mapper)
+            val createPost = CreatePostEntityModel(
+                name = createPostModel.name,
+                text = createPostModel.text,
+                isVisible = createPostModel.isVisible,
+            )
+            postRepository.createPost(profile.id, tagsEntities, createPost)
         }
         return entityMapper.map(entity)
     }

@@ -26,9 +26,9 @@ fun Application.main() {
     }
 
     // Components
-    addAccessPlugin()
+//    addAccessPlugin()
     addAuthPlugin()
     addPostsPlugin()
     addProfilePlugin()
-    addRecommendationsPlugin()
+//    addRecommendationsPlugin()
 }

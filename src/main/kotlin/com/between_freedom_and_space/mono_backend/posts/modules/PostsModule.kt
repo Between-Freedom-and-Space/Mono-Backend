@@ -38,7 +38,7 @@ private val mappersModule = module {
 private val serviceModule = module {
     single { InformationPostsServiceImpl(get(), get(), get(), get(), get()) } bind InformationPostsService::class
     single { ActionPostsServiceImpl(get(), get(), get(), get()) } bind ActionPostsService::class
-    single { InteractionPostServiceImpl(get(), get(), get(), get()) } bind InteractionPostsService::class
+    single { InteractionPostServiceImpl(get(), get(), get(), get(), get(), get()) } bind InteractionPostsService::class
 }
 
 private val repositoryModule = module {
