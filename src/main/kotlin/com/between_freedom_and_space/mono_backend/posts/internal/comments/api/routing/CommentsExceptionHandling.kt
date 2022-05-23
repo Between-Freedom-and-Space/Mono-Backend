@@ -10,15 +10,15 @@ import io.ktor.server.response.*
 
 internal fun Application.commentsExceptionHandling() {
 
-//    exceptionHandler<CommentNotFoundException> { call, exception ->
-//        exception as CommentNotFoundException
-//        val response = Response.notFound(message = exception.message)
-//        call.respond(HttpStatusCode.NotFound, response)
-//    }
-//
-//    exceptionHandler<InvalidCommentException> { call, exception ->
-//        exception as InvalidCommentException
-//        val response = Response.notFound(message = exception.message)
-//        call.respond(response)
-//    }
+    exceptionHandler<CommentNotFoundException> { call, exception ->
+        exception as CommentNotFoundException
+        val response = Response.notFound(message = exception.message)
+        call.respond(HttpStatusCode.NotFound, response)
+    }
+
+    exceptionHandler<InvalidCommentException> { call, exception ->
+        exception as InvalidCommentException
+        val response = Response.notFound(message = exception.message)
+        call.respond(response)
+    }
 }

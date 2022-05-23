@@ -10,15 +10,15 @@ import io.ktor.server.response.*
 
 internal fun Application.reactionsExceptionHandling() {
 
-//    exceptionHandler<InvalidReactionException> { call, exception ->
-//        exception as InvalidReactionException
-//        val response = Response.badRequest(message = exception.message)
-//        call.respond(HttpStatusCode.BadRequest, response)
-//    }
-//
-//    exceptionHandler<ReactionNotFoundException> { call, exception ->
-//        exception as ReactionNotFoundException
-//        val response = Response.notFound(message = exception.message)
-//        call.respond(HttpStatusCode.NotFound, response)
-//    }
+    exceptionHandler<InvalidReactionException> { call, exception ->
+        exception as InvalidReactionException
+        val response = Response.badRequest(message = exception.message)
+        call.respond(HttpStatusCode.BadRequest, response)
+    }
+
+    exceptionHandler<ReactionNotFoundException> { call, exception ->
+        exception as ReactionNotFoundException
+        val response = Response.notFound(message = exception.message)
+        call.respond(HttpStatusCode.NotFound, response)
+    }
 }

@@ -10,15 +10,15 @@ import io.ktor.server.response.*
 
 internal fun Application.postsExceptionHandling() {
 
-//    exceptionHandler<InvalidPostException> { call, exception ->
-//        exception as InvalidPostException
-//        val response = Response.badRequest(message = exception.message)
-//        call.respond(HttpStatusCode.BadRequest, response)
-//    }
-//
-//    exceptionHandler<PostNotFoundException> { call, exception ->
-//        exception as PostNotFoundException
-//        val response = Response.notFound(message = exception.message)
-//        call.respond(HttpStatusCode.NotFound, response)
-//    }
+    exceptionHandler<InvalidPostException> { call, exception ->
+        exception as InvalidPostException
+        val response = Response.badRequest(message = exception.message)
+        call.respond(HttpStatusCode.BadRequest, response)
+    }
+
+    exceptionHandler<PostNotFoundException> { call, exception ->
+        exception as PostNotFoundException
+        val response = Response.notFound(message = exception.message)
+        call.respond(HttpStatusCode.NotFound, response)
+    }
 }

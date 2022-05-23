@@ -11,21 +11,21 @@ import io.ktor.server.response.*
 
 internal fun Application.profilesExceptionHandling() {
 
-//    exceptionHandler<CreationProfileException> { call, exception ->
-//        exception as CreationProfileException
-//        val response = Response.badRequest(message = exception.message)
-//        call.respond(HttpStatusCode.BadRequest, response)
-//    }
-//
-//    exceptionHandler<InvalidProfileException> { call, exception ->
-//        exception as InvalidProfileException
-//        val response = Response.badRequest(message = exception.message)
-//        call.respond(HttpStatusCode.BadRequest, response)
-//    }
-//
-//    exceptionHandler<ProfileNotFoundException> { call, exception ->
-//        exception as ProfileNotFoundException
-//        val response = Response.notFound(message = exception.message)
-//        call.respond(HttpStatusCode.NotFound, response)
-//    }
+    exceptionHandler<CreationProfileException> { call, exception ->
+        exception as CreationProfileException
+        val response = Response.badRequest(message = exception.message)
+        call.respond(HttpStatusCode.BadRequest, response)
+    }
+
+    exceptionHandler<InvalidProfileException> { call, exception ->
+        exception as InvalidProfileException
+        val response = Response.badRequest(message = exception.message)
+        call.respond(HttpStatusCode.BadRequest, response)
+    }
+
+    exceptionHandler<ProfileNotFoundException> { call, exception ->
+        exception as ProfileNotFoundException
+        val response = Response.notFound(message = exception.message)
+        call.respond(HttpStatusCode.NotFound, response)
+    }
 }

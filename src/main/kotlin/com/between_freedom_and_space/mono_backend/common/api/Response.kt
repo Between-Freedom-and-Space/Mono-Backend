@@ -37,7 +37,7 @@ data class Response <T: Any>(
             return ok(content.invoke())
         }
 
-        fun accepted(): Response<Nothing> {
+        fun accepted(): Response<Unit> {
             return Response(
                 statusCode = HttpStatusCode.Accepted.value,
                 statusMessage = HttpStatusCode.Accepted.description,
@@ -46,7 +46,7 @@ data class Response <T: Any>(
             )
         }
 
-        fun badRequest(errorId: Long? = null, message: String? = null): Response<Nothing> {
+        fun badRequest(errorId: Long? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
@@ -54,7 +54,7 @@ data class Response <T: Any>(
             return with(error, HttpStatusCode.BadRequest)
         }
 
-        fun unauthorized(errorId: Long? = null, message: String? = null): Response<Nothing> {
+        fun unauthorized(errorId: Long? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
@@ -62,7 +62,7 @@ data class Response <T: Any>(
             return with(error, HttpStatusCode.Unauthorized)
         }
 
-        fun forbidden(errorId: Long? = null, message: String? = null): Response<Nothing> {
+        fun forbidden(errorId: Long? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
@@ -70,7 +70,7 @@ data class Response <T: Any>(
             return with(error, HttpStatusCode.Forbidden)
         }
 
-        fun notFound(errorId: Long? = null, message: String? = null): Response<Nothing> {
+        fun notFound(errorId: Long? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
@@ -78,11 +78,11 @@ data class Response <T: Any>(
             return with(error, HttpStatusCode.NotFound)
         }
 
-        fun with(error: Error, httpStatus: HttpStatusCode): Response<Nothing> {
+        fun with(error: Error, httpStatus: HttpStatusCode): Response<Unit> {
             return Response(
                 statusCode = httpStatus.value,
                 statusMessage = httpStatus.description,
-                content = null,
+                content = Unit,
                 error = error,
             )
         }

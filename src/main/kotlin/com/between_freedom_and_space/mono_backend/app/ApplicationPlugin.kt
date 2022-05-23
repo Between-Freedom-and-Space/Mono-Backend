@@ -20,10 +20,11 @@ fun Application.main() {
 //    install(Authentication)
 //    install(CORS)
 //    install(MicrometerMetrics)
-//    install(ExceptionHandlerPlugin) {
-//        enableLogging = true
-//        defaultHandler = BaseExceptionHandler()
-//    }
+
+    install(ExceptionHandlerPlugin) {
+        enableLogging = true
+        defaultHandler = BaseExceptionHandler()
+    }
 
     install(ContentNegotiation) {
         json(Json {

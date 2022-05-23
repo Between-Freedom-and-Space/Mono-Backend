@@ -10,15 +10,15 @@ import io.ktor.server.response.*
 
 internal fun Application.postTagsExceptionHandling() {
 
-//    exceptionHandler<TagNotFoundException> { call, exception ->
-//        exception as TagNotFoundException
-//        val response = Response.notFound(message = exception.message)
-//        call.respond(HttpStatusCode.NotFound, response)
-//    }
-//
-//    exceptionHandler<InvalidTagException> { call, exception ->
-//        exception as InvalidTagException
-//        val response = Response.badRequest(message = exception.message)
-//        call.respond(HttpStatusCode.BadRequest, response)
-//    }
+    exceptionHandler<TagNotFoundException> { call, exception ->
+        exception as TagNotFoundException
+        val response = Response.notFound(message = exception.message)
+        call.respond(HttpStatusCode.NotFound, response)
+    }
+
+    exceptionHandler<InvalidTagException> { call, exception ->
+        exception as InvalidTagException
+        val response = Response.badRequest(message = exception.message)
+        call.respond(HttpStatusCode.BadRequest, response)
+    }
 }

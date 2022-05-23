@@ -10,15 +10,15 @@ import io.ktor.server.response.*
 
 internal fun Application.authExceptionHandling() {
 
-//    exceptionHandler<InvalidTokenException> { call, exception ->
-//        exception as InvalidTokenException
-//        val response = Response.unauthorized(message = exception.message)
-//        call.respond(HttpStatusCode.Unauthorized, response)
-//    }
-//
-//    exceptionHandler<AuthenticateException> { call, exception ->
-//        exception as AuthenticateException
-//        val response = Response.unauthorized(message = exception.message)
-//        call.respond(HttpStatusCode.Unauthorized, response)
-//    }
+    exceptionHandler<InvalidTokenException> { call, exception ->
+        exception as InvalidTokenException
+        val response = Response.unauthorized(message = exception.message)
+        call.respond(HttpStatusCode.Unauthorized, response)
+    }
+
+    exceptionHandler<AuthenticateException> { call, exception ->
+        exception as AuthenticateException
+        val response = Response.unauthorized(message = exception.message)
+        call.respond(HttpStatusCode.Unauthorized, response)
+    }
 }
