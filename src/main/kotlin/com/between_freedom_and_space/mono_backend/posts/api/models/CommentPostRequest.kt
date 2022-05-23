@@ -8,6 +8,6 @@ import javax.validation.constraints.NotBlank
 data class CommentPostRequest(
 
     @SerialName("comment_text")
-    @NotBlank(message = "Comment text can't be blank")
+    @get:NotBlank(message = "Comment text can't be blank")
     val commentText: String,
 )

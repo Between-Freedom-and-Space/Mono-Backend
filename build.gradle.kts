@@ -65,6 +65,8 @@ dependencies {
     // Validation
     implementation(JavaXValidation)
     implementation(HibernateValidator)
+    implementation(JavaXUEL)
+    implementation(GlassFishUEL)
 
     // Tests
     testImplementation(KtorServerTests)

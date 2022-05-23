@@ -11,15 +11,15 @@ import io.ktor.util.pipeline.*
 private typealias CallPipeline = PipelineContext<Unit, ApplicationCall>
 
 suspend inline fun <reified T: Any> CallPipeline.validateAndReceiveRequest(): T {
-//    val requestValidator by inject<RequestValidator>()
+    val requestValidator by inject<RequestValidator>()
     val request = call.receive<T>()
 
-//    requestValidator.validateRequest(request)
-//        .takeIf { it.isNotEmpty() }
-//        .ifNotNull { violation ->
-//            val message = violation.first().message
-//            throw ValidationException(message)
-//        }
+    requestValidator.validateRequest(request)
+        .takeIf { it.isNotEmpty() }
+        .ifNotNull { violation ->
+            val message = violation.first().message
+            throw ValidationException(message)
+        }
 
     return request
 }

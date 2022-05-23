@@ -9,6 +9,8 @@ class HibernateRequestValidator: RequestValidator {
     private val validator = Validation.buildDefaultValidatorFactory().validator
 
     override fun <T> validateRequest(request: T): Set<ConstraintViolation<T>> {
-        return validator.validate(request)
+        return validator.validate(request).also {
+            val f = it
+        }
     }
 }

@@ -9,8 +9,8 @@ import javax.validation.constraints.NotBlank
 data class CreateTagRequest(
 
     @SerialName("tag_alias")
-    @NotBlank(message = "Tag alias can't be blank")
-    @Length(max = 35, message = "Tag alias length can't be more than 35")
+    @get:NotBlank(message = "Tag alias can't be blank")
+    @get:Length(max = 35, message = "Tag alias length can't be more than 35")
     val tagAlias: String,
 
     @SerialName("tag_description")

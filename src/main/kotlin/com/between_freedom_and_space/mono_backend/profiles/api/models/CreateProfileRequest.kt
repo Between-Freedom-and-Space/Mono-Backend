@@ -8,19 +8,19 @@ import javax.validation.constraints.NotBlank
 data class CreateProfileRequest(
 
     @SerialName("nickname")
-    @NotBlank(message = "Nickname can't be blank")
+    @get:NotBlank(message = "Nickname can't be blank")
     val nickName: String,
 
     @SerialName("name_alias")
-    @NotBlank(message = "Name alias can't be blank")
+    @get:NotBlank(message = "Name alias can't be blank")
     val nameAlias: String,
 
     @SerialName("password_encrypted")
-    @NotBlank(message = "Password can't be blank")
+    @get:NotBlank(message = "Password can't be blank")
     val passwordEncrypted: String,
 
     @SerialName("description")
-    @NotBlank(message = "Description can't be blank")
+    @get:NotBlank(message = "Description can't be blank")
     val description: String,
 
     @SerialName("mail")
@@ -30,6 +30,6 @@ data class CreateProfileRequest(
     val phoneNumber: String?,
 
     @SerialName("location")
-    @NotBlank(message = "Location can't be blank")
+    @get:NotBlank(message = "Location can't be blank")
     val location: String,
 )

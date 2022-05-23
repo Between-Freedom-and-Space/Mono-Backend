@@ -29,4 +29,7 @@ internal object Versions {
     const val JAVAX_VALIDATION = "2.0.1.Final"
 
     const val HIBERNATE_VALIDATOR = "6.0.13.Final"
+
+    const val JAVAX_UEL = "3.0.0"
+    const val UEL = "2.2.4"
 }

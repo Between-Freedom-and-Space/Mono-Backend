@@ -186,3 +186,15 @@ object HibernateValidator: ProjectDependency {
     override val artifact = "hibernate-validator"
     override val version = Versions.HIBERNATE_VALIDATOR
 }
+
+object JavaXUEL: ProjectDependency {
+    override val group = "javax.el"
+    override val artifact = "javax.el-api"
+    override val version = Versions.JAVAX_UEL
+}
+
+object GlassFishUEL: ProjectDependency {
+    override val group = "org.glassfish.web"
+    override val artifact = "javax.el"
+    override val version = Versions.UEL
+}

@@ -9,11 +9,11 @@ import javax.validation.constraints.NotBlank
 data class AuthenticateUserRequest(
 
     @SerialName("nickname")
-    @NotBlank(message = "Nickname can't be empty")
-    @Length(message = "Invalid nickname length", min = 3, max = 20)
+    @get:NotBlank(message = "Nickname can't be empty")
+    @get:Length(message = "Invalid nickname length. Min: 3, Max: 20", min = 3, max = 20)
     val nickname: String,
 
     @SerialName("password_encoded")
-    @NotBlank(message = "Password can't be empty")
+    @get:NotBlank(message = "Password can't be empty")
     val passwordEncoded: String,
 )

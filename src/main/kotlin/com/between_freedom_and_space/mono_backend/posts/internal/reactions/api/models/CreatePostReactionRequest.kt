@@ -12,10 +12,10 @@ data class CreatePostReactionRequest(
     val reaction: Reaction,
 
     @SerialName("post_id")
-    @Min(value = 0, message = "Post id can't be less than 0")
+    @get:Min(value = 0, message = "Post id can't be less than 0")
     val postId: Long,
 
     @SerialName("author_id")
-    @Min(value = 0, message = "Author id can't be less than 0")
+    @get:Min(value = 0, message = "Author id can't be less than 0")
     val authorId: Long,
 )
