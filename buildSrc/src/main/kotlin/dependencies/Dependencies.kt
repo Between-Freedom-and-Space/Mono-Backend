@@ -96,6 +96,18 @@ object KotlinXSerializationJson: ProjectDependency {
     override val version = Versions.KOTLINX_SERIALIZATION
 }
 
+object KtorServerNegotiation: ProjectDependency {
+    override val group = "io.ktor"
+    override val artifact = "ktor-server-content-negotiation"
+    override val version = Versions.KTOR
+}
+
+object KtorSerializationKotlinX: ProjectDependency {
+    override val group = "io.ktor"
+    override val artifact = "ktor-serialization-kotlinx-json"
+    override val version = Versions.KTOR
+}
+
 object KotlinLogger: ProjectDependency {
     override val group = "io.github.microutils"
     override val artifact = "kotlin-logging-jvm"

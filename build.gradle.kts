@@ -24,7 +24,6 @@ dependencies {
 
     // Ktor plugins and modules
     implementation(KtorServerCore)
-    implementation(KtorSerialization)
     implementation(KtorServerJetty)
     implementation(KtorServerAuth)
     implementation(KtorServerJWT)
@@ -34,7 +33,10 @@ dependencies {
     implementation(KtorCORS)
 
     // Serialization
+    implementation(KtorSerialization)
     implementation(KotlinXSerializationJson)
+    implementation(KtorServerNegotiation)
+    implementation(KtorSerializationKotlinX)
 
     // DI Koin
     implementation(KoinCore)
@@ -68,7 +70,4 @@ dependencies {
     testImplementation(KtorServerTests)
     testImplementation(KotlinJUnit)
     testImplementation(KotlinMockito)
-
-    implementation("io.ktor:ktor-server-content-negotiation:2.0.0-beta-1")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.0-beta-1")
 }
