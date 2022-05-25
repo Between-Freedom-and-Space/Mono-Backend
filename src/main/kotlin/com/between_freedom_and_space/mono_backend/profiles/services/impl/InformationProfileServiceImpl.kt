@@ -29,7 +29,7 @@ class InformationProfileServiceImpl(
     private val tagsInformationService: InformationTagsService,
     private val postReactionInformationService: InformationPostReactionsService,
     private val commentReactionInformationService: InformationCommentReactionsService,
-    private val entityMapper: UserProfileToBaseProfileModelMapper,
+    private val entityMapper: ModelMapper<UserProfile, BaseProfileModel>,
 ): InformationProfilesService {
 
     override fun getAllProfiles(pageNumber: Int, pageSize: Int): List<BaseProfileModel> {

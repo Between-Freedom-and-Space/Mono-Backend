@@ -5,6 +5,7 @@ import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileExistsRequest
 import com.between_freedom_and_space.mono_backend.profiles.api.models.SubscribeActionResponse
+import com.between_freedom_and_space.mono_backend.profiles.modules.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.services.ActionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.InvalidProfileException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.SubscribeActionResult
@@ -14,12 +15,15 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 internal fun Application.profilesActionRouting() {
     val basePath = "/profile"
 
     val actionService by inject<ActionProfilesService>()
-    val subscribeActionMapper by inject<ModelMapper<SubscribeActionResult, SubscribeActionResponse>>()
+    val subscribeActionMapper by inject<ModelMapper<SubscribeActionResult, SubscribeActionResponse>>(
+        named(ProfilesMappersQualifiers.SUBSCRIBE_RESULT_TO_SUBSCRIBE_RESPONSE)
+    )
 
     routing {
 

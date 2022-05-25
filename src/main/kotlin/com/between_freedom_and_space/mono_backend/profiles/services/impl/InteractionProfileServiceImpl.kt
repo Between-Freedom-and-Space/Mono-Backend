@@ -14,7 +14,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class InteractionProfileServiceImpl(
     private val profileRepository: CommonProfilesRepository,
-    private val entityMapper: UserProfileToBaseProfileModelMapper,
+    private val entityMapper: ModelMapper<UserProfile, BaseProfileModel>,
     private val passwordEncryptor: UserPasswordEncryptor,
 ): InteractionProfilesService {
 

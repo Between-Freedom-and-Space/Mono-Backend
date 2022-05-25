@@ -15,6 +15,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.profiles.api.mappers.BaseProfileModelToProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileModel
+import com.between_freedom_and_space.mono_backend.profiles.modules.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.InvalidProfileException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
@@ -24,12 +25,15 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 internal fun Application.profilesInformationRouting() {
     val basePath = "/profile"
 
     val informationService by inject<InformationProfilesService>()
-    val profileMapper by inject<BaseProfileModelToProfileModelMapper>()
+    val profileMapper by inject<ModelMapper<BaseProfileModel, ProfileModel>>(
+        named(ProfilesMappersQualifiers.BASE_PROFILE_TO_PROFILE_MODEL)
+    )
 
     routing {
 
@@ -112,7 +116,7 @@ internal fun Application.profilesInformationRouting() {
 
 
         get("$basePath/{nickname}/posts") {
-            val postsMapper by inject<BasePostModelToPostModelMapper>()
+            val postsMapper by inject<ModelMapper<BasePostModel, PostModel>>()
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageSize = pageParams.pageSize
