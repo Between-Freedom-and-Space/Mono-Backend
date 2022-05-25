@@ -1,12 +1,11 @@
 package com.between_freedom_and_space.mono_backend.profiles.api.routing
 
-import com.between_freedom_and_space.mono_backend.auth.components.plugin.extensions.getUserAuthorities
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.api.models.CreateProfileRequest
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.api.models.UpdateProfileRequest
-import com.between_freedom_and_space.mono_backend.profiles.modules.ProfilesMappersQualifiers
+import com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.services.InteractionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.InvalidProfileException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel

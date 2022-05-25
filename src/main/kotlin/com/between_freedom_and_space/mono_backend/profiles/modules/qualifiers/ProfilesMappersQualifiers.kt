@@ -1,4 +1,4 @@
-package com.between_freedom_and_space.mono_backend.profiles.modules
+package com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers
 
 enum class ProfilesMappersQualifiers {
     BASE_PROFILE_TO_PROFILE_MODEL,

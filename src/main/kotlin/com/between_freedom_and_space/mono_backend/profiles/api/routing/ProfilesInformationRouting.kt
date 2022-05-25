@@ -3,7 +3,6 @@ package com.between_freedom_and_space.mono_backend.profiles.api.routing
 import com.between_freedom_and_space.mono_backend.common.api.PageParams
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
-import com.between_freedom_and_space.mono_backend.posts.api.mappers.BasePostModelToPostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.CommentModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.BaseCommentModel
@@ -13,9 +12,8 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.servi
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.TagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
-import com.between_freedom_and_space.mono_backend.profiles.api.mappers.BaseProfileModelToProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileModel
-import com.between_freedom_and_space.mono_backend.profiles.modules.ProfilesMappersQualifiers
+import com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.InvalidProfileException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel

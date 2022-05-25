@@ -21,7 +21,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationPostsServiceImpl(
     private val repository: CommonPostRepository,
-    private val mapper: PostEntityToBasePostModelMapper,
+    private val mapper: ModelMapper<Post, BasePostModel>,
     private val commentsService: InformationCommentsService,
     private val tagsService: InformationTagsService,
     private val reactionsService: InformationPostReactionsService,

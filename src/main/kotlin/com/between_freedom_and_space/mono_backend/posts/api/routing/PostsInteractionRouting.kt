@@ -9,6 +9,7 @@ import com.between_freedom_and_space.mono_backend.posts.api.mappers.UpdatePostRe
 import com.between_freedom_and_space.mono_backend.posts.api.models.CreatePostRequest
 import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
 import com.between_freedom_and_space.mono_backend.posts.api.models.UpdatePostRequest
+import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.services.InteractionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.InvalidPostException
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
@@ -20,15 +21,22 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 internal fun Application.postsInteractionRouting() {
     val basePath = "/post"
 
     val interactionService by inject<InteractionPostsService>()
 
-    val postModelMapper by inject<BasePostModelToPostModelMapper>()
-    val createPostMapper by inject<CreatePostRequestToCreateModelMapper>()
-    val updatePostMapper by inject<UpdatePostRequestToUpdateModelMapper>()
+    val postModelMapper by inject<ModelMapper<BasePostModel, PostModel>>(
+        named(PostMappersQualifiers.BASE_POST_MODEL_TO_POST_MODEL)
+    )
+    val createPostMapper by inject<ModelMapper<CreatePostRequest, CreatePostModel>>(
+        named(PostMappersQualifiers.CREATE_POST_REQUEST_TO_CREATE_MODEL)
+    )
+    val updatePostMapper by inject<ModelMapper<UpdatePostRequest, UpdatePostModel>>(
+        named(PostMappersQualifiers.UPDATE_POST_REQUEST_TO_UPDATE_MODEL)
+    )
 
     routing {
 

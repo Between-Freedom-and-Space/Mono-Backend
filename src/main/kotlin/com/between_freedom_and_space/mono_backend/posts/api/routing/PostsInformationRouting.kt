@@ -11,6 +11,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.m
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BasePostReactionModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.TagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
+import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.InvalidPostException
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
@@ -21,12 +22,15 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 internal fun Application.postsInformationRouting() {
     val basePath = "/post"
 
     val informationService by inject<InformationPostsService>()
-    val baseModelMapper by inject<ModelMapper<BasePostModel, PostModel>>()
+    val baseModelMapper by inject<ModelMapper<BasePostModel, PostModel>>(
+        named(PostMappersQualifiers.BASE_POST_MODEL_TO_POST_MODEL)
+    )
 
     routing {
 
@@ -90,7 +94,9 @@ internal fun Application.postsInformationRouting() {
         }
 
         get("$basePath/{id}/reactions/count") {
-            val countMapper by inject<ModelMapper<PostReactionsCountModel, PostReactionsCountResponse>>()
+            val countMapper by inject<ModelMapper<PostReactionsCountModel, PostReactionsCountResponse>>(
+                named(PostMappersQualifiers.POST_REACTIONS_COUNT_MODEL_TO_POST_REACTIONS_COUNT_RESPONSE)
+            )
 
             val postId = getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")

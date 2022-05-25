@@ -6,6 +6,7 @@ import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.posts.api.models.CommentPostRequest
 import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
 import com.between_freedom_and_space.mono_backend.posts.api.models.ReactPostRequest
+import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.services.ActionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.InteractionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.InvalidPostException
@@ -16,13 +17,16 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 internal fun Application.postsActionRouting() {
     val basePath = "/post"
 
     val actionService by inject<ActionPostsService>()
 
-    val postMapper by inject<ModelMapper<BasePostModel, PostModel>>()
+    val postMapper by inject<ModelMapper<BasePostModel, PostModel>>(
+        named(PostMappersQualifiers.BASE_POST_MODEL_TO_POST_MODEL)
+    )
 
     routing {
 

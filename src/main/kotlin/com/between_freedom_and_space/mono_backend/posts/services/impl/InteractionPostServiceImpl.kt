@@ -24,7 +24,7 @@ class InteractionPostServiceImpl(
     private val actionTagsService: ActionTagsService,
     private val profilesRepository: CommonProfilesRepository,
     private val tagsRepository: CommonTagsRepository,
-    private val entityMapper: PostEntityToBasePostModelMapper,
+    private val entityMapper: ModelMapper<Post, BasePostModel>,
 ): InteractionPostsService {
 
     override fun createPost(authorId: Long, createPostModel: CreatePostModel): BasePostModel {
