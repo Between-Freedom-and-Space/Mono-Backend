@@ -20,6 +20,7 @@ import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVe
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.impl.TokenAuthenticateProcessor
 import com.between_freedom_and_space.mono_backend.auth.models.AuthProperties
+import com.between_freedom_and_space.mono_backend.auth.modules.AuthModelMapperQualifier.RegisterUserRequestQualifier
 import com.between_freedom_and_space.mono_backend.auth.security.JWTProcessor
 import com.between_freedom_and_space.mono_backend.auth.security.JWTVerifier
 import com.between_freedom_and_space.mono_backend.auth.security.PasswordCipher
@@ -39,15 +40,18 @@ import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val mappersModule = module {
-    single { TokenVerifyResultToVerifyResponseMapper() }
-    single { UserModelToRegisterResponseMapper() }
-    single { AuthenticateResultToAuthenticateResponseMapper() }
-    single { RegisterUserRequestToCreatModelMapper() }
-    single { ProfileToUserAuthModelMapper() }
+    single<ModelMapper<TokenVerifyResult, TokenVerifyResultResponse>>(named("as")) { TokenVerifyResultToVerifyResponseMapper() }
+    single<ModelMapper<BaseProfileModel, RegisterUserResponse>>(named("ass")) { UserModelToRegisterResponseMapper() }
+    single<ModelMapper<ProducerResult, AuthenticateUserResponse>>(named("12")) { AuthenticateResultToAuthenticateResponseMapper() }
+    single<ModelMapper<RegisterUserRequest, CreateProfileModel>>(named(RegisterUserRequestQualifier)) {
+        RegisterUserRequestToCreatModelMapper()
+    }
+    single<ModelMapper<UserProfile, UserAuthModel>>(named("333")) { ProfileToUserAuthModelMapper() }
 }
 
 private val securityModule = module {
@@ -61,6 +65,7 @@ private val pluginModule = module {
 }
 
 private val componentsModule = module {
+    // TODO(fix this)
     single { AuthProperties().apply {
         tokenSecret = "1234"
         tokenAudience = "1234"
@@ -80,6 +85,8 @@ val authModule = module {
     includes(componentsModule)
 
     single { JWTTokenAuthService(get(), get()) } bind TokenAuthService::class
-    single { CommonAuthService(get(), get(), get(), get(), get(), get(), get()) } bind AuthService::class
+    single {
+        CommonAuthService(get(), get(), get(), get(), get(), get(), get(named(RegisterUserRequestQualifier)))
+    } bind AuthService::class
     single { CommonUserProfileAuthService(get(), get()) } bind UserProfileAuthService::class
 }

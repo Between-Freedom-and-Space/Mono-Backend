@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed exception handler plugin" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed token expired handling">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/modules/AuthModuleQualifiers.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/api/routing/AuthUserRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/api/routing/AuthUserRouting.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/modules/AuthModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/modules/AuthModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -368,14 +374,7 @@
       <workItem from="1652865847344" duration="11583000" />
       <workItem from="1653154699468" duration="3674000" />
       <workItem from="1653241704321" duration="187000" />
-      <workItem from="1653331101944" duration="4453000" />
-    </task>
-    <task id="LOCAL-00014" summary="added first auth routing implementation">
-      <created>1649424383528</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1649424383528</updated>
+      <workItem from="1653331101944" duration="7439000" />
     </task>
     <task id="LOCAL-00015" summary="added auth service impl">
       <created>1649507882016</created>
@@ -713,7 +712,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653335512256</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="fixed token expired handling">
+      <created>1653335675300</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1653335675300</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -732,7 +738,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed auth service" />
     <MESSAGE value="added exception interceptor plugin" />
     <MESSAGE value="added base exception handlers" />
     <MESSAGE value="fixed extension" />
@@ -757,7 +762,8 @@
     <MESSAGE value="refactored Dependencies" />
     <MESSAGE value="fixed javax validation" />
     <MESSAGE value="fixed exception handler plugin" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed exception handler plugin" />
+    <MESSAGE value="fixed token expired handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed token expired handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -771,11 +777,6 @@
           <url>file://$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/components/impl/HibernateRequestValidator.kt</url>
           <line>12</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/impl/JWTTokenVerifier.kt</url>
-          <line>36</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

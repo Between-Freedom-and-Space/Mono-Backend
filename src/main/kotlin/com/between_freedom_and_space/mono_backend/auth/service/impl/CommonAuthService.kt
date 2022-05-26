@@ -24,12 +24,14 @@ class CommonAuthService(
     private val userAuthService: UserProfileAuthService,
     private val profileService: InteractionProfilesService,
     private val userPasswordEncryptor: UserPasswordEncryptor,
-    private val registerUserMapper: RegisterUserRequestToCreatModelMapper
+    private val registerUserMapper: ModelMapper<RegisterUserRequest, CreateProfileModel>
 ): AuthService {
 
     override fun authenticateUser(nickname: String, passwordEncoded: String): ProducerResult {
         val user = userAuthService.getProfileOrNull(nickname)
             ?: throw AuthenticateException("User with nickname: $nickname not found")
+
+        // TODO(fix this)
 //        val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
 //            user.id, user.nickName, passwordEncoded
 //        )
