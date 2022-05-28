@@ -42,7 +42,7 @@ class CommonPostRepositoryImpl: CommonPostRepository {
     }
 
     override fun createPost(authorId: EntityID<Long>, tags: Collection<PostTag>, model: CreatePostEntityModel): Post {
-        return Post.new(Random(localDateTimeNow().second).nextLong()) {
+        return Post.new {
             name = model.name
             text = model.text
             isVisible = model.isVisible

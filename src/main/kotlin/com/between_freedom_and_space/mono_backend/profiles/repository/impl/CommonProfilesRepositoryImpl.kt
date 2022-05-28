@@ -47,7 +47,7 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
     }
 
     override fun createProfile(profile: CreateProfileModel): UserProfile {
-        return UserProfile.new(Random(localDateTimeNow().second).nextLong()) {
+        return UserProfile.new {
             mail = profile.mail
             phoneNumber = profile.phoneNumber
             passwordEncrypted = profile.passwordEncrypted

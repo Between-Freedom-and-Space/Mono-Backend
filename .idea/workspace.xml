@@ -4,15 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added reactions mappers qualifiers">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/modules/qualifiers/TagsMappersQualifiers.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added post mappers qualifiers">
+      <change afterPath="$PROJECT_DIR$/clear.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/AuthenticateConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/CallLoggingConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/ContentNegotiationConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/ExceptionHandlerConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/MicrometerMetricConfiguration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/config/IgnoredPath.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/гun.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsInformationRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsInformationRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsInteractionRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/routing/PostTagsInteractionRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/modules/TagsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/modules/TagsModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/ActionTagsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/ActionTagsServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InformationTagsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InformationTagsServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InteractionPostToTagServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InteractionPostToTagServiceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/ApplicationPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/ApplicationPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticatePlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticatePlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/plugins/PostsPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/plugins/PostsPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/repository/impl/CommonPostRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/repository/impl/CommonPostRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/repository/impl/CommonProfilesRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/repository/impl/CommonProfilesRepositoryImpl.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +70,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Object" />
-        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
         <option value="Kotlin Data Class" />
-        <option value="Kotlin File" />
         <option value="Kotlin Enum" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -378,14 +386,7 @@
       <workItem from="1653154699468" duration="3674000" />
       <workItem from="1653241704321" duration="187000" />
       <workItem from="1653331101944" duration="8067000" />
-      <workItem from="1653724397587" duration="3278000" />
-    </task>
-    <task id="LOCAL-00018" summary="added pipeline context extensions and user auth service">
-      <created>1649544092576</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1649544092576</updated>
+      <workItem from="1653724397587" duration="8672000" />
     </task>
     <task id="LOCAL-00019" summary="added user auth routing implementation">
       <created>1649600067601</created>
@@ -723,7 +724,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653732328351</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="added post mappers qualifiers">
+      <created>1653732742065</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1653732742065</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -742,7 +750,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed dependencies" />
     <MESSAGE value="changed token name" />
     <MESSAGE value="added tags base routing" />
     <MESSAGE value="added comments base routing" />
@@ -767,16 +774,12 @@
     <MESSAGE value="added auth mappers qualifiers" />
     <MESSAGE value="added auth and comments mappers qualifiers" />
     <MESSAGE value="added reactions mappers qualifiers" />
-    <option name="LAST_COMMIT_MESSAGE" value="added reactions mappers qualifiers" />
+    <MESSAGE value="added post mappers qualifiers" />
+    <option name="LAST_COMMIT_MESSAGE" value="added post mappers qualifiers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/repository/impl/CommonPostRepositoryImpl.kt</url>
-          <line>34</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/components/impl/HibernateRequestValidator.kt</url>
           <line>12</line>
