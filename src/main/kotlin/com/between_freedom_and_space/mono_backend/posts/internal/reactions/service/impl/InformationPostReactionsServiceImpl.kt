@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationPostReactionsServiceImpl(
     private val reactionRepository: CommonPostReactionsRepository,
-    private val entityMapper: PostReactionEntityToBaseModelMapper
+    private val entityMapper: ModelMapper<PostReaction, BasePostReactionModel>
 ): InformationPostReactionsService {
 
     override fun getAllReactions(pageNumber: Int, pageSize: Int): List<BasePostReactionModel> {
