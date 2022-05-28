@@ -6,6 +6,7 @@ import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.CommentModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.CreateCommentRequest
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.UpdateCommentRequest
+import com.between_freedom_and_space.mono_backend.posts.internal.comments.modules.qualifiers.CommentsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.InteractionCommentsService
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.exceptions.InvalidCommentException
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.BaseCommentModel
@@ -17,15 +18,22 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 internal fun Application.commentsInteractionRouting() {
     val basePath = "/comment"
 
     val interactionService by inject<InteractionCommentsService>()
 
-    val createMapper by inject<ModelMapper<CreateCommentRequest, CreateCommentModel>>()
-    val updateMapper by inject<ModelMapper<UpdateCommentRequest, UpdateCommentModel>>()
-    val baseMapper by inject<ModelMapper<BaseCommentModel, CommentModel>>()
+    val createMapper by inject<ModelMapper<CreateCommentRequest, CreateCommentModel>>(
+        named(CommentsMappersQualifiers.CREATE_COMMENT_REQUEST_TO_CREATE_MODEL)
+    )
+    val updateMapper by inject<ModelMapper<UpdateCommentRequest, UpdateCommentModel>>(
+        named(CommentsMappersQualifiers.UPDATE_COMMENT_REQUEST_TO_UPDATE_MODEL)
+    )
+    val baseMapper by inject<ModelMapper<BaseCommentModel, CommentModel>>(
+        named(CommentsMappersQualifiers.BASE_COMMENT_TO_COMMENT_MODEL)
+    )
 
     routing {
 

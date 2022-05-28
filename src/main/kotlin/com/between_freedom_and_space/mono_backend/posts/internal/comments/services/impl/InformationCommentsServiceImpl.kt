@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationCommentsServiceImpl(
     private val commentRepository: CommonCommentsRepository,
-    private val entityMapper: CommentEntityToBaseModelMapper,
+    private val entityMapper: ModelMapper<PostComment, BaseCommentModel>,
 ): InformationCommentsService {
 
     override fun getAllComments(pageNumber: Int, pageSize: Int): List<BaseCommentModel> {

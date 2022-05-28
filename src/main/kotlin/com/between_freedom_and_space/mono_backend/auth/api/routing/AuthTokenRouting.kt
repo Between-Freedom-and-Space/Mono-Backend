@@ -3,6 +3,7 @@ package com.between_freedom_and_space.mono_backend.auth.api.routing
 import com.between_freedom_and_space.mono_backend.auth.api.models.TokenVerifyResultResponse
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.InvalidTokenException
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
+import com.between_freedom_and_space.mono_backend.auth.modules.qualifiers.AuthModelMapperQualifier
 import com.between_freedom_and_space.mono_backend.auth.service.TokenAuthService
 import com.between_freedom_and_space.mono_backend.auth.util.AuthConstants
 import com.between_freedom_and_space.mono_backend.common.api.Response
@@ -10,12 +11,15 @@ import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.util.extensions.*
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 internal fun Application.authTokenRouting() {
     val basePath = "/auth/token"
 
     val authService by inject<TokenAuthService>()
-    val tokenMapper by inject<ModelMapper<TokenVerifyResult, TokenVerifyResultResponse>>()
+    val tokenMapper by inject<ModelMapper<TokenVerifyResult, TokenVerifyResultResponse>>(
+        named(AuthModelMapperQualifier.TOKEN_VERIFY_RESULT_TO_RESPONSE)
+    )
 
     routing {
 
