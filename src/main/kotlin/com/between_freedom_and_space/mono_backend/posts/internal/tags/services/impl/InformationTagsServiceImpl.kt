@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationTagsServiceImpl(
     private val tagRepository: CommonTagsRepository,
-    private val baseMapper: TagEntityToBaseModelMapper,
+    private val baseMapper: ModelMapper<PostTag, BaseTagModel>,
 ): InformationTagsService {
 
     override fun getAllTags(pageNumber: Int, pageSize: Int): List<BaseTagModel> {

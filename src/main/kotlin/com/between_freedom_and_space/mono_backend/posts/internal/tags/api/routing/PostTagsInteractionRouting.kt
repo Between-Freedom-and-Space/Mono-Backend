@@ -6,6 +6,7 @@ import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.CreateTagRequest
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.TagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.UpdateTagRequest
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.modules.qualifiers.TagsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InteractionTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.exception.InvalidTagException
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
@@ -17,6 +18,7 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 @Suppress("DuplicatedCode")
 internal fun Application.postTagsInteractionRouting() {
@@ -24,9 +26,15 @@ internal fun Application.postTagsInteractionRouting() {
 
     val interactionService by inject<InteractionTagsService>()
 
-    val createMapper by inject<ModelMapper<CreateTagRequest, CreateTagModel>>()
-    val updateMapper by inject<ModelMapper<UpdateTagRequest, UpdateTagModel>>()
-    val baseMapper by inject<ModelMapper<BaseTagModel, TagModel>>()
+    val createMapper by inject<ModelMapper<CreateTagRequest, CreateTagModel>>(
+        named(TagsMappersQualifiers.CREATE_TAG_REQUEST_TO_MODEL)
+    )
+    val updateMapper by inject<ModelMapper<UpdateTagRequest, UpdateTagModel>>(
+        named(TagsMappersQualifiers.UPDATE_TAG_REQUEST_TO_MODEL)
+    )
+    val baseMapper by inject<ModelMapper<BaseTagModel, TagModel>>(
+        named(TagsMappersQualifiers.BASE_TAG_MODEL_TO_MODEL)
+    )
 
     routing {
 

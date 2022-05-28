@@ -4,6 +4,7 @@ import com.between_freedom_and_space.mono_backend.common.api.PageParams
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.TagModel
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.modules.qualifiers.TagsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InformationTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.exception.InvalidTagException
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
@@ -13,12 +14,15 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 internal fun Application.postTagsInformationRouting() {
     val basePath = "/tag"
 
     val informationService by inject<InformationTagsService>()
-    val baseMapper by inject<ModelMapper<BaseTagModel, TagModel>>()
+    val baseMapper by inject<ModelMapper<BaseTagModel, TagModel>>(
+        named(TagsMappersQualifiers.BASE_TAG_MODEL_TO_MODEL)
+    )
 
     routing {
 

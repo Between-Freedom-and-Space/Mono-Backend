@@ -16,7 +16,7 @@ class InteractionPostToTagServiceImpl(
     private val postToTagRepository: CommonPostToTagRepository,
     private val postRepository: CommonPostRepository,
     private val tagsRepository: CommonTagsRepository,
-    private val entityMapper: TagEntityToBaseModelMapper,
+    private val entityMapper: ModelMapper<PostTag, BaseTagModel>,
 ): InteractionPostToTagService {
 
     override fun deleteAllPostTags(postId: Long): List<BaseTagModel> {

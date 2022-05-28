@@ -8,11 +8,12 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.e
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.mappers.TagEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.CreateTagModel
+import org.h2.engine.Mode
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class ActionTagsServiceImpl(
     private val tagsRepository: CommonTagsRepository,
-    private val entityMapper: TagEntityToBaseModelMapper
+    private val entityMapper: ModelMapper<PostTag, BaseTagModel>
 ): ActionTagsService {
 
     override fun getOrCreateTagsWithAliases(aliases: Collection<String>): List<BaseTagModel> {
