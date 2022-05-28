@@ -25,6 +25,7 @@ class InteractionPostServiceImpl(
     private val profilesRepository: CommonProfilesRepository,
     private val tagsRepository: CommonTagsRepository,
     private val entityMapper: ModelMapper<Post, BasePostModel>,
+    private val createEntityMapper: ModelMapper<CreatePostModel, CreatePostEntityModel>
 ): InteractionPostsService {
 
     override fun createPost(authorId: Long, createPostModel: CreatePostModel): BasePostModel {
@@ -34,12 +35,7 @@ class InteractionPostServiceImpl(
             val tagModels = actionTagsService.getOrCreateTagsWithAliases(createPostModel.tagsAliases)
             val tagsEntities = tagsRepository.getAllTagsWithIds(tagModels.map { it.id })
 
-            // TODO(Add model mapper)
-            val createPost = CreatePostEntityModel(
-                name = createPostModel.name,
-                text = createPostModel.text,
-                isVisible = createPostModel.isVisible,
-            )
+            val createPost = createEntityMapper.map(createPostModel)
             val entity = postRepository.createPost(profile.id, tagsEntities, createPost)
             entityMapper.map(entity)
         }

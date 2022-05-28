@@ -12,29 +12,21 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class CommonUserProfileAuthService(
     private val profileRepository: CommonProfilesRepository,
-    private val profileEntityMapper: ModelMapper<UserProfile, BaseProfileModel>
+    private val profileEntityMapper: ModelMapper<UserProfile, UserAuthModel>
 ): UserProfileAuthService {
 
     override fun getProfileOrNull(id: Long): UserAuthModel? {
         val entity = transaction {
             profileRepository.getProfileById(id)
         }
-        // TODO (user model mapper)
-        return entity?.transform { UserAuthModel(
-            id = it.id.value,
-            nickName = it.nickName,
-            passwordEncrypted = it.passwordEncrypted
-        ) }
+
+        return entity?.let { profileEntityMapper.map(it) }
     }
 
     override fun getProfileOrNull(nickName: String): UserAuthModel? {
         val entity = transaction {
             profileRepository.getProfileByNickname(nickName)
         }
-        return entity?.transform { UserAuthModel(
-            id = it.id.value,
-            nickName = it.nickName,
-            passwordEncrypted = it.passwordEncrypted
-        ) }
+        return entity?.let { profileEntityMapper.map(it) }
     }
 }

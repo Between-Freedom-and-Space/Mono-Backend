@@ -103,6 +103,6 @@ val authModule = module {
     } bind AuthService::class
     single { CommonUserProfileAuthService(
         get(),
-        get()
+        get(named(AuthModelMapperQualifier.USER_PROFILE_TO_AUTH_MODEL))
     ) } bind UserProfileAuthService::class
 }

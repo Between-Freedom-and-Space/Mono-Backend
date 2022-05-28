@@ -2,6 +2,7 @@ package com.between_freedom_and_space.mono_backend.app
 
 import com.between_freedom_and_space.mono_backend.access.plugin.addAccessPlugin
 import com.between_freedom_and_space.mono_backend.app.config.configure
+import com.between_freedom_and_space.mono_backend.app.config.configureDatabase
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticatePlugin
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.config.IgnoredPath
 import com.between_freedom_and_space.mono_backend.auth.plugins.addAuthPlugin
@@ -24,6 +25,8 @@ fun Application.main() {
     // Plugins
 //    install(Authentication)
 //    install(CORS)
+
+    configureDatabase()
 
     install(CallLogging) { configure() }
     install(MicrometerMetrics) { configure(this@main) }

@@ -16,12 +16,14 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.modules.ta
 import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
 import com.between_freedom_and_space.mono_backend.posts.repository.impl.CommonPostRepositoryImpl
+import com.between_freedom_and_space.mono_backend.posts.repository.models.CreatePostEntityModel
 import com.between_freedom_and_space.mono_backend.posts.services.ActionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.InteractionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.impl.ActionPostsServiceImpl
 import com.between_freedom_and_space.mono_backend.posts.services.impl.InformationPostsServiceImpl
 import com.between_freedom_and_space.mono_backend.posts.services.impl.InteractionPostServiceImpl
+import com.between_freedom_and_space.mono_backend.posts.services.mappers.CreatePostModelToCreateEntityMapper
 import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.CreatePostModel
@@ -48,6 +50,9 @@ private val mappersModule = module {
     single<ModelMapper<BasePostModel, PostModel>>(
         named(PostMappersQualifiers.BASE_POST_MODEL_TO_POST_MODEL)
     ) { BasePostModelToPostModelMapper() }
+    single<ModelMapper<CreatePostModel, CreatePostEntityModel>>(
+        named(PostMappersQualifiers.CREATE_POST_MODEL_TO_CREATE_ENTITY)
+    ) { CreatePostModelToCreateEntityMapper() }
 }
 
 private val serviceModule = module {
@@ -61,7 +66,8 @@ private val serviceModule = module {
     ) } bind ActionPostsService::class
     single { InteractionPostServiceImpl(
         get(), get(), get(), get(), get(),
-        get(named(PostMappersQualifiers.POST_TO_BASE_POST_MODEL))
+        get(named(PostMappersQualifiers.POST_TO_BASE_POST_MODEL)),
+        get(named(PostMappersQualifiers.CREATE_POST_MODEL_TO_CREATE_ENTITY))
     ) } bind InteractionPostsService::class
 }
 
