@@ -16,6 +16,8 @@ import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.services.InteractionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
+import com.between_freedom_and_space.mono_backend.profiles.services.models.UpdateProfileModel
+import org.jetbrains.exposed.sql.transactions.transaction
 
 class CommonAuthService(
     private val tokenVerifier: TokenVerifier,
@@ -31,12 +33,11 @@ class CommonAuthService(
         val user = userAuthService.getProfileOrNull(nickname)
             ?: throw AuthenticateException("User with nickname: $nickname not found")
 
-        // TODO(fix this)
-//        val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
-//            user.id, user.nickName, passwordEncoded
-//        )
+        val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
+            user.id, user.nickName, passwordEncoded
+        )
 
-        if (user.passwordEncrypted != passwordEncoded) {
+        if (user.passwordEncrypted != encryptedPassword) {
             throw AuthenticateException("Invalid user password")
         }
 
@@ -45,7 +46,16 @@ class CommonAuthService(
 
     override fun registerNewUser(user: RegisterUserRequest): BaseProfileModel {
         val createProfileModel = registerUserMapper.map(user)
-        return profileService.createProfile(createProfileModel)
+
+        return transaction {
+            val newProfile = profileService.createProfile(createProfileModel)
+            val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
+                newProfile.id, newProfile.nickName, createProfileModel.passwordEncrypted
+            )
+            val updateModel = UpdateProfileModel(newPasswordEncrypted = encryptedPassword)
+
+            profileService.updateProfile(newProfile.id, updateModel)
+        }
     }
 
     override fun deleteUser(accessToken: String): BaseProfileModel {
