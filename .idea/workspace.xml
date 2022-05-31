@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added configuration properties">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed passwords encoding">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/models/UpdateProfileModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/models/UpdateProfileModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -373,14 +373,7 @@
       <workItem from="1653154699468" duration="3674000" />
       <workItem from="1653241704321" duration="187000" />
       <workItem from="1653331101944" duration="8067000" />
-      <workItem from="1653724397587" duration="15768000" />
-    </task>
-    <task id="LOCAL-00022" summary="added putting authorities to context attributes">
-      <created>1649969566367</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1649969566367</updated>
+      <workItem from="1653724397587" duration="17324000" />
     </task>
     <task id="LOCAL-00023" summary="added access entities">
       <created>1650048399387</created>
@@ -718,7 +711,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654022894477</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="fixed passwords encoding">
+      <created>1654025364593</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1654025364593</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -737,7 +737,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added reaction base routing" />
     <MESSAGE value="added profile information service implementation" />
     <MESSAGE value="added action and interaction profile service implementation" />
     <MESSAGE value="added post services implementation" />
@@ -762,7 +761,8 @@
     <MESSAGE value="added configurations, fixed auth plugin and added shadow plugin for fat jars" />
     <MESSAGE value="fixed some todo-s" />
     <MESSAGE value="added configuration properties" />
-    <option name="LAST_COMMIT_MESSAGE" value="added configuration properties" />
+    <MESSAGE value="fixed passwords encoding" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed passwords encoding" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
