@@ -5,12 +5,16 @@ import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.CommentModel
+import com.between_freedom_and_space.mono_backend.posts.internal.comments.modules.qualifiers.CommentsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.BaseCommentModel
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.models.ReactionModel
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.modules.qualifiers.ReactionsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BaseCommentReactionModel
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BasePostReactionModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.TagModel
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.modules.qualifiers.TagsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
+import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers.ProfilesMappersQualifiers
@@ -114,7 +118,9 @@ internal fun Application.profilesInformationRouting() {
 
 
         get("$basePath/{nickname}/posts") {
-            val postsMapper by inject<ModelMapper<BasePostModel, PostModel>>()
+            val postsMapper by inject<ModelMapper<BasePostModel, PostModel>>(
+                named(PostMappersQualifiers.BASE_POST_MODEL_TO_POST_MODEL)
+            )
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageSize = pageParams.pageSize
@@ -131,7 +137,9 @@ internal fun Application.profilesInformationRouting() {
         }
 
         get("$basePath/{nickname}/comments") {
-            val commentsMapper by inject<ModelMapper<BaseCommentModel, CommentModel>>()
+            val commentsMapper by inject<ModelMapper<BaseCommentModel, CommentModel>>(
+                named(CommentsMappersQualifiers.BASE_COMMENT_TO_COMMENT_MODEL)
+            )
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageSize = pageParams.pageSize
@@ -148,7 +156,9 @@ internal fun Application.profilesInformationRouting() {
         }
 
         get("$basePath/{nickname}/tags") {
-            val tagsMapper by inject<ModelMapper<BaseTagModel, TagModel>>()
+            val tagsMapper by inject<ModelMapper<BaseTagModel, TagModel>>(
+                named(TagsMappersQualifiers.BASE_TAG_MODEL_TO_MODEL)
+            )
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageSize = pageParams.pageSize
@@ -165,7 +175,9 @@ internal fun Application.profilesInformationRouting() {
         }
 
         get("$basePath/{nickname}/post/reactions") {
-            val reactionsMapper by inject<ModelMapper<BasePostReactionModel, ReactionModel>>()
+            val reactionsMapper by inject<ModelMapper<BasePostReactionModel, ReactionModel>>(
+                named(ReactionsMappersQualifiers.BASE_POST_REACTION_TO_MODEL)
+            )
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageSize = pageParams.pageSize
@@ -182,7 +194,9 @@ internal fun Application.profilesInformationRouting() {
         }
 
         get("$basePath/{nickname}/comment/reactions") {
-            val reactionsMapper by inject<ModelMapper<BaseCommentReactionModel, ReactionModel>>()
+            val reactionsMapper by inject<ModelMapper<BaseCommentReactionModel, ReactionModel>>(
+                named(ReactionsMappersQualifiers.BASE_COMMENT_REACTION_TO_MODEL)
+            )
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageSize = pageParams.pageSize

@@ -15,6 +15,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.InformationPost
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
 import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
+import com.between_freedom_and_space.mono_backend.posts.services.models.PostCommentsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel.ReactionToCount
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -72,6 +73,10 @@ class InformationPostsServiceImpl(
                 ReactionToCount(entry.key, entry.value)
             }
         )
+    }
+
+    override fun getPostCommentsCount(postId: Long): PostCommentsCountModel {
+        TODO("Not yet implemented")
     }
 
     override fun getPostsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<BasePostModel> {

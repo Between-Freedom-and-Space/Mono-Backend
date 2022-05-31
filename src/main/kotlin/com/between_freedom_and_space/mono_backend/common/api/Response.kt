@@ -78,6 +78,14 @@ data class Response <T: Any>(
             return with(error, HttpStatusCode.NotFound)
         }
 
+        fun internalServerError(errorId: Long? = null, message: String? = null): Response<Unit> {
+            val error = Error(
+                errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
+                message = message ?: DEFAULT_MESSAGE
+            )
+            return with(error, HttpStatusCode.InternalServerError)
+        }
+
         fun with(error: Error, httpStatus: HttpStatusCode): Response<Unit> {
             return Response(
                 statusCode = httpStatus.value,

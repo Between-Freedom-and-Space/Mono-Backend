@@ -62,8 +62,8 @@ private val serviceModule = module {
     } bind InformationProfilesService::class
     single { ActionProfileServiceImpl(get(), get()) } bind ActionProfilesService::class
     single { InteractionProfileServiceImpl(
-        get(), get(named(ProfilesMappersQualifiers.USER_PROFILE_TO_BASE_PROFILE)),
-        get()
+        get(),
+        get(named(ProfilesMappersQualifiers.USER_PROFILE_TO_BASE_PROFILE))
     ) } bind InteractionProfilesService::class
 }
 

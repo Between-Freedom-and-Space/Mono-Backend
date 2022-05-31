@@ -15,7 +15,6 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class InteractionProfileServiceImpl(
     private val profileRepository: CommonProfilesRepository,
     private val entityMapper: ModelMapper<UserProfile, BaseProfileModel>,
-    private val passwordEncryptor: UserPasswordEncryptor,
 ): InteractionProfilesService {
 
     override fun createProfile(createModel: CreateProfileModel): BaseProfileModel {
@@ -72,11 +71,6 @@ class InteractionProfileServiceImpl(
         updateModel.newNameAlias?.let { profile.nameAlias = it }
         updateModel.newNickName?.let { profile.nickName = it }
         updateModel.newPhoneNumber?.let { profile.phoneNumber = it }
-        updateModel.newPasswordEncrypted?.let { password ->
-            val id = profile.id.value
-            val nickname = profile.nickName
-            val encryptedPassword = passwordEncryptor.encryptUserPassword(id, nickname, password)
-            profile.passwordEncrypted = encryptedPassword
-        }
+        updateModel.newPasswordEncrypted?.let { profile.passwordEncrypted = it }
     }
 }
