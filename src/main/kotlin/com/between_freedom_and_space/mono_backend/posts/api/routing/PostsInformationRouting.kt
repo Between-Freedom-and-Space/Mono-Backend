@@ -3,18 +3,23 @@ package com.between_freedom_and_space.mono_backend.posts.api.routing
 import com.between_freedom_and_space.mono_backend.common.api.PageParams
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.posts.api.models.PostCommentsCountResponse
 import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
 import com.between_freedom_and_space.mono_backend.posts.api.models.PostReactionsCountResponse
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.api.models.CommentModel
+import com.between_freedom_and_space.mono_backend.posts.internal.comments.modules.qualifiers.CommentsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.BaseCommentModel
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.models.ReactionModel
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.modules.qualifiers.ReactionsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BasePostReactionModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.api.models.TagModel
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.modules.qualifiers.TagsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.InvalidPostException
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
+import com.between_freedom_and_space.mono_backend.posts.services.models.PostCommentsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
 import com.between_freedom_and_space.mono_backend.util.extensions.getPathParameter
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
@@ -60,7 +65,9 @@ internal fun Application.postsInformationRouting() {
         }
 
         get("$basePath/{id}/comments") {
-            val commentMapper by inject<ModelMapper<BaseCommentModel, CommentModel>>()
+            val commentMapper by inject<ModelMapper<BaseCommentModel, CommentModel>>(
+                named(CommentsMappersQualifiers.BASE_COMMENT_TO_COMMENT_MODEL)
+            )
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageNumber = pageParams.pageNumber
@@ -77,7 +84,9 @@ internal fun Application.postsInformationRouting() {
         }
 
         get("$basePath/{id}/reactions") {
-            val reactionMapper by inject<ModelMapper<BasePostReactionModel, ReactionModel>>()
+            val reactionMapper by inject<ModelMapper<BasePostReactionModel, ReactionModel>>(
+                named(ReactionsMappersQualifiers.BASE_POST_REACTION_TO_MODEL)
+            )
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageNumber = pageParams.pageNumber
@@ -109,8 +118,26 @@ internal fun Application.postsInformationRouting() {
             sendResponse(response)
         }
 
+        get("$basePath/{id}/comments/count") {
+            val countMapper by inject<ModelMapper<PostCommentsCountModel, PostCommentsCountResponse>>(
+                named(PostMappersQualifiers.POST_COMMENTS_COUNT_MODEL_TO_POST_COMMENTS_COUNT_RESPONSE)
+            )
+
+            val postId = getPathParameter("id")?.toLong()
+                ?: throw InvalidPostException("Post id is not presented")
+
+            val countModel = informationService.getPostCommentsCount(postId)
+
+            val countResponse = countMapper.map(countModel)
+            val response = Response.ok(countResponse)
+
+            sendResponse(response)
+        }
+
         get("$basePath/{id}/tags") {
-            val tagMapper by inject<ModelMapper<BaseTagModel, TagModel>>()
+            val tagMapper by inject<ModelMapper<BaseTagModel, TagModel>>(
+                named(TagsMappersQualifiers.BASE_TAG_MODEL_TO_MODEL)
+            )
 
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageNumber = pageParams.pageNumber

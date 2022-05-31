@@ -1,14 +1,8 @@
 package com.between_freedom_and_space.mono_backend.posts.modules
 
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
-import com.between_freedom_and_space.mono_backend.posts.api.mappers.BasePostModelToPostModelMapper
-import com.between_freedom_and_space.mono_backend.posts.api.mappers.CreatePostRequestToCreateModelMapper
-import com.between_freedom_and_space.mono_backend.posts.api.mappers.PostReactionsCountToReactionsCountResponseMapper
-import com.between_freedom_and_space.mono_backend.posts.api.mappers.UpdatePostRequestToUpdateModelMapper
-import com.between_freedom_and_space.mono_backend.posts.api.models.CreatePostRequest
-import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
-import com.between_freedom_and_space.mono_backend.posts.api.models.PostReactionsCountResponse
-import com.between_freedom_and_space.mono_backend.posts.api.models.UpdatePostRequest
+import com.between_freedom_and_space.mono_backend.posts.api.mappers.*
+import com.between_freedom_and_space.mono_backend.posts.api.models.*
 import com.between_freedom_and_space.mono_backend.posts.entities.post.Post
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.modules.commentsModule
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.modules.reactionsModule
@@ -25,10 +19,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.impl.Informatio
 import com.between_freedom_and_space.mono_backend.posts.services.impl.InteractionPostServiceImpl
 import com.between_freedom_and_space.mono_backend.posts.services.mappers.CreatePostModelToCreateEntityMapper
 import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
-import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
-import com.between_freedom_and_space.mono_backend.posts.services.models.CreatePostModel
-import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
-import com.between_freedom_and_space.mono_backend.posts.services.models.UpdatePostModel
+import com.between_freedom_and_space.mono_backend.posts.services.models.*
 import com.between_freedom_and_space.mono_backend.profiles.repository.impl.CommonProfilesRepositoryImpl
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
@@ -53,6 +44,9 @@ private val mappersModule = module {
     single<ModelMapper<CreatePostModel, CreatePostEntityModel>>(
         named(PostMappersQualifiers.CREATE_POST_MODEL_TO_CREATE_ENTITY)
     ) { CreatePostModelToCreateEntityMapper() }
+    single<ModelMapper<PostCommentsCountModel, PostCommentsCountResponse>>(
+        named(PostMappersQualifiers.POST_COMMENTS_COUNT_MODEL_TO_POST_COMMENTS_COUNT_RESPONSE)
+    ) { PostCommentsCountToCommentsCountResponse() }
 }
 
 private val serviceModule = module {

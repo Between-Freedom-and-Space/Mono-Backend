@@ -76,7 +76,15 @@ class InformationPostsServiceImpl(
     }
 
     override fun getPostCommentsCount(postId: Long): PostCommentsCountModel {
-        TODO("Not yet implemented")
+        val commentsCount = transaction {
+            val postEntity = getPostOrThrow(postId)
+            postEntity.comments.count()
+        }
+
+        return PostCommentsCountModel(
+            postId = postId,
+            commentsCount = commentsCount,
+        )
     }
 
     override fun getPostsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<BasePostModel> {
