@@ -19,9 +19,10 @@ import io.ktor.server.routing.*
 import io.micrometer.prometheus.PrometheusConfig
 import io.micrometer.prometheus.PrometheusMeterRegistry
 import kotlinx.serialization.json.Json
+import org.koin.core.KoinApplication
 import org.slf4j.event.Level
 
-fun Application.main() {
+fun Application.main(koin: KoinApplication) {
     // Plugins
 //    install(Authentication)
 //    install(CORS)

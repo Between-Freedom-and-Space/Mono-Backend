@@ -4,14 +4,17 @@ import com.between_freedom_and_space.mono_backend.app.config.configureDatabase
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
 fun main() {
 
-    startKoin {
-        modules(applicationModule)
-    }
-
     embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
-        main()
+        val koin = startKoin {
+            modules(applicationModule, module {
+                single { this@embeddedServer }
+            })
+        }
+
+        main(koin)
     }.start(wait = true)
 }

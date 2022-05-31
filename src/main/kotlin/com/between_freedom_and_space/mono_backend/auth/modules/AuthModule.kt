@@ -19,8 +19,9 @@ import com.between_freedom_and_space.mono_backend.auth.components.impl.PBKDF2Use
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.impl.TokenAuthenticateProcessor
-import com.between_freedom_and_space.mono_backend.auth.models.AuthProperties
+import com.between_freedom_and_space.mono_backend.auth.plugins.config.properties.AuthProperties
 import com.between_freedom_and_space.mono_backend.auth.modules.qualifiers.AuthModelMapperQualifier
+import com.between_freedom_and_space.mono_backend.auth.plugins.config.authConfiguration
 import com.between_freedom_and_space.mono_backend.auth.security.JWTProcessor
 import com.between_freedom_and_space.mono_backend.auth.security.JWTVerifier
 import com.between_freedom_and_space.mono_backend.auth.security.PasswordCipher
@@ -40,6 +41,8 @@ import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
+import com.between_freedom_and_space.mono_backend.util.extensions.inject
+import io.ktor.server.application.*
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -75,12 +78,8 @@ private val pluginModule = module {
 }
 
 private val componentsModule = module {
-    // TODO(fix this)
-    single { AuthProperties().apply {
-        tokenSecret = "1234"
-        tokenAudience = "1234"
-        tokenIssuer = "asdasd"
-    } }
+    val application by inject<Application>()
+    single { application.authConfiguration() }
 
     single { JWTTokenParser(get()) } bind TokenParser::class
     single { JWTTokenVerifier(get(), get()) } bind TokenVerifier::class

@@ -5,7 +5,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException
 import com.between_freedom_and_space.mono_backend.auth.components.TokenVerifier
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.util.TokenConstants
-import com.between_freedom_and_space.mono_backend.auth.models.AuthProperties
+import com.between_freedom_and_space.mono_backend.auth.plugins.config.properties.AuthProperties
 import com.between_freedom_and_space.mono_backend.auth.security.JWTVerifier
 import com.between_freedom_and_space.mono_backend.auth.security.models.JWTParams
 
