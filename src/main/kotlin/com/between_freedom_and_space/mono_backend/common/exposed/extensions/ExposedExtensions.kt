@@ -1,6 +1,5 @@
-package com.between_freedom_and_space.mono_backend.common.exposed
+package com.between_freedom_and_space.mono_backend.common.exposed.extensions
 
-import com.between_freedom_and_space.mono_backend.common.exposed.exists
 import org.jetbrains.exposed.sql.*
 
 fun <T: FieldSet> T.exists(where: SqlExpressionBuilder.() -> Op<Boolean>): Boolean {

@@ -48,8 +48,6 @@ class CommonPostRepositoryImpl: CommonPostRepository {
             isVisible = model.isVisible
             author = authorId
             this.tags = SizedCollection(tags)
-            createdDate = localDateTimeNow()
-            updatedDate = localDateTimeNow()
         }
     }
 

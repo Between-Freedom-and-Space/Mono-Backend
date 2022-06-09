@@ -17,5 +17,5 @@ object AccessRulesTable: LongIdTable("access_settings") {
 
     val createdDate = datetime("created_date").clientDefault { localDateTimeNow() }
 
-    val updatedDate = datetime("updated_date")
+    val updatedDate = datetime("updated_date").clientDefault { localDateTimeNow() }
 }

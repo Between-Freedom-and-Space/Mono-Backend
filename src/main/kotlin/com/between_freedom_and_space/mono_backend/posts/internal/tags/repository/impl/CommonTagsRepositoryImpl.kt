@@ -1,6 +1,6 @@
 package com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.impl
 
-import com.between_freedom_and_space.mono_backend.common.exposed.exists
+import com.between_freedom_and_space.mono_backend.common.exposed.extensions.exists
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.models.PostTag
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.models.PostToTag
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.tables.PostTagsTable

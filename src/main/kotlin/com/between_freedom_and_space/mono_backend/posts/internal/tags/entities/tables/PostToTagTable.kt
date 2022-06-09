@@ -21,5 +21,5 @@ object PostToTagTable: LongIdTable("post_to_tag") {
 
     var createdDate = datetime("created_date").clientDefault { localDateTimeNow() }
 
-    var updatedDate = datetime("updated_date")
+    var updatedDate = datetime("updated_date").clientDefault { localDateTimeNow() }
 }

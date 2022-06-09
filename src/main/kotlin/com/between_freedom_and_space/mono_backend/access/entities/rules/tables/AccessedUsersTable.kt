@@ -25,5 +25,5 @@ object AccessedUsersTable: LongIdTable("accessed_users") {
 
     val createdDate = datetime("created_date").clientDefault { localDateTimeNow() }
 
-    val updatedDate = datetime("updated_date")
+    val updatedDate = datetime("updated_date").clientDefault { localDateTimeNow() }
 }

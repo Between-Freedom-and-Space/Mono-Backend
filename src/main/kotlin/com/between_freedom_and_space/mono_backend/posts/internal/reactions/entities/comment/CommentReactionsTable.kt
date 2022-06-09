@@ -26,5 +26,5 @@ object CommentReactionsTable: LongIdTable("comment_reactions") {
 
     val createdDate = datetime("created_date").clientDefault { localDateTimeNow() }
 
-    val updatedDate = datetime("updated_date")
+    val updatedDate = datetime("updated_date").clientDefault { localDateTimeNow() }
 }

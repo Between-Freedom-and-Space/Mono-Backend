@@ -1,17 +1,13 @@
 package com.between_freedom_and_space.mono_backend.profiles.repository.impl
 
-import com.between_freedom_and_space.mono_backend.common.exposed.exists
+import com.between_freedom_and_space.mono_backend.common.exposed.extensions.exists
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.entities.tables.UserProfilesTable
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
 import com.between_freedom_and_space.mono_backend.profiles.repository.exceptions.ProfileAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
-import com.between_freedom_and_space.mono_backend.util.extensions.ifNull
-import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
-import kotlinx.datetime.LocalDateTime
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.*
-import kotlin.random.Random
 
 class CommonProfilesRepositoryImpl: CommonProfilesRepository {
 
@@ -55,8 +51,6 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
             nameAlias = profile.nameAlias
             description = profile.description
             locataion = profile.description
-            createdDate = localDateTimeNow()
-            updatedDate = localDateTimeNow()
         }
     }
 
