@@ -50,7 +50,7 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
             nickName = profile.nickName
             nameAlias = profile.nameAlias
             description = profile.description
-            locataion = profile.description
+            location = profile.description
         }
     }
 

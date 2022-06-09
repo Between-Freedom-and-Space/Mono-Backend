@@ -7,23 +7,23 @@ import kotlinx.serialization.Serializable
 data class UpdateProfileRequest(
 
     @SerialName("new_nickname")
-    val newNickName: String?,
+    val newNickName: String? = null,
 
     @SerialName("new_name_alias")
-    val newNameAlias: String?,
+    val newNameAlias: String? = null,
 
     @SerialName("new_password_encrypted")
-    val newPasswordEncrypted: String?,
+    val newPasswordEncrypted: String? = null,
 
     @SerialName("new_description")
-    val newDescription: String?,
+    val newDescription: String? = null,
 
     @SerialName("new_mail")
-    val newMail: String?,
+    val newMail: String? = null,
 
     @SerialName("new_phone_number")
-    val newPhoneNumber: String?,
+    val newPhoneNumber: String? = null,
 
     @SerialName("new_location")
-    val newLocation: String?,
+    val newLocation: String? = null,
 )

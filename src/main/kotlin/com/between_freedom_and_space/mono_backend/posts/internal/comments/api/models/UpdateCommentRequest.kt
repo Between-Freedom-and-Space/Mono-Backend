@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class UpdateCommentRequest(
 
     @SerialName("new_comment_text")
-    val newCommentText: String?,
+    val newCommentText: String? = null,
 )

@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 data class UpdatePostReactionRequest(
 
     @SerialName("new_post_reaction")
-    val newReaction: Reaction?,
+    val newReaction: Reaction? = null,
 )

@@ -1,12 +1,10 @@
 package com.between_freedom_and_space.mono_backend.profiles.services.impl
 
-import com.between_freedom_and_space.mono_backend.auth.components.UserPasswordEncryptor
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
 import com.between_freedom_and_space.mono_backend.profiles.services.InteractionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
-import com.between_freedom_and_space.mono_backend.profiles.services.mappers.UserProfileToBaseProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.UpdateProfileModel
@@ -66,7 +64,7 @@ class InteractionProfileServiceImpl(
 
     private fun updateProfile(profile: UserProfile, updateModel: UpdateProfileModel) {
         updateModel.newDescription?.let { profile.description = it }
-        updateModel.newLocation?.let { profile.locataion = it }
+        updateModel.newLocation?.let { profile.location = it }
         updateModel.newMail?.let { profile.mail = it }
         updateModel.newNameAlias?.let { profile.nameAlias = it }
         updateModel.newNickName?.let { profile.nickName = it }

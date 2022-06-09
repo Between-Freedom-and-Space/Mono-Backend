@@ -27,7 +27,7 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
 
     var description by UserProfilesTable.description
 
-    var locataion by UserProfilesTable.location
+    var location by UserProfilesTable.location
 
     var isVisible by UserProfilesTable.isVisible
 
@@ -57,7 +57,7 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
         if (nickName != other.nickName) return false
         if (nameAlias != other.nameAlias) return false
         if (description != other.description) return false
-        if (locataion != other.locataion) return false
+        if (location != other.location) return false
 
         return true
     }
@@ -69,7 +69,7 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
         result = 31 * result + nickName.hashCode()
         result = 31 * result + nameAlias.hashCode()
         result = 31 * result + description.hashCode()
-        result = 31 * result + locataion.hashCode()
+        result = 31 * result + location.hashCode()
         return result
     }
 
