@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed bugs">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/mappers/PostCommentsCountToCommentsCountResponse.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/models/PostCommentsCountResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/routing/PostsInformationRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/routing/PostsInformationRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/modules/PostsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/modules/PostsModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/modules/qualifiers/PostMappersQualifiers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/modules/qualifiers/PostMappersQualifiers.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added post comments count endpoint">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/AccessPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/AccessPlugin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,14 +372,10 @@
       <workItem from="1653154699468" duration="3674000" />
       <workItem from="1653241704321" duration="187000" />
       <workItem from="1653331101944" duration="8067000" />
-      <workItem from="1653724397587" duration="22240000" />
-    </task>
-    <task id="LOCAL-00025" summary="fixed build">
-      <created>1650389688290</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1650389688290</updated>
+      <workItem from="1653724397587" duration="23967000" />
+      <workItem from="1654112266078" duration="12000" />
+      <workItem from="1654200497236" duration="2528000" />
+      <workItem from="1654803826377" duration="1042000" />
     </task>
     <task id="LOCAL-00026" summary="added all base entity models">
       <created>1650393834728</created>
@@ -720,7 +713,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654031239700</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="added post comments count endpoint">
+      <created>1654031818203</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1654031818203</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -739,7 +739,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added post services implementation" />
     <MESSAGE value="added comments services implementation" />
     <MESSAGE value="added tags service implementation" />
     <MESSAGE value="added reaction services implementation" />
@@ -764,7 +763,8 @@
     <MESSAGE value="fixed passwords encoding" />
     <MESSAGE value="fixed hocoon file" />
     <MESSAGE value="fixed bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs" />
+    <MESSAGE value="added post comments count endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="added post comments count endpoint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
