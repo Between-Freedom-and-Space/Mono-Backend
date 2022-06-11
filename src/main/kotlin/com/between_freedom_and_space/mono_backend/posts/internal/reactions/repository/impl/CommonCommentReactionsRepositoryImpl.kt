@@ -15,7 +15,9 @@ class CommonCommentReactionsRepositoryImpl: CommonCommentReactionsRepository {
     override fun getAllReactions(pageNumber: Int, pageSize: Int): List<CommentReaction> {
         val offset = (pageNumber - 1).toLong() *  pageSize
         val query = CommentReactionsTable
-            .selectAll()
+            .select {
+                CommentReactionsTable.isDeleted eq false
+            }
             .limit(pageSize, offset)
         val result = CommentReaction.wrapRows(query)
         return result.toList()

@@ -20,7 +20,9 @@ class CommonPostRepositoryImpl: CommonPostRepository {
     override fun getAllPosts(pageNumber: Int, pageSize: Int): List<Post> {
         val offset = (pageNumber - 1).toLong() * pageSize
         val query = PostsTable
-            .selectAll()
+            .select {
+                PostsTable.isDeleted eq false
+            }
             .limit(pageSize, offset)
         val result = Post.wrapRows(query)
         return result.toList()

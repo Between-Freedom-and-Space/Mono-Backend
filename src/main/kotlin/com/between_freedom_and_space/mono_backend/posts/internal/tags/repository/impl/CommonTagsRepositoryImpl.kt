@@ -17,7 +17,9 @@ class CommonTagsRepositoryImpl: CommonTagsRepository {
     override fun getAllTags(pageNumber: Int, pageSize: Int): List<PostTag> {
         val offset = (pageNumber - 1).toLong() * pageSize
         val query = PostTagsTable
-            .selectAll()
+            .select {
+                PostTagsTable.isDeleted eq false
+            }
             .limit(pageSize, offset)
         val result = PostTag.wrapRows(query)
         return result.toList()

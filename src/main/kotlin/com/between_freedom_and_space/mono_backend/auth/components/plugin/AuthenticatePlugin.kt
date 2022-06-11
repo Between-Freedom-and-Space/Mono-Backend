@@ -21,6 +21,7 @@ class AuthenticatePlugin(
             pipeline: ApplicationCallPipeline, configure: Configuration.() -> Unit
         ): AuthenticatePlugin {
             val processor by inject<AuthenticateProcessor>()
+
             val config = Configuration().apply(configure)
             val plugin = AuthenticatePlugin(config, processor)
 

@@ -14,7 +14,9 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
     override fun getAllProfiles(pageNumber: Int, pageSize: Int): List<UserProfile> {
         val offset = (pageNumber - 1).toLong() * pageSize.toLong()
         val query = UserProfilesTable
-            .selectAll()
+            .select {
+                UserProfilesTable.isDeleted eq false
+            }
             .limit(pageSize, offset)
         val result = UserProfile.wrapRows(query)
         return result.toList()

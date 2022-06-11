@@ -74,7 +74,7 @@ private val securityModule = module {
 }
 
 private val pluginModule = module {
-    single { TokenAuthenticateProcessor(get(), get()) } bind AuthenticateProcessor::class
+    single { TokenAuthenticateProcessor(get(), get(), get()) } bind AuthenticateProcessor::class
 }
 
 private val componentsModule = module {
