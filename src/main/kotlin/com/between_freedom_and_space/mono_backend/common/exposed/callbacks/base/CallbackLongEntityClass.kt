@@ -8,17 +8,18 @@ import org.jetbrains.exposed.dao.id.LongIdTable
 
 abstract class CallbackLongEntityClass<E: LongEntity>(table: LongIdTable): LongEntityClass<E>(table) {
 
+    private val handler by inject<EntityActionCallbackHandler>()
+
     init {
         EntityHook.subscribe { action ->
             val entity = action.toEntity(this)
                 ?: return@subscribe
             val entityClass = entity::class
-            val handler by inject<EntityActionCallbackHandler>()
 
             when (action.changeType) {
-                Updated -> handler.handleUpdate(entityClass)
-                Created -> handler.handleCreate(entityClass)
-                Removed -> handler.handleDelete(entityClass)
+                Updated -> handler.handleUpdate(entity, entityClass)
+                Created -> handler.handleCreate(entity, entityClass)
+                Removed -> handler.handleDelete(entity, entityClass)
             }
         }
     }

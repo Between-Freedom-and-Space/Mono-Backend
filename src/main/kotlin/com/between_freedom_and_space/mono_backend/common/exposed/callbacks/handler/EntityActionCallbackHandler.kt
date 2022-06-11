@@ -7,10 +7,11 @@ import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.excep
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
 import kotlin.reflect.full.functions
+import kotlin.reflect.jvm.jvmErasure
 
 class EntityActionCallbackHandler {
 
-    fun handleUpdate(entityClass: KClass<*>) {
+    fun <T: Any> handleUpdate(entity: T, entityClass: KClass<*>) {
         val functions = entityClass.functions
         val functionWithAnnotations = functions.filter { function ->
             val annotations = function.annotations
@@ -18,10 +19,12 @@ class EntityActionCallbackHandler {
         }
 
         filterInvalidFunctions(functionWithAnnotations)
-        functionWithAnnotations.forEach(KFunction<*>::call)
+        functionWithAnnotations.forEach { function ->
+            function.call(entity)
+        }
     }
 
-    fun handleCreate(entityClass: KClass<*>) {
+    fun <T: Any> handleCreate(entity: T, entityClass: KClass<*>) {
         val functions = entityClass.functions
         val functionWithAnnotations = functions.filter { function ->
             val annotations = function.annotations
@@ -29,10 +32,12 @@ class EntityActionCallbackHandler {
         }
 
         filterInvalidFunctions(functionWithAnnotations)
-        functionWithAnnotations.forEach(KFunction<*>::call)
+        functionWithAnnotations.forEach { function ->
+            function.call(entity)
+        }
     }
 
-    fun handleDelete(entityClass: KClass<*>) {
+    fun <T: Any> handleDelete(entity: T, entityClass: KClass<*>) {
         val functions = entityClass.functions
         val functionWithAnnotations = functions.filter { function ->
             val annotations = function.annotations
@@ -40,15 +45,17 @@ class EntityActionCallbackHandler {
         }
 
         filterInvalidFunctions(functionWithAnnotations)
-        functionWithAnnotations.forEach(KFunction<*>::call)
+        functionWithAnnotations.forEach { function ->
+            function.call(entity)
+        }
     }
 
     private fun filterInvalidFunctions(functions: List<KFunction<*>>) = functions.forEach { function ->
-        if (function.parameters.isNotEmpty()) {
+        if (function.parameters.size != 1) {
             throw InvalidEntityCallbackException("Entity callback must not have arguments")
         }
 
-        if (function.returnType != Unit::class) {
+        if (function.returnType.jvmErasure != Unit::class) {
             throw InvalidEntityCallbackException("Entity callback return type must by Unit")
         }
     }

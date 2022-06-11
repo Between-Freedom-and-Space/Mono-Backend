@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added exposed entity callbacks api">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/models/UpdateProfileRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/models/UpdateProfileRequest.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed update models">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/exposed/callbacks/handler/EntityActionCallbackHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/exposed/callbacks/handler/EntityActionCallbackHandler.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/entities/models/UserProfile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/entities/models/UserProfile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/repository/impl/CommonProfilesRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/repository/impl/CommonProfilesRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/impl/InteractionProfileServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/impl/InteractionProfileServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/mappers/UserProfileToBaseProfileModelMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/mappers/UserProfileToBaseProfileModelMapper.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,14 +377,8 @@
       <workItem from="1653724397587" duration="23967000" />
       <workItem from="1654112266078" duration="12000" />
       <workItem from="1654200497236" duration="2528000" />
-      <workItem from="1654803826377" duration="4716000" />
-    </task>
-    <task id="LOCAL-00028" summary="added base posts services and mappers">
-      <created>1650403349894</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1650403349894</updated>
+      <workItem from="1654803826377" duration="4872000" />
+      <workItem from="1654970020541" duration="2294000" />
     </task>
     <task id="LOCAL-00029" summary="added post information routing">
       <created>1650488385041</created>
@@ -724,7 +716,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654808267444</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="fixed update models">
+      <created>1654808701185</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1654808701185</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -743,7 +742,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added reaction services implementation" />
     <MESSAGE value="added profile repository implementation" />
     <MESSAGE value="added posts repository impl" />
     <MESSAGE value="added comments repository implementation" />
@@ -768,7 +766,8 @@
     <MESSAGE value="added post comments count endpoint" />
     <MESSAGE value="added default created data" />
     <MESSAGE value="added exposed entity callbacks api" />
-    <option name="LAST_COMMIT_MESSAGE" value="added exposed entity callbacks api" />
+    <MESSAGE value="fixed update models" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed update models" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

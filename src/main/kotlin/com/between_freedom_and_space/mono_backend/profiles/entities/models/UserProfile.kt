@@ -1,6 +1,7 @@
 package com.between_freedom_and_space.mono_backend.profiles.entities.models
 
 import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.PostUpdated
+import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.base.CallbackLongEntityClass
 import com.between_freedom_and_space.mono_backend.posts.entities.post.Post
 import com.between_freedom_and_space.mono_backend.posts.entities.post.PostsTable
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostComment
@@ -13,7 +14,7 @@ import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
 class UserProfile(id: EntityID<Long>): LongEntity(id) {
-    companion object: LongEntityClass<UserProfile>(UserProfilesTable)
+    companion object: CallbackLongEntityClass<UserProfile>(UserProfilesTable)
 
     var mail by UserProfilesTable.mail
 
