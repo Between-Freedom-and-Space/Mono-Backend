@@ -19,6 +19,26 @@ class UserSubscription(id: EntityID<Long>): LongEntity(id) {
 
     var updatedDate by UserSubscriptionsTable.updatedDate
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as UserSubscription
+
+        if (id.value != other.id.value) return false
+        if (user != other.user) return false
+        if (subscribeOn != other.subscribeOn) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = user.hashCode()
+        result = 31 * result + id.value.hashCode()
+        result = 31 * result + subscribeOn.hashCode()
+        return result
+    }
+
     @PostUpdated
     fun postUpdated() {
         updatedDate = localDateTimeNow()

@@ -18,6 +18,26 @@ class PostSettings(id: EntityID<Long>): LongEntity(id) {
 
     var updatedDate by PostsSettingsTable.updatedDate
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as PostSettings
+
+        if (id.value != other.id.value) return false
+        if (targetPost != other.targetPost) return false
+        if (isVisibleForUnauthorizedUsers != other.isVisibleForUnauthorizedUsers) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = targetPost.hashCode()
+        result = 31 * result + id.value.hashCode()
+        result = 31 * result + isVisibleForUnauthorizedUsers.hashCode()
+        return result
+    }
+
     @PostUpdated
     fun postUpdated() {
         updatedDate = localDateTimeNow()

@@ -20,6 +20,24 @@ class UserRole(id: EntityID<Long>): LongEntity(id) {
 
     var updatedDate by UserRolesTable.updatedDate
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as UserRole
+
+        if (id.value != other.id.value) return false
+        if (roleAlias != other.roleAlias) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = roleAlias.hashCode()
+        result = 31 * result + id.value.hashCode()
+        return result
+    }
+
     @PostUpdated
     fun postUpdated() {
         updatedDate = localDateTimeNow()

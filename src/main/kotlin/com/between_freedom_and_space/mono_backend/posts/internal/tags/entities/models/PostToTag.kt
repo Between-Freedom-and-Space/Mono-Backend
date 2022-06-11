@@ -18,6 +18,26 @@ class PostToTag(id: EntityID<Long>): LongEntity(id) {
 
     var updatedDate by PostToTagTable.updatedDate
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as PostToTag
+
+        if (id.value != other.id.value) return false
+        if (post != other.post) return false
+        if (tag != other.tag) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = post.hashCode()
+        result = 31 * result + id.value.hashCode()
+        result = 31 * result + tag.hashCode()
+        return result
+    }
+
     @PostUpdated
     fun postUpdated() {
         updatedDate = localDateTimeNow()

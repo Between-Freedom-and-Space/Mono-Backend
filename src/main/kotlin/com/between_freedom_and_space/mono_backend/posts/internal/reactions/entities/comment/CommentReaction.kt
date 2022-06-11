@@ -6,6 +6,7 @@ import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
+@Suppress("DuplicatedCode")
 class CommentReaction(id: EntityID<Long>): LongEntity(id) {
     companion object: LongEntityClass<CommentReaction>(CommentReactionsTable)
 
@@ -20,6 +21,28 @@ class CommentReaction(id: EntityID<Long>): LongEntity(id) {
     var createdDate by CommentReactionsTable.createdDate
 
     var updatedDate by CommentReactionsTable.updatedDate
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as CommentReaction
+
+        if (id.value != other.id.value) return false
+        if (reaction != other.reaction) return false
+        if (comment != other.comment) return false
+        if (reactionBy != other.reactionBy) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = reaction.hashCode()
+        result = 31 * result + id.value.hashCode()
+        result = 31 * result + comment.hashCode()
+        result = 31 * result + reactionBy.hashCode()
+        return result
+    }
 
     @PostUpdated
     fun postUpdated() {

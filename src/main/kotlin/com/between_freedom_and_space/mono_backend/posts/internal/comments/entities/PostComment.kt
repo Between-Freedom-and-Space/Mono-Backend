@@ -30,6 +30,7 @@ class PostComment(id: EntityID<Long>): LongEntity(id) {
 
         if (id.value != other.id.value) return false
         if (text != other.text) return false
+        if (author != other.author) return false
 
         return true
     }
@@ -37,6 +38,7 @@ class PostComment(id: EntityID<Long>): LongEntity(id) {
     override fun hashCode(): Int {
         var result = id.value.hashCode()
         result = 31 * result + text.hashCode()
+        result = 31 * result + author.hashCode()
         return result
     }
 

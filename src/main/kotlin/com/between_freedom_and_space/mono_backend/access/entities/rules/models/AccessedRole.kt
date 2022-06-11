@@ -8,6 +8,7 @@ import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
+@Suppress("DuplicatedCode")
 class AccessedRole(id: EntityID<Long>): LongEntity(id) {
     companion object: CallbackLongEntityClass<AccessedRole>(AccessedRolesTable)
 
@@ -22,6 +23,30 @@ class AccessedRole(id: EntityID<Long>): LongEntity(id) {
     var createdDate by AccessedRolesTable.createdDate
 
     var updatedDate by AccessedRolesTable.createdDate
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as AccessedRole
+
+        if (id.value != other.id.value) return false
+        if (role != other.role) return false
+        if (accessRule != other.accessRule) return false
+        if (ruleGivenBy != other.ruleGivenBy) return false
+        if (isActive != other.isActive) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = role.hashCode()
+        result = 31 * result + id.value.hashCode()
+        result = 31 * result + accessRule.hashCode()
+        result = 31 * result + (ruleGivenBy?.hashCode() ?: 0)
+        result = 31 * result + isActive.hashCode()
+        return result
+    }
 
     @PostUpdated
     fun postUpdated() {

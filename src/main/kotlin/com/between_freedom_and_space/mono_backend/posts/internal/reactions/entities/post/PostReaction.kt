@@ -21,6 +21,29 @@ class PostReaction(id: EntityID<Long>): LongEntity(id) {
 
     var updatedDate by PostReactionsTable.updatedDate
 
+    @Suppress("DuplicatedCode")
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as PostReaction
+
+        if (id.value != other.id.value) return false
+        if (reaction != other.reaction) return false
+        if (post != other.post) return false
+        if (reactionBy != other.reactionBy) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = reaction.hashCode()
+        result = 31 * result + id.value.hashCode()
+        result = 31 * result + post.hashCode()
+        result = 31 * result + reactionBy.hashCode()
+        return result
+    }
+
     @PostUpdated
     fun postUpdated() {
         updatedDate = localDateTimeNow()
