@@ -15,6 +15,8 @@ object AccessRulesTable: LongIdTable("access_settings") {
         onDelete = NO_ACTION, onUpdate = NO_ACTION
     ).nullable()
 
+    val isActive = bool("is_active").default(true)
+
     val createdDate = datetime("created_date").clientDefault { localDateTimeNow() }
 
     val updatedDate = datetime("updated_date").clientDefault { localDateTimeNow() }

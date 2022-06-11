@@ -1,5 +1,7 @@
 package com.between_freedom_and_space.mono_backend.posts.internal.reactions.entities.comment
 
+import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.PostUpdated
+import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
@@ -18,4 +20,9 @@ class CommentReaction(id: EntityID<Long>): LongEntity(id) {
     var createdDate by CommentReactionsTable.createdDate
 
     var updatedDate by CommentReactionsTable.updatedDate
+
+    @PostUpdated
+    fun postUpdated() {
+        updatedDate = localDateTimeNow()
+    }
 }

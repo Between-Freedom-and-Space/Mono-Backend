@@ -18,7 +18,6 @@ abstract class CallbackIntEntityClass<E: IntEntity>(table: IntIdTable): IntEntit
             val entity = action.toEntity(this)
                 ?: return@subscribe
             val entityClass = entity::class
-
             when(action.changeType) {
                 Updated -> handler.handleUpdate(entity, entityClass)
                 Created -> handler.handleCreate(entity, entityClass)
