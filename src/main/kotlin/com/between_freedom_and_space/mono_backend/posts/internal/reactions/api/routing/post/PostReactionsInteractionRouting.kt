@@ -41,7 +41,7 @@ internal fun Application.postReactionsInteractionRouting() {
             val createRequest = validateAndReceiveRequest<CreatePostReactionRequest>()
             val createModel = createMapper.map(createRequest)
 
-            val reaction = interactionService.create(createModel)
+            val reaction = interactionService.createReaction(createModel)
 
             val reactionResponse = baseMapper.map(reaction)
             val response = Response.ok(reactionResponse)
@@ -55,7 +55,7 @@ internal fun Application.postReactionsInteractionRouting() {
             val id = getPathParameter("id")?.toLong()
                 ?: throw InvalidReactionException("Reaction id is not presented")
 
-            val reaction = interactionService.update(id, updateModel)
+            val reaction = interactionService.updateReaction(id, updateModel)
 
             val reactionResponse = baseMapper.map(reaction)
             val response = Response.ok(reactionResponse)
@@ -67,7 +67,7 @@ internal fun Application.postReactionsInteractionRouting() {
             val id = getPathParameter("id")?.toLong()
                 ?: throw InvalidReactionException("Reaction id is not presented")
 
-            val reaction = interactionService.delete(id)
+            val reaction = interactionService.deleteReaction(id)
 
             val reactionResponse = baseMapper.map(reaction)
             val response = Response.ok(reactionResponse)

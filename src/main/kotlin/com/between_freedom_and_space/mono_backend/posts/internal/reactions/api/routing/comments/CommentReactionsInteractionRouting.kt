@@ -2,7 +2,6 @@ package com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.
 
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
-import com.between_freedom_and_space.mono_backend.posts.internal.comments.modules.qualifiers.CommentsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.models.CreateCommentReactionRequest
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.models.ReactionModel
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.models.UpdateCommentReactionRequest
@@ -42,7 +41,7 @@ internal fun Application.commentReactionsInteractionRouting() {
             val createRequest = validateAndReceiveRequest<CreateCommentReactionRequest>()
             val createModel = createMapper.map(createRequest)
 
-            val reaction = interactionService.create(createModel)
+            val reaction = interactionService.createReaction(createModel)
 
             val reactionResponse = baseMapper.map(reaction)
             val response = Response.ok(reactionResponse)
@@ -56,7 +55,7 @@ internal fun Application.commentReactionsInteractionRouting() {
             val id = getPathParameter("id")?.toLong()
                 ?: throw InvalidReactionException("Reaction id is not presented")
 
-            val reaction = interactionService.update(id, updateModel)
+            val reaction = interactionService.updateReaction(id, updateModel)
 
             val reactionResponse = baseMapper.map(reaction)
             val response = Response.ok(reactionResponse)
@@ -68,7 +67,7 @@ internal fun Application.commentReactionsInteractionRouting() {
             val id = getPathParameter("id")?.toLong()
                 ?: throw InvalidReactionException("Reaction id is not presented")
 
-            val reaction = interactionService.delete(id)
+            val reaction = interactionService.deleteReaction(id)
 
             val reactionResponse = baseMapper.map(reaction)
             val response = Response.ok(reactionResponse)

@@ -11,6 +11,7 @@ import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRep
 import com.between_freedom_and_space.mono_backend.posts.services.ActionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
+import org.jetbrains.exposed.dao.load
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class ActionPostsServiceImpl(
@@ -25,9 +26,11 @@ class ActionPostsServiceImpl(
             reaction, postId, authorId
         )
         val resultPost = transaction {
-            reactionService.create(createReactionModel)
-            postRepository.getPostById(postId)
+            reactionService.createReaction(createReactionModel)
+            val post = postRepository.getPostById(postId)
                 ?: throw PostNotFoundException("Post with id: $postId not found")
+
+            post.load(Post::tags)
         }
         return postMapper.map(resultPost)
     }
@@ -36,8 +39,10 @@ class ActionPostsServiceImpl(
         val createCommentModel = CreateCommentModel(text)
         val resultPost = transaction {
             commentService.createComment(authorId, postId, createCommentModel)
-            postRepository.getPostById(postId)
+            val post = postRepository.getPostById(postId)
                 ?: throw PostNotFoundException("Post with id: $postId not found")
+
+            post.load(Post::tags)
         }
         return postMapper.map(resultPost)
     }

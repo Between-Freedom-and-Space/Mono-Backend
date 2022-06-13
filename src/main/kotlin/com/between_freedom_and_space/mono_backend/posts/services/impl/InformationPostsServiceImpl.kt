@@ -46,7 +46,6 @@ class InformationPostsServiceImpl(
         val post = transaction {
             val post = getPostOrThrow(postId)
             post.load(Post::tags)
-            post
         }
         return mapper.map(post)
     }

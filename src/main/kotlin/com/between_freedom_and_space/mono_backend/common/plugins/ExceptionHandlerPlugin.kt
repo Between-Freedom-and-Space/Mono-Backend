@@ -62,6 +62,7 @@ class ExceptionHandlerPlugin(
             if (enableLogging) {
                 logException(ex, call)
             }
+            context.finish()
         }
     }
 
