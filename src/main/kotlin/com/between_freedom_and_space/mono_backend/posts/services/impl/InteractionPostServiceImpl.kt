@@ -32,7 +32,8 @@ class InteractionPostServiceImpl(
         return transaction {
             val profile = profilesRepository.getProfileById(authorId)
                 ?: throw ProfileNotFoundException("Profile with id: $authorId not found")
-            val tagModels = actionTagsService.getOrCreateTagsWithAliases(createPostModel.tagsAliases)
+            val profileId = profile.id
+            val tagModels = actionTagsService.getOrCreateTagsWithAliases(createPostModel.tagsAliases, profileId)
             val tagsEntities = tagsRepository.getAllTagsWithIds(tagModels.map { it.id })
 
             val createPost = createEntityMapper.map(createPostModel)

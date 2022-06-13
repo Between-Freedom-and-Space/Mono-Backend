@@ -18,6 +18,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.models.BasePost
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostCommentsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel.ReactionToCount
+import org.jetbrains.exposed.dao.load
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationPostsServiceImpl(
@@ -30,13 +31,23 @@ class InformationPostsServiceImpl(
 
     override fun getAllPosts(pageNumber: Int, pageSize: Int): List<BasePostModel> {
         val posts = transaction {
-            repository.getAllPosts(pageNumber, pageSize)
+            val posts = repository.getAllPosts(pageNumber, pageSize)
+
+            posts.forEach { post ->
+                post.load(Post::tags)
+            }
+
+            posts
         }
         return posts.map { mapper.map(it) }
     }
 
     override fun getPostById(postId: Long): BasePostModel {
-        val post = transaction { getPostOrThrow(postId) }
+        val post = transaction {
+            val post = getPostOrThrow(postId)
+            post.load(Post::tags)
+            post
+        }
         return mapper.map(post)
     }
 

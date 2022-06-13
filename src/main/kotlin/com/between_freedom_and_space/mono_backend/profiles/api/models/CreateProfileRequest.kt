@@ -24,10 +24,10 @@ data class CreateProfileRequest(
     val description: String,
 
     @SerialName("mail")
-    val mail: String?,
+    val mail: String? = null,
 
     @SerialName("phone_number")
-    val phoneNumber: String?,
+    val phoneNumber: String? = null,
 
     @SerialName("location")
     @get:NotBlank(message = "Location can't be blank")

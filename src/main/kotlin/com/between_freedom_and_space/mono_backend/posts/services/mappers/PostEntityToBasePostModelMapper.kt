@@ -14,7 +14,7 @@ class PostEntityToBasePostModelMapper: ModelMapper<Post, BasePostModel> {
             authorId = original.author.value,
             commentsIds = emptyList(),
             reactionsIds = emptyList(),
-            tagsIds = original.tags.copy().map { it.id.value },
+            tagsIds = original.tags.map { it.id.value },
             isVisible = original.isVisible,
             isDeleted = original.isDeleted,
             isEdited = original.isEdited,

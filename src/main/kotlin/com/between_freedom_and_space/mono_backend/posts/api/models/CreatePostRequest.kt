@@ -24,5 +24,5 @@ data class CreatePostRequest(
 
     @SerialName("tags_aliases")
     @get:Size(max = 25, message = "Invalid tags length. Max length is 25")
-    val tags: List<String>,
+    val tags: List<String> = emptyList(),
 )

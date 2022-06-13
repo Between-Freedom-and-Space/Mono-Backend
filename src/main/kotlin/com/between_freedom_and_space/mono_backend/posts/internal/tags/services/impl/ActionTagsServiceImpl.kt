@@ -9,6 +9,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.CreateTagModel
 import org.h2.engine.Mode
+import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class ActionTagsServiceImpl(
@@ -16,7 +17,7 @@ class ActionTagsServiceImpl(
     private val entityMapper: ModelMapper<PostTag, BaseTagModel>
 ): ActionTagsService {
 
-    override fun getOrCreateTagsWithAliases(aliases: Collection<String>): List<BaseTagModel> {
+    override fun getOrCreateTagsWithAliases(aliases: Collection<String>, authorId: EntityID<Long>?): List<BaseTagModel> {
         val entities = transaction {
             val tags = mutableListOf<PostTag>()
 
@@ -24,7 +25,7 @@ class ActionTagsServiceImpl(
                 val tag = if (tagsRepository.tagExists(alias)) {
                     getTagOrThrow(alias)
                 } else {
-                    createTag(alias)
+                    createTag(alias, authorId)
                 }
                 tags.add(tag)
             }
@@ -40,11 +41,15 @@ class ActionTagsServiceImpl(
             ?: throw TagNotFoundException("Tag with alias: $tagAlias not found")
     }
 
-    private fun createTag(alias: String): PostTag {
+    private fun createTag(alias: String, authorId: EntityID<Long>?): PostTag {
         val createModel = CreateTagModel(
             tagAlias = alias,
-            tagDescription = null,
+            tagDescription = null
         )
-        return tagsRepository.createTag(createModel)
+        return if (authorId == null) {
+            tagsRepository.createTag(createModel)
+        } else {
+            tagsRepository.createTag(authorId, createModel)
+        }
     }
 }

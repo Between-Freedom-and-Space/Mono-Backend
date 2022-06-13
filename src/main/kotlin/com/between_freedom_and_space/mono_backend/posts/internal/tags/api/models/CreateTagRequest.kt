@@ -14,5 +14,5 @@ data class CreateTagRequest(
     val tagAlias: String,
 
     @SerialName("tag_description")
-    val tagDescription: String?,
+    val tagDescription: String? = null,
 )

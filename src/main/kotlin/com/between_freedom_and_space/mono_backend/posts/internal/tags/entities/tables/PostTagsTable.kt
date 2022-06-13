@@ -17,7 +17,7 @@ object PostTagsTable: LongIdTable("post_tags") {
 
     val tagDescription = text("tag_description", eagerLoading = true).nullable()
 
-    val isDeleted = bool("is_deleted")
+    val isDeleted = bool("is_deleted").default(false)
 
     val createdDate = datetime("created_date").clientDefault { localDateTimeNow() }
 
