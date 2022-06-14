@@ -36,7 +36,7 @@ fun Application.main(koin: KoinApplication) {
     install(AuthenticatePlugin) { configure() }
 
     // Components
-//    addAccessPlugin()
+    addAccessPlugin()
     addAuthPlugin()
     addPostsPlugin()
     addProfilePlugin()
