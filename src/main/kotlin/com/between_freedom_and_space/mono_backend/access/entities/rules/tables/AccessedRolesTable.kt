@@ -6,7 +6,7 @@ import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.ReferenceOption.NO_ACTION
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
-object AccessedRolesTable: LongIdTable("accessed_rules") {
+object AccessedRolesTable: LongIdTable("accessed_roles") {
 
     val role = reference(
         name = "role_id", foreign = UserRolesTable,
