@@ -83,4 +83,3 @@ If you want to add some functionality, and **you are not in our team**:
 3. Build java jar with gradle `package` task and run `java -jar mono-backend.jar` in terminal.
 
 #### Created and powered by Ferum-bot.
-
