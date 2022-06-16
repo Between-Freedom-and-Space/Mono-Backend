@@ -14,6 +14,9 @@ internal fun Application.configureDatabase() {
         driver = properties.driver,
         user = properties.userName,
         password = properties.password,
+        databaseConfig = DatabaseConfig {
+            keepLoadedReferencesOutOfTransaction = true
+        }
     )
 }
 

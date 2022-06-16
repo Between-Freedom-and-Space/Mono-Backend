@@ -13,10 +13,13 @@ import com.between_freedom_and_space.mono_backend.auth.service.AuthService
 import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.mappers.RegisterUserRequestToCreatModelMapper
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.profiles.services.ActionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.InteractionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.UpdateProfileModel
+import com.between_freedom_and_space.mono_backend.profiles.services.models.enums.ProfileExistsResult
+import com.between_freedom_and_space.mono_backend.profiles.services.models.enums.ProfileExistsResult.PROFILE_EXISTS
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class CommonAuthService(
@@ -25,6 +28,7 @@ class CommonAuthService(
     private val tokenParser: TokenParser,
     private val userAuthService: UserProfileAuthService,
     private val profileService: InteractionProfilesService,
+    private val profileActionService: ActionProfilesService,
     private val userPasswordEncryptor: UserPasswordEncryptor,
     private val registerUserMapper: ModelMapper<RegisterUserRequest, CreateProfileModel>
 ): AuthService {
@@ -48,6 +52,12 @@ class CommonAuthService(
         val createProfileModel = registerUserMapper.map(user)
 
         return transaction {
+            val nickname = user.nickName
+            val profileExists = profileActionService.profileExists(nickname)
+            if (profileExists == PROFILE_EXISTS) {
+                throw AuthenticateException("Profile with nickname: $nickname already exists")
+            }
+
             val newProfile = profileService.createProfile(createProfileModel)
             val encryptedPassword = userPasswordEncryptor.encryptUserPassword(
                 newProfile.id, newProfile.nickName, createProfileModel.passwordEncrypted

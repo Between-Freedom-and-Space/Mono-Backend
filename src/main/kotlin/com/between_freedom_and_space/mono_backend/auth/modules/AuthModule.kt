@@ -96,7 +96,7 @@ val authModule = module {
     single { JWTTokenAuthService(get(), get()) } bind TokenAuthService::class
     single {
         CommonAuthService(
-            get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(),
             get(named(AuthModelMapperQualifier.REGISTER_USER_REQUEST_TO_MODEL))
         )
     } bind AuthService::class
