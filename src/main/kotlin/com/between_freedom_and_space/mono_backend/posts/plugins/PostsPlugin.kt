@@ -11,8 +11,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.plugins.ad
 import io.ktor.server.application.*
 
 fun Application.addPostsPlugin() {
-    install(AuthenticatePlugin)
-
     addCommentsPlugin()
     addReactionsPlugin()
     addPostTagsPlugin()

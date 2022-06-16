@@ -1,11 +1,14 @@
 package com.between_freedom_and_space.mono_backend.posts.internal.comments.entities
 
+import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.PostUpdated
+import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.base.CallbackLongEntityClass
+import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
 class PostComment(id: EntityID<Long>): LongEntity(id) {
-    companion object: LongEntityClass<PostComment>(PostCommentsTable)
+    companion object: CallbackLongEntityClass<PostComment>(PostCommentsTable)
 
     var post by PostCommentsTable.post
 
@@ -27,6 +30,7 @@ class PostComment(id: EntityID<Long>): LongEntity(id) {
 
         if (id.value != other.id.value) return false
         if (text != other.text) return false
+        if (author != other.author) return false
 
         return true
     }
@@ -34,6 +38,12 @@ class PostComment(id: EntityID<Long>): LongEntity(id) {
     override fun hashCode(): Int {
         var result = id.value.hashCode()
         result = 31 * result + text.hashCode()
+        result = 31 * result + author.hashCode()
         return result
+    }
+
+    @PostUpdated
+    fun postUpdated() {
+        updatedDate = localDateTimeNow()
     }
 }

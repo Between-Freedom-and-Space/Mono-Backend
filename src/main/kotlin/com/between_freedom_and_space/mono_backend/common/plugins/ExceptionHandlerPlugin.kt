@@ -62,17 +62,16 @@ class ExceptionHandlerPlugin(
             if (enableLogging) {
                 logException(ex, call)
             }
+            context.finish()
         }
     }
 
-    private suspend fun logException(ex: Exception, call: ApplicationCall) {
+    private fun logException(ex: Exception, call: ApplicationCall) {
         val path = call.url()
-        val headers = call.request.headers
         val method = call.request.httpMethod
-        val body = call.receiveText()
 
         logger.error(ex) {
-            "Exception handled on path: $path, http method: $method, headers: $headers, body: $body"
+            "Exception handled on path: $path, http method: $method"
         }
     }
 }

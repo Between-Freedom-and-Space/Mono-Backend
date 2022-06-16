@@ -5,6 +5,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.m
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.CommonPostToTagRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.CommonTagsRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InteractionPostToTagService
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.mappers.TagEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.TagId
 import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
@@ -15,7 +16,7 @@ class InteractionPostToTagServiceImpl(
     private val postToTagRepository: CommonPostToTagRepository,
     private val postRepository: CommonPostRepository,
     private val tagsRepository: CommonTagsRepository,
-    private val entityMapper: ModelMapper<PostTag, BaseTagModel>
+    private val entityMapper: ModelMapper<PostTag, BaseTagModel>,
 ): InteractionPostToTagService {
 
     override fun deleteAllPostTags(postId: Long): List<BaseTagModel> {

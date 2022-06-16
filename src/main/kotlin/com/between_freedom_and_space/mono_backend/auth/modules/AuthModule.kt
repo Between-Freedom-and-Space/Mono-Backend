@@ -19,6 +19,9 @@ import com.between_freedom_and_space.mono_backend.auth.components.impl.PBKDF2Use
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.impl.TokenAuthenticateProcessor
+import com.between_freedom_and_space.mono_backend.auth.plugins.config.properties.AuthProperties
+import com.between_freedom_and_space.mono_backend.auth.modules.qualifiers.AuthModelMapperQualifier
+import com.between_freedom_and_space.mono_backend.auth.plugins.config.authConfiguration
 import com.between_freedom_and_space.mono_backend.auth.security.JWTProcessor
 import com.between_freedom_and_space.mono_backend.auth.security.JWTVerifier
 import com.between_freedom_and_space.mono_backend.auth.security.PasswordCipher
@@ -38,15 +41,30 @@ import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
+import com.between_freedom_and_space.mono_backend.util.extensions.inject
+import io.ktor.server.application.*
+import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val mappersModule = module {
-    single<ModelMapper<TokenVerifyResult, TokenVerifyResultResponse>> { TokenVerifyResultToVerifyResponseMapper() }
-    single<ModelMapper<BaseProfileModel, RegisterUserResponse>> { UserModelToRegisterResponseMapper() }
-    single<ModelMapper<ProducerResult, AuthenticateUserResponse>> { AuthenticateResultToAuthenticateResponseMapper() }
-    single<ModelMapper<RegisterUserRequest, CreateProfileModel>> { RegisterUserRequestToCreatModelMapper() }
-    single<ModelMapper<UserProfile, UserAuthModel>> { ProfileToUserAuthModelMapper() }
+    single<ModelMapper<TokenVerifyResult, TokenVerifyResultResponse>>(
+        named(AuthModelMapperQualifier.TOKEN_VERIFY_RESULT_TO_RESPONSE)
+    ) { TokenVerifyResultToVerifyResponseMapper() }
+    single<ModelMapper<BaseProfileModel, RegisterUserResponse>>(
+        named(AuthModelMapperQualifier.BASE_PROFILE_MODEL_TO_REGISTER_USER_RESPONSE)
+    ) { UserModelToRegisterResponseMapper() }
+    single<ModelMapper<ProducerResult, AuthenticateUserResponse>>(
+        named(AuthModelMapperQualifier.PRODUCER_RESULT_TO_AUTHENTICATE_RESPONSE)
+    ) { AuthenticateResultToAuthenticateResponseMapper() }
+    single<ModelMapper<RegisterUserRequest, CreateProfileModel>>(
+        named(AuthModelMapperQualifier.REGISTER_USER_REQUEST_TO_MODEL)
+    ) {
+        RegisterUserRequestToCreatModelMapper()
+    }
+    single<ModelMapper<UserProfile, UserAuthModel>>(
+        named(AuthModelMapperQualifier.USER_PROFILE_TO_AUTH_MODEL)
+    ) { ProfileToUserAuthModelMapper() }
 }
 
 private val securityModule = module {
@@ -56,10 +74,13 @@ private val securityModule = module {
 }
 
 private val pluginModule = module {
-    single { TokenAuthenticateProcessor(get(), get()) } bind AuthenticateProcessor::class
+    single { TokenAuthenticateProcessor(get(), get(), get()) } bind AuthenticateProcessor::class
 }
 
 private val componentsModule = module {
+    val application by inject<Application>()
+    single { application.authConfiguration() }
+
     single { JWTTokenParser(get()) } bind TokenParser::class
     single { JWTTokenVerifier(get(), get()) } bind TokenVerifier::class
     single { JWTTokenProducer(get(), get()) } bind TokenProducer::class
@@ -73,6 +94,14 @@ val authModule = module {
     includes(componentsModule)
 
     single { JWTTokenAuthService(get(), get()) } bind TokenAuthService::class
-    single { CommonAuthService(get(), get(), get(), get(), get(), get(), get()) } bind AuthService::class
-    single { CommonUserProfileAuthService(get(), get()) } bind UserProfileAuthService::class
+    single {
+        CommonAuthService(
+            get(), get(), get(), get(), get(), get(), get(),
+            get(named(AuthModelMapperQualifier.REGISTER_USER_REQUEST_TO_MODEL))
+        )
+    } bind AuthService::class
+    single { CommonUserProfileAuthService(
+        get(),
+        get(named(AuthModelMapperQualifier.USER_PROFILE_TO_AUTH_MODEL))
+    ) } bind UserProfileAuthService::class
 }

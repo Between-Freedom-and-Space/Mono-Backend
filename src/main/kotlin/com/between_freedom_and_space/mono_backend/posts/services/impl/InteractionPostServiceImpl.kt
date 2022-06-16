@@ -10,6 +10,7 @@ import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRep
 import com.between_freedom_and_space.mono_backend.posts.repository.models.CreatePostEntityModel
 import com.between_freedom_and_space.mono_backend.posts.services.InteractionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
+import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.CreatePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.UpdatePostModel
@@ -23,25 +24,22 @@ class InteractionPostServiceImpl(
     private val actionTagsService: ActionTagsService,
     private val profilesRepository: CommonProfilesRepository,
     private val tagsRepository: CommonTagsRepository,
-    private val entityMapper: ModelMapper<Post, BasePostModel>
+    private val entityMapper: ModelMapper<Post, BasePostModel>,
+    private val createEntityMapper: ModelMapper<CreatePostModel, CreatePostEntityModel>
 ): InteractionPostsService {
 
     override fun createPost(authorId: Long, createPostModel: CreatePostModel): BasePostModel {
-        val entity = transaction {
+        return transaction {
             val profile = profilesRepository.getProfileById(authorId)
                 ?: throw ProfileNotFoundException("Profile with id: $authorId not found")
-            val tagModels = actionTagsService.getOrCreateTagsWithAliases(createPostModel.tagsAliases)
+            val profileId = profile.id
+            val tagModels = actionTagsService.getOrCreateTagsWithAliases(createPostModel.tagsAliases, profileId)
             val tagsEntities = tagsRepository.getAllTagsWithIds(tagModels.map { it.id })
 
-            // TODO(Add model mapper)
-            val createPost = CreatePostEntityModel(
-                name = createPostModel.name,
-                text = createPostModel.text,
-                isVisible = createPostModel.isVisible,
-            )
-            postRepository.createPost(profile.id, tagsEntities, createPost)
+            val createPost = createEntityMapper.map(createPostModel)
+            val entity = postRepository.createPost(profile.id, tagsEntities, createPost)
+            entityMapper.map(entity)
         }
-        return entityMapper.map(entity)
     }
 
     override fun updatePost(postId: Long, updateModel: UpdatePostModel): BasePostModel {

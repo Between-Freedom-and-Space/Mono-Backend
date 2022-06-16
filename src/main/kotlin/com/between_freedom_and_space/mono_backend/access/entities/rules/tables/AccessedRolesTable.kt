@@ -1,11 +1,12 @@
 package com.between_freedom_and_space.mono_backend.access.entities.rules.tables
 
 import com.between_freedom_and_space.mono_backend.access.entities.role.tables.UserRolesTable
+import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
 import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.ReferenceOption.NO_ACTION
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
-object AccessedRolesTable: LongIdTable("accessed_rules") {
+object AccessedRolesTable: LongIdTable("accessed_roles") {
 
     val role = reference(
         name = "role_id", foreign = UserRolesTable,
@@ -22,7 +23,9 @@ object AccessedRolesTable: LongIdTable("accessed_rules") {
         onDelete = NO_ACTION, onUpdate = NO_ACTION
     ).nullable()
 
-    val createdDate = datetime("created_date")
+    val isActive = bool("is_active").default(true)
 
-    val updatedDate = datetime("updated_date")
+    val createdDate = datetime("created_date").clientDefault { localDateTimeNow() }
+
+    val updatedDate = datetime("updated_date").clientDefault { localDateTimeNow() }
 }

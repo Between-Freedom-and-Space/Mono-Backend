@@ -2,6 +2,7 @@ package com.between_freedom_and_space.mono_backend.posts.internal.tags.api.routi
 
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.plugins.extensions.exceptionHandler
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository.exceptions.TagAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.exception.InvalidTagException
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.exception.TagNotFoundException
 import io.ktor.http.*
@@ -18,6 +19,12 @@ internal fun Application.postTagsExceptionHandling() {
 
     exceptionHandler<InvalidTagException> { call, exception ->
         exception as InvalidTagException
+        val response = Response.badRequest(message = exception.message)
+        call.respond(HttpStatusCode.BadRequest, response)
+    }
+
+    exceptionHandler<TagAlreadyDeletedException> { call, exception ->
+        exception as TagAlreadyDeletedException
         val response = Response.badRequest(message = exception.message)
         call.respond(HttpStatusCode.BadRequest, response)
     }

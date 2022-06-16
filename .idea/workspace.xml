@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added reaction repository implemetation">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/DatabaseConfiguration.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/Application.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/ApplicationPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/ApplicationPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/modules/CommentsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/modules/CommentsModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/services/impl/InteractionCommentsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/services/impl/InteractionCommentsServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/modules/ReactionsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/modules/ReactionsModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/service/impl/InteractionCommentReactionsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/service/impl/InteractionCommentReactionsServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/service/impl/InteractionPostReactionsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/service/impl/InteractionPostReactionsServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/modules/TagsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/modules/TagsModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InteractionPostToTagServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InteractionPostToTagServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InteractionTagsServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/services/impl/InteractionTagsServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/modules/PostsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/modules/PostsModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/services/impl/InteractionPostServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/services/impl/InteractionPostServiceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/DatabaseConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/DatabaseConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,13 +59,19 @@
         <option value="Kotlin Object" />
         <option value="Kotlin Enum" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Annotation" />
+        <option value="Kotlin Class" />
         <option value="Kotlin File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -86,6 +81,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -123,11 +125,11 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/api/routing/comments" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.between_freedom_and_space.mono_backend.common.exposed.callbacks.base" />
+      <recent name="com.between_freedom_and_space.mono_backend.common.exposed.callbacks" />
+      <recent name="com.between_freedom_and_space.mono_backend.auth.plugins.config.properties" />
       <recent name="com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.models" />
       <recent name="com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.tables" />
-      <recent name="com.between_freedom_and_space.mono_backend.posts.internal.reactions.entities.post" />
-      <recent name="com.between_freedom_and_space.mono_backend.access.components.models" />
-      <recent name="com.between_freedom_and_space.mono_backend.access.entities.role.tables" />
     </key>
   </component>
   <component name="RunManager" selected="Kotlin.ApplicationKt (1)">
@@ -331,8 +333,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Mono-Backend [clean]" />
         <item itemvalue="Kotlin.ApplicationKt (1)" />
+        <item itemvalue="Gradle.Mono-Backend [clean]" />
         <item itemvalue="Gradle.Mono-Backend [build]" />
         <item itemvalue="Kotlin.ApplicationKt" />
       </list>
@@ -375,196 +377,17 @@
       <workItem from="1652643749767" duration="1238000" />
       <workItem from="1652720909149" duration="8773000" />
       <workItem from="1652810982647" duration="5423000" />
-      <workItem from="1652865847344" duration="4153000" />
-    </task>
-    <task id="LOCAL-00009" summary="added base api response model">
-      <created>1649347423059</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1649347423059</updated>
-    </task>
-    <task id="LOCAL-00010" summary="added user roles and jwt creator and producer">
-      <created>1649414460160</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1649414460160</updated>
-    </task>
-    <task id="LOCAL-00011" summary="added token producer and verifier implementation">
-      <created>1649417581971</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1649417581971</updated>
-    </task>
-    <task id="LOCAL-00012" summary="added auth components module">
-      <created>1649417732768</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1649417732768</updated>
-    </task>
-    <task id="LOCAL-00013" summary="added auth configuration file">
-      <created>1649417981629</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1649417981629</updated>
-    </task>
-    <task id="LOCAL-00014" summary="added first auth routing implementation">
-      <created>1649424383528</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1649424383528</updated>
-    </task>
-    <task id="LOCAL-00015" summary="added auth service impl">
-      <created>1649507882016</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1649507882017</updated>
-    </task>
-    <task id="LOCAL-00016" summary="added secure password encoding">
-      <created>1649532244579</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1649532244579</updated>
-    </task>
-    <task id="LOCAL-00017" summary="refactored auth routing, fixed inject">
-      <created>1649533014719</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1649533014719</updated>
-    </task>
-    <task id="LOCAL-00018" summary="added pipeline context extensions and user auth service">
-      <created>1649544092576</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1649544092576</updated>
-    </task>
-    <task id="LOCAL-00019" summary="added user auth routing implementation">
-      <created>1649600067601</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1649600067601</updated>
-    </task>
-    <task id="LOCAL-00020" summary="added auth user service impl">
-      <created>1649706726464</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1649706726464</updated>
-    </task>
-    <task id="LOCAL-00021" summary="added auth plugin">
-      <created>1649967850543</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1649967850543</updated>
-    </task>
-    <task id="LOCAL-00022" summary="added putting authorities to context attributes">
-      <created>1649969566367</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1649969566367</updated>
-    </task>
-    <task id="LOCAL-00023" summary="added access entities">
-      <created>1650048399387</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1650048399387</updated>
-    </task>
-    <task id="LOCAL-00024" summary="added plugin">
-      <created>1650057491535</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1650057491535</updated>
-    </task>
-    <task id="LOCAL-00025" summary="fixed build">
-      <created>1650389688290</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1650389688290</updated>
-    </task>
-    <task id="LOCAL-00026" summary="added all base entity models">
-      <created>1650393834728</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1650393834728</updated>
-    </task>
-    <task id="LOCAL-00027" summary="added info post services and models">
-      <created>1650400189428</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1650400189428</updated>
-    </task>
-    <task id="LOCAL-00028" summary="added base posts services and mappers">
-      <created>1650403349894</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1650403349894</updated>
-    </task>
-    <task id="LOCAL-00029" summary="added post information routing">
-      <created>1650488385041</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1650488385041</updated>
-    </task>
-    <task id="LOCAL-00030" summary="init post repositories">
-      <created>1650489110916</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1650489110916</updated>
-    </task>
-    <task id="LOCAL-00031" summary="added request">
-      <created>1650744811838</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1650744811838</updated>
-    </task>
-    <task id="LOCAL-00032" summary="added profiles routing">
-      <created>1650828062981</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1650828062981</updated>
-    </task>
-    <task id="LOCAL-00033" summary="refactored code">
-      <created>1650917061574</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1650917061574</updated>
-    </task>
-    <task id="LOCAL-00034" summary="added unique constraints">
-      <created>1651947493760</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1651947493760</updated>
-    </task>
-    <task id="LOCAL-00035" summary="fixed bugs and added user to user auth settings">
-      <created>1651948658326</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1651948658326</updated>
+      <workItem from="1652865847344" duration="11583000" />
+      <workItem from="1653154699468" duration="3674000" />
+      <workItem from="1653241704321" duration="187000" />
+      <workItem from="1653331101944" duration="8067000" />
+      <workItem from="1653724397587" duration="23967000" />
+      <workItem from="1654112266078" duration="12000" />
+      <workItem from="1654200497236" duration="2528000" />
+      <workItem from="1654803826377" duration="4872000" />
+      <workItem from="1654970020541" duration="20680000" />
+      <workItem from="1655311715456" duration="264000" />
+      <workItem from="1655311996314" duration="1303000" />
     </task>
     <task id="LOCAL-00036" summary="added name to post model">
       <created>1652014995132</created>
@@ -720,7 +543,196 @@
       <option name="project" value="LOCAL" />
       <updated>1652815709795</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="added database config and fixed compilation">
+      <created>1652870673662</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1652870673662</updated>
+    </task>
+    <task id="LOCAL-00059" summary="working version with several request">
+      <created>1652877101569</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1652877101569</updated>
+    </task>
+    <task id="LOCAL-00060" summary="refactored Dependencies">
+      <created>1653332873175</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1653332873175</updated>
+    </task>
+    <task id="LOCAL-00061" summary="fixed javax validation">
+      <created>1653335034062</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1653335034062</updated>
+    </task>
+    <task id="LOCAL-00062" summary="fixed exception handler plugin">
+      <created>1653335512256</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1653335512256</updated>
+    </task>
+    <task id="LOCAL-00063" summary="fixed token expired handling">
+      <created>1653335675300</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1653335675300</updated>
+    </task>
+    <task id="LOCAL-00064" summary="added auth mappers qualifiers">
+      <created>1653589953884</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1653589953884</updated>
+    </task>
+    <task id="LOCAL-00065" summary="added auth and comments mappers qualifiers">
+      <created>1653731483552</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1653731483553</updated>
+    </task>
+    <task id="LOCAL-00066" summary="added reactions mappers qualifiers">
+      <created>1653732328351</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1653732328351</updated>
+    </task>
+    <task id="LOCAL-00067" summary="added post mappers qualifiers">
+      <created>1653732742065</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1653732742065</updated>
+    </task>
+    <task id="LOCAL-00068" summary="added configurations, fixed auth plugin and added shadow plugin for fat jars">
+      <created>1653744718736</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1653744718737</updated>
+    </task>
+    <task id="LOCAL-00069" summary="fixed some todo-s">
+      <created>1653745243222</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1653745243222</updated>
+    </task>
+    <task id="LOCAL-00070" summary="added configuration properties">
+      <created>1654022894477</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1654022894477</updated>
+    </task>
+    <task id="LOCAL-00071" summary="fixed passwords encoding">
+      <created>1654025364593</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1654025364593</updated>
+    </task>
+    <task id="LOCAL-00072" summary="fixed hocoon file">
+      <created>1654026755210</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1654026755210</updated>
+    </task>
+    <task id="LOCAL-00073" summary="fixed bugs">
+      <created>1654031239700</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1654031239700</updated>
+    </task>
+    <task id="LOCAL-00074" summary="added post comments count endpoint">
+      <created>1654031818203</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1654031818203</updated>
+    </task>
+    <task id="LOCAL-00075" summary="added default created data">
+      <created>1654805148077</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1654805148077</updated>
+    </task>
+    <task id="LOCAL-00076" summary="added exposed entity callbacks api">
+      <created>1654808267444</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1654808267444</updated>
+    </task>
+    <task id="LOCAL-00077" summary="fixed update models">
+      <created>1654808701185</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1654808701185</updated>
+    </task>
+    <task id="LOCAL-00078" summary="fixed exposed entity callbacks">
+      <created>1654972930601</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1654972930601</updated>
+    </task>
+    <task id="LOCAL-00079" summary="added post updated callbacks to all entities">
+      <created>1654974046588</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1654974046588</updated>
+    </task>
+    <task id="LOCAL-00080" summary="added all equals and hashcodes">
+      <created>1654974910489</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1654974910489</updated>
+    </task>
+    <task id="LOCAL-00081" summary="fixed access token verifier and repository">
+      <created>1654976304230</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1654976304230</updated>
+    </task>
+    <task id="LOCAL-00082" summary="updated exposed versions and fixed bugs">
+      <created>1655150030220</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1655150030220</updated>
+    </task>
+    <task id="LOCAL-00083" summary="fixed exception bug">
+      <created>1655152658402</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1655152658402</updated>
+    </task>
+    <task id="LOCAL-00084" summary="added README.md">
+      <created>1655156430703</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1655156430703</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -739,31 +751,31 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored code" />
-    <MESSAGE value="added unique constraints" />
-    <MESSAGE value="fixed bugs and added user to user auth settings" />
-    <MESSAGE value="added name to post model" />
-    <MESSAGE value="added query parameter extension" />
-    <MESSAGE value="fixed auth service" />
-    <MESSAGE value="added exception interceptor plugin" />
-    <MESSAGE value="added base exception handlers" />
-    <MESSAGE value="fixed extension" />
-    <MESSAGE value="fixed dependencies" />
-    <MESSAGE value="changed token name" />
-    <MESSAGE value="added tags base routing" />
-    <MESSAGE value="added comments base routing" />
-    <MESSAGE value="added reaction base routing" />
-    <MESSAGE value="added profile information service implementation" />
-    <MESSAGE value="added action and interaction profile service implementation" />
-    <MESSAGE value="added post services implementation" />
-    <MESSAGE value="added comments services implementation" />
-    <MESSAGE value="added tags service implementation" />
-    <MESSAGE value="added reaction services implementation" />
-    <MESSAGE value="added profile repository implementation" />
-    <MESSAGE value="added posts repository impl" />
-    <MESSAGE value="added comments repository implementation" />
-    <MESSAGE value="added tags repository impl" />
-    <MESSAGE value="added reaction repository implemetation" />
-    <option name="LAST_COMMIT_MESSAGE" value="added reaction repository implemetation" />
+    <MESSAGE value="refactored Dependencies" />
+    <MESSAGE value="fixed javax validation" />
+    <MESSAGE value="fixed exception handler plugin" />
+    <MESSAGE value="fixed token expired handling" />
+    <MESSAGE value="added auth mappers qualifiers" />
+    <MESSAGE value="added auth and comments mappers qualifiers" />
+    <MESSAGE value="added reactions mappers qualifiers" />
+    <MESSAGE value="added post mappers qualifiers" />
+    <MESSAGE value="added configurations, fixed auth plugin and added shadow plugin for fat jars" />
+    <MESSAGE value="fixed some todo-s" />
+    <MESSAGE value="added configuration properties" />
+    <MESSAGE value="fixed passwords encoding" />
+    <MESSAGE value="fixed hocoon file" />
+    <MESSAGE value="fixed bugs" />
+    <MESSAGE value="added post comments count endpoint" />
+    <MESSAGE value="added default created data" />
+    <MESSAGE value="added exposed entity callbacks api" />
+    <MESSAGE value="fixed update models" />
+    <MESSAGE value="fixed exposed entity callbacks" />
+    <MESSAGE value="added post updated callbacks to all entities" />
+    <MESSAGE value="added all equals and hashcodes" />
+    <MESSAGE value="fixed access token verifier and repository" />
+    <MESSAGE value="updated exposed versions and fixed bugs" />
+    <MESSAGE value="fixed exception bug" />
+    <MESSAGE value="added README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="added README.md" />
   </component>
 </project>

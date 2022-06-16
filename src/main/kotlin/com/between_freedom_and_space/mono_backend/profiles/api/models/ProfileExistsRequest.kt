@@ -8,6 +8,6 @@ import javax.validation.constraints.NotBlank
 data class ProfileExistsRequest(
 
     @SerialName("profile_nickname")
-    @NotBlank(message = "Nickname can't be blank")
+    @get:NotBlank(message = "Nickname can't be blank")
     val nickName: String,
 )

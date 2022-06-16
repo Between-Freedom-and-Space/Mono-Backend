@@ -6,6 +6,7 @@ import com.between_freedom_and_space.mono_backend.auth.components.exceptions.Aut
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
 import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
+import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.auth.util.AuthConstants
 import io.ktor.server.request.*
 import io.ktor.util.*
@@ -14,6 +15,7 @@ import kotlin.reflect.jvm.jvmName
 class TokenAuthenticateProcessor(
     private val tokenVerifier: TokenVerifier,
     private val tokenParser: TokenParser,
+    private val userAuthService: UserProfileAuthService,
 ): AuthenticateProcessor {
 
     override fun intercept(request: ApplicationRequest, attributes: Attributes) {
@@ -27,12 +29,14 @@ class TokenAuthenticateProcessor(
         if (verifyResult is TokenVerifyResult.Invalid) {
             throw AuthenticateException("Access token is invalid")
         }
+        verifyResult as TokenVerifyResult.Valid
 
-        addUserAuthorities(verifyResult as TokenVerifyResult.Valid, attributes)
-    }
-
-    private fun addUserAuthorities(verifyResult: TokenVerifyResult.Valid, attributes: Attributes) {
         val authority = tokenParser.parseToken(verifyResult.decodedToken)
+        val userId = authority.userId
+        if (!userAuthService.profileIsValid(userId)) {
+            throw AuthenticateException("Access token is invalid")
+        }
+
         val key = AttributeKey<UserAuthority>(UserAuthority::class.jvmName)
         attributes.put(key, authority)
     }

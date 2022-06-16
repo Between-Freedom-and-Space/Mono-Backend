@@ -1,10 +1,11 @@
 package com.between_freedom_and_space.mono_backend.auth.components.impl
 
 import com.auth0.jwt.exceptions.JWTVerificationException
+import com.auth0.jwt.exceptions.TokenExpiredException
 import com.between_freedom_and_space.mono_backend.auth.components.TokenVerifier
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.util.TokenConstants
-import com.between_freedom_and_space.mono_backend.auth.models.AuthProperties
+import com.between_freedom_and_space.mono_backend.auth.plugins.config.properties.AuthProperties
 import com.between_freedom_and_space.mono_backend.auth.security.JWTVerifier
 import com.between_freedom_and_space.mono_backend.auth.security.models.JWTParams
 
@@ -33,6 +34,8 @@ class JWTTokenVerifier(
         return try {
             val decodedToken = verifier.verify(token)
             return TokenVerifyResult.Valid(decodedToken)
+        } catch (ex: TokenExpiredException) {
+            TokenVerifyResult.Expired
         } catch (ex: JWTVerificationException) {
             TokenVerifyResult.Invalid
         }

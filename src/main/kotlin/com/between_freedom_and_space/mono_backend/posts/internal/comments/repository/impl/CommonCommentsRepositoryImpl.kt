@@ -15,7 +15,9 @@ class CommonCommentsRepositoryImpl: CommonCommentsRepository {
     override fun getAllComments(pageNumber: Int, pageSize: Int): List<PostComment> {
         val offset = (pageNumber - 1).toLong() * pageSize
         val query = PostCommentsTable
-            .selectAll()
+            .select {
+                PostCommentsTable.isDeleted eq false
+            }
             .limit(pageSize, offset)
         val result = PostComment.wrapRows(query)
         return result.toList()

@@ -1,17 +1,20 @@
 package com.between_freedom_and_space.mono_backend.profiles.entities.models
 
+import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.PostUpdated
+import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.base.CallbackLongEntityClass
 import com.between_freedom_and_space.mono_backend.posts.entities.post.Post
 import com.between_freedom_and_space.mono_backend.posts.entities.post.PostsTable
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostComment
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostCommentsTable
 import com.between_freedom_and_space.mono_backend.profiles.entities.tables.UserProfilesTable
 import com.between_freedom_and_space.mono_backend.profiles.entities.tables.UserSubscriptionsTable
+import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
 import org.jetbrains.exposed.dao.LongEntity
 import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
 class UserProfile(id: EntityID<Long>): LongEntity(id) {
-    companion object: LongEntityClass<UserProfile>(UserProfilesTable)
+    companion object: CallbackLongEntityClass<UserProfile>(UserProfilesTable)
 
     var mail by UserProfilesTable.mail
 
@@ -25,7 +28,7 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
 
     var description by UserProfilesTable.description
 
-    var locataion by UserProfilesTable.location
+    var location by UserProfilesTable.location
 
     var isVisible by UserProfilesTable.isVisible
 
@@ -55,7 +58,7 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
         if (nickName != other.nickName) return false
         if (nameAlias != other.nameAlias) return false
         if (description != other.description) return false
-        if (locataion != other.locataion) return false
+        if (location != other.location) return false
 
         return true
     }
@@ -67,8 +70,12 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
         result = 31 * result + nickName.hashCode()
         result = 31 * result + nameAlias.hashCode()
         result = 31 * result + description.hashCode()
-        result = 31 * result + locataion.hashCode()
+        result = 31 * result + location.hashCode()
         return result
     }
 
+    @PostUpdated
+    fun postUpdated() {
+        updatedDate = localDateTimeNow()
+    }
 }

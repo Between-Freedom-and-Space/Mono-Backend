@@ -4,6 +4,7 @@ import com.between_freedom_and_space.mono_backend.common.api.PageParams
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.api.models.ReactionModel
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.modules.qualifiers.ReactionsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.InformationCommentReactionsService
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.exceptions.InvalidReactionException
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BaseCommentReactionModel
@@ -13,6 +14,7 @@ import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import com.between_freedom_and_space.mono_backend.util.extensions.validateAndReceiveRequest
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import org.koin.core.qualifier.named
 
 @Suppress("DuplicatedCode")
 internal fun Application.commentReactionsInformationRouting() {
@@ -20,7 +22,9 @@ internal fun Application.commentReactionsInformationRouting() {
 
     val informationService by inject<InformationCommentReactionsService>()
 
-    val baseMapper by inject<ModelMapper<BaseCommentReactionModel, ReactionModel>>()
+    val baseMapper by inject<ModelMapper<BaseCommentReactionModel, ReactionModel>>(
+        named(ReactionsMappersQualifiers.BASE_COMMENT_REACTION_TO_MODEL)
+    )
 
     routing {
 

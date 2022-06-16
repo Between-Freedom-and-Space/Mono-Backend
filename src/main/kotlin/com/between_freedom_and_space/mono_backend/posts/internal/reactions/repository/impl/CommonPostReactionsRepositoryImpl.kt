@@ -15,7 +15,9 @@ class CommonPostReactionsRepositoryImpl: CommonPostReactionsRepository {
     override fun getAllReactions(pageNumber: Int, pageSize: Int): List<PostReaction> {
         val offset = (pageNumber - 1).toLong() * pageSize
         val query = PostReactionsTable
-            .selectAll()
+            .select {
+                PostReactionsTable.isDeleted eq false
+            }
             .limit(pageSize, offset)
         val result = PostReaction.wrapRows(query)
         return result.toList()

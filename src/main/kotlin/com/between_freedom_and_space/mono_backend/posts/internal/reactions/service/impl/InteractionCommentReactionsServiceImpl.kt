@@ -22,7 +22,7 @@ class InteractionCommentReactionsServiceImpl(
     private val entityMapper: ModelMapper<CommentReaction, BaseCommentReactionModel>
 ): InteractionCommentReactionsService {
 
-    override fun create(model: CreateCommentReactionModel): BaseCommentReactionModel {
+    override fun createReaction(model: CreateCommentReactionModel): BaseCommentReactionModel {
         val entity = transaction {
             val authorId = model.authorId
             val commentId = model.commentId
@@ -38,7 +38,7 @@ class InteractionCommentReactionsServiceImpl(
         return entityMapper.map(entity)
     }
 
-    override fun update(reactionId: Long, model: UpdateCommentReactionModel): BaseCommentReactionModel {
+    override fun updateReaction(reactionId: Long, model: UpdateCommentReactionModel): BaseCommentReactionModel {
         val entity = transaction {
             val reaction = reactionRepository.getReactionById(reactionId)
                 ?: throw ReactionNotFoundException("Comment reaction with id: $reactionId not found")
@@ -49,7 +49,7 @@ class InteractionCommentReactionsServiceImpl(
         return entityMapper.map(entity)
     }
 
-    override fun delete(reactionId: Long): BaseCommentReactionModel {
+    override fun deleteReaction(reactionId: Long): BaseCommentReactionModel {
         val entity = transaction {
             reactionRepository.delete(reactionId)
                 ?: throw ReactionNotFoundException("Comment reaction with id $reactionId not found")

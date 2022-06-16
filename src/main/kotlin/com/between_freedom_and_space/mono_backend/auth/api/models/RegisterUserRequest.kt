@@ -16,26 +16,26 @@ data class RegisterUserRequest(
     val phoneNumber: String? = null,
 
     @SerialName("nickname")
-    @NotBlank(message = "Nickname can't be empty")
-    @Length(message = "Invalid nickname length", min = 3, max = 20)
+    @get:NotBlank(message = "Nickname can't be empty")
+    @get:Length(message = "Invalid nickname length. Min: 3, Max: 20", min = 3, max = 20)
     val nickName: String,
 
     @SerialName("password_encrypted")
-    @NotBlank(message = "Password can't be empty")
+    @get:NotBlank(message = "Password can't be empty")
     val passwordEncrypted: String,
 
     @SerialName("name_alias")
-    @NotBlank(message = "Name can't be empty")
-    @Length(message = "Invalid name length", min = 2, max = 50)
+    @get:NotBlank(message = "Name can't be empty")
+    @get:Length(message = "Invalid name length. Min: 2, Max: 50", min = 2, max = 50)
     val nameAlias: String,
 
     @SerialName("profile_description")
-    @NotBlank(message = "Description can't be empty")
-    @Length(message = "Invalid description length", max = 600)
+    @get:NotBlank(message = "Description can't be empty")
+    @get:Length(message = "Invalid description length. Max: 600", max = 600)
     val description: String,
 
     @SerialName("location")
-    @NotBlank(message = "Location can't be empty")
-    @Length(message = "Invalid location length", max = 500)
+    @get:NotBlank(message = "Location can't be empty")
+    @get:Length(message = "Invalid location length. Max: 500", max = 500)
     val location: String,
 )

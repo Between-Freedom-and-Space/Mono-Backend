@@ -96,6 +96,18 @@ object KotlinXSerializationJson: ProjectDependency {
     override val version = Versions.KOTLINX_SERIALIZATION
 }
 
+object KtorServerNegotiation: ProjectDependency {
+    override val group = "io.ktor"
+    override val artifact = "ktor-server-content-negotiation"
+    override val version = Versions.KTOR
+}
+
+object KtorSerializationKotlinX: ProjectDependency {
+    override val group = "io.ktor"
+    override val artifact = "ktor-serialization-kotlinx-json"
+    override val version = Versions.KTOR
+}
+
 object KotlinLogger: ProjectDependency {
     override val group = "io.github.microutils"
     override val artifact = "kotlin-logging-jvm"
@@ -173,4 +185,16 @@ object HibernateValidator: ProjectDependency {
     override val group = "org.hibernate.validator"
     override val artifact = "hibernate-validator"
     override val version = Versions.HIBERNATE_VALIDATOR
+}
+
+object JavaXUEL: ProjectDependency {
+    override val group = "javax.el"
+    override val artifact = "javax.el-api"
+    override val version = Versions.JAVAX_UEL
+}
+
+object GlassFishUEL: ProjectDependency {
+    override val group = "org.glassfish.web"
+    override val artifact = "javax.el"
+    override val version = Versions.UEL
 }

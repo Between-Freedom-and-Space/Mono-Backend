@@ -12,10 +12,10 @@ data class CreateCommentReactionRequest(
     val reaction: Reaction,
 
     @SerialName("author_id")
-    @Min(value = 0, message = "Author id can't be less than 0")
+    @get:Min(value = 0, message = "Author id can't be less than 0")
     val authorId: Long,
 
     @SerialName("comment_id")
-    @Min(value = 0, message = "Comment id can't be less than 0")
+    @get:Min(value = 0, message = "Comment id can't be less than 0")
     val commentId: Long,
 )

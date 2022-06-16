@@ -8,15 +8,15 @@ import javax.validation.constraints.Size
 data class UpdatePostRequest(
 
     @SerialName("new_name")
-    val newName: String?,
+    val newName: String? = null,
 
     @SerialName("new_text")
-    val newText: String?,
+    val newText: String? = null,
 
     @SerialName("is_visible")
-    val isVisible: Boolean?,
+    val isVisible: Boolean? = null,
 
     @SerialName("new_tags_aliases")
-    @Size(max = 25, message = "Invalid new tags length. Max length is 25")
-    val newTags: List<String>?,
+    @get:Size(max = 25, message = "Invalid new tags length. Max length is 25")
+    val newTags: List<String>? = null,
 )

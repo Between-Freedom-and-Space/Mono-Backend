@@ -7,8 +7,8 @@ import kotlinx.serialization.Serializable
 data class UpdateTagRequest(
 
     @SerialName("new_tag_alias")
-    val newTagAlias: String?,
+    val newTagAlias: String? = null,
 
     @SerialName("new_tag_description")
-    val newTagDescription: String?,
+    val newTagDescription: String? = null,
 )

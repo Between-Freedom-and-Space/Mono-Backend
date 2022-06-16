@@ -1,18 +1,33 @@
 package com.between_freedom_and_space.mono_backend.app
 
-import com.between_freedom_and_space.mono_backend.app.config.configureDatabase
+import com.typesafe.config.ConfigFactory
+import io.ktor.server.application.*
+import io.ktor.server.config.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
 fun main() {
 
-    startKoin {
-        modules(applicationModule)
+    embeddedServer(Netty, environment = applicationEngineEnvironment {
+        config = HoconApplicationConfig(ConfigFactory.load())
+
+        module { applicationModule(this) }
+
+        connector {
+            port = 8080
+            host = "0.0.0.0"
+        }
+    }).start(wait = true)
+}
+
+private fun applicationModule(application: Application) {
+    val koin = startKoin {
+        modules(applicationModule, module {
+            single { application }
+        })
     }
 
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
-        configureDatabase()
-        main()
-    }.start(wait = true)
+    application.main(koin)
 }

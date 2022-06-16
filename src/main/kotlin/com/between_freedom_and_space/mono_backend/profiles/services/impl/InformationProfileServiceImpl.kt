@@ -16,6 +16,7 @@ import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProf
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.CreationProfileException
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
+import com.between_freedom_and_space.mono_backend.profiles.services.mappers.UserProfileToBaseProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -28,7 +29,7 @@ class InformationProfileServiceImpl(
     private val tagsInformationService: InformationTagsService,
     private val postReactionInformationService: InformationPostReactionsService,
     private val commentReactionInformationService: InformationCommentReactionsService,
-    private val entityMapper: ModelMapper<UserProfile, BaseProfileModel>
+    private val entityMapper: ModelMapper<UserProfile, BaseProfileModel>,
 ): InformationProfilesService {
 
     override fun getAllProfiles(pageNumber: Int, pageSize: Int): List<BaseProfileModel> {

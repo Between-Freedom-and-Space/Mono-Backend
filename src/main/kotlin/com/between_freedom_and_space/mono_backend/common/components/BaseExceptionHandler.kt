@@ -10,7 +10,7 @@ import java.lang.Exception
 class BaseExceptionHandler: ExceptionHandler {
 
     override suspend fun invoke(call: ApplicationCall, exception: Exception) {
-        val response = Response.badRequest(message = exception.message)
-        call.respond(HttpStatusCode.BadRequest, response)
+        val response = Response.internalServerError(message = exception.message)
+        call.respond(HttpStatusCode.InternalServerError, response)
     }
 }

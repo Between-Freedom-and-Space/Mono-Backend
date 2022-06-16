@@ -6,9 +6,9 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.servi
 
 interface InteractionCommentReactionsService {
 
-    fun create(model: CreateCommentReactionModel): BaseCommentReactionModel
+    fun createReaction(model: CreateCommentReactionModel): BaseCommentReactionModel
 
-    fun update(reactionId: Long, model: UpdateCommentReactionModel): BaseCommentReactionModel
+    fun updateReaction(reactionId: Long, model: UpdateCommentReactionModel): BaseCommentReactionModel
 
-    fun delete(reactionId: Long): BaseCommentReactionModel
+    fun deleteReaction(reactionId: Long): BaseCommentReactionModel
 }

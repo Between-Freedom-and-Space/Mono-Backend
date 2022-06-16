@@ -7,4 +7,8 @@ interface UserProfileAuthService {
     fun getProfileOrNull(nickName: String): UserAuthModel?
 
     fun getProfileOrNull(id: Long): UserAuthModel?
+
+    fun profileIsValid(nickName: String): Boolean
+
+    fun profileIsValid(id: Long): Boolean
 }

@@ -10,19 +10,19 @@ import javax.validation.constraints.Size
 data class CreatePostRequest(
 
     @SerialName("post_name")
-    @Length(min = 2, max = 300, message = "Invalid post name length")
-    @NotBlank(message = "Post name can't be blank")
+    @get:Length(min = 2, max = 300, message = "Invalid post name length")
+    @get:NotBlank(message = "Post name can't be blank")
     val postName: String,
 
     @SerialName("post_text")
-    @Length(max = 15000, message = "Invalid post text length")
-    @NotBlank(message = "Post text can't be blank")
+    @get:Length(max = 15000, message = "Invalid post text length")
+    @get:NotBlank(message = "Post text can't be blank")
     val postText: String,
 
     @SerialName("is_visible")
     val isVisible: Boolean,
 
     @SerialName("tags_aliases")
-    @Size(max = 25, message = "Invalid tags length. Max length is 25")
-    val tags: List<String>,
+    @get:Size(max = 25, message = "Invalid tags length. Max length is 25")
+    val tags: List<String> = emptyList(),
 )

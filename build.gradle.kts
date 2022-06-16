@@ -6,6 +6,7 @@ plugins {
     application
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.serialization") version "1.6.10"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = Config.GROUP
@@ -24,7 +25,6 @@ dependencies {
 
     // Ktor plugins and modules
     implementation(KtorServerCore)
-    implementation(KtorSerialization)
     implementation(KtorServerJetty)
     implementation(KtorServerAuth)
     implementation(KtorServerJWT)
@@ -34,7 +34,10 @@ dependencies {
     implementation(KtorCORS)
 
     // Serialization
+    implementation(KtorSerialization)
     implementation(KotlinXSerializationJson)
+    implementation(KtorServerNegotiation)
+    implementation(KtorSerializationKotlinX)
 
     // DI Koin
     implementation(KoinCore)
@@ -63,6 +66,8 @@ dependencies {
     // Validation
     implementation(JavaXValidation)
     implementation(HibernateValidator)
+    implementation(JavaXUEL)
+    implementation(GlassFishUEL)
 
     // Tests
     testImplementation(KtorServerTests)

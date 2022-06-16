@@ -13,9 +13,12 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
+import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
+import com.between_freedom_and_space.mono_backend.posts.services.models.PostCommentsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel.ReactionToCount
+import org.jetbrains.exposed.dao.load
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationPostsServiceImpl(
@@ -28,13 +31,22 @@ class InformationPostsServiceImpl(
 
     override fun getAllPosts(pageNumber: Int, pageSize: Int): List<BasePostModel> {
         val posts = transaction {
-            repository.getAllPosts(pageNumber, pageSize)
+            val posts = repository.getAllPosts(pageNumber, pageSize)
+
+            posts.forEach { post ->
+                post.load(Post::tags)
+            }
+
+            posts
         }
         return posts.map { mapper.map(it) }
     }
 
     override fun getPostById(postId: Long): BasePostModel {
-        val post = transaction { getPostOrThrow(postId) }
+        val post = transaction {
+            val post = getPostOrThrow(postId)
+            post.load(Post::tags)
+        }
         return mapper.map(post)
     }
 
@@ -70,6 +82,18 @@ class InformationPostsServiceImpl(
             reactionsCount = reactionToCount.map { entry ->
                 ReactionToCount(entry.key, entry.value)
             }
+        )
+    }
+
+    override fun getPostCommentsCount(postId: Long): PostCommentsCountModel {
+        val commentsCount = transaction {
+            val postEntity = getPostOrThrow(postId)
+            postEntity.comments.count()
+        }
+
+        return PostCommentsCountModel(
+            postId = postId,
+            commentsCount = commentsCount,
         )
     }
 

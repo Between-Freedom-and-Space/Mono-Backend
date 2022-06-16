@@ -1,12 +1,11 @@
 package com.between_freedom_and_space.mono_backend.profiles.repository.impl
 
-import com.between_freedom_and_space.mono_backend.common.exposed.exists
+import com.between_freedom_and_space.mono_backend.common.exposed.extensions.exists
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.entities.tables.UserProfilesTable
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
 import com.between_freedom_and_space.mono_backend.profiles.repository.exceptions.ProfileAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
-import com.between_freedom_and_space.mono_backend.util.extensions.ifNull
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.*
 
@@ -15,7 +14,9 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
     override fun getAllProfiles(pageNumber: Int, pageSize: Int): List<UserProfile> {
         val offset = (pageNumber - 1).toLong() * pageSize.toLong()
         val query = UserProfilesTable
-            .selectAll()
+            .select {
+                UserProfilesTable.isDeleted eq false
+            }
             .limit(pageSize, offset)
         val result = UserProfile.wrapRows(query)
         return result.toList()
@@ -51,7 +52,7 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
             nickName = profile.nickName
             nameAlias = profile.nameAlias
             description = profile.description
-            locataion = profile.description
+            location = profile.description
         }
     }
 

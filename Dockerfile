@@ -1,34 +1,10 @@
-# App Building phase
-FROM openjdk:8 AS build
+FROM gradle:7-jdk11 AS build
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle shadowJar --no-daemon
 
-RUN mkdir /appbuild
-COPY . /appbuild
-WORKDIR /appbuild
-RUN ./gradlew clean build
-# End App Building phase
-
-
-# Container setup
-FROM openjdk:8-jre-alpine
-
-# Creating user
-ENV APPLICATION_USER 1033
-RUN adduser -D -g '' $APPLICATION_USER
-
-# Giving permissions
+FROM openjdk:11
 RUN mkdir /app
-RUN mkdir /app/resources
-RUN chown -R $APPLICATION_USER /app
-RUN chmod -R 755 /app
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/mono-backend.jar
 
-# Setting user to use when running the image
-USER $APPLICATION_USER
-
-# Copying needed files
-COPY --from=build /appbuild/build/libs/Mono-Backend-1.0.0.jar /app/Mono-Backend.jar
-COPY --from=build /appbuild/resources/ /app/resources/
-WORKDIR /app
-
-# Entrypoint definition
-CMD ["sh", "-c", "java -server -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:InitialRAMFraction=2 -XX:MinRAMFraction=2 -XX:MaxRAMFraction=2 -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+UseStringDeduplication -Xmx4096m -jar Mono-Backend.jar"]
-# End Container setup --------
+ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:InitialRAMFraction=2 -XX:MinRAMFraction=2 -XX:MaxRAMFraction=2 -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+UseStringDeduplication -Xmx4096m -jar mono-backend.jar"]
