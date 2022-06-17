@@ -10,6 +10,14 @@ private val repositoryModule = module {
 
 }
 
+private val componentsModule = module {
+
+}
+
+private val pluginModule = module {
+
+}
+
 private val serviceModule = module {
 
 }
@@ -17,5 +25,7 @@ private val serviceModule = module {
 val accessModule = module {
     includes(mappersModule)
     includes(repositoryModule)
+    includes(componentsModule)
+    includes(pluginModule)
     includes(serviceModule)
 }
