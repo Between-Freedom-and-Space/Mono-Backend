@@ -35,12 +35,12 @@ class AuthenticatePlugin(
 
     data class Configuration(
         var enableLogging: Boolean = true,
-        var ignoredPaths: MutableList<IgnoredPath> = mutableListOf()
+        var ignoredPaths: List<IgnoredPath> = listOf()
     )
 
     private val logger = KotlinLogging.logger { }
 
-    private suspend fun intercept(context: PipelineContext<Unit, ApplicationCall>) {
+    private fun intercept(context: PipelineContext<Unit, ApplicationCall>) {
         val request = context.call.request
         val attributes = context.call.attributes
 

@@ -8,7 +8,12 @@ import io.ktor.util.pipeline.*
 import kotlin.reflect.jvm.jvmName
 
 fun PipelineContext<Unit, ApplicationCall>.getUserAuthorities(): UserAuthority {
+    return getUserAuthoritiesOrNull()
+        ?: throw AuthenticateException("User wasn't authenticated")
+}
+
+fun PipelineContext<Unit, ApplicationCall>.getUserAuthoritiesOrNull(): UserAuthority? {
     val attributes = call.attributes
     val key = AttributeKey<UserAuthority>(UserAuthority::class.jvmName)
-    return attributes.getOrNull(key) ?: throw AuthenticateException("User wasn't authenticated")
+    return attributes.getOrNull(key)
 }

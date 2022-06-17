@@ -9,6 +9,9 @@ internal fun Application.accessActionRouting() {
     routing {
         val roleBasePath = "$basePath/role"
 
+        post("$roleBasePath/{nickname}/change") {
+
+        }
     }
 
     routing {

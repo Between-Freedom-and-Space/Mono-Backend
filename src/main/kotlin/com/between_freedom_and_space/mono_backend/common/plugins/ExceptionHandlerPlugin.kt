@@ -48,7 +48,7 @@ class ExceptionHandlerPlugin(
 
     private val logger = KotlinLogging.logger {  }
 
-    fun <T: Exception> addHandler(handler: ExceptionHandler, clazz: KClass<T>) {
+    fun <T: Exception> setHandler(handler: ExceptionHandler, clazz: KClass<T>) {
         handlers[clazz] = handler
     }
 
