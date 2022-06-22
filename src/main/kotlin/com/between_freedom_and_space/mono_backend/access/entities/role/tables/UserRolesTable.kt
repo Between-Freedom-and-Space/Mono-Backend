@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object UserRolesTable: LongIdTable("user_role") {
 
-    val roleAlias = enumeration("role_alias", Role::class)
+    val roleAlias = enumeration("role_alias", Role::class).uniqueIndex()
 
     val createdDate = datetime("created_date").clientDefault { localDateTimeNow() }
 

@@ -6,8 +6,10 @@ import com.between_freedom_and_space.mono_backend.access.components.models.Acces
 import com.between_freedom_and_space.mono_backend.access.components.plugin.models.UserAccessData
 import com.between_freedom_and_space.mono_backend.access.components.plugin.service.RoutingAccessor
 import com.between_freedom_and_space.mono_backend.access.components.plugin.service.impl.DefaultRoutingAccessor
+import com.between_freedom_and_space.mono_backend.access.components.plugin.util.roleAttributeKey
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.extensions.getUserAuthoritiesOrNull
+import com.between_freedom_and_space.mono_backend.auth.components.plugin.util.userAuthorityAttributeKey
 import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
 import io.ktor.server.application.*
@@ -130,10 +132,8 @@ class AccessPlugin(
     }
 
     private fun buildUserAccessData(request: ApplicationRequest, attributes: Attributes): UserAccessData {
-        val authorityKey = AttributeKey<UserAuthority>(UserAuthority::class.jvmName)
-        val accessKey = AttributeKey<Role>(Role::class.jvmName)
-        val authority = attributes.getOrNull(authorityKey)
-        val role = attributes[accessKey]
+        val authority = attributes.getOrNull(userAuthorityAttributeKey)
+        val role = attributes[roleAttributeKey]
         return UserAccessData(authority, request, role)
     }
 }

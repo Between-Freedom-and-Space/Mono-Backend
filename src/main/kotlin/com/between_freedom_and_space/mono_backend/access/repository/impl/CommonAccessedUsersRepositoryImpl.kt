@@ -1,4 +1,6 @@
 package com.between_freedom_and_space.mono_backend.access.repository.impl
 
-class CommonAccessedUsersRepositoryImpl {
+import com.between_freedom_and_space.mono_backend.access.repository.CommonAccessedUsersRepository
+
+class CommonAccessedUsersRepositoryImpl: CommonAccessedUsersRepository {
 }

@@ -1,4 +1,6 @@
 package com.between_freedom_and_space.mono_backend.access.service.impl
 
-class InformationAccessRulesServiceImpl {
+import com.between_freedom_and_space.mono_backend.access.service.InformationAccessRulesService
+
+class InformationAccessRulesServiceImpl: InformationAccessRulesService {
 }

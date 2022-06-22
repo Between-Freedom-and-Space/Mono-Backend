@@ -3,6 +3,7 @@ package com.between_freedom_and_space.mono_backend.access.components.plugin.exte
 import com.between_freedom_and_space.mono_backend.access.components.exceptions.AccessException
 import com.between_freedom_and_space.mono_backend.access.components.plugin.AccessPlugin
 import com.between_freedom_and_space.mono_backend.access.components.plugin.service.RoutingAccessor
+import com.between_freedom_and_space.mono_backend.access.components.plugin.util.roleAttributeKey
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
@@ -17,8 +18,7 @@ fun PipelineContext<Unit, ApplicationCall>.getUserRole(): Role {
 
 fun PipelineContext<Unit, ApplicationCall>.getUserRoleOrNull(): Role? {
     val attributes = call.attributes
-    val key = AttributeKey<Role>(Role::class.jvmName)
-    return attributes.getOrNull(key)
+    return attributes.getOrNull(roleAttributeKey)
 }
 
 @ContextDsl

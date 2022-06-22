@@ -1,4 +1,6 @@
 package com.between_freedom_and_space.mono_backend.access.service.impl
 
-class InteractionUserRolesServiceImpl {
+import com.between_freedom_and_space.mono_backend.access.service.InteractionUserRolesService
+
+class InteractionUserRolesServiceImpl: InteractionUserRolesService {
 }
