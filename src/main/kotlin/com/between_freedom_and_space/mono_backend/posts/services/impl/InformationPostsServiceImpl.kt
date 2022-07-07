@@ -13,7 +13,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
-import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostCommentsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel

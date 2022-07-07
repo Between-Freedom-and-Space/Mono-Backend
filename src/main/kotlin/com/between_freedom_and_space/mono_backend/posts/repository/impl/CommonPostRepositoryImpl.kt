@@ -6,14 +6,9 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.m
 import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
 import com.between_freedom_and_space.mono_backend.posts.repository.exceptions.PostAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.posts.repository.models.CreatePostEntityModel
-import com.between_freedom_and_space.mono_backend.posts.services.models.CreatePostModel
-import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.SizedCollection
-import org.jetbrains.exposed.sql.SizedIterable
 import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
-import kotlin.random.Random
 
 class CommonPostRepositoryImpl: CommonPostRepository {
 

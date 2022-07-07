@@ -1,6 +1,6 @@
 package com.between_freedom_and_space.mono_backend.posts.plugins
 
-import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticatePlugin
+import com.between_freedom_and_space.mono_backend.posts.api.components.postsRoutingAccessors
 import com.between_freedom_and_space.mono_backend.posts.api.routing.postsActionRouting
 import com.between_freedom_and_space.mono_backend.posts.api.routing.postsExceptionHandling
 import com.between_freedom_and_space.mono_backend.posts.api.routing.postsInformationRouting
@@ -20,4 +20,5 @@ fun Application.addPostsPlugin() {
     postsInformationRouting()
 
     postsExceptionHandling()
+    postsRoutingAccessors()
 }

@@ -6,9 +6,6 @@ import com.between_freedom_and_space.mono_backend.auth.service.model.UserAuthMod
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
-import com.between_freedom_and_space.mono_backend.profiles.services.mappers.UserProfileToBaseProfileModelMapper
-import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
-import com.between_freedom_and_space.mono_backend.util.extensions.transform
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class CommonUserProfileAuthService(

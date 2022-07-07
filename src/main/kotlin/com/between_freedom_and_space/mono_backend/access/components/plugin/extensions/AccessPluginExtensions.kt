@@ -7,9 +7,7 @@ import com.between_freedom_and_space.mono_backend.access.components.plugin.util.
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
-import io.ktor.util.*
 import io.ktor.util.pipeline.*
-import kotlin.reflect.jvm.jvmName
 
 fun PipelineContext<Unit, ApplicationCall>.getUserRole(): Role {
     return getUserRoleOrNull()

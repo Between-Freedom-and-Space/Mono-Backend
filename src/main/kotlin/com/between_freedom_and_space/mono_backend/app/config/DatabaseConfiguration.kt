@@ -4,7 +4,6 @@ import com.between_freedom_and_space.mono_backend.app.config.properties.Database
 import io.ktor.server.application.*
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.DatabaseConfig
-import kotlin.properties.Delegates
 
 internal fun Application.configureDatabase() {
     val properties = getDatabaseProperties()

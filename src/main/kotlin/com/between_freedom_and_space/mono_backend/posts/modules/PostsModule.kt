@@ -20,7 +20,6 @@ import com.between_freedom_and_space.mono_backend.posts.services.impl.Interactio
 import com.between_freedom_and_space.mono_backend.posts.services.mappers.CreatePostModelToCreateEntityMapper
 import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.services.models.*
-import com.between_freedom_and_space.mono_backend.profiles.repository.impl.CommonProfilesRepositoryImpl
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module

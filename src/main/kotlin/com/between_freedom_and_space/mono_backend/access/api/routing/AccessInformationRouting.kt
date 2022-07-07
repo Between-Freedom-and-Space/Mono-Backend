@@ -1,8 +1,6 @@
 package com.between_freedom_and_space.mono_backend.access.api.routing
 
 import com.between_freedom_and_space.mono_backend.access.api.models.UserRoleModel
-import com.between_freedom_and_space.mono_backend.access.components.models.AccessVerifyResult
-import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.routingAccessor
 import com.between_freedom_and_space.mono_backend.access.modules.qualifiers.AccessMappersQualifiers
 import com.between_freedom_and_space.mono_backend.access.service.InformationUserRolesService
 import com.between_freedom_and_space.mono_backend.access.service.exception.InvalidRoleException
@@ -69,6 +67,14 @@ internal fun Application.accessInformationRouting() {
         }
 
         get("$ruleBasePath/{id}") {
+
+        }
+
+        get("$ruleBasePath/user/{nickname}") {
+
+        }
+
+        get("$ruleBasePath/role/{roleAlias}") {
 
         }
     }

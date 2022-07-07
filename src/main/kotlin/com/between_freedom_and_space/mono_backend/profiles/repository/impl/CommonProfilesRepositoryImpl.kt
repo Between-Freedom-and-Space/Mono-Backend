@@ -7,7 +7,7 @@ import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProf
 import com.between_freedom_and_space.mono_backend.profiles.repository.exceptions.ProfileAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import org.jetbrains.exposed.dao.id.EntityID
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.select
 
 class CommonProfilesRepositoryImpl: CommonProfilesRepository {
 

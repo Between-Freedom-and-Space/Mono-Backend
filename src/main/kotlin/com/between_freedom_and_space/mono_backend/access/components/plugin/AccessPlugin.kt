@@ -5,23 +5,19 @@ import com.between_freedom_and_space.mono_backend.access.components.exceptions.A
 import com.between_freedom_and_space.mono_backend.access.components.models.AccessVerifyResult
 import com.between_freedom_and_space.mono_backend.access.components.plugin.models.UserAccessData
 import com.between_freedom_and_space.mono_backend.access.components.plugin.service.RoutingAccessor
-import com.between_freedom_and_space.mono_backend.access.components.plugin.service.impl.DefaultRoutingAccessor
 import com.between_freedom_and_space.mono_backend.access.components.plugin.util.roleAttributeKey
-import com.between_freedom_and_space.mono_backend.access.entities.role.Role
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.extensions.getUserAuthoritiesOrNull
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.util.userAuthorityAttributeKey
-import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.util.*
 import io.ktor.util.pipeline.*
 import mu.KotlinLogging
-import kotlin.reflect.jvm.jvmName
 
 class AccessPlugin(
     config: Configuration,
-    private val handler: AccessHandler,
+    private val handler: PluginAccessHandler,
     private val pathMatcher: PathPatternMatcher,
 ) {
     companion object: Plugin<ApplicationCallPipeline, Configuration, AccessPlugin> {
@@ -29,7 +25,7 @@ class AccessPlugin(
         override val key = AttributeKey<AccessPlugin>("ApplicationAccessPlugin")
 
         override fun install(pipeline: ApplicationCallPipeline, configure: Configuration.() -> Unit): AccessPlugin {
-            val handler by inject<AccessHandler>()
+            val handler by inject<PluginAccessHandler>()
             val pathMatcher by inject<PathPatternMatcher>()
 
             val config = Configuration().apply(configure)
@@ -68,7 +64,7 @@ class AccessPlugin(
         val request = context.call.request
         val attributes = context.call.attributes
         val path = request.path()
-        val authority = context.getUserAuthoritiesOrNull().toString()
+        val authority = context.getUserAuthoritiesOrNull()
 
         handler.handleRequest(request, attributes)
         log("Request with path: $path handled for user: $authority")
@@ -80,34 +76,44 @@ class AccessPlugin(
         val routingAccessor = findPathAccessor(path)
         routingAccessor?.let { accessor ->
             val userAccessData = buildUserAccessData(request, attributes)
-            accessor(userAccessData)
-            log("Path accessor invoked for user: $authority")
+            val accessCheckResult = accessor(userAccessData)
+            log("Path accessor invoked for user: $authority with result: $accessCheckResult")
 
-            return
+            if (accessCheckResult == AccessVerifyResult.ACCESSED) {
+                return
+            }
         }
 
         defaultRoutingAccessor?.let { accessor ->
             val userAccessData = buildUserAccessData(request, attributes)
-            accessor(userAccessData)
-            log("Default path accessor invoked for user: $authority")
+            val accessCheckResult = accessor(userAccessData)
+            log("Default path accessor invoked for user: $authority with result: $accessCheckResult")
 
-            return
+            if (accessCheckResult == AccessVerifyResult.ACCESSED) {
+                return
+            }
         }
 
-        val userRoleCheckResult = handler.checkRuleToRoleAccess()
+        val userRoleCheckResult = handler.checkRoleAccess(authority, request)
         if (userRoleCheckResult == AccessVerifyResult.ACCESSED) {
-            log("Accessed User personal role rule for user: $authority")
+            log("Accessed User pole for user: $authority")
             return
         }
 
-        val userRuleCheckResult = handler.checkRuleToUserAccess()
-        if (userRuleCheckResult == AccessVerifyResult.ACCESSED) {
+        val userRuleToRoleCheckResult = handler.checkRuleToRoleAccess(authority, request)
+        if (userRuleToRoleCheckResult == AccessVerifyResult.ACCESSED) {
+            log("Accessed User role rule for user: $authority")
+            return
+        }
+
+        val userRuleToUserCheckResult = handler.checkRuleToUserAccess(authority, request)
+        if (userRuleToUserCheckResult == AccessVerifyResult.ACCESSED) {
             log("Accessed User personal path rule for user: $authority")
             return
         }
 
         log("Access rejected for user: $authority")
-        throw AccessException("Access denied: not enough rights")
+        throw AccessException("Access denied: no enough rights")
     }
 
     private fun log(message: String) {

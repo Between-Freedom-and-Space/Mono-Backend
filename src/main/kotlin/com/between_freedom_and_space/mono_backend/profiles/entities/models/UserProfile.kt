@@ -10,7 +10,6 @@ import com.between_freedom_and_space.mono_backend.profiles.entities.tables.UserP
 import com.between_freedom_and_space.mono_backend.profiles.entities.tables.UserSubscriptionsTable
 import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
 import org.jetbrains.exposed.dao.LongEntity
-import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
 class UserProfile(id: EntityID<Long>): LongEntity(id) {

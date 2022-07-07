@@ -5,7 +5,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.comments.entiti
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.repository.CommonCommentsRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.InformationCommentsService
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.exceptions.CommentNotFoundException
-import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.mappers.CommentEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.BaseCommentModel
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.CommentId
 import org.jetbrains.exposed.sql.transactions.transaction

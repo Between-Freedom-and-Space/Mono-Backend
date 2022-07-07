@@ -11,14 +11,12 @@ import com.between_freedom_and_space.mono_backend.auth.components.exceptions.Inv
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.service.AuthService
 import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
-import com.between_freedom_and_space.mono_backend.auth.service.mappers.RegisterUserRequestToCreatModelMapper
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.services.ActionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.InteractionProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.UpdateProfileModel
-import com.between_freedom_and_space.mono_backend.profiles.services.models.enums.ProfileExistsResult
 import com.between_freedom_and_space.mono_backend.profiles.services.models.enums.ProfileExistsResult.PROFILE_EXISTS
 import org.jetbrains.exposed.sql.transactions.transaction
 

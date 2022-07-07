@@ -2,7 +2,6 @@ package com.between_freedom_and_space.mono_backend.posts.internal.reactions.repo
 
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.entities.comment.CommentReaction
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.model.CreateCommentReactionEntity
-import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.CreateCommentReactionModel
 import org.jetbrains.exposed.dao.id.EntityID
 
 interface CommonCommentReactionsRepository {

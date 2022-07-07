@@ -22,7 +22,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.comments.servic
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
-import kotlin.math.sin
 
 private val mappersModule = module {
     single<ModelMapper<PostComment, BaseCommentModel>>(

@@ -10,7 +10,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.CreateTagModel
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
 
 class CommonTagsRepositoryImpl: CommonTagsRepository {
 

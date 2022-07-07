@@ -2,8 +2,6 @@ package com.between_freedom_and_space.mono_backend.app.config
 
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticatePlugin
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.config.IgnoredPath
-import io.ktor.server.plugins.*
-import org.slf4j.event.Level
 
 internal fun AuthenticatePlugin.Configuration.configure() {
     enableLogging = true

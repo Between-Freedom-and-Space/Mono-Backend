@@ -1,6 +1,5 @@
 package com.between_freedom_and_space.mono_backend.posts.internal.comments.repository.impl
 
-import com.between_freedom_and_space.mono_backend.posts.entities.post.Post
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostComment
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.entities.PostCommentsTable
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.repository.CommonCommentsRepository
@@ -8,7 +7,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.comments.reposi
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.CreateCommentModel
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
 
 class CommonCommentsRepositoryImpl: CommonCommentsRepository {
 

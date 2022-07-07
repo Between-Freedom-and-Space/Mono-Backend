@@ -5,10 +5,8 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.entit
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.CommonCommentReactionsRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.exceptions.ReactionAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.model.CreateCommentReactionEntity
-import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.CreateCommentReactionModel
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
 
 class CommonCommentReactionsRepositoryImpl: CommonCommentReactionsRepository {
 

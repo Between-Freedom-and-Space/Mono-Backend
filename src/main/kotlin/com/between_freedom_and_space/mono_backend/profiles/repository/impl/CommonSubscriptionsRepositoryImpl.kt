@@ -4,10 +4,7 @@ import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserP
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserSubscription
 import com.between_freedom_and_space.mono_backend.profiles.entities.tables.UserSubscriptionsTable
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonSubscriptionsRepository
-import com.between_freedom_and_space.mono_backend.profiles.repository.exceptions.ProfileSubscriptionException
 import com.between_freedom_and_space.mono_backend.util.extensions.ifNotNull
-import com.between_freedom_and_space.mono_backend.util.extensions.ifNull
-import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.select
 

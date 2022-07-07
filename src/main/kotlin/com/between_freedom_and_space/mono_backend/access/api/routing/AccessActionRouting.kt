@@ -9,7 +9,7 @@ internal fun Application.accessActionRouting() {
     routing {
         val roleBasePath = "$basePath/role"
 
-        post("$roleBasePath/{nickname}/change") {
+        post("$roleBasePath/user/{nickname}/change") {
 
         }
     }
@@ -17,5 +17,20 @@ internal fun Application.accessActionRouting() {
     routing {
         val ruleBasePath = "$basePath/rule"
 
+        put("$ruleBasePath/{id}/give/access/to/user/{nickname}") {
+
+        }
+
+        delete("$ruleBasePath/{id}/remove/access/from/user/{nickname}") {
+
+        }
+
+        put("$ruleBasePath/{id}/give/access/to/role/{roleAlias}") {
+
+        }
+
+        delete("$ruleBasePath/{id}/remove/access/from/role/{roleAlias}") {
+
+        }
     }
 }

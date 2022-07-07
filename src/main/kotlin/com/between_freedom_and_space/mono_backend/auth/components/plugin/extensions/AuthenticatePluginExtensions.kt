@@ -4,9 +4,7 @@ import com.between_freedom_and_space.mono_backend.auth.components.exceptions.Aut
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.util.userAuthorityAttributeKey
 import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
 import io.ktor.server.application.*
-import io.ktor.util.*
 import io.ktor.util.pipeline.*
-import kotlin.reflect.jvm.jvmName
 
 fun PipelineContext<Unit, ApplicationCall>.getUserAuthorities(): UserAuthority {
     return getUserAuthoritiesOrNull()

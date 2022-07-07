@@ -10,7 +10,6 @@ import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRep
 import com.between_freedom_and_space.mono_backend.posts.repository.models.CreatePostEntityModel
 import com.between_freedom_and_space.mono_backend.posts.services.InteractionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.PostNotFoundException
-import com.between_freedom_and_space.mono_backend.posts.services.mappers.PostEntityToBasePostModelMapper
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.CreatePostModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.UpdatePostModel

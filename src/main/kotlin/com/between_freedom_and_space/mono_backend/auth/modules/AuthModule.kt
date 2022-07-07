@@ -19,7 +19,6 @@ import com.between_freedom_and_space.mono_backend.auth.components.impl.PBKDF2Use
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.impl.TokenAuthenticateProcessor
-import com.between_freedom_and_space.mono_backend.auth.plugins.config.properties.AuthProperties
 import com.between_freedom_and_space.mono_backend.auth.modules.qualifiers.AuthModelMapperQualifier
 import com.between_freedom_and_space.mono_backend.auth.plugins.config.authConfiguration
 import com.between_freedom_and_space.mono_backend.auth.security.JWTProcessor
@@ -28,8 +27,8 @@ import com.between_freedom_and_space.mono_backend.auth.security.PasswordCipher
 import com.between_freedom_and_space.mono_backend.auth.security.impl.HS256Processor
 import com.between_freedom_and_space.mono_backend.auth.security.impl.HS256Verifier
 import com.between_freedom_and_space.mono_backend.auth.security.impl.PBKDF2PasswordCipher
-import com.between_freedom_and_space.mono_backend.auth.service.TokenAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.AuthService
+import com.between_freedom_and_space.mono_backend.auth.service.TokenAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.impl.CommonAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.impl.CommonUserProfileAuthService

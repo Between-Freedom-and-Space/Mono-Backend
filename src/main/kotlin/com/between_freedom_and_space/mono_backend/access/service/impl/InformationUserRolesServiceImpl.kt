@@ -1,6 +1,5 @@
 package com.between_freedom_and_space.mono_backend.access.service.impl
 
-import com.between_freedom_and_space.mono_backend.access.entities.role.Role
 import com.between_freedom_and_space.mono_backend.access.entities.role.models.UserRole
 import com.between_freedom_and_space.mono_backend.access.repository.CommonUserRoleRepository
 import com.between_freedom_and_space.mono_backend.access.repository.CommonUserToRoleRepository
