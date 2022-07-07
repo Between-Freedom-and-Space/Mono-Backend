@@ -77,6 +77,14 @@ internal fun Application.accessInformationRouting() {
         get("$ruleBasePath/role/{roleAlias}") {
 
         }
+
+        get("$ruleBasePath/user/{nickname}/has/access") {
+
+        }
+
+        get("$ruleBasePath/role/{id}/has/access") {
+
+        }
     }
 }
 

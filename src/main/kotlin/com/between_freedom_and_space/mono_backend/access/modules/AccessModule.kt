@@ -49,7 +49,10 @@ private val pluginModule = module {
 }
 
 private val serviceModule = module {
-    single { InformationAccessRulesServiceImpl() } bind InformationAccessRulesService::class
+    single { InformationAccessRulesServiceImpl(
+    get(), get(), get(), get(),
+    get(named(AccessMappersQualifiers.ACCESS_RULE_TO_BASE_MODEL_MAPPER)))
+    } bind InformationAccessRulesService::class
     single { InformationUserRolesServiceImpl(
         get(), get(),
         get(named(AccessMappersQualifiers.USER_ROLE_ENTITY_TO_BASE_MODEL_MAPPER)))

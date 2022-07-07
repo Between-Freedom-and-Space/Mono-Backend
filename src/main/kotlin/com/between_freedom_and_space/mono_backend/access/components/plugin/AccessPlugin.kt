@@ -73,9 +73,9 @@ class AccessPlugin(
             return
         }
 
+        val userAccessData = buildUserAccessData(request, attributes)
         val routingAccessor = findPathAccessor(path)
         routingAccessor?.let { accessor ->
-            val userAccessData = buildUserAccessData(request, attributes)
             val accessCheckResult = accessor(userAccessData)
             log("Path accessor invoked for user: $authority with result: $accessCheckResult")
 
@@ -85,7 +85,6 @@ class AccessPlugin(
         }
 
         defaultRoutingAccessor?.let { accessor ->
-            val userAccessData = buildUserAccessData(request, attributes)
             val accessCheckResult = accessor(userAccessData)
             log("Default path accessor invoked for user: $authority with result: $accessCheckResult")
 
@@ -94,19 +93,19 @@ class AccessPlugin(
             }
         }
 
-        val userRoleCheckResult = handler.checkRoleAccess(authority, request)
+        val userRoleCheckResult = handler.checkRoleAccess(userAccessData)
         if (userRoleCheckResult == AccessVerifyResult.ACCESSED) {
             log("Accessed User pole for user: $authority")
             return
         }
 
-        val userRuleToRoleCheckResult = handler.checkRuleToRoleAccess(authority, request)
+        val userRuleToRoleCheckResult = handler.checkRuleToRoleAccess(userAccessData)
         if (userRuleToRoleCheckResult == AccessVerifyResult.ACCESSED) {
             log("Accessed User role rule for user: $authority")
             return
         }
 
-        val userRuleToUserCheckResult = handler.checkRuleToUserAccess(authority, request)
+        val userRuleToUserCheckResult = handler.checkRuleToUserAccess(userAccessData)
         if (userRuleToUserCheckResult == AccessVerifyResult.ACCESSED) {
             log("Accessed User personal path rule for user: $authority")
             return
