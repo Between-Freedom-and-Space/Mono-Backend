@@ -1,6 +1,8 @@
 package com.between_freedom_and_space.mono_backend.access.modules
 
 import com.between_freedom_and_space.mono_backend.access.api.mappers.BaseUserRoleModelToModelMapper
+import com.between_freedom_and_space.mono_backend.access.api.mappers.CheckAccessResultToResponseMapper
+import com.between_freedom_and_space.mono_backend.access.api.models.HasAccessResponse
 import com.between_freedom_and_space.mono_backend.access.api.models.UserRoleModel
 import com.between_freedom_and_space.mono_backend.access.components.PathPatternMatcher
 import com.between_freedom_and_space.mono_backend.access.components.impl.PathPatternMatcherImpl
@@ -18,6 +20,7 @@ import com.between_freedom_and_space.mono_backend.access.service.impl.Interactio
 import com.between_freedom_and_space.mono_backend.access.service.impl.InteractionUserRolesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.mappers.UserRoleEntityToBaseUserRoleMapper
 import com.between_freedom_and_space.mono_backend.access.service.models.BaseUserRoleModel
+import com.between_freedom_and_space.mono_backend.access.service.models.RuleCheckResult
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
@@ -30,6 +33,9 @@ private val mappersModule = module {
     single<ModelMapper<UserRole, BaseUserRoleModel>>(
         named(AccessMappersQualifiers.USER_ROLE_ENTITY_TO_BASE_MODEL_MAPPER)
     ) { UserRoleEntityToBaseUserRoleMapper() }
+    single<ModelMapper<RuleCheckResult, HasAccessResponse>>(
+       named(AccessMappersQualifiers.CHECK_ACCESS_RESULT_TO_RESPONSE_MAPPER)
+    ) { CheckAccessResultToResponseMapper() }
 }
 
 private val repositoryModule = module {

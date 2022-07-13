@@ -17,4 +17,6 @@ interface InformationAccessRulesService {
     fun checkRoleAccessToPath(role: Role, rawPath: String): RuleCheckResult
 
     fun checkUserAccessToPath(userId: Long, rawPath: String): RuleCheckResult
+
+    fun checkUserAccessToPath(nickname: String, rawPath: String): RuleCheckResult
 }

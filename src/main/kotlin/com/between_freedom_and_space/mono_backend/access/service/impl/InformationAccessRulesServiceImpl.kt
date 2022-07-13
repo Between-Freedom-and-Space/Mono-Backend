@@ -14,6 +14,7 @@ import com.between_freedom_and_space.mono_backend.access.service.models.RuleChec
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import org.jetbrains.exposed.sql.transactions.transaction
 
+@Suppress("DuplicatedCode")
 class InformationAccessRulesServiceImpl(
     private val accessRuleRepository: CommonAccessRuleRepository,
     private val ruleToRoleRepository: CommonAccessedRolesRepository,
@@ -69,6 +70,20 @@ class InformationAccessRulesServiceImpl(
     override fun checkUserAccessToPath(userId: Long, rawPath: String): RuleCheckResult {
         val foundedRule = transaction {
             val rules = ruleToUserRepository.getAllUserRules(userId)
+            rules.findMatchesRule(rawPath)
+        }
+
+        return if (foundedRule != null) {
+            val rule = baseMapper.map(foundedRule)
+            RuleCheckResult(CheckResult.HAS_ACCESS, rule = rule)
+        } else {
+            RuleCheckResult(CheckResult.NO_ACCESS, rule = null)
+        }
+    }
+
+    override fun checkUserAccessToPath(nickname: String, rawPath: String): RuleCheckResult {
+        val foundedRule = transaction {
+            val rules = ruleToUserRepository.getAllUserRules(nickname)
             rules.findMatchesRule(rawPath)
         }
 

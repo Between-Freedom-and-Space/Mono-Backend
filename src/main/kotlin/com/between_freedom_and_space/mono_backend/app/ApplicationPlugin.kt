@@ -8,6 +8,7 @@ import com.between_freedom_and_space.mono_backend.auth.plugins.addAuthPlugin
 import com.between_freedom_and_space.mono_backend.common.plugins.ExceptionHandlerPlugin
 import com.between_freedom_and_space.mono_backend.posts.plugins.addPostsPlugin
 import com.between_freedom_and_space.mono_backend.profiles.plugins.addProfilePlugin
+import com.between_freedom_and_space.mono_backend.util.plugins.addUtilPlugin
 import io.ktor.server.application.*
 import io.ktor.server.metrics.micrometer.*
 import io.ktor.server.plugins.*
@@ -31,5 +32,6 @@ fun Application.main(koin: KoinApplication) {
     addAuthPlugin()
     addPostsPlugin()
     addProfilePlugin()
+    addUtilPlugin()
 //    addRecommendationsPlugin()
 }
