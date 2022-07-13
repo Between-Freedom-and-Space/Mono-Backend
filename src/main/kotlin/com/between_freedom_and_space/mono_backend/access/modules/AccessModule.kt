@@ -6,7 +6,10 @@ import com.between_freedom_and_space.mono_backend.access.api.models.HasAccessRes
 import com.between_freedom_and_space.mono_backend.access.api.models.UserRoleModel
 import com.between_freedom_and_space.mono_backend.access.components.PathPatternMatcher
 import com.between_freedom_and_space.mono_backend.access.components.impl.PathPatternMatcherImpl
+import com.between_freedom_and_space.mono_backend.access.components.plugin.PluginAccessHandler
+import com.between_freedom_and_space.mono_backend.access.components.plugin.impl.PluginAccessHandlerImpl
 import com.between_freedom_and_space.mono_backend.access.entities.role.models.UserRole
+import com.between_freedom_and_space.mono_backend.access.entities.rules.models.AccessRule
 import com.between_freedom_and_space.mono_backend.access.modules.qualifiers.AccessMappersQualifiers
 import com.between_freedom_and_space.mono_backend.access.repository.*
 import com.between_freedom_and_space.mono_backend.access.repository.impl.*
@@ -18,7 +21,9 @@ import com.between_freedom_and_space.mono_backend.access.service.impl.Informatio
 import com.between_freedom_and_space.mono_backend.access.service.impl.InformationUserRolesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.impl.InteractionAccessRulesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.impl.InteractionUserRolesServiceImpl
+import com.between_freedom_and_space.mono_backend.access.service.mappers.AccessRuleEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.access.service.mappers.UserRoleEntityToBaseUserRoleMapper
+import com.between_freedom_and_space.mono_backend.access.service.models.BaseAccessRuleModel
 import com.between_freedom_and_space.mono_backend.access.service.models.BaseUserRoleModel
 import com.between_freedom_and_space.mono_backend.access.service.models.RuleCheckResult
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
@@ -33,6 +38,9 @@ private val mappersModule = module {
     single<ModelMapper<UserRole, BaseUserRoleModel>>(
         named(AccessMappersQualifiers.USER_ROLE_ENTITY_TO_BASE_MODEL_MAPPER)
     ) { UserRoleEntityToBaseUserRoleMapper() }
+    single<ModelMapper<AccessRule, BaseAccessRuleModel>>(
+        named(AccessMappersQualifiers.ACCESS_RULE_TO_BASE_MODEL_MAPPER)
+    ) { AccessRuleEntityToBaseModelMapper() }
     single<ModelMapper<RuleCheckResult, HasAccessResponse>>(
        named(AccessMappersQualifiers.CHECK_ACCESS_RESULT_TO_RESPONSE_MAPPER)
     ) { CheckAccessResultToResponseMapper() }
@@ -51,7 +59,7 @@ private val componentsModule = module {
 }
 
 private val pluginModule = module {
-
+    single { PluginAccessHandlerImpl(get(), get()) } bind PluginAccessHandler::class
 }
 
 private val serviceModule = module {
