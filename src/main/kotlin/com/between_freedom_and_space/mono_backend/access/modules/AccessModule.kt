@@ -1,9 +1,7 @@
 package com.between_freedom_and_space.mono_backend.access.modules
 
-import com.between_freedom_and_space.mono_backend.access.api.mappers.BaseUserRoleModelToModelMapper
-import com.between_freedom_and_space.mono_backend.access.api.mappers.CheckAccessResultToResponseMapper
-import com.between_freedom_and_space.mono_backend.access.api.models.HasAccessResponse
-import com.between_freedom_and_space.mono_backend.access.api.models.UserRoleModel
+import com.between_freedom_and_space.mono_backend.access.api.mappers.*
+import com.between_freedom_and_space.mono_backend.access.api.models.*
 import com.between_freedom_and_space.mono_backend.access.components.PathPatternMatcher
 import com.between_freedom_and_space.mono_backend.access.components.impl.PathPatternMatcherImpl
 import com.between_freedom_and_space.mono_backend.access.components.plugin.PluginAccessHandler
@@ -21,9 +19,7 @@ import com.between_freedom_and_space.mono_backend.access.service.impl.Informatio
 import com.between_freedom_and_space.mono_backend.access.service.impl.InteractionAccessRulesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.mappers.AccessRuleEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.access.service.mappers.UserRoleEntityToBaseUserRoleMapper
-import com.between_freedom_and_space.mono_backend.access.service.models.BaseAccessRuleModel
-import com.between_freedom_and_space.mono_backend.access.service.models.BaseUserRoleModel
-import com.between_freedom_and_space.mono_backend.access.service.models.RuleCheckResult
+import com.between_freedom_and_space.mono_backend.access.service.models.*
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
@@ -42,6 +38,24 @@ private val mappersModule = module {
     single<ModelMapper<RuleCheckResult, HasAccessResponse>>(
        named(AccessMappersQualifiers.CHECK_ACCESS_RESULT_TO_RESPONSE_MAPPER)
     ) { CheckAccessResultToResponseMapper() }
+    single<ModelMapper<CreateRoleRuleRequest, CreateRoleRuleModel>>(
+        named(AccessMappersQualifiers.CREATE_ROLE_RULE_REQUEST_TO_MODEL_MAPPER)
+    ) { CreateRoleRuleRequestToModelMapper() }
+    single<ModelMapper<CreateRuleRequest, CreateRuleModel>>(
+        named(AccessMappersQualifiers.CREATE_RULE_REQUEST_TO_MODEL_MAPPER)
+    ) { CreateRuleRequestToModelMapper() }
+    single<ModelMapper<CreateUserRuleRequest, CreateUserRuleModel>>(
+        named(AccessMappersQualifiers.CREATE_USER_RULE_REQUEST_TO_MODEL_MAPPER)
+    ) { CreateUserRuleRequestToModelMapper() }
+    single<ModelMapper<UpdateRoleRuleRequest, UpdateRoleRuleModel>>(
+        named(AccessMappersQualifiers.UPDATE_ROLE_RULE_REQUEST_TO_MODEL_MAPPER)
+    ) { UpdateRoleRuleRequestToModelMapper() }
+    single<ModelMapper<UpdateRuleRequest, UpdateRuleModel>>(
+        named(AccessMappersQualifiers.UPDATE_RULE_REQUEST_TO_MODEL_MAPPER)
+    ) { UpdateRuleRequestToModelMapper() }
+    single<ModelMapper<UpdateUserRuleRequest, UpdateUserRuleModel>>(
+        named(AccessMappersQualifiers.UPDATE_USER_RULE_REQUEST_TO_MODEL_MAPPER)
+    ) { UpdateUserRuleRequestToModelMapper() }
 }
 
 private val repositoryModule = module {

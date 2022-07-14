@@ -6,5 +6,5 @@ data class UpdateUserRuleModel(
 
     val newUserId: Long?,
 
-    val newIsActive: Boolean,
+    val newIsActive: Boolean?,
 )
