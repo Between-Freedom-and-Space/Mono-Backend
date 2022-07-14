@@ -52,8 +52,6 @@ internal fun Application.postsInteractionRouting() {
         }
 
         put("$basePath/{id}/update") {
-            val authorities = getUserAuthorities()
-            val userId = authorities.userId
             val updateRequest = validateAndReceiveRequest<UpdatePostRequest>()
             val updateModel = updatePostMapper.map(updateRequest)
             val postId = getPathParameter("id")?.toLong()
@@ -68,8 +66,6 @@ internal fun Application.postsInteractionRouting() {
         }
 
         delete("$basePath/{id}/delete") {
-            val authorities = getUserAuthorities()
-            val userId = authorities.userId
             val postId = getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
 
