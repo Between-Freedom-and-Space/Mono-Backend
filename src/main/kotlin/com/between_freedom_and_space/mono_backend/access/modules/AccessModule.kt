@@ -11,14 +11,16 @@ import com.between_freedom_and_space.mono_backend.access.entities.rules.models.A
 import com.between_freedom_and_space.mono_backend.access.modules.qualifiers.AccessMappersQualifiers
 import com.between_freedom_and_space.mono_backend.access.repository.*
 import com.between_freedom_and_space.mono_backend.access.repository.impl.*
+import com.between_freedom_and_space.mono_backend.access.repository.models.CreateRoleRuleEntityModel
+import com.between_freedom_and_space.mono_backend.access.repository.models.CreateRuleEntityModel
+import com.between_freedom_and_space.mono_backend.access.repository.models.CreateUserRuleEntityModel
 import com.between_freedom_and_space.mono_backend.access.service.InformationAccessRulesService
 import com.between_freedom_and_space.mono_backend.access.service.InformationUserRolesService
 import com.between_freedom_and_space.mono_backend.access.service.InteractionAccessRulesService
 import com.between_freedom_and_space.mono_backend.access.service.impl.InformationAccessRulesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.impl.InformationUserRolesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.impl.InteractionAccessRulesServiceImpl
-import com.between_freedom_and_space.mono_backend.access.service.mappers.AccessRuleEntityToBaseModelMapper
-import com.between_freedom_and_space.mono_backend.access.service.mappers.UserRoleEntityToBaseUserRoleMapper
+import com.between_freedom_and_space.mono_backend.access.service.mappers.*
 import com.between_freedom_and_space.mono_backend.access.service.models.*
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import org.koin.core.qualifier.named
@@ -56,6 +58,15 @@ private val mappersModule = module {
     single<ModelMapper<UpdateUserRuleRequest, UpdateUserRuleModel>>(
         named(AccessMappersQualifiers.UPDATE_USER_RULE_REQUEST_TO_MODEL_MAPPER)
     ) { UpdateUserRuleRequestToModelMapper() }
+    single<ModelMapper<CreateRuleModel, CreateRuleEntityModel>>(
+        named(AccessMappersQualifiers.CREATE_RULE_MODEL_TO_ENTITY_MAPPER)
+    ) { CreateRuleModelToEntityMapper() }
+    single<ModelMapper<CreateRoleRuleModel, CreateRoleRuleEntityModel>>(
+        named(AccessMappersQualifiers.CREATE_ROLE_RULE_MODEL_TO_ENTITY_MAPPER)
+    ) { CreateRoleRuleModelToEntityMapper() }
+    single<ModelMapper<CreateUserRuleModel, CreateUserRuleEntityModel>>(
+        named(AccessMappersQualifiers.CREATE_USER_RULE_MODEL_TO_ENTITY_MAPPER)
+    ) { CreateUserRuleModelToEntityMapper() }
 }
 
 private val repositoryModule = module {
@@ -84,7 +95,6 @@ private val serviceModule = module {
         get(named(AccessMappersQualifiers.USER_ROLE_ENTITY_TO_BASE_MODEL_MAPPER)))
     } bind InformationUserRolesService::class
     single { InteractionAccessRulesServiceImpl() } bind InteractionAccessRulesService::class
-    single { InteractionUserRolesServiceImpl() } bind InteractionUserRolesService::class
 }
 
 val accessModule = module {
