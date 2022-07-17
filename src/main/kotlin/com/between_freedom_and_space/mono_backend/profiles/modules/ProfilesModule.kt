@@ -9,6 +9,8 @@ import com.between_freedom_and_space.mono_backend.profiles.api.models.CreateProf
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.api.models.SubscribeActionResponse
 import com.between_freedom_and_space.mono_backend.profiles.api.models.UpdateProfileRequest
+import com.between_freedom_and_space.mono_backend.profiles.components.UserProfileIdProvider
+import com.between_freedom_and_space.mono_backend.profiles.components.impl.UserProfileIdProviderImpl
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
@@ -53,6 +55,10 @@ private val repositoryModule = module {
     single { CommonSubscriptionsRepositoryImpl() } bind CommonSubscriptionsRepository::class
 }
 
+private val componentsModule = module {
+    single { UserProfileIdProviderImpl(get()) } bind UserProfileIdProvider::class
+}
+
 private val serviceModule = module {
     single {
         InformationProfileServiceImpl(
@@ -70,5 +76,6 @@ private val serviceModule = module {
 val profilesModule = module {
     includes(mappersModule)
     includes(repositoryModule)
+    includes(componentsModule)
     includes(serviceModule)
 }

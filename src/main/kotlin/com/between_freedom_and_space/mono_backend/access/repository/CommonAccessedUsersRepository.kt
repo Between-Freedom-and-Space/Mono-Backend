@@ -7,11 +7,13 @@ import org.jetbrains.exposed.dao.id.EntityID
 
 interface CommonAccessedUsersRepository {
 
-    fun getAllUserRules(nickname: String): List<AccessRule>
+    fun getAllUserRules(userId: EntityID<Long>): List<AccessRule>
 
-    fun getAllUserRules(userId: Long): List<AccessRule>
+    fun getUserRuleById(userRuleId: Long): AccessedUser?
 
     fun createUserRule(authorId: EntityID<Long>, userId: EntityID<Long>, model: CreateUserRuleEntityModel): AccessedUser
 
-    fun deleteUserRule(userRule: Long): AccessedUser?
+    fun deleteUserRule(authorId: EntityID<Long>, userRuleId: Long): AccessedUser?
+
+    fun saveUserRule(userRule: AccessedUser): AccessedUser
 }

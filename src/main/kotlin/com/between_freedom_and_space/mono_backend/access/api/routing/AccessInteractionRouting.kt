@@ -93,8 +93,10 @@ internal fun Application.accessInteractionRouting() {
             val authorId = author.userId
             val request = validateAndReceiveRequest<UpdateRuleRequest>()
             val model = updateRuleMapper.map(request)
+            val ruleId = getPathParameter("id")?.toLong()
+                ?: throw InvalidRuleException("Rule id is not provided")
 
-            val rule = interactionService.updateAccessRule(authorId, model)
+            val rule = interactionService.updateAccessRule(ruleId, authorId, model)
 
             val ruleResponse = baseMapper.map(rule)
             val response = Response.ok(ruleResponse)
@@ -107,8 +109,10 @@ internal fun Application.accessInteractionRouting() {
             val authorId = author.userId
             val request = validateAndReceiveRequest<UpdateUserRuleRequest>()
             val model = updateUserRuleMapper.map(request)
+            val ruleId = getPathParameter("id")?.toLong()
+                ?: throw InvalidRuleException("Rule id is not provided")
 
-            val rule = interactionService.updateUserAccessRule(authorId, model)
+            val rule = interactionService.updateUserAccessRule(ruleId, authorId, model)
 
             val ruleResponse = baseMapper.map(rule)
             val response = Response.ok(ruleResponse)
@@ -121,8 +125,10 @@ internal fun Application.accessInteractionRouting() {
             val authorId = author.userId
             val request = validateAndReceiveRequest<UpdateRoleRuleRequest>()
             val model = updateRoleRuleMapper.map(request)
+            val ruleId = getPathParameter("id")?.toLong()
+                ?: throw InvalidRuleException("Rule id is not provided")
 
-            val rule = interactionService.updateRoleAccessRule(authorId, model)
+            val rule = interactionService.updateRoleAccessRule(ruleId, authorId, model)
 
             val ruleResponse = baseMapper.map(rule)
             val response = Response.ok(ruleResponse)

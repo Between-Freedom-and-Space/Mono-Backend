@@ -12,6 +12,7 @@ import com.between_freedom_and_space.mono_backend.access.service.models.BaseAcce
 import com.between_freedom_and_space.mono_backend.access.service.models.RuleCheckResult
 import com.between_freedom_and_space.mono_backend.access.service.models.RuleCheckResult.CheckResult
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.profiles.components.UserProfileIdProvider
 import org.jetbrains.exposed.sql.transactions.transaction
 
 @Suppress("DuplicatedCode")
@@ -20,6 +21,7 @@ class InformationAccessRulesServiceImpl(
     private val ruleToRoleRepository: CommonAccessedRolesRepository,
     private val ruleToUserRepository: CommonAccessedUsersRepository,
     private val pathPatternMatcher: PathPatternMatcher,
+    private val userIdProvider: UserProfileIdProvider,
     private val baseMapper: ModelMapper<AccessRule, BaseAccessRuleModel>
 ): InformationAccessRulesService {
 
@@ -40,7 +42,8 @@ class InformationAccessRulesServiceImpl(
 
     override fun getAllUserRules(nickname: String): List<BaseAccessRuleModel> {
         val rules = transaction {
-            ruleToUserRepository.getAllUserRules(nickname)
+            val userId = userIdProvider.getUser(nickname)
+            ruleToUserRepository.getAllUserRules(userId)
         }
         return rules.map { baseMapper.map(it) }
     }
@@ -69,7 +72,8 @@ class InformationAccessRulesServiceImpl(
 
     override fun checkUserAccessToPath(userId: Long, rawPath: String): RuleCheckResult {
         val foundedRule = transaction {
-            val rules = ruleToUserRepository.getAllUserRules(userId)
+            val userEntityId = userIdProvider.getUser(userId)
+            val rules = ruleToUserRepository.getAllUserRules(userEntityId)
             rules.findMatchesRule(rawPath)
         }
 
@@ -83,7 +87,8 @@ class InformationAccessRulesServiceImpl(
 
     override fun checkUserAccessToPath(nickname: String, rawPath: String): RuleCheckResult {
         val foundedRule = transaction {
-            val rules = ruleToUserRepository.getAllUserRules(nickname)
+            val userId = userIdProvider.getUser(nickname)
+            val rules = ruleToUserRepository.getAllUserRules(userId)
             rules.findMatchesRule(rawPath)
         }
 

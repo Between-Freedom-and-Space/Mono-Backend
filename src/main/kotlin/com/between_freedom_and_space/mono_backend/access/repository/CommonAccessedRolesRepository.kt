@@ -10,7 +10,13 @@ interface CommonAccessedRolesRepository {
 
     fun getAllRoleRules(role: Role): List<AccessRule>
 
+    fun getRoleRuleById(roleRuleId: Long): AccessedRole?
+
+    fun getRoleRuleByAlias(alias: String): AccessedRole?
+
     fun createRoleRule(authorId: EntityID<Long>, model: CreateRoleRuleEntityModel): AccessedRole
 
     fun deleteRoleRule(authorId: EntityID<Long>, roleRuleId: Long): AccessedRole?
+
+    fun saveRoleRule(roleRule: AccessedRole): AccessedRole
 }

@@ -24,6 +24,7 @@ import com.between_freedom_and_space.mono_backend.access.service.mappers.*
 import com.between_freedom_and_space.mono_backend.access.service.models.*
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import org.koin.core.qualifier.named
+import org.koin.core.scope.get
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -87,14 +88,20 @@ private val pluginModule = module {
 
 private val serviceModule = module {
     single { InformationAccessRulesServiceImpl(
-    get(), get(), get(), get(),
+    get(), get(), get(), get(), get(),
     get(named(AccessMappersQualifiers.ACCESS_RULE_TO_BASE_MODEL_MAPPER)))
     } bind InformationAccessRulesService::class
     single { InformationUserRolesServiceImpl(
         get(), get(),
         get(named(AccessMappersQualifiers.USER_ROLE_ENTITY_TO_BASE_MODEL_MAPPER)))
     } bind InformationUserRolesService::class
-    single { InteractionAccessRulesServiceImpl() } bind InteractionAccessRulesService::class
+    single { InteractionAccessRulesServiceImpl(
+        get(), get(), get(), get(), get(),
+        get(named(AccessMappersQualifiers.ACCESS_RULE_TO_BASE_MODEL_MAPPER)),
+        get(named(AccessMappersQualifiers.CREATE_RULE_MODEL_TO_ENTITY_MAPPER)),
+        get(named(AccessMappersQualifiers.CREATE_ROLE_RULE_MODEL_TO_ENTITY_MAPPER)),
+        get(named(AccessMappersQualifiers.CREATE_USER_RULE_MODEL_TO_ENTITY_MAPPER)),
+    ) } bind InteractionAccessRulesService::class
 }
 
 val accessModule = module {

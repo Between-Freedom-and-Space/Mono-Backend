@@ -10,11 +10,11 @@ interface InteractionAccessRulesService {
 
     fun createRoleAccessRule(authorId: Long, model: CreateRoleRuleModel): BaseAccessRuleModel
 
-    fun updateAccessRule(authorId: Long, model: UpdateRuleModel): BaseAccessRuleModel
+    fun updateAccessRule(ruleId: Long, authorId: Long, model: UpdateRuleModel): BaseAccessRuleModel
 
-    fun updateUserAccessRule(authorId: Long, model: UpdateUserRuleModel): BaseAccessRuleModel
+    fun updateUserAccessRule(userRuleId: Long, authorId: Long, model: UpdateUserRuleModel): BaseAccessRuleModel
 
-    fun updateRoleAccessRule(authorId: Long, model: UpdateRoleRuleModel): BaseAccessRuleModel
+    fun updateRoleAccessRule(roleRuleId: Long, authorId: Long, model: UpdateRoleRuleModel): BaseAccessRuleModel
 
     fun deleteAccessRule(authorId: Long, ruleId: Long): BaseAccessRuleModel
 

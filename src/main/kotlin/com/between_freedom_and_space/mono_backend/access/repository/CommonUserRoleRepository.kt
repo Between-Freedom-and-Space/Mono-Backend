@@ -7,4 +7,6 @@ interface CommonUserRoleRepository {
     fun getAllUserRoles(): List<UserRole>
 
     fun getUserRoleById(roleId: Long): UserRole?
+
+    fun getUserRoleByAlias(roleAlias: String): UserRole?
 }

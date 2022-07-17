@@ -13,4 +13,6 @@ interface CommonAccessRuleRepository {
     fun createAccessRule(authorId: EntityID<Long>, model: CreateRuleEntityModel): AccessRule
 
     fun deleteAccessRule(authorId: EntityID<Long>, ruleId: Long): AccessRule?
+
+    fun saveAccessRule(rule: AccessRule): AccessRule
 }
