@@ -1,7 +1,9 @@
 package com.between_freedom_and_space.mono_backend.access.components.plugin.extensions
 
 import com.between_freedom_and_space.mono_backend.access.components.exceptions.AccessException
+import com.between_freedom_and_space.mono_backend.access.components.models.AccessVerifyResult
 import com.between_freedom_and_space.mono_backend.access.components.plugin.AccessPlugin
+import com.between_freedom_and_space.mono_backend.access.components.plugin.models.UserAccessData
 import com.between_freedom_and_space.mono_backend.access.components.plugin.service.RoutingAccessor
 import com.between_freedom_and_space.mono_backend.access.components.plugin.util.roleAttributeKey
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role
@@ -30,4 +32,48 @@ fun Routing.routingAccessor(path: String, accessor: RoutingAccessor): AccessPlug
     return application.install(AccessPlugin) {
         routingAccessors = mapOf(path to accessor)
     }
+}
+
+@ContextDsl
+fun Routing.grantAccessForEveryone(path: String): AccessPlugin {
+    val accessor = fun (_: UserAccessData): AccessVerifyResult {
+        return AccessVerifyResult.ACCESSED
+    }
+    return routingAccessor(path, accessor)
+}
+
+@ContextDsl
+fun Routing.grantAccessForUsers(path: String): AccessPlugin {
+    val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+        return if (accessData.role != Role.NO_ROLE) {
+            AccessVerifyResult.ACCESSED
+        } else {
+            AccessVerifyResult.REJECTED
+        }
+    }
+    return routingAccessor(path, accessor)
+}
+
+@ContextDsl
+fun Routing.grantAccessForAdmins(path: String): AccessPlugin {
+    val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+        return when(accessData.role) {
+            Role.ADMIN -> AccessVerifyResult.ACCESSED
+            Role.SUPER_ADMIN -> AccessVerifyResult.ACCESSED
+            else -> AccessVerifyResult.REJECTED
+        }
+    }
+    return routingAccessor(path, accessor)
+}
+
+@ContextDsl
+fun Routing.grantAccessForSuperAdmins(path: String): AccessPlugin {
+    val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+        return if (accessData.role == Role.SUPER_ADMIN) {
+            AccessVerifyResult.ACCESSED
+        } else {
+            AccessVerifyResult.REJECTED
+        }
+    }
+    return routingAccessor(path, accessor)
 }
