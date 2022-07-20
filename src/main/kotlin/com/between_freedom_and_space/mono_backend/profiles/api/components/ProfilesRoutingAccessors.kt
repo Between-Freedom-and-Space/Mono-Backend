@@ -1,11 +1,16 @@
 package com.between_freedom_and_space.mono_backend.profiles.api.components
 
+import com.between_freedom_and_space.mono_backend.access.components.models.AccessVerifyResult
 import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.grantAccessForAdmins
 import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.grantAccessForEveryone
 import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.grantAccessForUsers
 import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.routingAccessor
+import com.between_freedom_and_space.mono_backend.access.entities.role.Role
+import com.between_freedom_and_space.mono_backend.access.entities.role.Role.ADMIN
+import com.between_freedom_and_space.mono_backend.access.entities.role.Role.SUPER_ADMIN
+import com.between_freedom_and_space.mono_backend.posts.services.exceptions.InvalidPostException
+import com.between_freedom_and_space.mono_backend.util.extensions.getPathParameter
 import io.ktor.server.application.*
-import io.ktor.server.request.*
 import io.ktor.server.routing.*
 
 internal fun Application.profilesRoutingAccessors() {
@@ -31,8 +36,16 @@ internal fun Application.profilesRoutingAccessors() {
         grantAccessForAdmins("$basePath/all")
         grantAccessForAdmins("$basePath/create")
 
-        routingAccessor("$basePath/{nickname}/update") { userAccessData ->
+        routingAccessor("$basePath/{nickname}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
+            val userName = userAccessData.authority?.userName
+            val nickname = userAccessData.request.getPathParameter("nickname")
+                ?: throw InvalidPostException("Nickname is not presented")
 
+            return@routingAccessor if (userName == nickname) {
+                AccessVerifyResult.ACCESSED
+            } else {
+                AccessVerifyResult.REJECTED
+            }
         }
     }
 }

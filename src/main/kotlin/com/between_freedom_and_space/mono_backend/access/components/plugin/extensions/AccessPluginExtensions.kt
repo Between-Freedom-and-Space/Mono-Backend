@@ -35,6 +35,34 @@ fun Routing.routingAccessor(path: String, accessor: RoutingAccessor): AccessPlug
 }
 
 @ContextDsl
+fun Routing.routingAccessor(
+    path: String,
+    grantedRoles: List<Role> = listOf(),
+    accessor: RoutingAccessor
+): AccessPlugin {
+    val decoratedAccessor = fun (userAccessData: UserAccessData): AccessVerifyResult {
+        val role = userAccessData.role
+
+        return if (role in grantedRoles) {
+            AccessVerifyResult.ACCESSED
+        } else {
+            accessor(userAccessData)
+        }
+    }
+
+    return routingAccessor(path, accessor)
+}
+
+@ContextDsl
+fun Routing.routingAccessor(
+    path: String,
+    vararg grantedRoles: Role,
+    accessor: RoutingAccessor
+): AccessPlugin {
+    return routingAccessor(path, grantedRoles.toList(), accessor)
+}
+
+@ContextDsl
 fun Routing.grantAccessForEveryone(path: String): AccessPlugin {
     val accessor = fun (_: UserAccessData): AccessVerifyResult {
         return AccessVerifyResult.ACCESSED
