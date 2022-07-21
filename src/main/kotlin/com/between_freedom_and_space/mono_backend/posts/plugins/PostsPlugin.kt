@@ -2,7 +2,7 @@ package com.between_freedom_and_space.mono_backend.posts.plugins
 
 import com.between_freedom_and_space.mono_backend.posts.api.components.postsRoutingAccessors
 import com.between_freedom_and_space.mono_backend.posts.api.routing.postsActionRouting
-import com.between_freedom_and_space.mono_backend.posts.api.routing.postsExceptionHandling
+import com.between_freedom_and_space.mono_backend.posts.api.components.postsExceptionHandling
 import com.between_freedom_and_space.mono_backend.posts.api.routing.postsInformationRouting
 import com.between_freedom_and_space.mono_backend.posts.api.routing.postsInteractionRouting
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.plugins.addCommentsPlugin

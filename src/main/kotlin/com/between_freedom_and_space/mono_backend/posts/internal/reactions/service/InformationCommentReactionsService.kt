@@ -1,6 +1,7 @@
 package com.between_freedom_and_space.mono_backend.posts.internal.reactions.service
 
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BaseCommentReactionModel
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.ReactionAuthorId
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.ReactionId
 
 interface InformationCommentReactionsService {
@@ -14,4 +15,6 @@ interface InformationCommentReactionsService {
     fun getReactionsWithCommentId(commentId: Long, pageNumber: Int, pageSize: Int): List<BaseCommentReactionModel>
 
     fun getReactionsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<BaseCommentReactionModel>
+
+    fun getReactionAuthorId(reactionId: Long): ReactionAuthorId
 }

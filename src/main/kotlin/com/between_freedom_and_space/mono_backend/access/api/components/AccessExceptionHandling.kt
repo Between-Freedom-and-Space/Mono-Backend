@@ -1,4 +1,4 @@
-package com.between_freedom_and_space.mono_backend.access.api.routing
+package com.between_freedom_and_space.mono_backend.access.api.components
 
 import com.between_freedom_and_space.mono_backend.access.components.exceptions.AccessException
 import com.between_freedom_and_space.mono_backend.access.service.exception.InvalidRoleException
@@ -6,40 +6,21 @@ import com.between_freedom_and_space.mono_backend.access.service.exception.Inval
 import com.between_freedom_and_space.mono_backend.access.service.exception.RoleNotFoundException
 import com.between_freedom_and_space.mono_backend.access.service.exception.RuleNotFoundException
 import com.between_freedom_and_space.mono_backend.common.api.Response
+import com.between_freedom_and_space.mono_backend.common.plugins.extensions.badRequestHandler
 import com.between_freedom_and_space.mono_backend.common.plugins.extensions.exceptionHandler
+import com.between_freedom_and_space.mono_backend.common.plugins.extensions.forbiddenHandler
+import com.between_freedom_and_space.mono_backend.common.plugins.extensions.notFoundHandler
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 
 internal fun Application.accessExceptionHandling() {
 
-    exceptionHandler<AccessException> { call, exception ->
-        exception as AccessException
-        val response = Response.forbidden(message = exception.message)
-        call.respond(HttpStatusCode.Forbidden, response)
-    }
+    forbiddenHandler<AccessException>()
 
-    exceptionHandler<InvalidRoleException> { call, exception ->
-        exception as InvalidRoleException
-        val response = Response.badRequest(message = exception.message)
-        call.respond(HttpStatusCode.BadRequest, response)
-    }
+    badRequestHandler<InvalidRoleException>()
+    badRequestHandler<InvalidRuleException>()
 
-    exceptionHandler<InvalidRuleException> { call, exception ->
-        exception as InvalidRuleException
-        val response = Response.badRequest(message = exception.message)
-        call.respond(HttpStatusCode.BadRequest, response)
-    }
-
-    exceptionHandler<RoleNotFoundException> { call, exception ->
-        exception as RoleNotFoundException
-        val response = Response.notFound(message = exception.message)
-        call.respond(HttpStatusCode.NotFound, response)
-    }
-
-    exceptionHandler<RuleNotFoundException> { call, exception ->
-        exception as RuleNotFoundException
-        val response = Response.notFound(message = exception.message)
-        call.respond(HttpStatusCode.NotFound, response)
-    }
+    notFoundHandler<RoleNotFoundException>()
+    notFoundHandler<RuleNotFoundException>()
 }

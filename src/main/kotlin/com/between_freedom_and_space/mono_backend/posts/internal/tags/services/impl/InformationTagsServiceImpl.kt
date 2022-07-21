@@ -6,6 +6,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.repository
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.InformationTagsService
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.exception.TagNotFoundException
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
+import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.TagAuthorId
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.TagId
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -56,5 +57,23 @@ class InformationTagsServiceImpl(
             tagRepository.getTagsWithPostId(postId, pageNumber, pageSize)
         }
         return entities.map { baseMapper.map(it) }
+    }
+
+    override fun getTagAuthorId(tagId: Long): TagAuthorId? {
+        val authorId = transaction {
+            val tag = tagRepository.getTagById(tagId)
+                ?: throw TagNotFoundException("Tag with id: $tagId not found")
+            tag.author?.value
+        }
+        return authorId?.let { TagAuthorId(it) }
+    }
+
+    override fun getTagAuthorId(tagAlias: String): TagAuthorId? {
+        val authorId = transaction {
+            val tag = tagRepository.getTagByAlias(tagAlias)
+                ?: throw TagNotFoundException("Tag with alias: $tagAlias not found")
+            tag.author?.value
+        }
+        return authorId?.let { TagAuthorId(it) }
     }
 }
