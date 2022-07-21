@@ -38,10 +38,14 @@ class CommonUserProfileAuthService(
     }
 
     override fun profileIsValid(nickName: String): Boolean {
-        return profileIdProvider.checkUserExists(nickName)
+        return transaction {
+            profileIdProvider.checkUserExists(nickName)
+        }
     }
 
     override fun profileIsValid(id: Long): Boolean {
-        return profileIdProvider.checkUserExists(id)
+        return transaction {
+            profileIdProvider.checkUserExists(id)
+        }
     }
 }
