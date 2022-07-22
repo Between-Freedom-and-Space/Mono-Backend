@@ -11,10 +11,8 @@ import com.between_freedom_and_space.mono_backend.access.entities.role.Role.SUPE
 class DefaultRoutingAccessor: RoutingAccessor {
 
     override fun invoke(userAccessData: UserAccessData): AccessVerifyResult {
-        return when (userAccessData.role) {
-            ADMIN -> ACCESSED
-            SUPER_ADMIN -> ACCESSED
-            else -> REJECTED
-        }
+        return if (userAccessData.role == SUPER_ADMIN) {
+            ACCESSED
+        } else { REJECTED }
     }
 }
