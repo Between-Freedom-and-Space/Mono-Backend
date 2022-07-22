@@ -82,9 +82,7 @@ class AccessPlugin(
             if (accessCheckResult == AccessVerifyResult.ACCESSED) {
                 return
             }
-        }
-
-        defaultRoutingAccessor?.let { accessor ->
+        } ?: defaultRoutingAccessor?.let { accessor ->
             val accessCheckResult = accessor(userAccessData)
             log("Default path accessor invoked for user: $authority with result: $accessCheckResult")
 
