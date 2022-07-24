@@ -5,6 +5,7 @@ RUN gradle shadowJar --no-daemon
 
 FROM openjdk:11
 RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/mono-backend.jar
+COPY --from=build /home/gradle/src/build/libs/Mono-Backend-1.0.0-all.jar /app/mono-backend.jar
+EXPOSE 8080:8080
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:InitialRAMFraction=2 -XX:MinRAMFraction=2 -XX:MaxRAMFraction=2 -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+UseStringDeduplication -Xmx4096m -jar mono-backend.jar"]
+CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:InitialRAMFraction=2", "-XX:MinRAMFraction=2", "-XX:MaxRAMFraction=2", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=100", "-XX:+UseStringDeduplication", "-Xmx4096m", "-jar", "/app/mono-backend.jar"]
