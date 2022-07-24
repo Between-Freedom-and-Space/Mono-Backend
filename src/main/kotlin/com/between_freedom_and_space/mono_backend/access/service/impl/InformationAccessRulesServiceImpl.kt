@@ -101,8 +101,20 @@ class InformationAccessRulesServiceImpl(
     }
 
     private fun List<AccessRule>.findMatchesRule(rawPath: String): AccessRule? {
-        return find { rule ->
-            pathPatternMatcher.pathMatchesPattern(rule.pathPattern, rawPath)
+        var minStrength = Int.MAX_VALUE
+        var currentRule: AccessRule? = null
+
+        forEach { rule ->
+            val matchResult = pathPatternMatcher.pathMatchesPattern(rule.pathPattern, rawPath)
+            if (!matchResult.match) {
+                return@forEach
+            }
+            if (matchResult.strength < minStrength) {
+                minStrength = matchResult.strength
+                currentRule = rule
+            }
         }
+
+        return currentRule
     }
 }

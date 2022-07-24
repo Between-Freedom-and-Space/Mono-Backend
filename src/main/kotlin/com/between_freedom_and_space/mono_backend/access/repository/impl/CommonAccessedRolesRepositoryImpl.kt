@@ -14,18 +14,24 @@ import com.between_freedom_and_space.mono_backend.access.service.exception.RoleN
 import com.between_freedom_and_space.mono_backend.access.service.exception.RuleNotFoundException
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.andWhere
 import org.jetbrains.exposed.sql.select
 
 class CommonAccessedRolesRepositoryImpl: CommonAccessedRolesRepository {
 
-    override fun getAllRoleRules(role: Role): List<AccessRule> {
+    override fun getAllRoleRules(role: Role, includeNotActive: Boolean): List<AccessRule> {
         val targetRoleQuery = UserRolesTable.select {
             UserRolesTable.roleAlias eq role
         }.firstOrNull() ?: throw RoleNotFoundException("Role with alias: $role not found")
         val userRole = UserRole.wrapRow(targetRoleQuery)
         val roleRuleQuery = AccessedRolesTable.select {
-            AccessedRolesTable.role eq userRole.id and AccessedRolesTable.isActive
+            AccessedRolesTable.role eq userRole.id
+        }.run {
+            if (!includeNotActive) {
+                andWhere { AccessedRolesTable.isActive eq true }
+            } else { this }
         }
+
         val accessedRoles = AccessedRole.wrapRows(roleRuleQuery).map { it.accessRule }
         val rulesQuery = AccessRulesTable.select {
             AccessRulesTable.id inList accessedRoles and AccessRulesTable.isActive
@@ -34,20 +40,28 @@ class CommonAccessedRolesRepositoryImpl: CommonAccessedRolesRepository {
         return result.toList()
     }
 
-    override fun getRoleRuleById(roleRuleId: Long): AccessedRole? {
-        return AccessedRole.find {
-            AccessedRolesTable.id eq roleRuleId and AccessedRolesTable.isActive
+    override fun getRoleRuleById(roleRuleId: Long, includeNotActive: Boolean): AccessedRole? {
+        val rule = AccessedRole.find {
+            AccessedRolesTable.id eq roleRuleId
         }.firstOrNull()
+        if (!includeNotActive) {
+            return if (rule?.isActive == false) null else rule
+        }
+        return rule
     }
 
-    override fun getRoleRuleByAlias(alias: String): AccessedRole? {
+    override fun getRoleRuleByAlias(alias: String, includeNotActive: Boolean): AccessedRole? {
         val role = UserRole.find {
             UserRolesTable.roleAlias eq Role.valueOf(alias)
         }.firstOrNull() ?: return null
         val roleId = role.id
-        return AccessedRole.find {
-            AccessedRolesTable.role eq roleId and AccessedRolesTable.isActive
+        val rule = AccessedRole.find {
+            AccessedRolesTable.role eq roleId
         }.firstOrNull()
+        if (!includeNotActive) {
+            return if (rule?.isActive == false) null else rule
+        }
+        return rule
     }
 
     override fun createRoleRule(authorId: EntityID<Long>, model: CreateRoleRuleEntityModel): AccessedRole {

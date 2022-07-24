@@ -6,9 +6,9 @@ import org.jetbrains.exposed.dao.id.EntityID
 
 interface CommonAccessRuleRepository {
 
-    fun getAllAccessRules(pageNumber: Int, pageSize: Int): List<AccessRule>
+    fun getAllAccessRules(pageNumber: Int, pageSize: Int, includeNotActive: Boolean = false): List<AccessRule>
 
-    fun getAccessRuleById(id: Long): AccessRule?
+    fun getAccessRuleById(id: Long, includeNotActive: Boolean = false): AccessRule?
 
     fun createAccessRule(authorId: EntityID<Long>, model: CreateRuleEntityModel): AccessRule
 

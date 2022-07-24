@@ -7,6 +7,7 @@ import com.between_freedom_and_space.mono_backend.access.service.InformationUser
 import com.between_freedom_and_space.mono_backend.access.service.exception.RoleNotFoundException
 import com.between_freedom_and_space.mono_backend.access.service.models.BaseUserRoleModel
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.util.extensions.transform
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationUserRolesServiceImpl(
@@ -41,10 +42,28 @@ class InformationUserRolesServiceImpl(
         val role = transaction {
             val userToRole = userToRoleRepository.getUserRole(nickname)
                 ?: throw RoleNotFoundException("Role for user with nickname: $nickname not found")
-            val roleId = userToRole.id.value
+            val roleId = userToRole.role.value
             getUserRoleOrThrow(roleId)
         }
         return baseMapper.map(role)
+    }
+
+    override fun getUserRoleOrNull(nickname: String): BaseUserRoleModel? {
+        val role = transaction {
+            val userToRole = userToRoleRepository.getUserRole(nickname)
+            val roleId = userToRole?.role?.value ?: -1
+            userRoleRepository.getUserRoleById(roleId)
+        }
+        return role?.transform { baseMapper.map(it) }
+    }
+
+    override fun getUserRoleOrNull(userId: Long): BaseUserRoleModel? {
+        val role = transaction {
+            val userToRole = userToRoleRepository.getUserRole(userId)
+            val roleId = userToRole?.role?.value ?: -1
+            userRoleRepository.getUserRoleById(roleId)
+        }
+        return role?.transform { baseMapper.map(it) }
     }
 
     private fun getUserRoleOrThrow(roleId: Long): UserRole {

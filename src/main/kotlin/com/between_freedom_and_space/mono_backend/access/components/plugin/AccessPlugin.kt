@@ -121,17 +121,24 @@ class AccessPlugin(
 
     private fun findPathAccessor(path: String): RoutingAccessor? {
         val allAccessors = routingAccessors.toList()
+        var currentAccessor: RoutingAccessor? = null
+        var minStrength = Int.MAX_VALUE
 
         allAccessors.forEach {
             val pathPattern = it.first
             val accessor = it.second
 
-            if (pathMatcher.pathMatchesPattern(pathPattern, path)) {
-                return accessor
+            val matchResult = pathMatcher.pathMatchesPattern(pathPattern, path)
+            if (!matchResult.match) {
+                return@forEach
+            }
+            if (matchResult.strength < minStrength) {
+                minStrength = matchResult.strength
+                currentAccessor = accessor
             }
         }
 
-        return null
+        return currentAccessor
     }
 
     private fun buildUserAccessData(request: ApplicationRequest, attributes: Attributes): UserAccessData {

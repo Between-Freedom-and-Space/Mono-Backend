@@ -15,6 +15,8 @@ internal fun Application.accessRoutingAccessors() {
         grantAccessForAdmins("$basePath/all")
         grantAccessForAdmins("$basePath/{id}")
         grantAccessForAdmins("$basePath/user/{nickname}")
+
+        grantAccessForSuperAdmins("$basePath/user/{nickname}/change")
     }
 
     routing {

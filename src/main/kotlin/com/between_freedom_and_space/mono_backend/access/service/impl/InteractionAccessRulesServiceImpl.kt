@@ -71,7 +71,7 @@ class InteractionAccessRulesServiceImpl(
         ruleId: Long, authorId: Long, model: UpdateRuleModel
     ): BaseAccessRuleModel {
         val rule = transaction {
-            val targetRule = getRuleOrThrow(ruleId)
+            val targetRule = getRuleOrThrow(ruleId, true)
             val authorEntityId = userIdProvider.getUser(authorId)
 
             model.newIsActive?.let { targetRule.isActive = it }
@@ -88,7 +88,7 @@ class InteractionAccessRulesServiceImpl(
         userRuleId: Long, authorId: Long, model: UpdateUserRuleModel
     ): BaseAccessRuleModel {
         val rule = transaction {
-            val targetRule = ruleToUserRepository.getUserRuleById(userRuleId)
+            val targetRule = ruleToUserRepository.getUserRuleById(userRuleId, includeNotActive = true)
                 ?: throw RuleNotFoundException("User rule with id: $userRuleId not found")
             val authorEntityId = userIdProvider.getUser(authorId)
 
@@ -116,7 +116,7 @@ class InteractionAccessRulesServiceImpl(
         roleRuleId: Long, authorId: Long, model: UpdateRoleRuleModel
     ): BaseAccessRuleModel {
         val rule = transaction {
-            val targetRule = ruleToRoleRepository.getRoleRuleById(roleRuleId)
+            val targetRule = ruleToRoleRepository.getRoleRuleById(roleRuleId, includeNotActive = true)
                 ?: throw RuleNotFoundException("Role rule with id: $roleRuleId not found")
             val authorEntityId = userIdProvider.getUser(authorId)
 
@@ -174,8 +174,8 @@ class InteractionAccessRulesServiceImpl(
         return entityMapper.map(rule)
     }
 
-    private fun getRuleOrThrow(ruleId: Long): AccessRule {
-        return ruleRepository.getAccessRuleById(ruleId)
+    private fun getRuleOrThrow(ruleId: Long, includeNotActive: Boolean = false): AccessRule {
+        return ruleRepository.getAccessRuleById(ruleId, includeNotActive)
             ?: throw RuleNotFoundException("Rule with id: $ruleId not found")
     }
 }

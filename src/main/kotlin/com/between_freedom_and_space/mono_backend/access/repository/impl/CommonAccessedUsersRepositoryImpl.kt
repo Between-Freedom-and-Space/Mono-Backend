@@ -10,27 +10,40 @@ import com.between_freedom_and_space.mono_backend.access.repository.models.Creat
 import com.between_freedom_and_space.mono_backend.access.service.exception.RuleNotFoundException
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.andWhere
 import org.jetbrains.exposed.sql.select
 
 class CommonAccessedUsersRepositoryImpl: CommonAccessedUsersRepository {
 
-    override fun getAllUserRules(userId: EntityID<Long>): List<AccessRule> {
+    override fun getAllUserRules(userId: EntityID<Long>, includeNotActive: Boolean): List<AccessRule> {
         val userRuleQuery = AccessedUsersTable.select {
-            AccessedUsersTable.user eq userId and AccessedUsersTable.isActive
+            AccessedUsersTable.user eq userId
+        }.run {
+            if (!includeNotActive) {
+                andWhere { AccessedUsersTable.isActive eq true }
+            } else { this }
         }
         val userRules = AccessedUser.wrapRows(userRuleQuery)
         val accessRulesId = userRules.map { it.accessRule }
         val ruleQuery = AccessRulesTable.select {
-            AccessRulesTable.id inList accessRulesId and AccessRulesTable.isActive
+            AccessRulesTable.id inList accessRulesId
+        }.run {
+            if (!includeNotActive) {
+                andWhere { AccessRulesTable.isActive eq true }
+            } else { this }
         }
         val result = AccessRule.wrapRows(ruleQuery)
         return result.toList()
     }
 
-    override fun getUserRuleById(userRuleId: Long): AccessedUser? {
-        return AccessedUser.find {
-            AccessedUsersTable.id eq userRuleId and AccessedUsersTable.isActive
+    override fun getUserRuleById(userRuleId: Long, includeNotActive: Boolean): AccessedUser? {
+        val rule = AccessedUser.find {
+            AccessedUsersTable.id eq userRuleId
         }.firstOrNull()
+        if (!includeNotActive) {
+            return if (rule?.isActive == false) null else rule
+        }
+        return rule
     }
 
     override fun createUserRule(

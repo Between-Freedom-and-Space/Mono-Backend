@@ -1,5 +1,6 @@
 package com.between_freedom_and_space.mono_backend.app
 
+import com.between_freedom_and_space.mono_backend.access.components.plugin.AccessPlugin
 import com.between_freedom_and_space.mono_backend.access.plugin.addAccessPlugin
 import com.between_freedom_and_space.mono_backend.app.config.configure
 import com.between_freedom_and_space.mono_backend.app.config.configureDatabase
@@ -26,6 +27,7 @@ fun Application.main(koin: KoinApplication) {
     install(ExceptionHandlerPlugin) { configure() }
     install(ContentNegotiation) { configure() }
     install(AuthenticatePlugin) { configure() }
+    install(AccessPlugin) { configure() }
 
     // Components
     addAccessPlugin()

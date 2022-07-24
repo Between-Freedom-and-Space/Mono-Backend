@@ -8,11 +8,11 @@ import org.jetbrains.exposed.dao.id.EntityID
 
 interface CommonAccessedRolesRepository {
 
-    fun getAllRoleRules(role: Role): List<AccessRule>
+    fun getAllRoleRules(role: Role, includeNotActive: Boolean = false): List<AccessRule>
 
-    fun getRoleRuleById(roleRuleId: Long): AccessedRole?
+    fun getRoleRuleById(roleRuleId: Long, includeNotActive: Boolean = false): AccessedRole?
 
-    fun getRoleRuleByAlias(alias: String): AccessedRole?
+    fun getRoleRuleByAlias(alias: String, includeNotActive: Boolean = false): AccessedRole?
 
     fun createRoleRule(authorId: EntityID<Long>, model: CreateRoleRuleEntityModel): AccessedRole
 

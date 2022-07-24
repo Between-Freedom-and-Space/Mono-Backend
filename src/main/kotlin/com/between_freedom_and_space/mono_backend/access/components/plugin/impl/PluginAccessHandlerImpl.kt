@@ -26,10 +26,12 @@ class PluginAccessHandlerImpl(
         if (authority == null) {
             attributes.put(roleAttributeKey, Role.NO_ROLE)
             return
+        } else {
+            attributes.put(roleAttributeKey, Role.DEFAULT_USER)
         }
 
-        val role = roleInformationService.getUserRole(authority.userId)
-        attributes.put(roleAttributeKey, role.role)
+        val role = roleInformationService.getUserRoleOrNull(authority.userId)
+        role?.let { attributes.put(roleAttributeKey, it.role) }
     }
 
     override fun checkRoleAccess(userAccessData: UserAccessData): AccessVerifyResult {

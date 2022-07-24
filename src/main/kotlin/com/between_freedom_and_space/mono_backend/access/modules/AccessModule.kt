@@ -14,9 +14,11 @@ import com.between_freedom_and_space.mono_backend.access.repository.impl.*
 import com.between_freedom_and_space.mono_backend.access.repository.models.CreateRoleRuleEntityModel
 import com.between_freedom_and_space.mono_backend.access.repository.models.CreateRuleEntityModel
 import com.between_freedom_and_space.mono_backend.access.repository.models.CreateUserRuleEntityModel
+import com.between_freedom_and_space.mono_backend.access.service.ActionUserRolesService
 import com.between_freedom_and_space.mono_backend.access.service.InformationAccessRulesService
 import com.between_freedom_and_space.mono_backend.access.service.InformationUserRolesService
 import com.between_freedom_and_space.mono_backend.access.service.InteractionAccessRulesService
+import com.between_freedom_and_space.mono_backend.access.service.impl.ActionUserRolesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.impl.InformationAccessRulesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.impl.InformationUserRolesServiceImpl
 import com.between_freedom_and_space.mono_backend.access.service.impl.InteractionAccessRulesServiceImpl
@@ -29,6 +31,9 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val mappersModule = module {
+    single<ModelMapper<BaseAccessRuleModel, AccessRuleModel>>(
+        named(AccessMappersQualifiers.BASE_ACCESS_RULE_TO_ACCESS_RULE_MAPPER)
+    ) { BaseAccessRuleModelToModelMapper() }
     single<ModelMapper<BaseUserRoleModel, UserRoleModel>>(
         named(AccessMappersQualifiers.BASE_USER_ROLE_TO_USER_ROLE_MODEL_MAPPER)
     ) { BaseUserRoleModelToModelMapper() }
@@ -102,6 +107,10 @@ private val serviceModule = module {
         get(named(AccessMappersQualifiers.CREATE_ROLE_RULE_MODEL_TO_ENTITY_MAPPER)),
         get(named(AccessMappersQualifiers.CREATE_USER_RULE_MODEL_TO_ENTITY_MAPPER)),
     ) } bind InteractionAccessRulesService::class
+    single { ActionUserRolesServiceImpl(
+        get(), get(), get(),
+        get(named(AccessMappersQualifiers.USER_ROLE_ENTITY_TO_BASE_MODEL_MAPPER))
+    ) } bind ActionUserRolesService::class
 }
 
 val accessModule = module {

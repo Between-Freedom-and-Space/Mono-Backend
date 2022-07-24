@@ -11,4 +11,8 @@ interface InformationUserRolesService {
     fun getUserRole(userId: Long): BaseUserRoleModel
 
     fun getUserRole(nickname: String): BaseUserRoleModel
+
+    fun getUserRoleOrNull(userId: Long): BaseUserRoleModel?
+
+    fun getUserRoleOrNull(nickname: String): BaseUserRoleModel?
 }

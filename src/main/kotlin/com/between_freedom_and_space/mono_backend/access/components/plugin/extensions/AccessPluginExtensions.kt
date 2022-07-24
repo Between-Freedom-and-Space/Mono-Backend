@@ -50,7 +50,7 @@ fun Routing.routingAccessor(
         }
     }
 
-    return routingAccessor(path, accessor)
+    return routingAccessor(path, decoratedAccessor)
 }
 
 @ContextDsl

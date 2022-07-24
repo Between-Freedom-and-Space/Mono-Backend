@@ -5,6 +5,7 @@ import com.between_freedom_and_space.mono_backend.access.entities.role.tables.Us
 import com.between_freedom_and_space.mono_backend.access.repository.CommonUserToRoleRepository
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.entities.tables.UserProfilesTable
+import org.jetbrains.exposed.dao.id.EntityID
 
 class CommonUserToRoleRepositoryImpl: CommonUserToRoleRepository {
 
@@ -24,5 +25,17 @@ class CommonUserToRoleRepositoryImpl: CommonUserToRoleRepository {
                 UserToRolesTable.user eq id
             }.firstOrNull()
         }
+    }
+
+    override fun createUserRole(userId: EntityID<Long>, roleId: EntityID<Long>): UserToRole {
+        return UserToRole.new {
+            role = roleId
+            user = userId
+        }
+    }
+
+    override fun save(userToRole: UserToRole): UserToRole {
+        userToRole.flush()
+        return userToRole
     }
 }
