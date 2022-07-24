@@ -25,9 +25,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.CreateTagModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.UpdateTagModel
-import com.between_freedom_and_space.mono_backend.posts.repository.CommonPostRepository
-import com.between_freedom_and_space.mono_backend.posts.repository.impl.CommonPostRepositoryImpl
-import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module

@@ -7,7 +7,8 @@ import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProf
 import com.between_freedom_and_space.mono_backend.profiles.repository.exceptions.ProfileAlreadyDeletedException
 import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import org.jetbrains.exposed.dao.id.EntityID
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.select
 
 class CommonProfilesRepositoryImpl: CommonProfilesRepository {
 
@@ -25,20 +26,27 @@ class CommonProfilesRepositoryImpl: CommonProfilesRepository {
     override fun getProfileByNickname(nickName: String): UserProfile? {
         return UserProfile
             .find {
-                UserProfilesTable.nickName eq nickName
+                (UserProfilesTable.nickName eq nickName) and
+                (UserProfilesTable.isDeleted eq false)
             }
             .firstOrNull()
     }
 
     override fun getProfileById(id: Long): UserProfile? {
-        return UserProfile.findById(id)
+        return UserProfile
+            .find {
+                (UserProfilesTable.id eq id) and
+                (UserProfilesTable.isDeleted eq false)
+            }
+            .firstOrNull()
     }
 
     override fun getProfilesByIds(ids: Collection<EntityID<Long>>): List<UserProfile> {
         val rawIds = ids.map { it.value }
         val query = UserProfilesTable
             .select {
-                UserProfilesTable.id inList rawIds
+                (UserProfilesTable.id inList rawIds) and
+                (UserProfilesTable.isDeleted eq false)
             }
         val result = UserProfile.wrapRows(query)
         return result.toList()

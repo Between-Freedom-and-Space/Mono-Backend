@@ -3,7 +3,6 @@ package com.between_freedom_and_space.mono_backend.auth.api.models
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.hibernate.validator.constraints.Length
-import javax.validation.Valid
 import javax.validation.constraints.NotBlank
 
 @Serializable

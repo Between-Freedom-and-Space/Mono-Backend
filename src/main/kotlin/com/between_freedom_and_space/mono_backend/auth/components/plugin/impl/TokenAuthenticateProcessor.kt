@@ -5,12 +5,11 @@ import com.between_freedom_and_space.mono_backend.auth.components.TokenVerifier
 import com.between_freedom_and_space.mono_backend.auth.components.exceptions.AuthenticateException
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
-import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
+import com.between_freedom_and_space.mono_backend.auth.components.plugin.util.userAuthorityAttributeKey
 import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.auth.util.AuthConstants
 import io.ktor.server.request.*
 import io.ktor.util.*
-import kotlin.reflect.jvm.jvmName
 
 class TokenAuthenticateProcessor(
     private val tokenVerifier: TokenVerifier,
@@ -37,7 +36,6 @@ class TokenAuthenticateProcessor(
             throw AuthenticateException("Access token is invalid")
         }
 
-        val key = AttributeKey<UserAuthority>(UserAuthority::class.jvmName)
-        attributes.put(key, authority)
+        attributes.put(userAuthorityAttributeKey, authority)
     }
 }

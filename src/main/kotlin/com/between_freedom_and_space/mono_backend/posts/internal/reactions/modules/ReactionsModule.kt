@@ -21,7 +21,6 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.servi
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.mappers.CommentReactionEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.mappers.PostReactionEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.*
-import org.h2.engine.Mode
 import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module

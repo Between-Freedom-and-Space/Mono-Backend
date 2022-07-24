@@ -1,6 +1,7 @@
 package com.between_freedom_and_space.mono_backend.posts.internal.comments.services
 
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.BaseCommentModel
+import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.CommentAuthorId
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.services.models.CommentId
 
 interface InformationCommentsService {
@@ -14,4 +15,6 @@ interface InformationCommentsService {
     fun getCommentsWithPostId(postId: Long, pageNumber: Int, pageSize: Int): List<BaseCommentModel>
 
     fun getCommentsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<BaseCommentModel>
+
+    fun getCommentAuthorId(commentId: Long): CommentAuthorId
 }

@@ -5,7 +5,6 @@ import com.between_freedom_and_space.mono_backend.common.plugins.ExceptionHandle
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
-import java.lang.Exception
 
 class BaseExceptionHandler: ExceptionHandler {
 

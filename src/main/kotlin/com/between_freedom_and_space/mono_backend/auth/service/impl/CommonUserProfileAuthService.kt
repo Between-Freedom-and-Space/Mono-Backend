@@ -4,15 +4,14 @@ import com.between_freedom_and_space.mono_backend.auth.components.exceptions.Aut
 import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.auth.service.model.UserAuthModel
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
+import com.between_freedom_and_space.mono_backend.profiles.components.UserProfileIdProvider
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
-import com.between_freedom_and_space.mono_backend.profiles.services.mappers.UserProfileToBaseProfileModelMapper
-import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
-import com.between_freedom_and_space.mono_backend.util.extensions.transform
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class CommonUserProfileAuthService(
     private val profileRepository: CommonProfilesRepository,
+    private val profileIdProvider: UserProfileIdProvider,
     private val profileEntityMapper: ModelMapper<UserProfile, UserAuthModel>
 ): UserProfileAuthService {
 
@@ -39,23 +38,14 @@ class CommonUserProfileAuthService(
     }
 
     override fun profileIsValid(nickName: String): Boolean {
-        val entity = transaction {
-            profileRepository.getProfileByNickname(nickName)
-        } ?: return false
-        return checkProfileValidity(entity)
+        return transaction {
+            profileIdProvider.checkUserExists(nickName)
+        }
     }
 
     override fun profileIsValid(id: Long): Boolean {
-        val entity = transaction {
-            profileRepository.getProfileById(id)
-        } ?: return false
-        return checkProfileValidity(entity)
-    }
-
-    private fun checkProfileValidity(profile: UserProfile): Boolean {
-        if (profile.isDeleted) {
-            return false
+        return transaction {
+            profileIdProvider.checkUserExists(id)
         }
-        return true
     }
 }

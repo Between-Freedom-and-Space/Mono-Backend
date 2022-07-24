@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added README.md">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed Dockerfile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/DatabaseConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/DatabaseConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/service/impl/CommonAuthService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,12 +56,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Object" />
-        <option value="Kotlin Enum" />
-        <option value="Kotlin Interface" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Annotation" />
-        <option value="Kotlin Class" />
+        <option value="Kotlin Enum" />
         <option value="Kotlin File" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -125,11 +124,11 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/api/routing/comments" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.between_freedom_and_space.mono_backend.access.components.plugin.service" />
       <recent name="com.between_freedom_and_space.mono_backend.common.exposed.callbacks.base" />
       <recent name="com.between_freedom_and_space.mono_backend.common.exposed.callbacks" />
       <recent name="com.between_freedom_and_space.mono_backend.auth.plugins.config.properties" />
       <recent name="com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.models" />
-      <recent name="com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.tables" />
     </key>
   </component>
   <component name="RunManager" selected="Kotlin.ApplicationKt (1)">
@@ -205,19 +204,6 @@
     <configuration name="ApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.between_freedom_and_space.mono_backend.ApplicationKt" />
       <module name="Mono-Backend.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Mono-Backend" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Mono-Backend" />
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -312,6 +298,15 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <method v="2" />
     </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="mono-backend" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
       <module name="Mono-Backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -334,8 +329,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.ApplicationKt (1)" />
-        <item itemvalue="Gradle.Mono-Backend [clean]" />
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Gradle.Mono-Backend [build]" />
+        <item itemvalue="Gradle.Mono-Backend [clean]" />
         <item itemvalue="Kotlin.ApplicationKt" />
       </list>
     </recent_temporary>
@@ -388,118 +384,9 @@
       <workItem from="1654970020541" duration="20680000" />
       <workItem from="1655311715456" duration="264000" />
       <workItem from="1655311996314" duration="1303000" />
-    </task>
-    <task id="LOCAL-00036" summary="added name to post model">
-      <created>1652014995132</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1652014995132</updated>
-    </task>
-    <task id="LOCAL-00037" summary="added query parameter extension">
-      <created>1652109397482</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1652109397482</updated>
-    </task>
-    <task id="LOCAL-00038" summary="fixed auth service">
-      <created>1652118188964</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1652118188964</updated>
-    </task>
-    <task id="LOCAL-00039" summary="added exception interceptor plugin">
-      <created>1652123229302</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1652123229302</updated>
-    </task>
-    <task id="LOCAL-00040" summary="added base exception handlers">
-      <created>1652125429280</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1652125429280</updated>
-    </task>
-    <task id="LOCAL-00041" summary="fixed extension">
-      <created>1652293458740</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1652293458740</updated>
-    </task>
-    <task id="LOCAL-00042" summary="fixed dependencies">
-      <created>1652388153695</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1652388153695</updated>
-    </task>
-    <task id="LOCAL-00043" summary="changed token name">
-      <created>1652455621185</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1652455621185</updated>
-    </task>
-    <task id="LOCAL-00044" summary="added tags base routing">
-      <created>1652468545043</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1652468545043</updated>
-    </task>
-    <task id="LOCAL-00045" summary="added comments base routing">
-      <created>1652470269252</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1652470269252</updated>
-    </task>
-    <task id="LOCAL-00046" summary="added reaction base routing">
-      <created>1652549473245</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1652549473245</updated>
-    </task>
-    <task id="LOCAL-00047" summary="added profile information service implementation">
-      <created>1652555365190</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1652555365190</updated>
-    </task>
-    <task id="LOCAL-00048" summary="added action and interaction profile service implementation">
-      <created>1652557708529</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1652557708529</updated>
-    </task>
-    <task id="LOCAL-00049" summary="added post services implementation">
-      <created>1652559871148</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1652559871148</updated>
-    </task>
-    <task id="LOCAL-00050" summary="added comments services implementation">
-      <created>1652563050695</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1652563050695</updated>
-    </task>
-    <task id="LOCAL-00051" summary="added tags service implementation">
-      <created>1652629795064</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1652629795065</updated>
+      <workItem from="1657209531496" duration="5290000" />
+      <workItem from="1658174723527" duration="20338000" />
+      <workItem from="1658698376491" duration="1438000" />
     </task>
     <task id="LOCAL-00052" summary="added reaction services implementation">
       <created>1652644968562</created>
@@ -732,7 +619,119 @@
       <option name="project" value="LOCAL" />
       <updated>1655156430703</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="added access extensions">
+      <created>1655499337396</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1655499337396</updated>
+    </task>
+    <task id="LOCAL-00086" summary="added role information service and path pattern matcher">
+      <created>1655910191811</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1655910191811</updated>
+    </task>
+    <task id="LOCAL-00087" summary="added access plugin checkes and access routing components">
+      <created>1657212282008</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1657212282009</updated>
+    </task>
+    <task id="LOCAL-00088" summary="added rule information routing">
+      <created>1657718206728</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1657718206728</updated>
+    </task>
+    <task id="LOCAL-00089" summary="fixed bugs">
+      <created>1657720621667</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1657720621667</updated>
+    </task>
+    <task id="LOCAL-00090" summary="added interaction routing">
+      <created>1657801708404</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1657801708404</updated>
+    </task>
+    <task id="LOCAL-00091" summary="added access interaction mappers">
+      <created>1657802452647</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1657802452647</updated>
+    </task>
+    <task id="LOCAL-00092" summary="added service mappers and repositories">
+      <created>1657978905546</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1657978905547</updated>
+    </task>
+    <task id="LOCAL-00093" summary="added information access rules service impl">
+      <created>1658089537684</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1658089537684</updated>
+    </task>
+    <task id="LOCAL-00094" summary="fixed bugs">
+      <created>1658091193305</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1658091193305</updated>
+    </task>
+    <task id="LOCAL-00095" summary="fixed bugs">
+      <created>1658429629151</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1658429629152</updated>
+    </task>
+    <task id="LOCAL-00096" summary="fixed default routing accessor">
+      <created>1658518967286</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1658518967286</updated>
+    </task>
+    <task id="LOCAL-00097" summary="fixed default routing accessor">
+      <created>1658519008416</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1658519008416</updated>
+    </task>
+    <task id="LOCAL-00098" summary="fixed bugs and added user role action routing">
+      <created>1658695537021</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1658695537021</updated>
+    </task>
+    <task id="LOCAL-00099" summary="fixed bug with not working path parameters in routing accessor">
+      <created>1658696785518</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1658696785518</updated>
+    </task>
+    <task id="LOCAL-00100" summary="fixed Dockerfile">
+      <created>1658699150765</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1658699150765</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -751,20 +750,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored Dependencies" />
-    <MESSAGE value="fixed javax validation" />
-    <MESSAGE value="fixed exception handler plugin" />
-    <MESSAGE value="fixed token expired handling" />
-    <MESSAGE value="added auth mappers qualifiers" />
-    <MESSAGE value="added auth and comments mappers qualifiers" />
-    <MESSAGE value="added reactions mappers qualifiers" />
-    <MESSAGE value="added post mappers qualifiers" />
-    <MESSAGE value="added configurations, fixed auth plugin and added shadow plugin for fat jars" />
-    <MESSAGE value="fixed some todo-s" />
-    <MESSAGE value="added configuration properties" />
-    <MESSAGE value="fixed passwords encoding" />
     <MESSAGE value="fixed hocoon file" />
-    <MESSAGE value="fixed bugs" />
     <MESSAGE value="added post comments count endpoint" />
     <MESSAGE value="added default created data" />
     <MESSAGE value="added exposed entity callbacks api" />
@@ -776,6 +762,19 @@
     <MESSAGE value="updated exposed versions and fixed bugs" />
     <MESSAGE value="fixed exception bug" />
     <MESSAGE value="added README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="added README.md" />
+    <MESSAGE value="added access extensions" />
+    <MESSAGE value="added role information service and path pattern matcher" />
+    <MESSAGE value="added access plugin checkes and access routing components" />
+    <MESSAGE value="added rule information routing" />
+    <MESSAGE value="added interaction routing" />
+    <MESSAGE value="added access interaction mappers" />
+    <MESSAGE value="added service mappers and repositories" />
+    <MESSAGE value="added information access rules service impl" />
+    <MESSAGE value="fixed bugs" />
+    <MESSAGE value="fixed default routing accessor" />
+    <MESSAGE value="fixed bugs and added user role action routing" />
+    <MESSAGE value="fixed bug with not working path parameters in routing accessor" />
+    <MESSAGE value="fixed Dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed Dockerfile" />
   </component>
 </project>

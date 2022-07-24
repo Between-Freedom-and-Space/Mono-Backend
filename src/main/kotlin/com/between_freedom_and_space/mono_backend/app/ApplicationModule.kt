@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 val applicationModule = module {
     includes(exceptionHandlerPluginModule)
-//    includes(accessModule)
+    includes(accessModule)
     includes(authModule)
     includes(postsModule)
     includes(profilesModule)

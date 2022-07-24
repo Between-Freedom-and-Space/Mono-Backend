@@ -5,7 +5,6 @@ import com.between_freedom_and_space.mono_backend.common.exposed.callbacks.base.
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.tables.PostTagsTable
 import com.between_freedom_and_space.mono_backend.util.support.localDateTimeNow
 import org.jetbrains.exposed.dao.LongEntity
-import org.jetbrains.exposed.dao.LongEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
 class PostTag(id: EntityID<Long>): LongEntity(id) {

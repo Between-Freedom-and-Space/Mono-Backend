@@ -14,11 +14,8 @@ import com.between_freedom_and_space.mono_backend.posts.services.models.BasePost
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
-import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.CreationProfileException
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
-import com.between_freedom_and_space.mono_backend.profiles.services.mappers.UserProfileToBaseProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
-import com.between_freedom_and_space.mono_backend.profiles.services.models.CreateProfileModel
 import org.jetbrains.exposed.sql.transactions.transaction
 
 @Suppress("DuplicatedCode")

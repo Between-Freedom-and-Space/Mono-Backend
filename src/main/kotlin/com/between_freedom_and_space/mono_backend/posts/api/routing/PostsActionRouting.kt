@@ -8,7 +8,6 @@ import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
 import com.between_freedom_and_space.mono_backend.posts.api.models.ReactPostRequest
 import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.services.ActionPostsService
-import com.between_freedom_and_space.mono_backend.posts.services.InteractionPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.InvalidPostException
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.util.extensions.getPathParameter

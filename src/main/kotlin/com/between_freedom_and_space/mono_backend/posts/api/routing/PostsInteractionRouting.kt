@@ -3,9 +3,6 @@ package com.between_freedom_and_space.mono_backend.posts.api.routing
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.extensions.getUserAuthorities
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
-import com.between_freedom_and_space.mono_backend.posts.api.mappers.BasePostModelToPostModelMapper
-import com.between_freedom_and_space.mono_backend.posts.api.mappers.CreatePostRequestToCreateModelMapper
-import com.between_freedom_and_space.mono_backend.posts.api.mappers.UpdatePostRequestToUpdateModelMapper
 import com.between_freedom_and_space.mono_backend.posts.api.models.CreatePostRequest
 import com.between_freedom_and_space.mono_backend.posts.api.models.PostModel
 import com.between_freedom_and_space.mono_backend.posts.api.models.UpdatePostRequest
@@ -55,8 +52,6 @@ internal fun Application.postsInteractionRouting() {
         }
 
         put("$basePath/{id}/update") {
-            val authorities = getUserAuthorities()
-            val userId = authorities.userId
             val updateRequest = validateAndReceiveRequest<UpdatePostRequest>()
             val updateModel = updatePostMapper.map(updateRequest)
             val postId = getPathParameter("id")?.toLong()
@@ -71,8 +66,6 @@ internal fun Application.postsInteractionRouting() {
         }
 
         delete("$basePath/{id}/delete") {
-            val authorities = getUserAuthorities()
-            val userId = authorities.userId
             val postId = getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
 

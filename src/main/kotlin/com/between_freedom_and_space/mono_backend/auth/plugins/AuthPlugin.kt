@@ -1,10 +1,10 @@
 package com.between_freedom_and_space.mono_backend.auth.plugins
 
-import com.between_freedom_and_space.mono_backend.auth.api.routing.authExceptionHandling
+import com.between_freedom_and_space.mono_backend.auth.api.components.authRoutingAccessors
+import com.between_freedom_and_space.mono_backend.auth.api.components.authExceptionHandling
 import com.between_freedom_and_space.mono_backend.auth.api.routing.authSettingsRouting
 import com.between_freedom_and_space.mono_backend.auth.api.routing.authTokenRouting
 import com.between_freedom_and_space.mono_backend.auth.api.routing.authUserRouting
-import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticatePlugin
 import io.ktor.server.application.*
 
 fun Application.addAuthPlugin() {
@@ -14,4 +14,5 @@ fun Application.addAuthPlugin() {
     authUserRouting()
 
     authExceptionHandling()
+    authRoutingAccessors()
 }

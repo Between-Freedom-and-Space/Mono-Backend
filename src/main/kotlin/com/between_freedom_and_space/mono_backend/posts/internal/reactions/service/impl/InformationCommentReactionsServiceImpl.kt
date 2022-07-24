@@ -5,8 +5,8 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.entit
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.repository.CommonCommentReactionsRepository
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.InformationCommentReactionsService
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.exceptions.ReactionNotFoundException
-import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.mappers.CommentReactionEntityToBaseModelMapper
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BaseCommentReactionModel
+import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.ReactionAuthorId
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.ReactionId
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -53,5 +53,14 @@ class InformationCommentReactionsServiceImpl(
             reactionRepository.getReactionsWithAuthorId(authorId, pageNumber, pageSize)
         }
         return entities.map { entityMapper.map(it) }
+    }
+
+    override fun getReactionAuthorId(reactionId: Long): ReactionAuthorId {
+        val authorId = transaction {
+            val reaction = reactionRepository.getReactionById(reactionId)
+                ?: throw ReactionNotFoundException("Comment reaction with id: $reactionId not found")
+            reaction.reactionBy.value
+        }
+        return ReactionAuthorId(authorId)
     }
 }
