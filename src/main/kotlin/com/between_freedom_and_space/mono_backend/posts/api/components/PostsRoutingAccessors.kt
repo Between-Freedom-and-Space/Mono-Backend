@@ -38,7 +38,7 @@ internal fun Application.postsRoutingAccessors() {
 
         routingAccessor("$basePath/{id}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val postId = userAccessData.request.getPathParameter("id")?.toLong()
+            val postId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
             val postAuthorId = postInformationService.getPostAuthorId(postId)
 
@@ -51,7 +51,7 @@ internal fun Application.postsRoutingAccessors() {
 
         routingAccessor("$basePath/{id}/delete", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val postId = userAccessData.request.getPathParameter("id")?.toLong()
+            val postId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidPostException("Post id is not presented")
             val postAuthorId = postInformationService.getPostAuthorId(postId)
 

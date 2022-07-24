@@ -32,7 +32,7 @@ internal fun Application.postTagsRoutingAccessors() {
 
         routingAccessor("$basePath/byId/{id}/update",  ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val tagId = userAccessData.request.getPathParameter("id")?.toLong()
+            val tagId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidTagException("Tag id is not presented")
             val tagAuthor = tagInformationService.getTagAuthorId(tagId)
 
@@ -45,7 +45,7 @@ internal fun Application.postTagsRoutingAccessors() {
 
         routingAccessor("$basePath/byAlias/{alias}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val tagAlias = userAccessData.request.getPathParameter("alias")
+            val tagAlias = userAccessData.getPathParameter("alias")
                 ?: throw InvalidTagException("Tag alias is not presented")
             val tagAuthor = tagInformationService.getTagAuthorId(tagAlias)
 
@@ -58,7 +58,7 @@ internal fun Application.postTagsRoutingAccessors() {
 
         routingAccessor("$basePath/byId/{id}/delete", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val tagId = userAccessData.request.getPathParameter("id")?.toLong()
+            val tagId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidTagException("Tag id is not presented")
             val tagAuthor = tagInformationService.getTagAuthorId(tagId)
 
@@ -71,7 +71,7 @@ internal fun Application.postTagsRoutingAccessors() {
 
         routingAccessor("$basePath/byAlias/{alias}/delete", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val tagAlias = userAccessData.request.getPathParameter("alias")
+            val tagAlias = userAccessData.getPathParameter("alias")
                 ?: throw InvalidTagException("Tag alias is not presented")
             val tagAuthor = tagInformationService.getTagAuthorId(tagAlias)
 

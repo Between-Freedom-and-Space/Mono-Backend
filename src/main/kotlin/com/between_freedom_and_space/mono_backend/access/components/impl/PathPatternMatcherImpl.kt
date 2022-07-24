@@ -1,40 +1,46 @@
 package com.between_freedom_and_space.mono_backend.access.components.impl
 
 import com.between_freedom_and_space.mono_backend.access.components.PathPatternMatcher
-import com.between_freedom_and_space.mono_backend.access.components.PathPatternMatcher.MatchResult
+import com.between_freedom_and_space.mono_backend.access.components.models.PathMatchResult
 
 class PathPatternMatcherImpl: PathPatternMatcher {
 
-    override fun pathMatchesPattern(pattern: String, rawPath: String): MatchResult {
+    override fun pathMatchesPattern(pattern: String, rawPath: String): PathMatchResult {
         val validPattern = adaptPath(pattern)
         val validPath = adaptPath(rawPath)
         val patternParts = validPattern.split("/")
-            .dropWhile { it.isBlank() }
         val pathParts = validPath.split("/")
-            .dropWhile { it.isBlank() }
 
         if (patternParts.size != pathParts.size) {
-            return MatchResult(false, 0)
+            return PathMatchResult.notMatches()
         }
 
         var strength = 0
+        val pathValues = mutableMapOf<String, String>()
         patternParts.forEachIndexed { index, patternPart ->
             if (patternPart.isPathVariable()) {
+                val alias = patternPart.getPathAlias()
+                pathValues[alias] = pathParts[index]
                 strength++
                 return@forEachIndexed
             }
 
             val pathPart = pathParts[index]
             if (pathPart != patternPart) {
-                return MatchResult(false, 0)
+                return PathMatchResult.notMatches()
             }
         }
 
-        return MatchResult(true, strength)
+        return PathMatchResult(true, strength, pathValues)
     }
 
     private fun adaptPath(path: String): String {
         val builder = StringBuilder(path)
+
+        if (builder.contains("?")) {
+            val index = builder.indexOf("?")
+            builder.deleteRange(index, builder.length)
+        }
         if (builder.startsWith("/")) {
             builder.deleteAt(0)
         }
@@ -46,5 +52,9 @@ class PathPatternMatcherImpl: PathPatternMatcher {
 
     private fun String.isPathVariable(): Boolean {
         return startsWith("{") and endsWith("}")
+    }
+
+    private fun String.getPathAlias(): String {
+        return substring(1, lastIndex)
     }
 }

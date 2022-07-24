@@ -38,7 +38,7 @@ internal fun Application.profilesRoutingAccessors() {
 
         routingAccessor("$basePath/{nickname}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userName = userAccessData.authority?.userName
-            val nickname = userAccessData.request.getPathParameter("nickname")
+            val nickname = userAccessData.getPathParameter("nickname")
                 ?: throw InvalidPostException("Nickname is not presented")
 
             return@routingAccessor if (userName == nickname) {

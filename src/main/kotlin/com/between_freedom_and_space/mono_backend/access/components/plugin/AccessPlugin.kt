@@ -3,6 +3,7 @@ package com.between_freedom_and_space.mono_backend.access.components.plugin
 import com.between_freedom_and_space.mono_backend.access.components.PathPatternMatcher
 import com.between_freedom_and_space.mono_backend.access.components.exceptions.AccessException
 import com.between_freedom_and_space.mono_backend.access.components.models.AccessVerifyResult
+import com.between_freedom_and_space.mono_backend.access.components.models.PathMatchResult
 import com.between_freedom_and_space.mono_backend.access.components.plugin.models.UserAccessData
 import com.between_freedom_and_space.mono_backend.access.components.plugin.service.RoutingAccessor
 import com.between_freedom_and_space.mono_backend.access.components.plugin.util.roleAttributeKey
@@ -73,8 +74,9 @@ class AccessPlugin(
             return
         }
 
-        val userAccessData = buildUserAccessData(request, attributes)
-        val routingAccessor = findPathAccessor(path)
+        val (routingAccessor, matchResult) = findPathAccessor(path)
+        val pathParams = matchResult?.pathTokens ?: emptyMap()
+        val userAccessData = buildUserAccessData(request, attributes, pathParams)
         routingAccessor?.let { accessor ->
             val accessCheckResult = accessor(userAccessData)
             log("Path accessor invoked for user: $authority with result: $accessCheckResult")
@@ -119,9 +121,10 @@ class AccessPlugin(
         }
     }
 
-    private fun findPathAccessor(path: String): RoutingAccessor? {
+    private fun findPathAccessor(path: String): Pair<RoutingAccessor?, PathMatchResult?> {
         val allAccessors = routingAccessors.toList()
         var currentAccessor: RoutingAccessor? = null
+        var currentMatchResult: PathMatchResult? = null
         var minStrength = Int.MAX_VALUE
 
         allAccessors.forEach {
@@ -135,15 +138,18 @@ class AccessPlugin(
             if (matchResult.strength < minStrength) {
                 minStrength = matchResult.strength
                 currentAccessor = accessor
+                currentMatchResult = matchResult
             }
         }
 
-        return currentAccessor
+        return currentAccessor!! to currentMatchResult!!
     }
 
-    private fun buildUserAccessData(request: ApplicationRequest, attributes: Attributes): UserAccessData {
+    private fun buildUserAccessData(
+        request: ApplicationRequest, attributes: Attributes, pathVariables: Map<String, String>
+    ): UserAccessData {
         val authority = attributes.getOrNull(userAuthorityAttributeKey)
         val role = attributes[roleAttributeKey]
-        return UserAccessData(authority, request, role)
+        return UserAccessData(authority, request, pathVariables, role)
     }
 }

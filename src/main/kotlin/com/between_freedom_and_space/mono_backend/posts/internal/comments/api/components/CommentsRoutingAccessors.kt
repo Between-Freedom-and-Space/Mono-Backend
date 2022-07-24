@@ -31,7 +31,7 @@ internal fun Application.commentsRoutingAccessors() {
 
         routingAccessor("$basePath/{id}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val commentId = userAccessData.request.getPathParameter("id")?.toLong()
+            val commentId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidCommentException("Comment id is not provided")
             val commentAuthor = commentInformationService.getCommentAuthorId(commentId)
 
@@ -44,7 +44,7 @@ internal fun Application.commentsRoutingAccessors() {
 
         routingAccessor("$basePath/{id}/delete", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val commentId = userAccessData.request.getPathParameter("id")?.toLong()
+            val commentId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidCommentException("Comment id is not provided")
             val commentAuthor = commentInformationService.getCommentAuthorId(commentId)
 

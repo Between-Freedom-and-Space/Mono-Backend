@@ -31,7 +31,7 @@ internal fun Application.reactionsRoutingAccessors() {
 
         routingAccessor("$basePath/{id}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val reactionId = userAccessData.request.getPathParameter("id")?.toLong()
+            val reactionId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidReactionException("Comment reaction id is not presented")
             val authorId = reactionInformationService.getReactionAuthorId(reactionId)
 
@@ -44,7 +44,7 @@ internal fun Application.reactionsRoutingAccessors() {
 
         routingAccessor("$basePath/{id}/delete", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val reactionId = userAccessData.request.getPathParameter("id")?.toLong()
+            val reactionId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidReactionException("Comment reaction id is not presented")
             val authorId = reactionInformationService.getReactionAuthorId(reactionId)
 
@@ -69,7 +69,7 @@ internal fun Application.reactionsRoutingAccessors() {
 
         routingAccessor("$basePath/{id}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val reactionId = userAccessData.request.getPathParameter("id")?.toLong()
+            val reactionId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidReactionException("Comment reaction id is not presented")
             val authorId = reactionInformationService.getReactionAuthorId(reactionId)
 
@@ -82,7 +82,7 @@ internal fun Application.reactionsRoutingAccessors() {
 
         routingAccessor("$basePath/{id}/delete", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
-            val reactionId = userAccessData.request.getPathParameter("id")?.toLong()
+            val reactionId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidReactionException("Comment reaction id is not presented")
             val authorId = reactionInformationService.getReactionAuthorId(reactionId)
 

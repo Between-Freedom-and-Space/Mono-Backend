@@ -10,5 +10,12 @@ data class UserAccessData(
 
     val request: ApplicationRequest,
 
+    val pathParams: Map<String, String>,
+
     val role: Role,
-)
+) {
+
+    fun getPathParameter(name: String): String? {
+        return pathParams[name]
+    }
+}

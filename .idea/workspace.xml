@@ -4,40 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed default routing accessor">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/api/models/ChangeUserRoleRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/api/routing/AccessActionRouting.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/ActionUserRolesService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/impl/ActionUserRolesServiceImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/AccessConfiguration.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed bugs and added user role action routing">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/models/PathMatchResult.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/buildSrcjar-classes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/buildSrcjar-classes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/api/components/AccessRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/api/components/AccessRoutingAccessors.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/api/mappers/BaseAccessRuleModelToModelMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/api/mappers/BaseAccessRuleModelToModelMapper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/PathPatternMatcher.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/PathPatternMatcher.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/impl/PathPatternMatcherImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/impl/PathPatternMatcherImpl.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/AccessPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/AccessPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/extensions/AccessPluginExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/extensions/AccessPluginExtensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/impl/PluginAccessHandlerImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/impl/PluginAccessHandlerImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/entities/role/tables/UserRolesTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/entities/role/tables/UserRolesTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/modules/AccessModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/modules/AccessModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/plugin/AccessPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/plugin/AccessPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/CommonAccessRuleRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/CommonAccessRuleRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/CommonAccessedRolesRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/CommonAccessedRolesRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/CommonAccessedUsersRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/CommonAccessedUsersRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/CommonUserToRoleRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/CommonUserToRoleRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/impl/CommonAccessRuleRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/impl/CommonAccessRuleRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/impl/CommonAccessedRolesRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/impl/CommonAccessedRolesRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/impl/CommonAccessedUsersRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/impl/CommonAccessedUsersRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/impl/CommonUserToRoleRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/repository/impl/CommonUserToRoleRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/InformationUserRolesService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/InformationUserRolesService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/impl/InformationAccessRulesServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/impl/InformationAccessRulesServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/impl/InformationUserRolesServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/impl/InformationUserRolesServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/impl/InteractionAccessRulesServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/service/impl/InteractionAccessRulesServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/ApplicationPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/ApplicationPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/extensions/ApplicationRequestExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/extensions/ApplicationRequestExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/models/UserAccessData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/models/UserAccessData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/components/PostsRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/components/PostsRoutingAccessors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/components/CommentsRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/comments/api/components/CommentsRoutingAccessors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/api/components/ReactionsRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/api/components/ReactionsRoutingAccessors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/components/PostTagsRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/tags/api/components/PostTagsRoutingAccessors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,9 +68,9 @@
         <option value="Kotlin Annotation" />
         <option value="Kotlin Enum" />
         <option value="Kotlin File" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -406,14 +384,7 @@
       <workItem from="1655311715456" duration="264000" />
       <workItem from="1655311996314" duration="1303000" />
       <workItem from="1657209531496" duration="5290000" />
-      <workItem from="1658174723527" duration="17365000" />
-    </task>
-    <task id="LOCAL-00049" summary="added post services implementation">
-      <created>1652559871148</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1652559871148</updated>
+      <workItem from="1658174723527" duration="18581000" />
     </task>
     <task id="LOCAL-00050" summary="added comments services implementation">
       <created>1652563050695</created>
@@ -751,7 +722,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658519008416</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="fixed bugs and added user role action routing">
+      <created>1658695537021</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1658695537021</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -770,7 +748,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed some todo-s" />
     <MESSAGE value="added configuration properties" />
     <MESSAGE value="fixed passwords encoding" />
     <MESSAGE value="fixed hocoon file" />
@@ -795,17 +772,7 @@
     <MESSAGE value="added information access rules service impl" />
     <MESSAGE value="fixed bugs" />
     <MESSAGE value="fixed default routing accessor" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed default routing accessor" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/extensions/ApplicationRequestExtensions.kt</url>
-          <line>8</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="fixed bugs and added user role action routing" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs and added user role action routing" />
   </component>
 </project>
