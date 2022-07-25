@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed Dockerfile">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added profile delete routing accessor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +89,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -386,14 +388,8 @@
       <workItem from="1655311996314" duration="1303000" />
       <workItem from="1657209531496" duration="5290000" />
       <workItem from="1658174723527" duration="20338000" />
-      <workItem from="1658698376491" duration="1438000" />
-    </task>
-    <task id="LOCAL-00052" summary="added reaction services implementation">
-      <created>1652644968562</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1652644968563</updated>
+      <workItem from="1658698376491" duration="2618000" />
+      <workItem from="1658750092791" duration="6980000" />
     </task>
     <task id="LOCAL-00053" summary="added profile repository implementation">
       <created>1652725671299</created>
@@ -731,7 +727,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658699150765</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="added profile delete routing accessor">
+      <created>1658699829996</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1658699829996</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,7 +753,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed hocoon file" />
     <MESSAGE value="added post comments count endpoint" />
     <MESSAGE value="added default created data" />
     <MESSAGE value="added exposed entity callbacks api" />
@@ -775,6 +777,7 @@
     <MESSAGE value="fixed bugs and added user role action routing" />
     <MESSAGE value="fixed bug with not working path parameters in routing accessor" />
     <MESSAGE value="fixed Dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed Dockerfile" />
+    <MESSAGE value="added profile delete routing accessor" />
+    <option name="LAST_COMMIT_MESSAGE" value="added profile delete routing accessor" />
   </component>
 </project>
