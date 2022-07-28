@@ -9,11 +9,11 @@ import javax.validation.constraints.Min
 data class PageParams(
 
     @SerialName("page_number")
-    @Min(value = 1, message = "Page number can't be less than 1")
+    @get:Min(value = 1, message = "Page number can't be less than 1")
     val pageNumber: Int,
 
     @SerialName("page_size")
-    @Min(value = 1, message = "Page size can't be less than 1")
-    @Max(value = 200, message = "Page size can't be grater than 200")
+    @get:Min(value = 1, message = "Page size can't be less than 1")
+    @get:Max(value = 200, message = "Page size can't be grater than 200")
     val pageSize: Int,
 )
