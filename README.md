@@ -42,6 +42,9 @@ The application is codded according to the most modern practices and using the b
   1. Service is powered by lightweight Ktor
   2. Minimum data manipulation 
   3. Maximum asynchronous interaction
+* CI/CD
+  1. Uses GitHub Actions to run tests and deploy
+  2. Can easily deployed to any stage
 
 ## Git Flow:
 For our developers and managers we use [YouTrack](https://www.jetbrains.com/youtrack/) as project management tool.
