@@ -6,6 +6,7 @@ import com.between_freedom_and_space.mono_backend.auth.components.exceptions.Aut
 import com.between_freedom_and_space.mono_backend.auth.components.models.TokenVerifyResult
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.util.userAuthorityAttributeKey
+import com.between_freedom_and_space.mono_backend.auth.security.models.UserAuthority
 import com.between_freedom_and_space.mono_backend.auth.service.UserProfileAuthService
 import com.between_freedom_and_space.mono_backend.auth.util.AuthConstants
 import io.ktor.server.request.*
@@ -18,6 +19,24 @@ class TokenAuthenticateProcessor(
 ): AuthenticateProcessor {
 
     override fun intercept(request: ApplicationRequest, attributes: Attributes) {
+        val tokenHeader = request.header(AuthConstants.TOKEN_HEADER_NAME)
+            ?: return
+        val verifyResult = tokenVerifier.verifyAccessToken(tokenHeader)
+
+        if (verifyResult !is TokenVerifyResult.Valid) {
+            return
+        }
+
+        val authority = tokenParser.parseToken(verifyResult.decodedToken)
+        val userId = authority.userId
+        if (!userAuthService.profileIsValid(userId)) {
+            return
+        }
+
+        attributes.put(userAuthorityAttributeKey, authority)
+    }
+
+    override fun validateOrThrow(request: ApplicationRequest) {
         val tokenHeader = request.header(AuthConstants.TOKEN_HEADER_NAME)
             ?: throw AuthenticateException("Access token is missing")
         val verifyResult = tokenVerifier.verifyAccessToken(tokenHeader)
@@ -35,7 +54,5 @@ class TokenAuthenticateProcessor(
         if (!userAuthService.profileIsValid(userId)) {
             throw AuthenticateException("Access token is invalid")
         }
-
-        attributes.put(userAuthorityAttributeKey, authority)
     }
 }

@@ -6,4 +6,7 @@ import io.ktor.util.*
 interface AuthenticateProcessor {
 
     fun intercept(request: ApplicationRequest, attributes: Attributes)
+
+    // TODO(Refactor authenticate plugin)
+    fun validateOrThrow(request: ApplicationRequest)
 }

@@ -7,6 +7,8 @@ import com.between_freedom_and_space.mono_backend.access.components.plugin.model
 import com.between_freedom_and_space.mono_backend.access.components.plugin.service.RoutingAccessor
 import com.between_freedom_and_space.mono_backend.access.components.plugin.util.roleAttributeKey
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role
+import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticateProcessor
+import com.between_freedom_and_space.mono_backend.util.extensions.inject
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 import io.ktor.util.pipeline.*
@@ -72,7 +74,12 @@ fun Routing.grantAccessForEveryone(path: String): AccessPlugin {
 
 @ContextDsl
 fun Routing.grantAccessForUsers(path: String): AccessPlugin {
+    val authenticateProcessor by inject<AuthenticateProcessor>()
+
     val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+        // TODO(Remove after refactoring authenticate plugin)
+        authenticateProcessor.validateOrThrow(accessData.request)
+
         return if (accessData.role != Role.NO_ROLE) {
             AccessVerifyResult.ACCESSED
         } else {
@@ -84,7 +91,12 @@ fun Routing.grantAccessForUsers(path: String): AccessPlugin {
 
 @ContextDsl
 fun Routing.grantAccessForAdmins(path: String): AccessPlugin {
+    val authenticateProcessor by inject<AuthenticateProcessor>()
+
     val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+        // TODO(Remove after refactoring authenticate plugin)
+        authenticateProcessor.validateOrThrow(accessData.request)
+
         return when(accessData.role) {
             Role.ADMIN -> AccessVerifyResult.ACCESSED
             Role.SUPER_ADMIN -> AccessVerifyResult.ACCESSED
@@ -96,7 +108,12 @@ fun Routing.grantAccessForAdmins(path: String): AccessPlugin {
 
 @ContextDsl
 fun Routing.grantAccessForSuperAdmins(path: String): AccessPlugin {
+    val authenticateProcessor by inject<AuthenticateProcessor>()
+
     val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+        // TODO(Remove after refactoring authenticate plugin)
+        authenticateProcessor.validateOrThrow(accessData.request)
+
         return if (accessData.role == Role.SUPER_ADMIN) {
             AccessVerifyResult.ACCESSED
         } else {
