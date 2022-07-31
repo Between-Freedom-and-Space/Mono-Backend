@@ -29,6 +29,7 @@ import io.ktor.server.application.*
 import io.ktor.server.routing.*
 import org.koin.core.qualifier.named
 
+@Suppress("DuplicatedCode")
 internal fun Application.profilesInformationRouting() {
     val basePath = "/profile"
 
@@ -208,6 +209,25 @@ internal fun Application.profilesInformationRouting() {
 
             val reactionsResponse = result.map { reactionsMapper.map(it) }
             val response = Response.ok(reactionsResponse)
+
+            sendResponse(response)
+        }
+
+        get("$basePath/{nickname}/subscriptions/posts") {
+            val postsMapper by inject<ModelMapper<BasePostModel, PostModel>>(
+                named(PostMappersQualifiers.BASE_POST_MODEL_TO_POST_MODEL)
+            )
+
+            val pageParams = validateAndReceiveRequest<PageParams>()
+            val pageSize = pageParams.pageSize
+            val pageNumber = pageParams.pageNumber
+            val nickname = getPathParameter("nickname")
+                ?: throw InvalidProfileException("Nickname value is not presented")
+
+            val result = informationService.getProfileSubscriptionsPosts(nickname, pageNumber, pageSize)
+
+            val postsResponse = result.map { postsMapper.map(it) }
+            val response = Response.ok(postsResponse)
 
             sendResponse(response)
         }

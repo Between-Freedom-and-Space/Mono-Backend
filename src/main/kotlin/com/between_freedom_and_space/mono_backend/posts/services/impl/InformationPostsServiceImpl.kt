@@ -18,6 +18,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.models.PostAuth
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostCommentsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel.ReactionToCount
+import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.load
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -111,6 +112,15 @@ class InformationPostsServiceImpl(
             post.author.value
         }
         return PostAuthorId(authorId)
+    }
+
+    override fun getPostsWithAuthorsIds(
+        authorIds: Collection<EntityID<Long>>, pageNumber: Int, pageSize: Int
+    ): List<BasePostModel> {
+        val posts = transaction {
+            repository.getPostsWithAuthorIds(authorIds, pageNumber, pageSize)
+        }
+        return posts.map { mapper.map(it) }
     }
 
     private fun getPostOrThrow(postId: Long): Post {

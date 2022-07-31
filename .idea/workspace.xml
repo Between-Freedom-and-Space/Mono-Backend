@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed Dockerfile">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="Added profile subscriptions posts endpoint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/extensions/AccessPluginExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/extensions/AccessPluginExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/AuthenticateConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/AuthenticateConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticateProcessor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticateProcessor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/impl/TokenAuthenticateProcessor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/impl/TokenAuthenticateProcessor.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +93,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -386,35 +392,10 @@
       <workItem from="1655311996314" duration="1303000" />
       <workItem from="1657209531496" duration="5290000" />
       <workItem from="1658174723527" duration="20338000" />
-      <workItem from="1658698376491" duration="1438000" />
-    </task>
-    <task id="LOCAL-00052" summary="added reaction services implementation">
-      <created>1652644968562</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1652644968563</updated>
-    </task>
-    <task id="LOCAL-00053" summary="added profile repository implementation">
-      <created>1652725671299</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1652725671300</updated>
-    </task>
-    <task id="LOCAL-00054" summary="added posts repository impl">
-      <created>1652811365037</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1652811365038</updated>
-    </task>
-    <task id="LOCAL-00055" summary="added comments repository implementation">
-      <created>1652812386762</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1652812386762</updated>
+      <workItem from="1658698376491" duration="2618000" />
+      <workItem from="1658750092791" duration="9940000" />
+      <workItem from="1659025993839" duration="7035000" />
+      <workItem from="1659198713478" duration="7230000" />
     </task>
     <task id="LOCAL-00056" summary="added tags repository impl">
       <created>1652814587370</created>
@@ -731,7 +712,35 @@
       <option name="project" value="LOCAL" />
       <updated>1658699150765</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="added profile delete routing accessor">
+      <created>1658699829996</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1658699829996</updated>
+    </task>
+    <task id="LOCAL-00102" summary="added transform exception handlers">
+      <created>1658781264593</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1658781264595</updated>
+    </task>
+    <task id="LOCAL-00103" summary="fixed page params validation constraints">
+      <created>1659036602612</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1659036602612</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Added profile subscriptions posts endpoint">
+      <created>1659290296216</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1659290296217</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,10 +759,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed hocoon file" />
-    <MESSAGE value="added post comments count endpoint" />
-    <MESSAGE value="added default created data" />
-    <MESSAGE value="added exposed entity callbacks api" />
     <MESSAGE value="fixed update models" />
     <MESSAGE value="fixed exposed entity callbacks" />
     <MESSAGE value="added post updated callbacks to all entities" />
@@ -775,6 +780,10 @@
     <MESSAGE value="fixed bugs and added user role action routing" />
     <MESSAGE value="fixed bug with not working path parameters in routing accessor" />
     <MESSAGE value="fixed Dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed Dockerfile" />
+    <MESSAGE value="added profile delete routing accessor" />
+    <MESSAGE value="added transform exception handlers" />
+    <MESSAGE value="fixed page params validation constraints" />
+    <MESSAGE value="Added profile subscriptions posts endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added profile subscriptions posts endpoint" />
   </component>
 </project>

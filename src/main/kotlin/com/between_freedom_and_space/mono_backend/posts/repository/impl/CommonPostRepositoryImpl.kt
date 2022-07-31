@@ -8,6 +8,7 @@ import com.between_freedom_and_space.mono_backend.posts.repository.exceptions.Po
 import com.between_freedom_and_space.mono_backend.posts.repository.models.CreatePostEntityModel
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.SizedCollection
+import org.jetbrains.exposed.sql.SortOrder
 import org.jetbrains.exposed.sql.select
 
 class CommonPostRepositoryImpl: CommonPostRepository {
@@ -33,6 +34,20 @@ class CommonPostRepositoryImpl: CommonPostRepository {
             .select {
                 PostsTable.author eq authorId
             }
+            .limit(pageSize, offset)
+        val result = Post.wrapRows(query)
+        return result.toList()
+    }
+
+    override fun getPostsWithAuthorIds(
+        authorIds: Collection<EntityID<Long>>, pageNumber: Int, pageSize: Int
+    ): List<Post> {
+        val offset = (pageNumber - 1).toLong() * pageSize
+        val query = PostsTable
+            .select {
+                PostsTable.author inList authorIds
+            }
+            .orderBy(PostsTable.createdDate, SortOrder.DESC_NULLS_LAST)
             .limit(pageSize, offset)
         val result = Post.wrapRows(query)
         return result.toList()

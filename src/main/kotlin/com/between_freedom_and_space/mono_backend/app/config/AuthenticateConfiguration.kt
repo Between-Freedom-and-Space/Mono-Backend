@@ -5,6 +5,7 @@ import com.between_freedom_and_space.mono_backend.auth.components.plugin.config.
 
 internal fun AuthenticatePlugin.Configuration.configure() {
     enableLogging = true
+    // TODO (Remove ignored path api, make user authentication optional)
     ignoredPaths = mutableListOf(
         object: IgnoredPath {
             override val path = "/auth"

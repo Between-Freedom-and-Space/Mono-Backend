@@ -50,4 +50,6 @@ interface InformationProfilesService {
     fun getProfileCommentReactions(nickName: String, pageNumber: Int, pageSize: Int): List<BaseCommentReactionModel>
 
     fun getProfileCommentReactions(userId: Long, pageNumber: Int, pageSize: Int): List<BaseCommentReactionModel>
+
+    fun getProfileSubscriptionsPosts(nickName: String, pageNumber: Int, pageSize: Int): List<BasePostModel>
 }

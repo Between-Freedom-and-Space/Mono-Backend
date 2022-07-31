@@ -33,6 +33,7 @@ internal fun Application.profilesRoutingAccessors() {
 
         grantAccessForUsers("$basePath/subscribe/{nickname}")
         grantAccessForUsers("$basePath/unsubscribe/{nickname}")
+        grantAccessForUsers("$basePath/{nickname}/subscriptions/posts")
 
         grantAccessForAdmins("$basePath/all")
         grantAccessForAdmins("$basePath/create")
