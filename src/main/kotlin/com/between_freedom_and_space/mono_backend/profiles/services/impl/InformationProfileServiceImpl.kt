@@ -207,6 +207,16 @@ class InformationProfileServiceImpl(
         }
     }
 
+    override fun getProfileSubscriptionsPosts(nickName: String, pageNumber: Int, pageSize: Int): List<BasePostModel> {
+        return transaction {
+            val profile = repository.getProfileByNickname(nickName)
+                ?: throw ProfileNotFoundException("Profile with nickname: $nickName not found")
+            val subscriptionIds = profile.subscriptions.map { it.subscribeOn }
+
+            postInformationService.getPostsWithAuthorsIds(subscriptionIds, pageNumber, pageSize)
+        }
+    }
+
     private fun getProfileOrThrow(userId: Long): UserProfile {
         return repository.getProfileById(userId)
             ?: throw ProfileNotFoundException("Profile with id: $userId not found")

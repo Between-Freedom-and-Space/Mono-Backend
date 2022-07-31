@@ -7,6 +7,7 @@ import com.between_freedom_and_space.mono_backend.posts.services.models.BasePost
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostAuthorId
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostCommentsCountModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.PostReactionsCountModel
+import org.jetbrains.exposed.dao.id.EntityID
 
 interface InformationPostsService {
 
@@ -27,4 +28,6 @@ interface InformationPostsService {
     fun getPostsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<BasePostModel>
 
     fun getPostAuthorId(postId: Long): PostAuthorId
+
+    fun getPostsWithAuthorsIds(authorIds: Collection<EntityID<Long>>, pageNumber: Int, pageSize: Int): List<BasePostModel>
 }

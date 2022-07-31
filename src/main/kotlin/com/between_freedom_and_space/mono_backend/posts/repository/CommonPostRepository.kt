@@ -13,6 +13,8 @@ interface CommonPostRepository {
 
     fun getPostsWithAuthorId(authorId: Long, pageNumber: Int, pageSize: Int): List<Post>
 
+    fun getPostsWithAuthorIds(authorIds: Collection<EntityID<Long>>, pageNumber: Int, pageSize: Int): List<Post>
+
     fun createPost(authorId: EntityID<Long>, tags: Collection<PostTag>, model: CreatePostEntityModel): Post
 
     fun savePost(post: Post): Post
