@@ -38,14 +38,14 @@ jobs:
          
    - name: Build docker image
      env:
-       CR_REGISTRY: ${{ secrets.REGISTRY_ID }}
+       CR_REGISTRY: crpp4a802h6om9om40b4
        CR_REPOSITORY: mono-backend
        IMAGE_TAG: ${{ github.event.inputs.release-version }}
      run: docker build . --file Dockerfile --tag cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
      
    - name: Push docker image to Yandex.Cloud registry
      env:
-       CR_REGISTRY: ${{ secrets.REGISTRY_ID }}
+       CR_REGISTRY: crpp4a802h6om9om40b4
        CR_REPOSITORY: mono-backend
        IMAGE_TAG: ${{ github.event.inputs.release-version }}
      run: docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
