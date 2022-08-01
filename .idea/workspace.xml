@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="Added profile subscriptions posts endpoint">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="Fixed auth plugin">
+      <change afterPath="$PROJECT_DIR$/k8s/k8s.production.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/k8s.testing.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/extensions/AccessPluginExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/extensions/AccessPluginExtensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/AuthenticateConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/AuthenticateConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticateProcessor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticateProcessor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/impl/TokenAuthenticateProcessor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/impl/TokenAuthenticateProcessor.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,14 +393,8 @@
       <workItem from="1658698376491" duration="2618000" />
       <workItem from="1658750092791" duration="9940000" />
       <workItem from="1659025993839" duration="7035000" />
-      <workItem from="1659198713478" duration="7230000" />
-    </task>
-    <task id="LOCAL-00056" summary="added tags repository impl">
-      <created>1652814587370</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1652814587370</updated>
+      <workItem from="1659198713478" duration="8372000" />
+      <workItem from="1659294322326" duration="8774000" />
     </task>
     <task id="LOCAL-00057" summary="added reaction repository implemetation">
       <created>1652815709795</created>
@@ -740,7 +732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659290296217</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Fixed auth plugin">
+      <created>1659292584785</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1659292584785</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -759,7 +758,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed update models" />
     <MESSAGE value="fixed exposed entity callbacks" />
     <MESSAGE value="added post updated callbacks to all entities" />
     <MESSAGE value="added all equals and hashcodes" />
@@ -784,6 +782,7 @@
     <MESSAGE value="added transform exception handlers" />
     <MESSAGE value="fixed page params validation constraints" />
     <MESSAGE value="Added profile subscriptions posts endpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added profile subscriptions posts endpoint" />
+    <MESSAGE value="Fixed auth plugin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed auth plugin" />
   </component>
 </project>

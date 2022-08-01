@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mono-backend
+  labels:
+    app-label: mono-backend-label
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-label: mono-backend-label
+  template:
+    metadata:
+      labels:
+        app-label: mono-backend-label
+    spec:
+      containers:
+        - name: mono-backend-app
+          image: cr.yandex/$REGISTRY_ID/$REPOSITORY_NAME:$IMAGE_TAG
+          env:
+            - name: DATABASE_URL
+              value: $DATABASE_URL
+            - name: DATABASE_USER
+              value: $DATABASE_USER
+            - name: DATABASE_PASSWORD
+              value: $DATABASE_PASSWORD
+            - name: AUTH_TOKEN_SECRET
+              value: $AUTH_TOKEN_SECRET
+            - name: AUTH_TOKEN_AUDIENCE
+              value: $AUTH_TOKEN_AUDIENCE
+            - name: AUTH_TOKEN_ISSUER
+              value: $AUTH_TOKEN_ISSUER
