@@ -29,7 +29,15 @@ jobs:
    
    steps:
    - uses: actions/checkout@v3
+   
+   - name: Login to Yandex Cloud Container Registry
+     id: login-cr
+     uses: yc-actions/yc-cr-login@v1
+     with:
+        yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+         
    - name: Build docker image
-     run: docker build . --file Dockerfile --tag mono-backend:${{ github.event.inputs.release-version }}
+     run: docker build . --file Dockerfile --tag cr.yandex/${{ secrets.REGISTRY_ID }}/mono-backend:${{ github.event.inputs.release-version }}
+     
    - name: Push docker image to Yandex.Cloud registry
-     run: docker push mono-backend:${{ github.event.inputs.release-version }}
+     run: docker push cr.yandex/${{ secrets.REGISTRY_ID }}/mono-backend:${{ github.event.inputs.release-version }}
