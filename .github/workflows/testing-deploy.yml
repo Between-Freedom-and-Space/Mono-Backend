@@ -37,7 +37,15 @@ jobs:
         yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
          
    - name: Build docker image
-     run: docker build . --file Dockerfile --tag cr.yandex/${{ secrets.REGISTRY_ID }}/mono-backend:${{ github.event.inputs.release-version }}
+     env:
+       CR_REGISTRY: ${{ secrets.REGISTRY_ID }}
+       CR_REPOSITORY: mono-backend
+       IMAGE_TAG: ${{ github.event.inputs.release-version }}
+     run: docker build . --file Dockerfile --tag cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
      
    - name: Push docker image to Yandex.Cloud registry
-     run: docker push cr.yandex/${{ secrets.REGISTRY_ID }}/mono-backend:${{ github.event.inputs.release-version }}
+     env:
+       CR_REGISTRY: ${{ secrets.REGISTRY_ID }}
+       CR_REPOSITORY: mono-backend
+       IMAGE_TAG: ${{ github.event.inputs.release-version }}
+     run: docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
