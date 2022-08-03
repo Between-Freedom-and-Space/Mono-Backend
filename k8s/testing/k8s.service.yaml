@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mono-backend-load-balancer
+  labels:
+    app: mono-backend
+    owner: Ferum-bot
+    tier: backend
+    stage: testing
+    infrastructure: kotlin
+spec:
+  type: LoadBalancer
+  selector:
+    app: mono-backend-application
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: Mono-Backend-Listner
