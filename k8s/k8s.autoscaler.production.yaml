@@ -6,7 +6,7 @@ metadata:
     app: mono-backend
     owner: Ferum-bot
     tier: backend
-    stage: testing
+    stage: production
     infrastructure: kotlin
   spec:
     scaleTargetRef:
