@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed k8s">
-      <change afterPath="$PROJECT_DIR$/k8s/production/k8s.service.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8s/testing/k8s.service.yaml" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added load balancer for testing and cluster ip for production">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/k8s.autoscaler.production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/production/k8s.autoscaler.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/k8s.autoscaler.testing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/testing/k8s.autoscaler.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/k8s.deployment.production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/production/k8s.deployment.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/k8s.deployment.testing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/testing/k8s.deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/production/k8s.autoscaler.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/production/k8s.deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/k8s.deployment.production.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/production/k8s.service.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/testing/k8s.autoscaler.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/testing/k8s.deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/k8s.deployment.testing.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/testing/k8s.service.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -401,14 +401,8 @@
       <workItem from="1658750092791" duration="9940000" />
       <workItem from="1659025993839" duration="7035000" />
       <workItem from="1659198713478" duration="8372000" />
-      <workItem from="1659294322326" duration="15546000" />
-    </task>
-    <task id="LOCAL-00060" summary="refactored Dependencies">
-      <created>1653332873175</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1653332873175</updated>
+      <workItem from="1659294322326" duration="16809000" />
+      <workItem from="1659630728738" duration="400000" />
     </task>
     <task id="LOCAL-00061" summary="fixed javax validation">
       <created>1653335034062</created>
@@ -746,7 +740,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659558143611</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="added load balancer for testing and cluster ip for production">
+      <created>1659560598310</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1659560598310</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -765,7 +766,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed access token verifier and repository" />
     <MESSAGE value="updated exposed versions and fixed bugs" />
     <MESSAGE value="fixed exception bug" />
     <MESSAGE value="added README.md" />
@@ -790,6 +790,7 @@
     <MESSAGE value="added k8s configuration" />
     <MESSAGE value="added auto scalers" />
     <MESSAGE value="fixed k8s" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed k8s" />
+    <MESSAGE value="added load balancer for testing and cluster ip for production" />
+    <option name="LAST_COMMIT_MESSAGE" value="added load balancer for testing and cluster ip for production" />
   </component>
 </project>
