@@ -52,10 +52,10 @@ jobs:
        IMAGE_TAG: ${{ github.event.inputs.release-version }}
      run: docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
      
-   - name: Wait untill Yandex.Clout process new docker image
+   - name: Wait untill Yandex.Cloud process new docker image
      uses: jakejarvis/wait-action@v0.1.1
      with:
-       time: '60s'
+       time: '30s'
        
    - name: Set up kubectl on runner
      uses: azure/setup-kubectl@v3
@@ -64,26 +64,23 @@ jobs:
        version: v1.22.4
        
    - name: Configure kubectl
-     env:
-       KUBE_URL: ${{ secrets.TESTING_K8S_MASTER_CLUSTER_URL }}
-       KUBE_TOKEN: ${{ secrets.TESTING_K8S_SERVICE_ACCOUNT_TOKEN }}
      run: |
-          kubectl config set-cluster k8s --server=$KUBE_URL --insecure-skip-tls-verify=true
-          kubectl config set-credentials admin --token=$KUBE_TOKEN
-          kubectl config set-context default --cluster=k8s --user=admin
-          kubectl config use-context default
+           kubectl config set-cluster k8s --server=${{ secrets.TESTING_K8S_MASTER_CLUSTER_URL }} --insecure-skip-tls-verify=true
+           kubectl config set-credentials admin --token=${{ secrets.TESTING_K8S_SERVICE_ACCOUNT_TOKEN }}
+           kubectl config set-context default --cluster=k8s --user=admin
+           kubectl config use-context default
           
    - name: Substitute the real value of variables
      run: |
-          sed -i 's/$REGISTRY_ID/crpp4a802h6om9om40b4/g' ./k8s/deployment.testing.yaml
-          sed -i 's/$REPOSITORY_NAME/mono-backend/g' ./k8s/deployment.testing.yaml
-          sed -i 's/$IMAGE_TAG/${{ github.event.inputs.release-version }}/g' ./k8s/deployment.testing.yaml
-          sed -i 's/$DATABASE_URL/${{ secrets.DATABASE_URL }}/g' ./k8s/deployment.testing.yaml
-          sed -i 's/$DATABASE_USER/${{ secrets.DATABASE_USER }}/g' ./k8s/deployment.testing.yaml
-          sed -i 's/$DATABASE_PASSWORD/${{ secrets.DATABASE_PASSWORD }}/g' ./k8s/deployment.testing.yaml
-          sed -i 's/$AUTH_TOKEN_SECRET/${{ secrets.AUTH_TOKEN_SECRET }}/g' ./k8s/deployment.testing.yaml
-          sed -i 's/$AUTH_TOKEN_AUDIENCE/${{ secrets.AUTH_TOKEN_AUDIENCE }}/g' ./k8s/deployment.testing.yaml
-          sed -i 's/$AUTH_TOKEN_ISSUER/${{ secrets.AUTH_TOKEN_ISSUER }}/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$REGISTRY_ID/crpp4a802h6om9om40b4/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$REPOSITORY_NAME/mono-backend/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$IMAGE_TAG/${{ github.event.inputs.release-version }}/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$DATABASE_URL/${{ secrets.DATABASE_URL }}/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$DATABASE_USER/${{ secrets.DATABASE_USER }}/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$DATABASE_PASSWORD/${{ secrets.DATABASE_PASSWORD }}/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$AUTH_TOKEN_SECRET/${{ secrets.AUTH_TOKEN_SECRET }}/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$AUTH_TOKEN_AUDIENCE/${{ secrets.AUTH_TOKEN_AUDIENCE }}/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$AUTH_TOKEN_ISSUER/${{ secrets.AUTH_TOKEN_ISSUER }}/g' ./k8s/deployment.testing.yaml
   
    - name: Deploy to k8s
      run: kubectl apply -f ./k8s/deployment.testing.yaml
