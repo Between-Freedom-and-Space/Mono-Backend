@@ -26,6 +26,24 @@ spec:
       containers:
         - name: mono-backend-container
           image: cr.yandex/$REGISTRY_ID/$REPOSITORY_NAME:$IMAGE_TAG
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /metrics
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /metrics
+            initialDelaySeconds: 40
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              port: 8080
+              path: /metrics
+            failureThreshold: 30
+            periodSeconds: 10
           ports:
             - containerPort: 8080
               hostPort: 8080
