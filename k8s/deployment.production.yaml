@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mono-backend-deployment
+  labels:
+    app: mono-backend
+    owner: Ferum-bot
+    tier: backend
+    stage: production
+    infrastructure: kotlin
+  namespace: default
+spec:
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+  selector:
+    matchLabels:
+      app: mono-backend-application
+  template:
+    metadata:
+      labels:
+        app: mono-backend-application
+    spec:
+      containers:
+        - name: mono-backend-container
+          image: cr.yandex/$REGISTRY_ID/$REPOSITORY_NAME:$IMAGE_TAG
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+          env:
+            - name: DATABASE_URL
+              value: $DATABASE_URL
+            - name: DATABASE_USER
+              value: $DATABASE_USER
+            - name: DATABASE_PASSWORD
+              value: $DATABASE_PASSWORD
+            - name: AUTH_TOKEN_SECRET
+              value: $AUTH_TOKEN_SECRET
+            - name: AUTH_TOKEN_AUDIENCE
+              value: $AUTH_TOKEN_AUDIENCE
+            - name: AUTH_TOKEN_ISSUER
+              value: $AUTH_TOKEN_ISSUER

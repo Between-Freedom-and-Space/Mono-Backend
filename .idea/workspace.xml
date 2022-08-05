@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="Added profile subscriptions posts endpoint">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="refactored k8s configs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/extensions/AccessPluginExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/extensions/AccessPluginExtensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/AuthenticateConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/config/AuthenticateConfiguration.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticateProcessor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/AuthenticateProcessor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/impl/TokenAuthenticateProcessor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/auth/components/plugin/impl/TokenAuthenticateProcessor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/deployment.production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.production.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/deployment.testing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.testing.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +124,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/k8s" />
+      <recent name="$PROJECT_DIR$/k8s/testing" />
+      <recent name="$PROJECT_DIR$/k8s/production" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/api/routing/post" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/internal/reactions/api/routing/comments" />
     </key>
@@ -395,56 +396,9 @@
       <workItem from="1658698376491" duration="2618000" />
       <workItem from="1658750092791" duration="9940000" />
       <workItem from="1659025993839" duration="7035000" />
-      <workItem from="1659198713478" duration="7230000" />
-    </task>
-    <task id="LOCAL-00056" summary="added tags repository impl">
-      <created>1652814587370</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1652814587370</updated>
-    </task>
-    <task id="LOCAL-00057" summary="added reaction repository implemetation">
-      <created>1652815709795</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1652815709795</updated>
-    </task>
-    <task id="LOCAL-00058" summary="added database config and fixed compilation">
-      <created>1652870673662</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1652870673662</updated>
-    </task>
-    <task id="LOCAL-00059" summary="working version with several request">
-      <created>1652877101569</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1652877101569</updated>
-    </task>
-    <task id="LOCAL-00060" summary="refactored Dependencies">
-      <created>1653332873175</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1653332873175</updated>
-    </task>
-    <task id="LOCAL-00061" summary="fixed javax validation">
-      <created>1653335034062</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1653335034062</updated>
-    </task>
-    <task id="LOCAL-00062" summary="fixed exception handler plugin">
-      <created>1653335512256</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1653335512256</updated>
+      <workItem from="1659198713478" duration="8372000" />
+      <workItem from="1659294322326" duration="16809000" />
+      <workItem from="1659630728738" duration="2292000" />
     </task>
     <task id="LOCAL-00063" summary="fixed token expired handling">
       <created>1653335675300</created>
@@ -740,7 +694,56 @@
       <option name="project" value="LOCAL" />
       <updated>1659290296217</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="Fixed auth plugin">
+      <created>1659292584785</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1659292584785</updated>
+    </task>
+    <task id="LOCAL-00106" summary="added k8s configuration">
+      <created>1659387736649</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1659387736650</updated>
+    </task>
+    <task id="LOCAL-00107" summary="added auto scalers">
+      <created>1659557979460</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1659557979460</updated>
+    </task>
+    <task id="LOCAL-00108" summary="fixed k8s">
+      <created>1659558143611</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1659558143611</updated>
+    </task>
+    <task id="LOCAL-00109" summary="added load balancer for testing and cluster ip for production">
+      <created>1659560598310</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1659560598310</updated>
+    </task>
+    <task id="LOCAL-00110" summary="removed service and autoscaler(moved to k8s repo)">
+      <created>1659631151383</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1659631151384</updated>
+    </task>
+    <task id="LOCAL-00111" summary="refactored k8s configs">
+      <created>1659631612814</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1659631612814</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -759,13 +762,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed update models" />
-    <MESSAGE value="fixed exposed entity callbacks" />
-    <MESSAGE value="added post updated callbacks to all entities" />
-    <MESSAGE value="added all equals and hashcodes" />
-    <MESSAGE value="fixed access token verifier and repository" />
-    <MESSAGE value="updated exposed versions and fixed bugs" />
-    <MESSAGE value="fixed exception bug" />
     <MESSAGE value="added README.md" />
     <MESSAGE value="added access extensions" />
     <MESSAGE value="added role information service and path pattern matcher" />
@@ -784,6 +780,13 @@
     <MESSAGE value="added transform exception handlers" />
     <MESSAGE value="fixed page params validation constraints" />
     <MESSAGE value="Added profile subscriptions posts endpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added profile subscriptions posts endpoint" />
+    <MESSAGE value="Fixed auth plugin" />
+    <MESSAGE value="added k8s configuration" />
+    <MESSAGE value="added auto scalers" />
+    <MESSAGE value="fixed k8s" />
+    <MESSAGE value="added load balancer for testing and cluster ip for production" />
+    <MESSAGE value="removed service and autoscaler(moved to k8s repo)" />
+    <MESSAGE value="refactored k8s configs" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored k8s configs" />
   </component>
 </project>
