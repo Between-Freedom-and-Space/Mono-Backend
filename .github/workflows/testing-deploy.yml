@@ -55,7 +55,7 @@ jobs:
    - name: Wait untill Yandex.Clout process new docker image
      uses: jakejarvis/wait-action@v0.1.1
      with:
-       time: '180s'
+       time: '60s'
        
    - name: Set up kubectl on runner
      uses: azure/setup-kubectl@v3
