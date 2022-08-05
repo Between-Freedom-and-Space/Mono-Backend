@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Person to greet'
+        description: 'Deploy Implementer'
         default: 'World'
         required: true
       release-version:
@@ -24,6 +24,7 @@ jobs:
       run: echo "Hello ${{ github.event.inputs.name }}"
     - name: Show deploy ticket
       run: echo "Deploy ticket ${{ github.event.inputs.name }}"
+
   deploy:
    runs-on: ubuntu-latest
    environment: testing
@@ -55,3 +56,13 @@ jobs:
      uses: jakejarvis/wait-action@v0.1.1
      with:
        time: '180s'
+       
+   - name: Set up kubectl on runner
+     uses: azure/setup-kubectl@v3
+     id: kubectl-install
+     with:
+       version: v1.22.4
+       
+   - name: Install Yandex.Cloud CLI
+     run: curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+          
