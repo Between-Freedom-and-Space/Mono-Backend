@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="removed service and autoscaler(moved to k8s repo)">
-      <change beforePath="$PROJECT_DIR$/k8s/k8s.deployment.production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.production.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/k8s.deployment.testing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.testing.yaml" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="refactored k8s configs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/deployment.production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.production.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/deployment.testing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.testing.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -397,14 +398,7 @@
       <workItem from="1659025993839" duration="7035000" />
       <workItem from="1659198713478" duration="8372000" />
       <workItem from="1659294322326" duration="16809000" />
-      <workItem from="1659630728738" duration="707000" />
-    </task>
-    <task id="LOCAL-00062" summary="fixed exception handler plugin">
-      <created>1653335512256</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1653335512256</updated>
+      <workItem from="1659630728738" duration="2292000" />
     </task>
     <task id="LOCAL-00063" summary="fixed token expired handling">
       <created>1653335675300</created>
@@ -742,7 +736,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659631151384</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="refactored k8s configs">
+      <created>1659631612814</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1659631612814</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -761,7 +762,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed exception bug" />
     <MESSAGE value="added README.md" />
     <MESSAGE value="added access extensions" />
     <MESSAGE value="added role information service and path pattern matcher" />
@@ -786,6 +786,7 @@
     <MESSAGE value="fixed k8s" />
     <MESSAGE value="added load balancer for testing and cluster ip for production" />
     <MESSAGE value="removed service and autoscaler(moved to k8s repo)" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed service and autoscaler(moved to k8s repo)" />
+    <MESSAGE value="refactored k8s configs" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored k8s configs" />
   </component>
 </project>

@@ -10,7 +10,11 @@ metadata:
     infrastructure: kotlin
   namespace: default
 spec:
-  replicas: 3
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
   selector:
     matchLabels:
       app: mono-backend-application

@@ -11,6 +11,10 @@ metadata:
   namespace: default
 spec:
   replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: mono-backend-application
