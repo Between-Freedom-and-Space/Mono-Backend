@@ -56,26 +56,6 @@ jobs:
      uses: jakejarvis/wait-action@v0.1.1
      with:
        time: '30s'
-       
-   - name: Set up kubectl on runner
-     uses: azure/setup-kubectl@v3
-     id: kubectl-install
-     with:
-       version: v1.22.4
-       
-   - name: Saving k8s server certificate to file
-     id: k8s
-     uses: rayhu/save-secret-as-file@v1
-     with:
-       secret: ${{ secrets.TESTING_K8S_SERVICE_CERTIFICATE }}
-       filename: ca.crt
-       
-   - name: Configure kubectl
-     run: |
-           kubectl config set-cluster bfs-testing --server=${{ secrets.TESTING_K8S_MASTER_CLUSTER_URL }} --certificate-authority=${{ steps.k8s.outputs.filename }}
-           kubectl config set-credentials githab-admin --token=${{ secrets.TESTING_K8S_SERVICE_ACCOUNT_TOKEN }}
-           kubectl config set-context default --cluster=bfs-testing --user=githab-admin
-           kubectl config use-context default
           
    - name: Substitute the real value of variables
      run: |
@@ -90,6 +70,12 @@ jobs:
            sed -i 's/$AUTH_TOKEN_ISSUER/${{ secrets.AUTH_TOKEN_ISSUER }}/g' ./k8s/deployment.testing.yaml
   
    - name: Deploy to k8s
-     run: kubectl apply -f ./k8s/deployment.testing.yaml
+     uses: actions-hub/kubectl@master
+     env:
+       KUBE_HOST: ${{ secrets.TESTING_K8S_MASTER_CLUSTER_URL }}
+       KUBE_CERTIFICATE: ${{ secrets.TESTING_K8S_SERVICE_CERTIFICATE }}
+       KUBE_TOKEN: ${{ secrets.TESTING_K8S_SERVICE_ACCOUNT_TOKEN }}
+     with:
+       args: apply -f ./k8s/deployment.testing.yaml
   
           
