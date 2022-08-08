@@ -72,7 +72,7 @@ jobs:
        
    - name: Configure kubectl
      run: |
-           kubectl config set-cluster bfs-testing --server=${{ secrets.TESTING_K8S_MASTER_CLUSTER_URL }} --certificate-authority=ca.crt
+           kubectl config set-cluster bfs-testing --server=${{ secrets.TESTING_K8S_MASTER_CLUSTER_URL }} --certificate-authority=${{ steps.k8s.outputs.filename }}
            kubectl config set-credentials githab-admin --token=${{ secrets.TESTING_K8S_SERVICE_ACCOUNT_TOKEN }}
            kubectl config set-context default --cluster=bfs-testing --user=githab-admin
            kubectl config use-context default
