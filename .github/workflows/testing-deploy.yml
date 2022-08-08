@@ -68,6 +68,16 @@ jobs:
            sed -i 's/$AUTH_TOKEN_SECRET/${{ secrets.AUTH_TOKEN_SECRET }}/g' ./k8s/deployment.testing.yaml
            sed -i 's/$AUTH_TOKEN_AUDIENCE/${{ secrets.AUTH_TOKEN_AUDIENCE }}/g' ./k8s/deployment.testing.yaml
            sed -i 's/$AUTH_TOKEN_ISSUER/${{ secrets.AUTH_TOKEN_ISSUER }}/g' ./k8s/deployment.testing.yaml
+           
+   - name: Save k8s certificate to file
+     id: save-db-ssl-certificate
+     uses: rayhu/save-secret-as-file@v1
+     with:
+       secret: ${{ secrets.TESTING_K8S_SERVICE_CERTIFICATE }}
+       filename: ca.pem
+       
+   - name: Move k8s certificate to kube path
+     run: mv ca.pem $HOME/.kube/ca.pem
   
    - name: Deploy to k8s
      uses: actions-hub/kubectl@master
