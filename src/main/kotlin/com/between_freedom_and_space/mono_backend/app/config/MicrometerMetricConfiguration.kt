@@ -1,5 +1,6 @@
 package com.between_freedom_and_space.mono_backend.app.config
 
+import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.grantAccessForEveryone
 import com.between_freedom_and_space.mono_backend.util.extensions.sendResponse
 import io.ktor.server.application.*
 import io.ktor.server.metrics.micrometer.*
@@ -22,5 +23,7 @@ private fun Application.addPrometheusRouting(registry: PrometheusMeterRegistry) 
         get("/metrics") {
             sendResponse(registry.scrape())
         }
+
+        grantAccessForEveryone("/metrics")
     }
 }
