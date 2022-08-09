@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added profile icon api">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/mappers/BaseProfileModelToProfileModelMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/mappers/BaseProfileModelToProfileModelMapper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/models/ProfileModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/models/ProfileModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/internal/icon/api/components/ProfileIconRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/internal/icon/api/components/ProfileIconRoutingAccessors.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/mappers/UserProfileToBaseProfileModelMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/mappers/UserProfileToBaseProfileModelMapper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/models/BaseProfileModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/models/BaseProfileModel.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added icon id to profile model">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,13 +399,6 @@
       <workItem from="1659294322326" duration="16809000" />
       <workItem from="1659630728738" duration="9828000" />
     </task>
-    <task id="LOCAL-00069" summary="fixed some todo-s">
-      <created>1653745243222</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1653745243222</updated>
-    </task>
     <task id="LOCAL-00070" summary="added configuration properties">
       <created>1654022894477</created>
       <option name="number" value="00070" />
@@ -746,7 +735,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660057842310</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="added icon id to profile model">
+      <created>1660058155865</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1660058155865</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -764,7 +760,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added access interaction mappers" />
     <MESSAGE value="added service mappers and repositories" />
     <MESSAGE value="added information access rules service impl" />
     <MESSAGE value="fixed bugs" />
@@ -789,6 +784,7 @@
     <MESSAGE value="added stub for profile settings module" />
     <MESSAGE value="init profile icon module structure" />
     <MESSAGE value="added profile icon api" />
-    <option name="LAST_COMMIT_MESSAGE" value="added profile icon api" />
+    <MESSAGE value="added icon id to profile model" />
+    <option name="LAST_COMMIT_MESSAGE" value="added icon id to profile model" />
   </component>
 </project>
