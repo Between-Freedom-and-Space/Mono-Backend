@@ -22,6 +22,9 @@ data class ProfileModel(
     @SerialName("location")
     val location: String?,
 
+    @SerialName("icon_id")
+    val iconId: Long?,
+
     @SerialName("created_date")
     val createdDate: LocalDateTime,
 

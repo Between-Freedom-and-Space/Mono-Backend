@@ -3,6 +3,7 @@ package com.between_freedom_and_space.mono_backend.profiles.internal.icon.api.co
 import com.between_freedom_and_space.mono_backend.access.components.exceptions.AccessException
 import com.between_freedom_and_space.mono_backend.access.components.models.AccessVerifyResult
 import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.grantAccessForAdmins
+import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.grantAccessForEveryone
 import com.between_freedom_and_space.mono_backend.access.components.plugin.extensions.routingAccessor
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role.ADMIN
@@ -20,8 +21,9 @@ internal fun Application.profileIconRoutingAccessors() {
 
     routing {
 
+        grantAccessForEveryone("$basePath/{id}")
+
         grantAccessForAdmins("$basePath/all")
-        grantAccessForAdmins("$basePath/{id}")
     }
 
     routing {

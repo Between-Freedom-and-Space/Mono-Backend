@@ -13,6 +13,7 @@ class UserProfileToBaseProfileModelMapper: ModelMapper<UserProfile, BaseProfileM
             nameAlias = original.nameAlias,
             description = original.description,
             location = original.location,
+            iconId = original.icon?.value,
             isVisible = original.isVisible,
             isDeleted = original.isDeleted,
             createdDate = original.createdDate,
