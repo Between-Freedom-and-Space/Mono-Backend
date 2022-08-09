@@ -5,6 +5,7 @@ import com.between_freedom_and_space.mono_backend.profiles.api.routing.profilesA
 import com.between_freedom_and_space.mono_backend.profiles.api.components.profilesExceptionHandling
 import com.between_freedom_and_space.mono_backend.profiles.api.routing.profilesInformationRouting
 import com.between_freedom_and_space.mono_backend.profiles.api.routing.profilesInteractionRouting
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.plugin.addProfileIconPlugin
 import com.between_freedom_and_space.mono_backend.profiles.internal.settings.plugin.addProfileSettingsPlugin
 import io.ktor.server.application.*
 
@@ -16,5 +17,6 @@ fun Application.addProfilePlugin() {
     profilesExceptionHandling()
     profilesRoutingAccessors()
 
+    addProfileIconPlugin()
     addProfileSettingsPlugin()
 }

@@ -12,6 +12,8 @@ import com.between_freedom_and_space.mono_backend.profiles.api.models.UpdateProf
 import com.between_freedom_and_space.mono_backend.profiles.components.UserProfileIdProvider
 import com.between_freedom_and_space.mono_backend.profiles.components.impl.UserProfileIdProviderImpl
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.modules.profileIconModule
+import com.between_freedom_and_space.mono_backend.profiles.internal.settings.modules.profileSettingsModule
 import com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonSubscriptionsRepository
@@ -78,4 +80,7 @@ val profilesModule = module {
     includes(repositoryModule)
     includes(componentsModule)
     includes(serviceModule)
+
+    includes(profileIconModule)
+    includes(profileSettingsModule)
 }
