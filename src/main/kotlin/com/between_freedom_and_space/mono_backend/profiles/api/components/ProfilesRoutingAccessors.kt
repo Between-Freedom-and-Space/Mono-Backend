@@ -21,6 +21,7 @@ internal fun Application.profilesRoutingAccessors() {
 
         grantAccessForEveryone("$basePath/exists")
         grantAccessForEveryone("$basePath/{nickname}")
+        grantAccessForEveryone("$basePath/{nickname}/icon")
         grantAccessForEveryone("$basePath/{nickname}/subscriptions")
         grantAccessForEveryone("$basePath/{nickname}/subscribers")
         grantAccessForEveryone("$basePath/{nickname}/subscriptions/count")

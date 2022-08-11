@@ -17,6 +17,8 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileModel
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.api.models.ProfileIconModel
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.models.BaseProfileIconModel
 import com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.InvalidProfileException
@@ -61,6 +63,22 @@ internal fun Application.profilesInformationRouting() {
 
             val profileResponse = profileMapper.map(result)
             val response = Response.ok(profileResponse)
+
+            sendResponse(response)
+        }
+
+        get("$basePath/{nickname}/icon") {
+            val iconMapper by inject<ModelMapper<BaseProfileIconModel, ProfileIconModel>>(
+                named(ProfilesMappersQualifiers.BASE_PROFILE_TO_PROFILE_MODEL)
+            )
+
+            val nickname = getPathParameter("nickname")
+                ?: throw InvalidProfileException("Nickname value is not presented")
+
+            val result = informationService.getProfileIconOrNull(nickname)
+
+            val iconResponse = result?.let { iconMapper.map(it) }
+            val response = Response.ok(iconResponse)
 
             sendResponse(response)
         }

@@ -12,6 +12,8 @@ interface CommonProfileIconRepository {
 
     fun getProfileIconById(id: Long): ProfileIcon?
 
+    fun getUserProfileIcon(userId: EntityID<Long>): ProfileIcon?
+
     fun createProfileIcon(profileId: EntityID<Long>, model: CreateProfileIconEntityModel): ProfileIcon
 
     fun saveProfileIcon(icon: ProfileIcon): ProfileIcon

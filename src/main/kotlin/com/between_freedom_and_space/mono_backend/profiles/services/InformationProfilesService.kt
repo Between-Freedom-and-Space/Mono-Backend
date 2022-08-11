@@ -5,6 +5,7 @@ import com.between_freedom_and_space.mono_backend.posts.internal.reactions.servi
 import com.between_freedom_and_space.mono_backend.posts.internal.reactions.service.model.BasePostReactionModel
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.model.BaseTagModel
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.models.BaseProfileIconModel
 import com.between_freedom_and_space.mono_backend.profiles.services.models.BaseProfileModel
 
 interface InformationProfilesService {
@@ -14,6 +15,8 @@ interface InformationProfilesService {
     fun getProfileByNickName(nickName: String): BaseProfileModel
 
     fun getProfileById(userId: Long): BaseProfileModel
+
+    fun getProfileIconOrNull(nickname: String): BaseProfileIconModel?
 
     fun getProfileSubscriptions(nickName: String, pageNumber: Int, pageSize: Int): List<BaseProfileModel>
 

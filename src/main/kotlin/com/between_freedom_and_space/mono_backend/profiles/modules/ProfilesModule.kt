@@ -64,7 +64,7 @@ private val componentsModule = module {
 private val serviceModule = module {
     single {
         InformationProfileServiceImpl(
-            get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(),
             get(named(ProfilesMappersQualifiers.USER_PROFILE_TO_BASE_PROFILE))
         )
     } bind InformationProfilesService::class

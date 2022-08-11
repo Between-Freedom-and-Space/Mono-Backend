@@ -25,6 +25,12 @@ class CommonProfileIconRepositoryImpl: CommonProfileIconRepository {
         return ProfileIcon.findById(id)
     }
 
+    override fun getUserProfileIcon(userId: EntityID<Long>): ProfileIcon? {
+        return ProfileIcon.find {
+            ProfileIconsTable.profile eq userId
+        }.firstOrNull()
+    }
+
     override fun createProfileIcon(profileId: EntityID<Long>, model: CreateProfileIconEntityModel): ProfileIcon {
         return ProfileIcon.new {
             iconBase64 = model.iconBase64

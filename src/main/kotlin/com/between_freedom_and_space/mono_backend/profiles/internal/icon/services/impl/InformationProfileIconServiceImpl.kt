@@ -7,6 +7,7 @@ import com.between_freedom_and_space.mono_backend.profiles.internal.icon.service
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.exceptions.ProfileIconNotFoundException
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.models.BaseProfileIconModel
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.models.ProfileIconUser
+import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class InformationProfileIconServiceImpl(
@@ -22,18 +23,24 @@ class InformationProfileIconServiceImpl(
     }
 
     override fun getProfileIconById(id: Long): BaseProfileIconModel {
-        val icon = transaction {
-            repository.getProfileIconById(id)
-                ?: throw ProfileIconNotFoundException("Profile icon with id: $id not found")
-        }
+        val icon = transaction { getIconOrThrow(id) }
         return entityMapper.map(icon)
     }
 
     override fun getProfileIconUser(iconId: Long): ProfileIconUser {
-        val icon = transaction {
-            repository.getProfileIconById(iconId)
-                ?: throw ProfileIconNotFoundException("Profile icon with id: $iconId not found")
-        }
+        val icon = transaction { getIconOrThrow(iconId) }
         return ProfileIconUser(icon.profile.value)
+    }
+
+    override fun getUserProfileIconOrNull(userId: EntityID<Long>): BaseProfileIconModel? {
+        val icon = transaction {
+            repository.getUserProfileIcon(userId)
+        }
+        return icon?.let { entityMapper.map(it) }
+    }
+
+    private fun getIconOrThrow(iconId: Long): ProfileIcon {
+        return repository.getProfileIconById(iconId)
+            ?: throw ProfileIconNotFoundException("Profile icon with id: $iconId not found")
     }
 }

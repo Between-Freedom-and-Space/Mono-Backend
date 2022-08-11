@@ -1,7 +1,6 @@
 package com.between_freedom_and_space.mono_backend.profiles.internal.icon.modules
 
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
-import com.between_freedom_and_space.mono_backend.profiles.api.mappers.BaseProfileModelToProfileModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.api.mappers.BaseIconModelToModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.api.mappers.CreateProfileIconRequestToModelMapper
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.api.mappers.UpdateProfileIconRequestToModelMapper
