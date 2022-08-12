@@ -58,16 +58,23 @@ jobs:
        time: '30s'
           
    - name: Substitute the real value of variables
+     env:
+       DATABASE_URL: ${{ secrets.DATABASE_URL }}
+       DATABASE_USER: ${{ secrets.DATABASE_USER }}
+       DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+       TOKEN_SECRET: ${{ secrets.AUTH_TOKEN_SECRET }}
+       TOKEN_AUDIENCE: ${{ secrets.AUTH_TOKEN_AUDIENCE }}
+       TOKEN_ISSUER: ${{ secrets.AUTH_TOKEN_ISSUER }}
      run: |
            sed -i 's/$REGISTRY_ID/crpp4a802h6om9om40b4/g' ./k8s/deployment.testing.yaml
            sed -i 's/$REPOSITORY_NAME/mono-backend/g' ./k8s/deployment.testing.yaml
            sed -i 's/$IMAGE_TAG/${{ github.event.inputs.release-version }}/g' ./k8s/deployment.testing.yaml
-           sed -i 's/$DATABASE_URL/${{ secrets.DATABASE_URL }}/g' ./k8s/deployment.testing.yaml
-           sed -i 's/$DATABASE_USER/${{ secrets.DATABASE_USER }}/g' ./k8s/deployment.testing.yaml
-           sed -i 's/$DATABASE_PASSWORD/${{ secrets.DATABASE_PASSWORD }}/g' ./k8s/deployment.testing.yaml
-           sed -i 's/$AUTH_TOKEN_SECRET/${{ secrets.AUTH_TOKEN_SECRET }}/g' ./k8s/deployment.testing.yaml
-           sed -i 's/$AUTH_TOKEN_AUDIENCE/${{ secrets.AUTH_TOKEN_AUDIENCE }}/g' ./k8s/deployment.testing.yaml
-           sed -i 's/$AUTH_TOKEN_ISSUER/${{ secrets.AUTH_TOKEN_ISSUER }}/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$DATABASE_URL/$DATABASE_URL/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$DATABASE_USER/$DATABASE_USER/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$DATABASE_PASSWORD/$DATABASE_PASSWORD/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$AUTH_TOKEN_SECRET/$TOKEN_SECRET/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$AUTH_TOKEN_AUDIENCE/$TOKEN_AUDIENCE/g' ./k8s/deployment.testing.yaml
+           sed -i 's/$AUTH_TOKEN_ISSUER/$TOKEN_ISSUER/g' ./k8s/deployment.testing.yaml
   
    - name: Deploy to k8s
      uses: actions-hub/kubectl@v1.21.2
