@@ -14,6 +14,8 @@ data class BaseProfileModel(
 
     val location: String?,
 
+    val iconId: Long?,
+
     val isVisible: Boolean,
 
     val isDeleted: Boolean,

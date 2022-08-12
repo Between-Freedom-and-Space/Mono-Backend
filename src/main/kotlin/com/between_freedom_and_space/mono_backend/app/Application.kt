@@ -23,11 +23,11 @@ fun main() {
 }
 
 private fun applicationModule(application: Application) {
-    val koin = startKoin {
+    startKoin {
         modules(applicationModule, module {
             single { application }
         })
     }
 
-    application.main(koin)
+    application.main()
 }

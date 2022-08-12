@@ -12,6 +12,8 @@ import com.between_freedom_and_space.mono_backend.profiles.api.models.UpdateProf
 import com.between_freedom_and_space.mono_backend.profiles.components.UserProfileIdProvider
 import com.between_freedom_and_space.mono_backend.profiles.components.impl.UserProfileIdProviderImpl
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.modules.profileIconModule
+import com.between_freedom_and_space.mono_backend.profiles.internal.settings.modules.profileSettingsModule
 import com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonSubscriptionsRepository
@@ -62,11 +64,14 @@ private val componentsModule = module {
 private val serviceModule = module {
     single {
         InformationProfileServiceImpl(
-            get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(),
             get(named(ProfilesMappersQualifiers.USER_PROFILE_TO_BASE_PROFILE))
         )
     } bind InformationProfilesService::class
-    single { ActionProfileServiceImpl(get(), get()) } bind ActionProfilesService::class
+    single { ActionProfileServiceImpl(
+        get(), get(), get(),
+        get(named(ProfilesMappersQualifiers.USER_PROFILE_TO_BASE_PROFILE))
+    ) } bind ActionProfilesService::class
     single { InteractionProfileServiceImpl(
         get(),
         get(named(ProfilesMappersQualifiers.USER_PROFILE_TO_BASE_PROFILE))
@@ -78,4 +83,7 @@ val profilesModule = module {
     includes(repositoryModule)
     includes(componentsModule)
     includes(serviceModule)
+
+    includes(profileIconModule)
+    includes(profileSettingsModule)
 }

@@ -12,6 +12,8 @@ import com.between_freedom_and_space.mono_backend.posts.internal.tags.services.m
 import com.between_freedom_and_space.mono_backend.posts.services.InformationPostsService
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.profiles.entities.models.UserProfile
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.InformationProfileIconService
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.models.BaseProfileIconModel
 import com.between_freedom_and_space.mono_backend.profiles.repository.CommonProfilesRepository
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.ProfileNotFoundException
@@ -21,6 +23,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 @Suppress("DuplicatedCode")
 class InformationProfileServiceImpl(
     private val repository: CommonProfilesRepository,
+    private val iconInformationService: InformationProfileIconService,
     private val postInformationService: InformationPostsService,
     private val commentsInformationService: InformationCommentsService,
     private val tagsInformationService: InformationTagsService,
@@ -37,19 +40,20 @@ class InformationProfileServiceImpl(
     }
 
     override fun getProfileByNickName(nickName: String): BaseProfileModel {
-        val profile = transaction {
-            repository.getProfileByNickname(nickName)
-        } ?: throw ProfileNotFoundException("Profile with nickname: $nickName not found")
-
+        val profile = transaction { getProfileOrThrow(nickName) }
         return entityMapper.map(profile)
     }
 
     override fun getProfileById(userId: Long): BaseProfileModel {
-        val profile = transaction {
-            repository.getProfileById(userId)
-        } ?: throw ProfileNotFoundException("Profile with id: $userId not found")
-
+        val profile = transaction { getProfileOrThrow(userId) }
         return entityMapper.map(profile)
+    }
+
+    override fun getProfileIconOrNull(nickname: String): BaseProfileIconModel? {
+        return transaction {
+            val profile = getProfileOrThrow(nickname)
+            iconInformationService.getUserProfileIconOrNull(profile.id)
+        }
     }
 
     override fun getProfileSubscriptions(nickName: String, pageNumber: Int, pageSize: Int): List<BaseProfileModel> {

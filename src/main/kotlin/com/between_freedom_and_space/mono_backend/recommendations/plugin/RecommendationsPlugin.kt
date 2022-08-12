@@ -4,5 +4,4 @@ import com.between_freedom_and_space.mono_backend.auth.components.plugin.Authent
 import io.ktor.server.application.*
 
 fun Application.addRecommendationsPlugin() {
-    install(AuthenticatePlugin)
 }

@@ -12,6 +12,7 @@ class BaseProfileModelToProfileModelMapper: ModelMapper<BaseProfileModel, Profil
             nickName = original.nickName,
             nameAlias = original.nameAlias,
             description = original.description,
+            iconId = original.iconId,
             location = original.location,
             createdDate = original.createdDate,
             updatedDate = original.updatedDate,

@@ -18,10 +18,12 @@ spec:
   selector:
     matchLabels:
       app: mono-backend-application
+      stage: production
   template:
     metadata:
       labels:
         app: mono-backend-application
+        stage: production
     spec:
       containers:
         - name: mono-backend-container

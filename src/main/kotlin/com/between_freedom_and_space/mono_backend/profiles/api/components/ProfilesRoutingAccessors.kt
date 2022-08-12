@@ -8,12 +8,14 @@ import com.between_freedom_and_space.mono_backend.access.components.plugin.exten
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role.ADMIN
 import com.between_freedom_and_space.mono_backend.access.entities.role.Role.SUPER_ADMIN
+import com.between_freedom_and_space.mono_backend.auth.components.exceptions.AuthenticateException
 import com.between_freedom_and_space.mono_backend.posts.services.exceptions.InvalidPostException
 import com.between_freedom_and_space.mono_backend.profiles.services.exceptions.InvalidProfileException
 import com.between_freedom_and_space.mono_backend.util.extensions.getPathParameter
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 
+@Suppress("DuplicatedCode")
 internal fun Application.profilesRoutingAccessors() {
     val basePath = "/profile"
 
@@ -21,6 +23,7 @@ internal fun Application.profilesRoutingAccessors() {
 
         grantAccessForEveryone("$basePath/exists")
         grantAccessForEveryone("$basePath/{nickname}")
+        grantAccessForEveryone("$basePath/{nickname}/icon")
         grantAccessForEveryone("$basePath/{nickname}/subscriptions")
         grantAccessForEveryone("$basePath/{nickname}/subscribers")
         grantAccessForEveryone("$basePath/{nickname}/subscriptions/count")
@@ -38,8 +41,22 @@ internal fun Application.profilesRoutingAccessors() {
         grantAccessForAdmins("$basePath/all")
         grantAccessForAdmins("$basePath/create")
 
+        routingAccessor("$basePath/{nickname}/set/icon", ADMIN, SUPER_ADMIN) { userAccessData ->
+            val userName = userAccessData.authority?.userName
+                ?: throw AuthenticateException("User is not authenticated")
+            val nickname = userAccessData.getPathParameter("nickname")
+                ?: throw InvalidProfileException("Nickname is not presented")
+
+            return@routingAccessor if (userName == nickname) {
+                return@routingAccessor AccessVerifyResult.ACCESSED
+            } else {
+                AccessVerifyResult.REJECTED
+            }
+        }
+
         routingAccessor("$basePath/{nickname}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userName = userAccessData.authority?.userName
+                ?: throw AuthenticateException("User is not authenticated")
             val nickname = userAccessData.getPathParameter("nickname")
                 ?: throw InvalidProfileException("Nickname is not presented")
 
@@ -52,6 +69,7 @@ internal fun Application.profilesRoutingAccessors() {
 
         routingAccessor("$basePath/{nickname}/delete", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userName = userAccessData.authority?.userName
+                ?: throw AuthenticateException("User is not authenticated")
             val nickname = userAccessData.getPathParameter("nickname")
                 ?: throw InvalidProfileException("Nickname is not presented")
 

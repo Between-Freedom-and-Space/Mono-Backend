@@ -41,6 +41,8 @@ class UserProfile(id: EntityID<Long>): LongEntity(id) {
 
     val subscriptions by UserSubscription referrersOn UserSubscriptionsTable.user
 
+    var icon by UserProfilesTable.icon
+
     var createdDate by UserProfilesTable.createdDate
 
     var updatedDate by UserProfilesTable.updatedDate
