@@ -66,9 +66,9 @@ jobs:
        ENV_TOKEN_AUDIENCE: ${{ secrets.AUTH_TOKEN_AUDIENCE }}
        ENV_TOKEN_ISSUER: ${{ secrets.AUTH_TOKEN_ISSUER }}
      run: |
-           sed -i "s|$REGISTRY_ID|crpp4a802h6om9om40b4|g" ./k8s/deployment.testing.yaml
-           sed -i "s|$REPOSITORY_NAME|mono-backend|g" ./k8s/deployment.testing.yaml
-           sed -i "s|$IMAGE_TAG|${{ github.event.inputs.release-version }}|g" ./k8s/deployment.testing.yaml
+           sed -i 's|$REGISTRY_ID|crpp4a802h6om9om40b4|g' ./k8s/deployment.testing.yaml
+           sed -i 's|$REPOSITORY_NAME|mono-backend|g' ./k8s/deployment.testing.yaml
+           sed -i 's|$IMAGE_TAG|${{ github.event.inputs.release-version }}|g' ./k8s/deployment.testing.yaml
            sed -i "s|{{DATABASE_URL}}|$ENV_DATABASE_URL|g" ./k8s/deployment.testing.yaml
            sed -i "s|{{DATABASE_USER}}|$ENV_DATABASE_USER|g" ./k8s/deployment.testing.yaml
            sed -i "s|{{DATABASE_PASSWORD}}|$ENV_DATABASE_PASSWORD|g" ./k8s/deployment.testing.yaml
