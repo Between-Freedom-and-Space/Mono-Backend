@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added metrics accessor">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/models/SetProfileIconRequest.kt" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed bugs and added extra endpoints">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/buildSrcjar-classes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/kotlin/buildSrcjar-classes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/Application.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/ApplicationPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/app/ApplicationPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/routing/ProfilesActionRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/routing/ProfilesActionRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/routing/ProfilesInformationRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/routing/ProfilesInformationRouting.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/internal/icon/repository/impl/CommonProfileIconRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/internal/icon/repository/impl/CommonProfileIconRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/internal/icon/services/impl/InteractionProfileIconServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/internal/icon/services/impl/InteractionProfileIconServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/modules/ProfilesModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/modules/ProfilesModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/ActionProfilesService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/ActionProfilesService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/impl/ActionProfileServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/services/impl/ActionProfileServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/recommendations/plugin/RecommendationsPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/recommendations/plugin/RecommendationsPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/deployment.production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.production.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/deployment.testing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.testing.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +138,7 @@
       <recent name="com.between_freedom_and_space.mono_backend.posts.internal.tags.entities.models" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.ApplicationKt (1)">
+  <component name="RunManager" selected="Docker.Dockerfile">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="Mono-Backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -348,8 +335,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.ApplicationKt (1)" />
         <item itemvalue="Docker.Dockerfile" />
+        <item itemvalue="Kotlin.ApplicationKt (1)" />
         <item itemvalue="Gradle.Mono-Backend [build]" />
         <item itemvalue="Gradle.Mono-Backend [clean]" />
         <item itemvalue="Kotlin.ApplicationKt" />
@@ -413,13 +400,6 @@
       <workItem from="1659294322326" duration="16809000" />
       <workItem from="1659630728738" duration="9828000" />
       <workItem from="1660229716450" duration="1736000" />
-    </task>
-    <task id="LOCAL-00071" summary="fixed passwords encoding">
-      <created>1654025364593</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1654025364593</updated>
     </task>
     <task id="LOCAL-00072" summary="fixed hocoon file">
       <created>1654026755210</created>
@@ -757,7 +737,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660061353248</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="fixed bugs and added extra endpoints">
+      <created>1660331364238</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1660331364238</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -776,7 +763,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added information access rules service impl" />
     <MESSAGE value="fixed bugs" />
     <MESSAGE value="fixed default routing accessor" />
     <MESSAGE value="fixed bugs and added user role action routing" />
@@ -801,7 +787,8 @@
     <MESSAGE value="added profile icon api" />
     <MESSAGE value="added icon id to profile model" />
     <MESSAGE value="fixed deployment files" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed deployment files" />
+    <MESSAGE value="fixed bugs and added extra endpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs and added extra endpoints" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
