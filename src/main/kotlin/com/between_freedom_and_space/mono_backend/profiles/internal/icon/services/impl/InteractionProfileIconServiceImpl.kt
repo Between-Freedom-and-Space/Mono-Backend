@@ -22,6 +22,12 @@ class InteractionProfileIconServiceImpl(
     override fun createProfileIcon(createModel: CreateProfileIconModel): BaseProfileIconModel {
         val icon = transaction {
             val profileId = profileIdProvider.getUser(createModel.profileId)
+
+            val currentProfileIcon = repository.getUserProfileIcon(profileId)
+            if (currentProfileIcon != null) {
+                repository.deleteProfileIcon(currentProfileIcon.id.value)
+            }
+
             val createEntityModel = createMapper.map(createModel)
             repository.createProfileIcon(profileId, createEntityModel)
         }

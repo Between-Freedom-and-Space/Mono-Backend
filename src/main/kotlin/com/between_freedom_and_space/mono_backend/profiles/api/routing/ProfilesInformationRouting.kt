@@ -18,6 +18,7 @@ import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostM
 import com.between_freedom_and_space.mono_backend.posts.services.models.BasePostModel
 import com.between_freedom_and_space.mono_backend.profiles.api.models.ProfileModel
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.api.models.ProfileIconModel
+import com.between_freedom_and_space.mono_backend.profiles.internal.icon.modules.qualifiers.ProfileIconMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.models.BaseProfileIconModel
 import com.between_freedom_and_space.mono_backend.profiles.modules.qualifiers.ProfilesMappersQualifiers
 import com.between_freedom_and_space.mono_backend.profiles.services.InformationProfilesService
@@ -69,7 +70,7 @@ internal fun Application.profilesInformationRouting() {
 
         get("$basePath/{nickname}/icon") {
             val iconMapper by inject<ModelMapper<BaseProfileIconModel, ProfileIconModel>>(
-                named(ProfilesMappersQualifiers.BASE_PROFILE_TO_PROFILE_MODEL)
+                named(ProfileIconMappersQualifiers.BASE_PROFILE_ICON_MODEL_TO_MODEL_MAPPER)
             )
 
             val nickname = getPathParameter("nickname")
