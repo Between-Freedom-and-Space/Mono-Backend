@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed bugs and added extra endpoints">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/deployment.production.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.production.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k8s/deployment.testing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/deployment.testing.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/AccessPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/AccessPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/plugins/ExceptionHandlerPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/common/plugins/ExceptionHandlerPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/api/components/PopularRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/popular/api/components/PopularRoutingAccessors.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +70,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -335,11 +336,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Kotlin.ApplicationKt (1)" />
-        <item itemvalue="Gradle.Mono-Backend [build]" />
-        <item itemvalue="Gradle.Mono-Backend [clean]" />
         <item itemvalue="Kotlin.ApplicationKt" />
+        <item itemvalue="Gradle.Mono-Backend [clean]" />
+        <item itemvalue="Gradle.Mono-Backend [build]" />
+        <item itemvalue="Docker.Dockerfile" />
       </list>
     </recent_temporary>
   </component>
@@ -789,16 +790,5 @@
     <MESSAGE value="fixed deployment files" />
     <MESSAGE value="fixed bugs and added extra endpoints" />
     <option name="LAST_COMMIT_MESSAGE" value="fixed bugs and added extra endpoints" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/access/components/plugin/AccessPlugin.kt</url>
-          <line>28</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
