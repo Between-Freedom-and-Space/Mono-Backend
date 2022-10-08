@@ -14,4 +14,13 @@ internal fun Application.popularRoutingAccessors() {
         grantAccessForEveryone("$basePath/profiles")
         grantAccessForEveryone("$basePath/comments")
     }
+
+    routing {
+        val basePath = "/popular"
+
+        grantAccessForEveryone("$basePath/posts")
+        grantAccessForEveryone("$basePath/tags")
+        grantAccessForEveryone("$basePath/comments")
+        grantAccessForEveryone("$basePath/profiles")
+    }
 }
