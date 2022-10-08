@@ -25,12 +25,18 @@ class AccessPlugin(
 
         override val key = AttributeKey<AccessPlugin>("ApplicationAccessPlugin")
 
+        private val logger = KotlinLogging.logger {  }
+
         override fun install(pipeline: ApplicationCallPipeline, configure: Configuration.() -> Unit): AccessPlugin {
             val handler by inject<PluginAccessHandler>()
             val pathMatcher by inject<PathPatternMatcher>()
 
             val config = Configuration().apply(configure)
             val plugin = AccessPlugin(config, handler, pathMatcher)
+
+            config.routingAccessors.forEach { entry ->
+                logger.info { "Registered routing accessor for path: ${entry.key}" }
+            }
 
             pipeline.intercept(ApplicationCallPipeline.Plugins) {
                 plugin.intercept(this)
@@ -47,8 +53,6 @@ class AccessPlugin(
         var defaultRoutingAccessor: RoutingAccessor? = null,
     )
 
-    private val logger = KotlinLogging.logger {  }
-
     private val enableLogging = config.enableLogging
 
     private val routingAccessors = config.routingAccessors.toMutableMap()
@@ -59,6 +63,7 @@ class AccessPlugin(
 
     fun setRoutingAccessor(pathPattern: String, accessor: RoutingAccessor) {
         routingAccessors[pathPattern] = accessor
+        logger.info { "Registered routing accessor for path: $pathPattern" }
     }
 
     private fun intercept(context: PipelineContext<Unit, ApplicationCall>) {
