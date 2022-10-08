@@ -3,7 +3,9 @@ package com.between_freedom_and_space.mono_backend.popular.modules
 import com.between_freedom_and_space.mono_backend.popular.repository.LastCreatedRepository
 import com.between_freedom_and_space.mono_backend.popular.repository.impl.LastCreatedRepositoryImpl
 import com.between_freedom_and_space.mono_backend.popular.service.LastCreatedService
+import com.between_freedom_and_space.mono_backend.popular.service.PopularService
 import com.between_freedom_and_space.mono_backend.popular.service.impl.LastCreatedServiceImpl
+import com.between_freedom_and_space.mono_backend.popular.service.impl.StubPopularService
 import com.between_freedom_and_space.mono_backend.posts.internal.comments.modules.qualifiers.CommentsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.internal.tags.modules.qualifiers.TagsMappersQualifiers
 import com.between_freedom_and_space.mono_backend.posts.modules.qualifiers.PostMappersQualifiers
@@ -24,6 +26,7 @@ private val serviceModule = module {
         get(named(TagsMappersQualifiers.POST_TAG_TO_BASE_MODEL)),
         get(named(CommentsMappersQualifiers.POST_COMMENT_TO_BASE_MODEL))
     ) } bind LastCreatedService::class
+    single { StubPopularService() } bind PopularService::class
 }
 
 val popularModule = module {

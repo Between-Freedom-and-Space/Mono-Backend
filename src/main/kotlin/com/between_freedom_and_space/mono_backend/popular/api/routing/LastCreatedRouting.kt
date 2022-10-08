@@ -23,6 +23,7 @@ import io.ktor.server.application.*
 import io.ktor.server.routing.*
 import org.koin.core.qualifier.named
 
+@Suppress("DuplicatedCode")
 internal fun Application.lastCreatedRouting() {
     val basePath = "/popular/last/created"
 
