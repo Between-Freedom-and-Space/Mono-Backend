@@ -7,6 +7,7 @@ import com.between_freedom_and_space.mono_backend.app.config.configureDatabase
 import com.between_freedom_and_space.mono_backend.auth.components.plugin.AuthenticatePlugin
 import com.between_freedom_and_space.mono_backend.auth.plugins.addAuthPlugin
 import com.between_freedom_and_space.mono_backend.common.plugins.ExceptionHandlerPlugin
+import com.between_freedom_and_space.mono_backend.mailing.plugin.addMailingPlugin
 import com.between_freedom_and_space.mono_backend.popular.plugin.addPopularPlugin
 import com.between_freedom_and_space.mono_backend.posts.plugins.addPostsPlugin
 import com.between_freedom_and_space.mono_backend.profiles.plugins.addProfilePlugin
@@ -30,6 +31,7 @@ fun Application.main() {
 
     addAccessPlugin()
     addAuthPlugin()
+    addMailingPlugin()
     addPostsPlugin()
     addProfilePlugin()
     addUtilPlugin()
