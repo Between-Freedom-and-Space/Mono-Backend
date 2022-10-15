@@ -7,4 +7,8 @@ class EmailSenderImpl: EmailSender {
     override fun sendEmail(targetAddress: String, messageTopic: String, bodyPayload: String): Boolean {
         TODO("Not yet implemented")
     }
+
+    override fun sendEmailOrThrow(targetAddress: String, messageTopic: String, bodyPayload: String) {
+        TODO("Not yet implemented")
+    }
 }
