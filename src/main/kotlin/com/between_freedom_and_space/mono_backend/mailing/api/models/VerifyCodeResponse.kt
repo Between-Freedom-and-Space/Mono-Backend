@@ -4,8 +4,8 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class VerifyVerificationCodeRequest(
+data class VerifyCodeResponse(
 
-    @SerialName("verification_code")
-    val verificationCode: String,
+    @SerialName("verify_result")
+    val result: String,
 )
