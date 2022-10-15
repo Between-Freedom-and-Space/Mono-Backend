@@ -37,4 +37,8 @@ data class RegisterUserRequest(
     @get:NotBlank(message = "Location can't be empty")
     @get:Length(message = "Invalid location length. Max: 500", max = 500)
     val location: String,
+
+    @SerialName("security_variable")
+    @get:NotBlank(message = "Security variable can't be empty")
+    val securityVariable: String,
 )
