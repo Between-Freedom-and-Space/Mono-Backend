@@ -7,5 +7,11 @@ import org.jetbrains.exposed.dao.id.EntityID
 class UserVerificationCode(id: EntityID<Long>): LongEntity(id) {
     companion object: CallbackLongEntityClass<UserVerificationCode>(UserVerificationCodesTable)
 
+    var email by UserVerificationCodesTable.email
 
+    var verificationCode by UserVerificationCodesTable.verificationCode
+
+    var securityVariable by UserVerificationCodesTable.securityVariable
+
+    var isVerified by UserVerificationCodesTable.isVerified
 }

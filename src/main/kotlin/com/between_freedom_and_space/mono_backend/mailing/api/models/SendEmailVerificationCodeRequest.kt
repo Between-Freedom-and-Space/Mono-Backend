@@ -11,5 +11,9 @@ data class SendEmailVerificationCodeRequest(
     @SerialName("email")
     @get:Email(message = "Invalid email")
     @get:NotBlank(message = "Email can't be blank")
-    val email: String
+    val email: String,
+
+    @SerialName("security_variable")
+    @get:NotBlank(message = "Security variable can't be blank")
+    val securityVariable: String,
 )
