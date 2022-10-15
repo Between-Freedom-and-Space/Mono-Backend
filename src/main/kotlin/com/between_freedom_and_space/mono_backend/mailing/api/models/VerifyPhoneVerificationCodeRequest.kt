@@ -16,4 +16,8 @@ data class VerifyPhoneVerificationCodeRequest(
     @get:NotBlank(message = "Target phone can't be blank")
     @get:TelephoneNumber(message = "Invalid telephone number")
     val targetPhone: String,
+
+    @SerialName("security_variable")
+    @get:NotBlank(message = "Security variable can't be blank")
+    val securityVariable: String,
 )
