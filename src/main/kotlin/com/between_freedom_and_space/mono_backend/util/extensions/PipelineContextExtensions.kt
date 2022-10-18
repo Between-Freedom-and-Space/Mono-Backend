@@ -1,5 +1,6 @@
 package com.between_freedom_and_space.mono_backend.util.extensions
 
+import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.util.components.RequestValidator
 import com.between_freedom_and_space.mono_backend.util.components.exception.ValidationException
 import io.ktor.http.*
@@ -33,7 +34,7 @@ suspend inline fun <reified T: Any> CallPipeline.sendResponse(code: HttpStatusCo
 }
 
 suspend fun CallPipeline.sendEmptyResponse() {
-    call.respond(Unit)
+    call.respond(Response.ok(Unit))
 }
 
 fun CallPipeline.getRequestHeader(name: String): String? {
