@@ -8,7 +8,7 @@ import com.between_freedom_and_space.mono_backend.mailing.components.EmailSender
 import com.between_freedom_and_space.mono_backend.mailing.components.TelephoneSender
 import com.between_freedom_and_space.mono_backend.mailing.components.impl.EmailSenderImpl
 import com.between_freedom_and_space.mono_backend.mailing.components.impl.TelephoneSenderImpl
-import com.between_freedom_and_space.mono_backend.mailing.components.model.ResourceEmailBodyProvider
+import com.between_freedom_and_space.mono_backend.mailing.components.impl.ResourceEmailBodyProvider
 import com.between_freedom_and_space.mono_backend.mailing.modules.qualifiers.MailingMappersQualifiers
 import com.between_freedom_and_space.mono_backend.mailing.plugin.config.emailSenderConfiguration
 import com.between_freedom_and_space.mono_backend.mailing.repository.UserVerificationCodeRepository
