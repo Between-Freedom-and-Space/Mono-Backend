@@ -1,6 +1,7 @@
-package com.between_freedom_and_space.mono_backend.mailing.components.model
+package com.between_freedom_and_space.mono_backend.mailing.components.impl
 
 import com.between_freedom_and_space.mono_backend.mailing.components.EmailBodyProvider
+import com.between_freedom_and_space.mono_backend.mailing.components.model.SendVerificationCodeBodyParams
 
 class ResourceEmailBodyProvider: EmailBodyProvider {
 

@@ -69,6 +69,9 @@ dependencies {
     implementation(JavaXUEL)
     implementation(GlassFishUEL)
 
+    // Mailing
+    implementation(JavaXMail)
+
     // Tests
     testImplementation(KtorServerTests)
     testImplementation(KotlinJUnit)
