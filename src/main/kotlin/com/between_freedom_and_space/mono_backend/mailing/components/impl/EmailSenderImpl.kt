@@ -26,7 +26,7 @@ class EmailSenderImpl(
     override fun sendEmailOrThrow(targetAddress: String, messageTopic: String, bodyPayload: String) {
         val message = provideEmailMessage().apply {
             setRecipient(Message.RecipientType.TO, addressOf(targetAddress))
-            setText(bodyPayload)
+            setContent(bodyPayload, "text/html")
             subject = messageTopic
             sentDate = dateNow()
         }
