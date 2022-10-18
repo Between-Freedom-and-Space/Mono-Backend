@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added mailing service implementation, entities, repositories">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added mail sender implementation">
       <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/Config.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/META-INF/buildSrc.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/META-INF/buildSrc.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/Versions.class" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/classes/kotlin/main/Versions.class" afterDir="false" />
@@ -119,12 +117,8 @@
       <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/caches-jvm/lookups/lookups.tab_i.len" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/build/kotlin/compileKotlin/last-build.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build/libs/buildSrc.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/kotlin/Versions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/kotlin/Versions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/kotlin/dependencies/Dependencies.kt" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/kotlin/dependencies/Dependencies.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/mailing/components/impl/EmailSenderImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/mailing/components/impl/EmailSenderImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/mailing/components/model/ResourceEmailBodyProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/mailing/components/impl/ResourceEmailBodyProvider.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/mailing/modules/MailingModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/mailing/modules/MailingModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/support/DateTimeSupport.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/util/support/DateTimeSupport.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -518,14 +512,7 @@
       <workItem from="1660229716450" duration="1736000" />
       <workItem from="1665601409322" duration="3853000" />
       <workItem from="1665862696250" duration="74000" />
-      <workItem from="1666105027611" duration="2796000" />
-    </task>
-    <task id="LOCAL-00080" summary="added all equals and hashcodes">
-      <created>1654974910489</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1654974910489</updated>
+      <workItem from="1666105027611" duration="3108000" />
     </task>
     <task id="LOCAL-00081" summary="fixed access token verifier and repository">
       <created>1654976304230</created>
@@ -863,7 +850,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665862659870</updated>
     </task>
-    <option name="localTasksCounter" value="129" />
+    <task id="LOCAL-00129" summary="added mail sender implementation">
+      <created>1666109838129</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1666109838129</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -882,7 +876,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed page params validation constraints" />
     <MESSAGE value="Added profile subscriptions posts endpoint" />
     <MESSAGE value="Fixed auth plugin" />
     <MESSAGE value="added k8s configuration" />
@@ -907,7 +900,8 @@
     <MESSAGE value="added email server config" />
     <MESSAGE value="fixed build" />
     <MESSAGE value="added mailing service implementation, entities, repositories" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mailing service implementation, entities, repositories" />
+    <MESSAGE value="added mail sender implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added mail sender implementation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

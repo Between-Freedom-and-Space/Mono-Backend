@@ -50,6 +50,7 @@ class EmailSenderImpl(
             put("mail.smtp.ssl.enable", config.secure)
             put("mail.smtp.port", config.port)
             put("mail.smtp.auth", true)
+            put("mail.debug", config.debug)
         }
         return Session.getDefaultInstance(props, object: Authenticator() {
             override fun getPasswordAuthentication(): PasswordAuthentication {

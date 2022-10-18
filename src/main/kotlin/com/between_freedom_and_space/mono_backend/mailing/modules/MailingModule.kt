@@ -32,7 +32,7 @@ private val componentsModule = module {
     val application by inject<Application>()
     single { application.emailSenderConfiguration() }
 
-    single { EmailSenderImpl() } bind EmailSender::class
+    single { EmailSenderImpl(get()) } bind EmailSender::class
     single { TelephoneSenderImpl() } bind TelephoneSender::class
     single { ResourceEmailBodyProvider() } bind EmailBodyProvider::class
 }
