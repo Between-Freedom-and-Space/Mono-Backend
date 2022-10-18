@@ -32,4 +32,6 @@ internal object Versions {
 
     const val JAVAX_UEL = "3.0.0"
     const val UEL = "2.2.4"
+
+    const val JAVAX_MAIL = "1.6.2"
 }

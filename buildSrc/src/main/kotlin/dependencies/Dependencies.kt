@@ -198,3 +198,9 @@ object GlassFishUEL: ProjectDependency {
     override val artifact = "javax.el"
     override val version = Versions.UEL
 }
+
+object JavaXMail: ProjectDependency {
+    override val group = "com.sun.mail"
+    override val artifact = "javax.mail"
+    override val version = Versions.JAVAX_MAIL
+}
