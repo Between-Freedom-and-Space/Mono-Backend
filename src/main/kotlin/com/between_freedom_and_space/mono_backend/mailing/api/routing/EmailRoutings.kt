@@ -3,6 +3,7 @@ package com.between_freedom_and_space.mono_backend.mailing.api.routing
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
 import com.between_freedom_and_space.mono_backend.mailing.api.models.SendEmailVerificationCodeRequest
+import com.between_freedom_and_space.mono_backend.mailing.api.models.VerifyCodeResponse
 import com.between_freedom_and_space.mono_backend.mailing.api.models.VerifyEmailVerificationCodeRequest
 import com.between_freedom_and_space.mono_backend.mailing.modules.qualifiers.MailingMappersQualifiers
 import com.between_freedom_and_space.mono_backend.mailing.service.MailingVerificationService
@@ -23,7 +24,7 @@ internal fun Application.emailMailingRouting() {
 
         val mailingService by inject<MailingVerificationService>()
 
-        val mapper by inject<ModelMapper<VerificationCheckResult, VerificationCheckResult>>(
+        val mapper by inject<ModelMapper<VerificationCheckResult, VerifyCodeResponse>>(
             named(MailingMappersQualifiers.VERIFY_RESULT_TO_RESPONSE_MAPPER)
         )
 
