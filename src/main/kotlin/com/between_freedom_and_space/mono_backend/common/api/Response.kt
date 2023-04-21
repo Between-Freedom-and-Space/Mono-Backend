@@ -46,7 +46,7 @@ data class Response<T : Any>(
             )
         }
 
-        fun badRequest(errorId: Long? = null, message: String? = null): Response<Unit> {
+        fun badRequest(errorId: String? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
@@ -54,7 +54,7 @@ data class Response<T : Any>(
             return with(error, HttpStatusCode.BadRequest)
         }
 
-        fun unauthorized(errorId: Long? = null, message: String? = null): Response<Unit> {
+        fun unauthorized(errorId: String? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
@@ -62,7 +62,7 @@ data class Response<T : Any>(
             return with(error, HttpStatusCode.Unauthorized)
         }
 
-        fun forbidden(errorId: Long? = null, message: String? = null): Response<Unit> {
+        fun forbidden(errorId: String? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
@@ -70,7 +70,7 @@ data class Response<T : Any>(
             return with(error, HttpStatusCode.Forbidden)
         }
 
-        fun notFound(errorId: Long? = null, message: String? = null): Response<Unit> {
+        fun notFound(errorId: String? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
@@ -78,7 +78,7 @@ data class Response<T : Any>(
             return with(error, HttpStatusCode.NotFound)
         }
 
-        fun internalServerError(errorId: Long? = null, message: String? = null): Response<Unit> {
+        fun internalServerError(errorId: String? = null, message: String? = null): Response<Unit> {
             val error = Error(
                 errorId = errorId ?: NOT_PRESENTED_ERROR_ID,
                 message = message ?: DEFAULT_MESSAGE
