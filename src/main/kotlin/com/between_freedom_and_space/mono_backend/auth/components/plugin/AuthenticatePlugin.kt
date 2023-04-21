@@ -13,7 +13,7 @@ class AuthenticatePlugin(
     private val config: Configuration,
     private val processor: AuthenticateProcessor
 ) {
-    companion object: Plugin<ApplicationCallPipeline, Configuration, AuthenticatePlugin> {
+    companion object : Plugin<ApplicationCallPipeline, Configuration, AuthenticatePlugin> {
 
         override val key = AttributeKey<AuthenticatePlugin>("ApplicationAuthenticatePlugin")
 

@@ -7,6 +7,7 @@ import com.between_freedom_and_space.mono_backend.profiles.internal.icon.reposit
 import com.between_freedom_and_space.mono_backend.profiles.internal.icon.services.models.CreateProfileIconModel
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.SortOrder
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.selectAll
 

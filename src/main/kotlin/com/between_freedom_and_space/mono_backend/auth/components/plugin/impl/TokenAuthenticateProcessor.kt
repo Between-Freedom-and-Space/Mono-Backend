@@ -16,7 +16,7 @@ class TokenAuthenticateProcessor(
     private val tokenVerifier: TokenVerifier,
     private val tokenParser: TokenParser,
     private val userAuthService: UserProfileAuthService,
-): AuthenticateProcessor {
+) : AuthenticateProcessor {
 
     override fun intercept(request: ApplicationRequest, attributes: Attributes) {
         val tokenHeader = request.header(AuthConstants.TOKEN_HEADER_NAME)

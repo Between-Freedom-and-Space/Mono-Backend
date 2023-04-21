@@ -43,9 +43,9 @@ internal fun Application.postsRoutingAccessors() {
             val postAuthorId = postInformationService.getPostAuthorId(postId)
 
             return@routingAccessor if (userId == postAuthorId.id) {
-                 AccessVerifyResult.ACCESSED
+                AccessVerifyResult.ACCESSED
             } else {
-                 AccessVerifyResult.REJECTED
+                AccessVerifyResult.REJECTED
             }
         }
 

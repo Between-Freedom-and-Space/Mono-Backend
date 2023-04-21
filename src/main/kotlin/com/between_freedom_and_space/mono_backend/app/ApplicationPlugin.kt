@@ -16,6 +16,8 @@ import com.between_freedom_and_space.mono_backend.util.plugins.addUtilPlugin
 import io.ktor.server.application.*
 import io.ktor.server.metrics.micrometer.*
 import io.ktor.server.plugins.*
+import io.ktor.server.plugins.callloging.CallLogging
+import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import org.koin.core.KoinApplication
 
 fun Application.main() {

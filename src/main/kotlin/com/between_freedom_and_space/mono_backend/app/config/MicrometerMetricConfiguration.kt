@@ -8,7 +8,7 @@ import io.ktor.server.routing.*
 import io.micrometer.prometheus.PrometheusConfig
 import io.micrometer.prometheus.PrometheusMeterRegistry
 
-internal fun MicrometerMetrics.Configuration.configure(application: Application) {
+internal fun MicrometerMetricsConfig.configure(application: Application) {
     val appMicrometerRegistry = PrometheusMeterRegistry(PrometheusConfig.DEFAULT)
 
     registry = appMicrometerRegistry

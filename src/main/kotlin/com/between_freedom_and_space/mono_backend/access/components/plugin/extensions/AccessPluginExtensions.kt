@@ -11,6 +11,7 @@ import com.between_freedom_and_space.mono_backend.auth.components.plugin.Authent
 import com.between_freedom_and_space.mono_backend.util.extensions.inject
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
+import io.ktor.util.KtorDsl
 import io.ktor.util.pipeline.*
 
 fun PipelineContext<Unit, ApplicationCall>.getUserRole(): Role {
@@ -23,7 +24,7 @@ fun PipelineContext<Unit, ApplicationCall>.getUserRoleOrNull(): Role? {
     return attributes.getOrNull(roleAttributeKey)
 }
 
-@ContextDsl
+@KtorDsl
 fun Routing.routingAccessor(path: String, accessor: RoutingAccessor): AccessPlugin {
     val plugin = application.pluginOrNull(AccessPlugin)
     if (plugin != null) {
@@ -36,13 +37,13 @@ fun Routing.routingAccessor(path: String, accessor: RoutingAccessor): AccessPlug
     }
 }
 
-@ContextDsl
+@KtorDsl
 fun Routing.routingAccessor(
     path: String,
     grantedRoles: List<Role> = listOf(),
     accessor: RoutingAccessor
 ): AccessPlugin {
-    val decoratedAccessor = fun (userAccessData: UserAccessData): AccessVerifyResult {
+    val decoratedAccessor = fun(userAccessData: UserAccessData): AccessVerifyResult {
         val role = userAccessData.role
 
         return if (role in grantedRoles) {
@@ -55,7 +56,7 @@ fun Routing.routingAccessor(
     return routingAccessor(path, decoratedAccessor)
 }
 
-@ContextDsl
+@KtorDsl
 fun Routing.routingAccessor(
     path: String,
     vararg grantedRoles: Role,
@@ -64,19 +65,19 @@ fun Routing.routingAccessor(
     return routingAccessor(path, grantedRoles.toList(), accessor)
 }
 
-@ContextDsl
+@KtorDsl
 fun Routing.grantAccessForEveryone(path: String): AccessPlugin {
-    val accessor = fun (_: UserAccessData): AccessVerifyResult {
+    val accessor = fun(_: UserAccessData): AccessVerifyResult {
         return AccessVerifyResult.ACCESSED
     }
     return routingAccessor(path, accessor)
 }
 
-@ContextDsl
+@KtorDsl
 fun Routing.grantAccessForUsers(path: String): AccessPlugin {
     val authenticateProcessor by inject<AuthenticateProcessor>()
 
-    val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+    val accessor = fun(accessData: UserAccessData): AccessVerifyResult {
         // TODO(Remove after refactoring authenticate plugin)
         authenticateProcessor.validateOrThrow(accessData.request)
 
@@ -89,15 +90,15 @@ fun Routing.grantAccessForUsers(path: String): AccessPlugin {
     return routingAccessor(path, accessor)
 }
 
-@ContextDsl
+@KtorDsl
 fun Routing.grantAccessForAdmins(path: String): AccessPlugin {
     val authenticateProcessor by inject<AuthenticateProcessor>()
 
-    val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+    val accessor = fun(accessData: UserAccessData): AccessVerifyResult {
         // TODO(Remove after refactoring authenticate plugin)
         authenticateProcessor.validateOrThrow(accessData.request)
 
-        return when(accessData.role) {
+        return when (accessData.role) {
             Role.ADMIN -> AccessVerifyResult.ACCESSED
             Role.SUPER_ADMIN -> AccessVerifyResult.ACCESSED
             else -> AccessVerifyResult.REJECTED
@@ -106,11 +107,11 @@ fun Routing.grantAccessForAdmins(path: String): AccessPlugin {
     return routingAccessor(path, accessor)
 }
 
-@ContextDsl
+@KtorDsl
 fun Routing.grantAccessForSuperAdmins(path: String): AccessPlugin {
     val authenticateProcessor by inject<AuthenticateProcessor>()
 
-    val accessor = fun (accessData: UserAccessData): AccessVerifyResult {
+    val accessor = fun(accessData: UserAccessData): AccessVerifyResult {
         // TODO(Remove after refactoring authenticate plugin)
         authenticateProcessor.validateOrThrow(accessData.request)
 

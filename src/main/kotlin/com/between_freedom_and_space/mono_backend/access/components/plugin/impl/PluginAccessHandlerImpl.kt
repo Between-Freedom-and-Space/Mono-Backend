@@ -18,7 +18,7 @@ import io.ktor.util.*
 class PluginAccessHandlerImpl(
     private val roleInformationService: InformationUserRolesService,
     private val accessRuleInformationService: InformationAccessRulesService,
-): PluginAccessHandler {
+) : PluginAccessHandler {
 
     override fun handleRequest(request: ApplicationRequest, attributes: Attributes) {
         val authority = attributes.getOrNull(userAuthorityAttributeKey)
