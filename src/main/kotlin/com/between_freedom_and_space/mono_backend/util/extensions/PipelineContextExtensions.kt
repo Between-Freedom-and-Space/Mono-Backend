@@ -11,7 +11,7 @@ import io.ktor.util.pipeline.*
 
 private typealias CallPipeline = PipelineContext<Unit, ApplicationCall>
 
-suspend inline fun <reified T: Any> CallPipeline.validateAndReceiveRequest(): T {
+suspend inline fun <reified T : Any> CallPipeline.validateAndReceiveRequest(): T {
     val requestValidator by inject<RequestValidator>()
     val request = call.receive<T>()
 
@@ -25,11 +25,11 @@ suspend inline fun <reified T: Any> CallPipeline.validateAndReceiveRequest(): T 
     return request
 }
 
-suspend inline fun <reified T: Any> CallPipeline.sendResponse(response: T) {
+suspend inline fun <reified T : Any> CallPipeline.sendResponse(response: T) {
     call.respond(response)
 }
 
-suspend inline fun <reified T: Any> CallPipeline.sendResponse(code: HttpStatusCode, response: T) {
+suspend inline fun <reified T : Any> CallPipeline.sendResponse(code: HttpStatusCode, response: T) {
     call.respond(code, response)
 }
 

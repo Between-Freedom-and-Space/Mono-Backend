@@ -99,8 +99,10 @@ val authModule = module {
             get(named(AuthModelMapperQualifier.REGISTER_USER_REQUEST_TO_MODEL))
         )
     } bind AuthService::class
-    single { CommonUserProfileAuthService(
-        get(), get(),
-        get(named(AuthModelMapperQualifier.USER_PROFILE_TO_AUTH_MODEL))
-    ) } bind UserProfileAuthService::class
+    single {
+        CommonUserProfileAuthService(
+            get(), get(),
+            get(named(AuthModelMapperQualifier.USER_PROFILE_TO_AUTH_MODEL))
+        )
+    } bind UserProfileAuthService::class
 }

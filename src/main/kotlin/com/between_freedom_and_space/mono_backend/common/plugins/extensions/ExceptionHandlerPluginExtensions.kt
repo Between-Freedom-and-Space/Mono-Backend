@@ -5,11 +5,12 @@ import com.between_freedom_and_space.mono_backend.common.plugins.ExceptionHandle
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
+import io.ktor.util.KtorDsl
 import io.ktor.util.pipeline.*
 import kotlin.reflect.KClass
 
-@ContextDsl
-inline fun <reified T: Exception> Application.exceptionHandler(
+@KtorDsl
+inline fun <reified T : Exception> Application.exceptionHandler(
     noinline handler: suspend (ApplicationCall, Exception) -> Unit
 ): ExceptionHandlerPlugin {
     val plugin = pluginOrNull(ExceptionHandlerPlugin)
@@ -23,8 +24,8 @@ inline fun <reified T: Exception> Application.exceptionHandler(
     }
 }
 
-@ContextDsl
-inline fun <reified T: Exception> Application.badRequestHandler(): ExceptionHandlerPlugin {
+@KtorDsl
+inline fun <reified T : Exception> Application.badRequestHandler(): ExceptionHandlerPlugin {
     return exceptionHandler<T> { call, exception ->
         exception as T
         val response = Response.badRequest(message = exception.message)
@@ -32,8 +33,8 @@ inline fun <reified T: Exception> Application.badRequestHandler(): ExceptionHand
     }
 }
 
-@ContextDsl
-inline fun <reified T: Exception> Application.forbiddenHandler(): ExceptionHandlerPlugin {
+@KtorDsl
+inline fun <reified T : Exception> Application.forbiddenHandler(): ExceptionHandlerPlugin {
     return exceptionHandler<T> { call, exception ->
         exception as T
         val response = Response.forbidden(message = exception.message)
@@ -41,8 +42,8 @@ inline fun <reified T: Exception> Application.forbiddenHandler(): ExceptionHandl
     }
 }
 
-@ContextDsl
-inline fun <reified T: Exception> Application.notFoundHandler(): ExceptionHandlerPlugin {
+@KtorDsl
+inline fun <reified T : Exception> Application.notFoundHandler(): ExceptionHandlerPlugin {
     return exceptionHandler<T> { call, exception ->
         exception as T
         val response = Response.notFound(message = exception.message)
@@ -50,8 +51,8 @@ inline fun <reified T: Exception> Application.notFoundHandler(): ExceptionHandle
     }
 }
 
-@ContextDsl
-inline fun <reified T: Exception> Application.unauthorizedHandler(): ExceptionHandlerPlugin {
+@KtorDsl
+inline fun <reified T : Exception> Application.unauthorizedHandler(): ExceptionHandlerPlugin {
     return exceptionHandler<T> { call, exception ->
         exception as T
         val response = Response.unauthorized(message = exception.message)
@@ -59,8 +60,8 @@ inline fun <reified T: Exception> Application.unauthorizedHandler(): ExceptionHa
     }
 }
 
-@ContextDsl
-inline fun <reified T: Exception> Application.internalServerErrorHandler(): ExceptionHandlerPlugin {
+@KtorDsl
+inline fun <reified T : Exception> Application.internalServerErrorHandler(): ExceptionHandlerPlugin {
     return exceptionHandler<T> { call, exception ->
         exception as T
         val response = Response.internalServerError(message = exception.message)

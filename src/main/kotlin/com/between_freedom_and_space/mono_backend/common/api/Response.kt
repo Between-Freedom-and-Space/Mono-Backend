@@ -7,7 +7,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Response <T: Any>(
+data class Response<T : Any>(
 
     @SerialName("status_code")
     val statusCode: Int,
@@ -24,7 +24,7 @@ data class Response <T: Any>(
 
     companion object {
 
-        fun <T: Any> ok(content: T?): Response<T> {
+        fun <T : Any> ok(content: T?): Response<T> {
             return Response(
                 statusCode = HttpStatusCode.OK.value,
                 statusMessage = HttpStatusCode.OK.description,
@@ -33,7 +33,7 @@ data class Response <T: Any>(
             )
         }
 
-        fun <T: Any> ok(content: () -> T?): Response<T> {
+        fun <T : Any> ok(content: () -> T?): Response<T> {
             return ok(content.invoke())
         }
 

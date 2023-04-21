@@ -21,11 +21,11 @@ class AccessPlugin(
     private val handler: PluginAccessHandler,
     private val pathMatcher: PathPatternMatcher,
 ) {
-    companion object: Plugin<ApplicationCallPipeline, Configuration, AccessPlugin> {
+    companion object : Plugin<ApplicationCallPipeline, Configuration, AccessPlugin> {
 
         override val key = AttributeKey<AccessPlugin>("ApplicationAccessPlugin")
 
-        private val logger = KotlinLogging.logger {  }
+        private val logger = KotlinLogging.logger { }
 
         override fun install(pipeline: ApplicationCallPipeline, configure: Configuration.() -> Unit): AccessPlugin {
             val handler by inject<PluginAccessHandler>()

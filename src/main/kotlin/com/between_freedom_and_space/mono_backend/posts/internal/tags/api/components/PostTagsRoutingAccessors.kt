@@ -30,7 +30,7 @@ internal fun Application.postTagsRoutingAccessors() {
 
         val tagInformationService by inject<InformationTagsService>()
 
-        routingAccessor("$basePath/byId/{id}/update",  ADMIN, SUPER_ADMIN) { userAccessData ->
+        routingAccessor("$basePath/byId/{id}/update", ADMIN, SUPER_ADMIN) { userAccessData ->
             val userId = userAccessData.authority?.userId
             val tagId = userAccessData.getPathParameter("id")?.toLong()
                 ?: throw InvalidTagException("Tag id is not presented")

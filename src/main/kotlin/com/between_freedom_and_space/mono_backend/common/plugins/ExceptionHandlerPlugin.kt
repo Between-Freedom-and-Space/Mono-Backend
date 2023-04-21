@@ -15,11 +15,11 @@ class ExceptionHandlerPlugin(
     config: Configuration,
     private val exceptionInterceptor: ExceptionInterceptor,
 ) {
-    companion object: Plugin<ApplicationCallPipeline, Configuration, ExceptionHandlerPlugin> {
+    companion object : Plugin<ApplicationCallPipeline, Configuration, ExceptionHandlerPlugin> {
 
         override val key = AttributeKey<ExceptionHandlerPlugin>("ApplicationExceptionHandlerPlugin")
 
-        private val logger = KotlinLogging.logger {  }
+        private val logger = KotlinLogging.logger { }
 
         override fun install(
             pipeline: ApplicationCallPipeline, configure: Configuration.() -> Unit
@@ -52,7 +52,7 @@ class ExceptionHandlerPlugin(
 
     private val enableLogging = config.enableLogging
 
-    fun <T: Exception> setHandler(handler: ExceptionHandler, clazz: KClass<T>) {
+    fun <T : Exception> setHandler(handler: ExceptionHandler, clazz: KClass<T>) {
         handlers[clazz] = handler
         logger.info { "Registered exception handler for class: $clazz" }
     }

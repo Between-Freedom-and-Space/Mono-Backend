@@ -5,7 +5,7 @@ import com.between_freedom_and_space.mono_backend.common.plugins.ExceptionInterc
 import io.ktor.server.application.*
 import kotlin.reflect.KClass
 
-class DefaultExceptionInterceptor: ExceptionInterceptor {
+class DefaultExceptionInterceptor : ExceptionInterceptor {
 
     override suspend fun handle(
         exception: Exception, call: ApplicationCall,
