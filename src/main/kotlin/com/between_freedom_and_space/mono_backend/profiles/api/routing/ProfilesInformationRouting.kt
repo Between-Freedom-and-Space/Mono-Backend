@@ -1,5 +1,6 @@
 package com.between_freedom_and_space.mono_backend.profiles.api.routing
 
+import com.between_freedom_and_space.mono_backend.auth.components.plugin.extensions.getUserAuthorities
 import com.between_freedom_and_space.mono_backend.common.api.PageParams
 import com.between_freedom_and_space.mono_backend.common.api.Response
 import com.between_freedom_and_space.mono_backend.common.components.ModelMapper
@@ -51,6 +52,17 @@ internal fun Application.profilesInformationRouting() {
             val result = informationService.getAllProfiles(pageNumber, pageSize)
 
             val profileResponse = result.map { profileMapper.map(it) }
+            val response = Response.ok(profileResponse)
+
+            sendResponse(response)
+        }
+
+        get("$basePath/my") {
+            val authorUserId = getUserAuthorities().userId
+
+            val result = informationService.getProfileById(authorUserId)
+
+            val profileResponse = profileMapper.map(result)
             val response = Response.ok(profileResponse)
 
             sendResponse(response)
