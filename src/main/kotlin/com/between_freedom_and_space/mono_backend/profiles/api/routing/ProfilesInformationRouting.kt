@@ -41,6 +41,9 @@ internal fun Application.profilesInformationRouting() {
     val profileMapper by inject<ModelMapper<BaseProfileModel, ProfileModel>>(
         named(ProfilesMappersQualifiers.BASE_PROFILE_TO_PROFILE_MODEL)
     )
+    val postsMapper by inject<ModelMapper<BasePostModel, PostModel>>(
+        named(PostMappersQualifiers.BASE_POST_MODEL_TO_POST_MODEL)
+    )
 
     routing {
 
@@ -73,6 +76,18 @@ internal fun Application.profilesInformationRouting() {
                 ?: throw InvalidProfileException("Nickname value is not presented")
 
             val result = informationService.getProfileByNickName(nickName)
+
+            val profileResponse = profileMapper.map(result)
+            val response = Response.ok(profileResponse)
+
+            sendResponse(response)
+        }
+
+        get("$basePath/by-id/{id}") {
+            val id = getPathParameter("id")?.toLong()
+                ?: throw InvalidProfileException("Profile id value is not presented")
+
+            val result = informationService.getProfileById(id)
 
             val profileResponse = profileMapper.map(result)
             val response = Response.ok(profileResponse)
@@ -137,6 +152,17 @@ internal fun Application.profilesInformationRouting() {
             sendResponse(response)
         }
 
+        get("$basePath/by-id/{id}/subscriptions/count") {
+            val id = getPathParameter("id")?.toLong()
+                ?: throw InvalidProfileException("Profile id value is not presented")
+
+            val result = informationService.getProfileSubscriptionsCount(id)
+
+            val response = Response.ok(result)
+
+            sendResponse(response)
+        }
+
         get("$basePath/{nickname}/subscribers/count") {
             val nickName = getPathParameter("nickname")
                 ?: throw InvalidProfileException("Nickname value is not presented")
@@ -148,12 +174,18 @@ internal fun Application.profilesInformationRouting() {
             sendResponse(response)
         }
 
+        get("$basePath/by-id/{id}/subscribers/count") {
+            val id = getPathParameter("id")?.toLong()
+                ?: throw InvalidProfileException("Profile id value is not presented")
+
+            val result = informationService.getProfileSubscribersCount(id)
+
+            val response = Response.ok(result)
+
+            sendResponse(response)
+        }
 
         get("$basePath/{nickname}/posts") {
-            val postsMapper by inject<ModelMapper<BasePostModel, PostModel>>(
-                named(PostMappersQualifiers.BASE_POST_MODEL_TO_POST_MODEL)
-            )
-
             val pageParams = validateAndReceiveRequest<PageParams>()
             val pageSize = pageParams.pageSize
             val pageNumber = pageParams.pageNumber
@@ -161,6 +193,21 @@ internal fun Application.profilesInformationRouting() {
                 ?: throw InvalidProfileException("Nickname value is not presented")
 
             val result = informationService.getProfilePosts(nickName, pageNumber, pageSize)
+
+            val postsResponse = result.map { postsMapper.map(it) }
+            val response = Response.ok(postsResponse)
+
+            sendResponse(response)
+        }
+
+        post("$basePath/by-id/{id}/posts") {
+            val pageParams = validateAndReceiveRequest<PageParams>()
+            val pageSize = pageParams.pageSize
+            val pageNumber = pageParams.pageNumber
+            val id = getPathParameter("id")?.toLong()
+                ?: throw InvalidProfileException("Profile id value is not presented")
+
+            val result = informationService.getProfilePosts(id, pageNumber, pageSize)
 
             val postsResponse = result.map { postsMapper.map(it) }
             val response = Response.ok(postsResponse)
