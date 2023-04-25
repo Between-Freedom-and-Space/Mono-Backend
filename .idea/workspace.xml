@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="fixed docker">
+    <list default="true" id="60b50447-7493-4a08-8612-8306fb6d3a7f" name="Changes" comment="added more profile endpoints">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/components/ProfilesRoutingAccessors.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/routing/ProfilesInformationRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/profiles/api/routing/ProfilesInformationRouting.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/routing/PostsInformationRouting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/between_freedom_and_space/mono_backend/posts/api/routing/PostsInformationRouting.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,13 +402,6 @@
       <workItem from="1682103685391" duration="1001000" />
       <workItem from="1682104766197" duration="2647000" />
     </task>
-    <task id="LOCAL-00076" summary="added exposed entity callbacks api">
-      <created>1654808267444</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1654808267444</updated>
-    </task>
     <task id="LOCAL-00077" summary="fixed update models">
       <created>1654808701185</created>
       <option name="number" value="00077" />
@@ -746,7 +738,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682332739514</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="added more profile endpoints">
+      <created>1682350390144</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1682350390144</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -764,7 +763,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed Dockerfile" />
     <MESSAGE value="added profile delete routing accessor" />
     <MESSAGE value="added transform exception handlers" />
     <MESSAGE value="fixed page params validation constraints" />
@@ -789,6 +787,7 @@
     <MESSAGE value="added routings" />
     <MESSAGE value="increase versions" />
     <MESSAGE value="fixed docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed docker" />
+    <MESSAGE value="added more profile endpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more profile endpoints" />
   </component>
 </project>
