@@ -64,7 +64,7 @@ internal fun Application.postsInformationRouting() {
             sendResponse(response)
         }
 
-        get("$basePath/{id}/comments") {
+        post("$basePath/{id}/comments") {
             val commentMapper by inject<ModelMapper<BaseCommentModel, CommentModel>>(
                 named(CommentsMappersQualifiers.BASE_COMMENT_TO_COMMENT_MODEL)
             )
@@ -134,7 +134,7 @@ internal fun Application.postsInformationRouting() {
             sendResponse(response)
         }
 
-        get("$basePath/{id}/tags") {
+        post("$basePath/{id}/tags") {
             val tagMapper by inject<ModelMapper<BaseTagModel, TagModel>>(
                 named(TagsMappersQualifiers.BASE_TAG_MODEL_TO_MODEL)
             )
